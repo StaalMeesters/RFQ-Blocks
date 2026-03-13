@@ -39,6 +39,9 @@
 - [x] CP-F3: Contract type system — Design/Supply/Build checkboxes, payment terms adapt per type, montage auto-enables on Build, shown in export header
 - [x] CP-F4: Auto-save — 2s debounced auto-save, "Opgeslagen" flash indicator, JSON export/import moved to settings dropdown
 - [x] CP-F5: Revised chapter structure — 11 chapters, split Inleiding into RFQ Info + Projectinleiding, merge Prijs+Wettelijk into Commerciële Voorwaarden, Uitsluitingen into scope, rename Levering→Planning
+- [x] CP-F6: Multi-product RFQ (completed earlier)
+- [x] CP-F7: Default spec presets (completed earlier)
+- [x] CP-F8: In-app help system — "?" button, slide-in panel (Snelstart/Functies/Sneltoetsen/FAQ), first-time welcome overlay
 
 ## Build Status
 - **Vite build**: PASS (845 kB, 218 modules)

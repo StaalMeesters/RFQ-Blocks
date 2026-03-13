@@ -4,6 +4,7 @@ import entities from '../data/entities.json';
 import { useUser } from '../auth/AuthWrapper.jsx';
 import { loadPresets, savePresets, loadAllPresets, importAllPresets } from '../utils/storage.js';
 import MasterChapterModal from './MasterChapterModal.jsx';
+import HelpPanel from './HelpPanel.jsx';
 
 export default function TopBar({
   entityId, products, onBack,
@@ -19,6 +20,9 @@ export default function TopBar({
 
   // Master chapters modal
   const [masterModalOpen, setMasterModalOpen] = useState(false);
+
+  // Help panel
+  const [helpOpen, setHelpOpen] = useState(false);
 
   // Settings dropdown
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -484,6 +488,12 @@ export default function TopBar({
         <option value="approved">Goedgekeurd</option>
       </select>
 
+      {/* Help button */}
+      {btn('?', () => setHelpOpen(prev => !prev), {
+        color: C.wh, borderColor: C.dk2, title: 'Help & documentatie',
+        style: { borderRadius: '50%', width: 28, height: 28, padding: 0, textAlign: 'center', fontWeight: 700 },
+      })}
+
       {/* User */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 8 }}>
         <span style={{ fontSize: 12, color: '#ccc' }}>{user?.name}</span>
@@ -520,6 +530,9 @@ export default function TopBar({
 
       {/* Master chapter modal */}
       {masterModalOpen && <MasterChapterModal onClose={() => setMasterModalOpen(false)} />}
+
+      {/* Help panel */}
+      {helpOpen && <HelpPanel onClose={() => setHelpOpen(false)} />}
     </div>
   );
 }

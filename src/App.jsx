@@ -7,6 +7,7 @@ import TopBar from './components/TopBar.jsx';
 import LeftPanel from './components/LeftPanel.jsx';
 import MiddlePanel from './components/MiddlePanel.jsx';
 import RFQPreview from './components/RFQPreview.jsx';
+import { useWelcome, WelcomeOverlay } from './components/HelpPanel.jsx';
 
 export default function App() {
   const [screen, setScreen] = useState('select'); // 'select' or 'editor'
@@ -19,6 +20,7 @@ export default function App() {
   const dragging = useRef(null);
 
   const data = useMultiProductData(entityId, categoryIds);
+  const { showWelcome, dismissWelcome } = useWelcome();
 
   // Save indicator (flashes after auto-save)
   const [saveFlash, setSaveFlash] = useState(false);
@@ -101,7 +103,12 @@ export default function App() {
   }, [leftWidth, rightWidth]);
 
   if (screen === 'select') {
-    return <EntitySelector onStart={handleStart} />;
+    return (
+      <>
+        <EntitySelector onStart={handleStart} />
+        {showWelcome && <WelcomeOverlay onDismiss={dismissWelcome} />}
+      </>
+    );
   }
 
   return (
