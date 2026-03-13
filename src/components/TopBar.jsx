@@ -12,6 +12,7 @@ export default function TopBar({
   frozen, onToggleFreeze, reviewStatus, onSetReview,
   activeProductIndex, onLoadPreset, getValsForProduct,
   contractType, onUpdateContractType,
+  saveIndicator,
 }) {
   const { user, logout } = useUser();
   const entity = entities[entityId];
@@ -19,11 +20,27 @@ export default function TopBar({
   // Master chapters modal
   const [masterModalOpen, setMasterModalOpen] = useState(false);
 
+  // Settings dropdown
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const settingsRef = useRef(null);
+
   // Preset state
   const [presetDropdownOpen, setPresetDropdownOpen] = useState(false);
   const [presetDialogOpen, setPresetDialogOpen] = useState(false);
   const [presetName, setPresetName] = useState('');
   const presetDropdownRef = useRef(null);
+
+  // Close settings dropdown on outside click
+  useEffect(() => {
+    if (!settingsOpen) return;
+    const handler = (e) => {
+      if (settingsRef.current && !settingsRef.current.contains(e.target)) {
+        setSettingsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [settingsOpen]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -389,26 +406,64 @@ export default function TopBar({
 
       {/* Actions */}
       <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-        {btn('↶ Ongedaan', onUndo, { disabled: !canUndo, color: C.wh, borderColor: C.dk2 })}
-        {btn('↷ Opnieuw', onRedo, { disabled: !canRedo, color: C.wh, borderColor: C.dk2 })}
+        {/* Save indicator */}
+        {saveIndicator && (
+          <span style={{ fontSize: 10, color: C.gr, fontWeight: 600, marginRight: 4 }}>
+            Opgeslagen
+          </span>
+        )}
+        {btn('↶ Ongedaan', onUndo, { disabled: !canUndo, color: C.wh, borderColor: C.dk2, title: 'Ongedaan maken (Ctrl+Z)' })}
+        {btn('↷ Opnieuw', onRedo, { disabled: !canRedo, color: C.wh, borderColor: C.dk2, title: 'Opnieuw (Ctrl+Y)' })}
         <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />
-        {btn('Herstellen', onReset, { color: C.wh, borderColor: C.dk2 })}
-        {btn('JSON ↓', () => {
-          const data = onExportJSON();
-          const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-          const a = document.createElement('a');
-          a.href = URL.createObjectURL(blob);
-          a.download = `rfq_${entityId}_multi.json`;
-          a.click();
-        }, { color: C.wh, borderColor: C.dk2 })}
-        {btn('JSON ↑', handleImport, { color: C.wh, borderColor: C.dk2 })}
-        {btn('Word ⬇', onExportWord, { bg: C.o, color: C.wh, borderColor: C.o })}
+        {btn('Herstellen', onReset, { color: C.wh, borderColor: C.dk2, title: 'Alle wijzigingen herstellen naar standaard' })}
+        {btn('Word ⬇', onExportWord, { bg: C.o, color: C.wh, borderColor: C.o, title: 'Exporteer als Word (Ctrl+E)' })}
         <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />
         {btn(frozen ? '🔒 Bevroren' : '🔓 Concept', onToggleFreeze, {
           bg: frozen ? C.red : 'transparent',
           color: C.wh,
           borderColor: frozen ? C.red : C.dk2,
+          title: frozen ? 'Document is vergrendeld' : 'Vergrendel het document',
         })}
+
+        {/* Settings dropdown */}
+        <div ref={settingsRef} style={{ position: 'relative' }}>
+          {btn('⚙', () => setSettingsOpen(prev => !prev), { color: C.wh, borderColor: C.dk2, title: 'Instellingen' })}
+          {settingsOpen && (
+            <div style={{
+              position: 'absolute', top: '100%', right: 0, marginTop: 4,
+              background: C.wh, border: `1px solid ${C.bor}`, borderRadius: 6,
+              boxShadow: '0 4px 16px rgba(0,0,0,0.12)', minWidth: 200, zIndex: 100,
+            }}>
+              <div style={{ padding: '8px 12px', borderBottom: `1px solid ${C.bor}`, fontSize: 11, fontWeight: 700, color: C.txtL, textTransform: 'uppercase' }}>
+                Instellingen
+              </div>
+              <div
+                onClick={() => {
+                  const data = onExportJSON();
+                  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                  const a = document.createElement('a');
+                  a.href = URL.createObjectURL(blob);
+                  a.download = `rfq_${entityId}_multi.json`;
+                  a.click();
+                  setSettingsOpen(false);
+                }}
+                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk, borderBottom: `1px solid ${C.bor}` }}
+                onMouseEnter={e => e.currentTarget.style.background = C.lt}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                Exporteer als JSON
+              </div>
+              <div
+                onClick={() => { handleImport(); setSettingsOpen(false); }}
+                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk }}
+                onMouseEnter={e => e.currentTarget.style.background = C.lt}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                Importeer JSON
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Status */}

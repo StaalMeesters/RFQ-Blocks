@@ -20,6 +20,16 @@ export default function App() {
 
   const data = useMultiProductData(entityId, categoryIds);
 
+  // Save indicator (flashes after auto-save)
+  const [saveFlash, setSaveFlash] = useState(false);
+  const saveFlashTimer = useRef(null);
+  useEffect(() => {
+    if (screen !== 'editor' || !data.lastSaved) return;
+    setSaveFlash(true);
+    if (saveFlashTimer.current) clearTimeout(saveFlashTimer.current);
+    saveFlashTimer.current = setTimeout(() => setSaveFlash(false), 2000);
+  }, [data.lastSaved, screen]);
+
   const handleStart = (eid, catIds) => {
     setEntityId(eid);
     setCategoryIds(catIds);
@@ -118,6 +128,7 @@ export default function App() {
         getValsForProduct={data.getValsForProduct}
         contractType={data.contractType}
         onUpdateContractType={data.updateContractType}
+        saveIndicator={saveFlash}
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>

@@ -50,6 +50,9 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
   const [redoStack, setRedoStack] = useState([]);
   const undoTimer = useRef(null);
 
+  // Save indicator timestamp
+  const [lastSaved, setLastSaved] = useState(null);
+
   // Build product data for merging
   const productMergeData = useMemo(() => {
     return products.map(p => ({
@@ -483,10 +486,13 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     });
   }, [entityId, products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, contractType, frozen, reviewStatus]);
 
-  // Auto-save
+  // Auto-save (debounced 2s)
   useEffect(() => {
     if (!entityId || products.length === 0) return;
-    const t = setTimeout(save, 1000);
+    const t = setTimeout(() => {
+      save();
+      setLastSaved(Date.now());
+    }, 2000);
     return () => clearTimeout(t);
   }, [products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, contractType, frozen, reviewStatus]);
 
@@ -696,5 +702,6 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     // Metadata
     catMetas,
     entityId,
+    lastSaved,
   };
 }
