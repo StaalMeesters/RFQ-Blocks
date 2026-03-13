@@ -1,0 +1,143 @@
+{
+  "_meta": {
+    "id": "sewerage",
+    "pg": "PG04",
+    "scope": "Sewerage & Drainage",
+    "scopeType": "service",
+    "suppliers": [
+      "Oosterveld",
+      "DOMS"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_rainwater",
+          "label": "Rainwater Drainage",
+          "defaultOn": true,
+          "text": "The Supplier shall install rainwater drainage:\n\nPipe material: {{pipeMaterial}}\nPipe diameter: {{pipeDiameter}} mm\nTotal estimated length: {{pipeLength}} m\nManholes / inspection chambers: {{manholeQty}} pieces\n\nThe Supplier shall excavate trenches, lay pipes at correct falls, backfill, compact, and reinstate.\nCamera inspection and leakage test upon completion: included.",
+          "variables": [
+            {
+              "id": "pipeMaterial",
+              "label": "Pipe material",
+              "type": "select",
+              "options": [
+                "PVC (SN8)",
+                "PP",
+                "PE",
+                "Concrete"
+              ],
+              "default": "PVC (SN8)"
+            },
+            {
+              "id": "pipeDiameter",
+              "label": "Diameter (mm)",
+              "type": "number",
+              "default": "160"
+            },
+            {
+              "id": "pipeLength",
+              "label": "Length (m)",
+              "type": "number"
+            },
+            {
+              "id": "manholeQty",
+              "label": "Manholes",
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "id": "b2_foulwater",
+          "label": "Foul Water Connection",
+          "defaultOn": true,
+          "text": "Foul water connection:\n\nConnection point: {{foulConnection}}\nPipe diameter: {{foulDiameter}} mm\nPipe material: {{foulMaterial}}\n\nAll connections per municipal requirements and NEN 3215.",
+          "variables": [
+            {
+              "id": "foulConnection",
+              "label": "Connection point",
+              "type": "text",
+              "default": "municipal sewer at property boundary"
+            },
+            {
+              "id": "foulDiameter",
+              "label": "Diameter (mm)",
+              "type": "number",
+              "default": "125"
+            },
+            {
+              "id": "foulMaterial",
+              "label": "Material",
+              "type": "select",
+              "options": [
+                "PVC (SN8)",
+                "PP",
+                "PE"
+              ],
+              "default": "PVC (SN8)"
+            }
+          ]
+        },
+        {
+          "id": "b2_infiltration",
+          "label": "Infiltration System",
+          "defaultOn": false,
+          "text": "Infiltration system:\n\nType: {{infiltrationType}}\nStorage capacity: {{infiltrationCapacity}} litres\nInfiltration area: {{infiltrationArea}} m²\n\nThe Supplier shall confirm capacity calculations per local water authority requirements.",
+          "variables": [
+            {
+              "id": "infiltrationType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Infiltration crates (kunststof infiltratiekratten)",
+                "Soakaway (infiltratieput)",
+                "Swale (wadi)"
+              ],
+              "default": "Infiltration crates (kunststof infiltratiekratten)"
+            },
+            {
+              "id": "infiltrationCapacity",
+              "label": "Capacity (l)",
+              "type": "number"
+            },
+            {
+              "id": "infiltrationArea",
+              "label": "Area (m²)",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_standards",
+          "label": "Applicable Standards",
+          "defaultOn": true,
+          "text": "All works shall comply with:\n\n- NEN 3215 (domestic drainage installations)\n- NEN-EN 1401 (PVC-U pipe systems)\n- KOMO / KIWA certified pipes and fittings\n- Municipal drainage requirements and connection permits\n- Waterschapsverordening (water authority regulations)\n\nSafety: VCA** certification required.\n\nAttach: VCA certificate, camera inspection report, leakage test report, as-built drawings.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m1 pipe laid (per diameter)\nPer piece: manhole / inspection chamber\nPer m² infiltration system\nPer connection: municipal sewer connection\nCamera inspection: lump sum\nLeakage test: lump sum\nMobilisation / demobilisation: lump sum",
+    "ch5_surchargeItems": "- Minimum order surcharge\n- Rock or obstruction removal\n- Additional depth beyond specification\n- Weekend working",
+    "ch6_exclusionItems": "- Building drainage inside building (by others)\n- Roof drainage systems (by others)\n- Foundation works\n- Permits (by STM)\n- Road works and traffic measures\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule — per m1, per piece, lump sums\n2. Method statement\n3. VCA** certificate\n4. Material certificates (KOMO/KIWA)\n5. Estimated duration\n6. As-built drawing commitment\n7. General terms and conditions\n8. All deviations with justification"
+  }
+}

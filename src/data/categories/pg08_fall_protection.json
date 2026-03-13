@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "id": "fall_protection",
+    "pg": "PG08",
+    "scope": "Fall Protection",
+    "scopeType": "service",
+    "suppliers": [
+      "HD Dak"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_fp",
+          "label": "Roof Fall Protection",
+          "defaultOn": true,
+          "text": "Permanent fall protection:\n\nSystem: {{fpType}}\nMax users: {{fpUsers}}\nAnchor points: {{ancQty}}\nLifeline: {{llLen}} m\n\nUser manual + annual inspection schedule: included.",
+          "variables": [
+            {
+              "id": "fpType",
+              "label": "System",
+              "type": "select",
+              "options": [
+                "Anchor points",
+                "Horizontal lifeline (cable)",
+                "Lifeline (rail)",
+                "Combination",
+                "Guardrail"
+              ],
+              "default": "Anchor points",
+              "source": "specs"
+            },
+            {
+              "id": "fpUsers",
+              "label": "Max users",
+              "type": "number",
+              "default": "1",
+              "source": "specs"
+            },
+            {
+              "id": "ancQty",
+              "label": "Anchors",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "llLen",
+              "label": "Lifeline (m)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 795, EN 365, NEN 8112, Arbobesluit.\nAttach: CE cert, install manual, inspection protocol.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per piece anchor point\n- Per m1 lifeline\n- Lump sum: engineering, certification\n- Annual inspection: per visit",
+    "ch5_surchargeItems": "",
+    "ch6_exclusionItems": "- Roof construction\n- Waterproofing\n- PPE harnesses\n- Training\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. System spec\n3. CE certs\n4. Install plan\n5. Inspection protocol\n6. Warranty\n7. General terms\n8. Deviations"
+  }
+}

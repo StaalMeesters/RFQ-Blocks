@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "id": "profiled_sheet",
+    "pg": "PG08",
+    "scope": "Profiled Steel Sheet Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "SAB"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_sh",
+          "label": "Profiled Sheets",
+          "defaultOn": true,
+          "text": "Profile: {{profType}}\nSteel: min {{steelThk}} mm\nCoating: {{coat}}\nColour: {{col}}\nApplication: {{shApp}}\nArea: {{area}} m²\n\nConfirm: load/span tables, effective width, DoP/CE.",
+          "variables": [
+            {
+              "id": "profType",
+              "label": "Profile",
+              "type": "text",
+              "delegateText": "Propose profile for stated span and load.",
+              "source": "specs"
+            },
+            {
+              "id": "steelThk",
+              "label": "Steel (mm)",
+              "type": "number",
+              "default": "0.75",
+              "source": "specs"
+            },
+            {
+              "id": "coat",
+              "label": "Coating",
+              "type": "text",
+              "default": "Zinc 275 g/m²",
+              "source": "specs"
+            },
+            {
+              "id": "col",
+              "label": "Colour",
+              "type": "text",
+              "default": "Galvanised (unpainted)",
+              "source": "specs"
+            },
+            {
+              "id": "shApp",
+              "label": "Application",
+              "type": "select",
+              "options": ["Roof deck", "Wall liner", "Composite floor", "Cladding outer"],
+              "default": "Roof deck",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 14782, EN 10346, EN 1993-1-3.\nAttach: DoP, load/span tables.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m² profiled sheet\n- Per load transport",
+    "ch5_surchargeItems": "- Cut-to-length surcharge\n- Minimum order surcharge\n- Non-standard colour surcharge",
+    "ch6_exclusionItems": "- Installation\n- Substructure\n- Insulation\n- Crane\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Load/span tables\n3. DoP + CE\n4. Data sheets\n5. Lead time\n6. General terms\n7. Deviations"
+  }
+}

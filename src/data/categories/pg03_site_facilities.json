@@ -1,0 +1,184 @@
+{
+  "_meta": {
+    "id": "site_facilities",
+    "pg": "PG03",
+    "scope": "Site Facilities",
+    "scopeType": "service",
+    "suppliers": [
+      "BPi Bouwplaatsinrichters"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_cabins",
+          "label": "Site Cabins & Containers",
+          "defaultOn": true,
+          "text": "The Supplier shall supply and install temporary site facilities:\n\nSite office: {{officeType}}, quantity: {{officeQty}}\nStorage container(s): {{storageQty}} × {{storageSize}}\nCanteen / rest area: {{canteenType}}\n\nAll units shall be:\n- Weatherproof and lockable\n- Electrically connected (230V, lighting, heating)\n- Furnished as specified (desks, chairs, plan table for office; tables, benches, fridge, microwave for canteen)\n\nRental period: {{rentalPeriod}}\nDelivery and collection: included in price.\n\nThe Supplier shall confirm dimensions, condition (new/used), and any restrictions on placement.",
+          "variables": [
+            {
+              "id": "officeType",
+              "label": "Office type",
+              "type": "select",
+              "options": [
+                "Standard 6m container",
+                "Double 6m unit",
+                "Portacabin 3×6m",
+                "Portacabin 3×9m"
+              ],
+              "default": "Standard 6m container"
+            },
+            {
+              "id": "officeQty",
+              "label": "Office qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "storageQty",
+              "label": "Storage qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "storageSize",
+              "label": "Storage size",
+              "type": "select",
+              "options": [
+                "3m (10ft)",
+                "6m (20ft)",
+                "12m (40ft)"
+              ],
+              "default": "6m (20ft)"
+            },
+            {
+              "id": "canteenType",
+              "label": "Canteen",
+              "type": "select",
+              "options": [
+                "Standard 6m container",
+                "Double unit",
+                "Not required"
+              ],
+              "default": "Standard 6m container"
+            },
+            {
+              "id": "rentalPeriod",
+              "label": "Rental period",
+              "type": "text",
+              "delegateText": "State minimum rental period and weekly/monthly rates."
+            }
+          ]
+        },
+        {
+          "id": "b2_sanitary",
+          "label": "Sanitary Facilities",
+          "defaultOn": true,
+          "text": "The Supplier shall provide sanitary facilities:\n\nToilet units: {{toiletQty}} × {{toiletType}}\nCleaning schedule: {{cleaningSchedule}}\n\nAll units shall comply with Arbobesluit requirements for construction sites.\nWaste collection and removal: included.",
+          "variables": [
+            {
+              "id": "toiletQty",
+              "label": "Toilet qty",
+              "type": "number",
+              "default": "2"
+            },
+            {
+              "id": "toiletType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Chemical toilet (Dixi)",
+                "Connected toilet unit",
+                "Toilet/shower combination"
+              ],
+              "default": "Chemical toilet (Dixi)"
+            },
+            {
+              "id": "cleaningSchedule",
+              "label": "Cleaning",
+              "type": "select",
+              "options": [
+                "1× per week",
+                "2× per week",
+                "Daily"
+              ],
+              "default": "1× per week"
+            }
+          ]
+        },
+        {
+          "id": "b2_fencing",
+          "label": "Site Fencing & Security",
+          "defaultOn": false,
+          "text": "The Supplier shall provide temporary site fencing:\n\nFencing type: {{fenceType}}\nEstimated perimeter: {{fenceLength}} m\nGates: {{gateQty}} × {{gateWidth}} m wide\nMinimum height: {{fenceHeight}} m\n\nFencing shall be stable, self-supporting, and comply with local requirements.\nDelivery, installation, and removal: included in price.",
+          "variables": [
+            {
+              "id": "fenceType",
+              "label": "Fence type",
+              "type": "select",
+              "options": [
+                "Heras panels (standard)",
+                "Timber hoarding",
+                "Anti-climb mesh"
+              ],
+              "default": "Heras panels (standard)"
+            },
+            {
+              "id": "fenceLength",
+              "label": "Perimeter (m)",
+              "type": "number"
+            },
+            {
+              "id": "gateQty",
+              "label": "Gate qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "gateWidth",
+              "label": "Gate width (m)",
+              "type": "number",
+              "default": "4"
+            },
+            {
+              "id": "fenceHeight",
+              "label": "Min height (m)",
+              "type": "number",
+              "default": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_standards",
+          "label": "Applicable Standards",
+          "defaultOn": true,
+          "text": "All facilities shall comply with:\n\n- Arbobesluit (Working Conditions Decree) — site facility requirements\n- Bouwbesluit 2012 (where applicable to temporary structures)\n- NEN 3140 (electrical safety)\n- Local municipal requirements for temporary structures\n\nThe Supplier shall hold valid VCA* or VCA** certification.\nAll units shall be CE marked where applicable.\n\nAttach: VCA certificate, unit specifications, electrical safety certificates.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per unit per period:\n- Site office: per week / per month\n- Storage container: per week / per month\n- Canteen unit: per week / per month\n- Toilet unit: per week (including cleaning and waste removal)\n\nOne-off costs:\n- Delivery and placement: lump sum\n- Collection and removal: lump sum\n- Electrical connection per unit: lump sum\n- Furniture package per unit: lump sum",
+    "ch5_surchargeItems": "- Extension of rental period: rate per additional week\n- Additional relocations within site\n- Weekend or evening delivery/collection\n- Additional cleaning visits\n- Damage repair",
+    "ch6_exclusionItems": "- Permanent electrical supply to site boundary\n- Water supply connection\n- Ground preparation / hardstanding for unit placement\n- Building permits for temporary structures\n- Security services / CCTV monitoring\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule per unit per period\n2. Unit specifications and dimensions\n3. VCA certificate (valid)\n4. Electrical safety certificates\n5. Insurance certificate\n6. Delivery and placement timeline\n7. General terms and conditions\n8. All deviations with justification"
+  }
+}

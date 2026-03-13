@@ -1,0 +1,129 @@
+{
+  "_meta": {
+    "id": "dock_shelter",
+    "pg": "PG07",
+    "scope": "Dock Shelter Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Novoferm NL"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_shelter",
+          "label": "Dock Shelters",
+          "defaultOn": true,
+          "text": "The Supplier shall supply dock shelters:\n\nType: {{shelterType}}, Quantity: {{shelterQty}}\n\nPer unit:\n- Clear opening: {{clearWidth}} × {{clearHeight}} mm\n- Projection: {{projection}} mm\n- Fabric: {{fabricMaterial}}\n- Frame: {{frameType}}\n- Colour: {{colour}}\n\nCompatibility with the overhead door and dock leveller shall be confirmed by the Supplier prior to order.\n\nThe Supplier shall confirm in the quotation: type, clear opening, projection, fabric specification, weather resistance rating, fire class, expected service life.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "shelterType",
+              "label": "Shelter type",
+              "type": "select",
+              "options": ["Retractable cushion", "Inflatable", "Fixed frame", "Combination"],
+              "default": "Retractable cushion",
+              "altText": "Offer alternative shelter type with weather resistance and price."
+            },
+            {
+              "id": "shelterQty",
+              "label": "Qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "clearWidth",
+              "label": "Clear width (mm)",
+              "type": "number",
+              "default": "3400"
+            },
+            {
+              "id": "clearHeight",
+              "label": "Clear height (mm)",
+              "type": "number",
+              "default": "3600"
+            },
+            {
+              "id": "projection",
+              "label": "Projection (mm)",
+              "type": "number",
+              "default": "600"
+            },
+            {
+              "id": "fabricMaterial",
+              "label": "Fabric material",
+              "type": "select",
+              "options": ["PVC coated polyester", "PU coated nylon", "EPDM rubber"],
+              "default": "PVC coated polyester"
+            },
+            {
+              "id": "frameType",
+              "label": "Frame type",
+              "type": "select",
+              "options": ["Galvanised steel", "Aluminium", "Stainless steel"],
+              "default": "Galvanised steel"
+            },
+            {
+              "id": "colour",
+              "label": "Colour",
+              "type": "text",
+              "default": "RAL 9005",
+              "delegateText": "Provide colour options. STM confirms."
+            }
+          ]
+        },
+        {
+          "id": "b2_shelter_acc",
+          "label": "Dock Shelter Accessories",
+          "defaultOn": true,
+          "text": "The Supplier shall supply per dock shelter the following accessories:\n\n- Guide rails: {{guideRails}}\n- Dock light: {{dockLight}}\n- Signage: dock number plate, standard\n\nAll accessories shall be compatible with the supplied shelter type. The Supplier shall confirm compatibility and state any accessories not included in the base price.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "guideRails",
+              "label": "Guide rails",
+              "type": "select",
+              "options": ["Yes", "No"],
+              "default": "Yes"
+            },
+            {
+              "id": "dockLight",
+              "label": "Dock light",
+              "type": "select",
+              "options": ["LED arm light", "LED strip", "Not required"],
+              "default": "LED arm light"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "All products shall comply with at minimum:\n\n- EN 12642 (load securing — dock equipment compatibility)\n- Machinery Directive 2006/42/EC (where powered or mechanically operated components are included)\n- Fire class of fabric per EN 13501-1 — The Supplier SHALL state the fire class of all fabric components\n\nThe Supplier shall provide test data demonstrating weather resistance performance.\n\nAttach: data sheets, fabric specification and fire class per EN 13501-1, weather resistance test data, compatibility confirmation with overhead door and dock leveller.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per piece dock shelter — complete unit including:\n- Frame, fabric cushions/curtains, fixings\n- Guide rails (if included)\n- Dock light (if included)\n- Signage\n\nPer piece accessories (itemised separately where applicable)\nTransport: per delivery\n\nValidity: minimum {{validityDays}} days.\nState if prices subject to material index.\n\nPayment: {{paymentDays}} days after invoice.\n\nSurcharges not stated are deemed included and cannot be invoiced separately.",
+    "ch5_surchargeItems": "- Non-standard clear opening dimensions (outside standard production range)\n- Replacement cover sets (fabric only, without frame)",
+    "ch6_exclusionItems": "Excluded (procured separately by STM):\n\n- Installation and commissioning\n- Steel substructure and wall backing frame\n- Electrical supply (for powered dock lights)\n- Builder's work\n- Dock leveller\n- Overhead door\n- VAT\n\nSupplier shall state additional exclusions. Items not listed and not excluded by Supplier are deemed included.\n\nInstallation instructions and documentation provided at no additional cost.",
+    "ch7_requiredDocuments": "Submit to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nInclude:\n1. Price schedule per unit\n2. Data sheets per product\n3. Fabric specification and fire class per EN 13501-1\n4. Weather resistance test data\n5. Compatibility confirmation with overhead door and dock leveller\n6. Lead time after order confirmation\n7. Warranty statement\n8. General terms and conditions\n9. All deviations and assumptions with justification\n\nIncomplete quotations may be rejected.\nSTM is not obligated to award to lowest bidder.\nThis RFQ does not constitute a commitment to order."
+  }
+}

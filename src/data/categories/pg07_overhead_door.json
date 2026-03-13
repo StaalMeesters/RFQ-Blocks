@@ -1,0 +1,265 @@
+{
+  "_meta": {
+    "id": "overhead_door",
+    "pg": "PG07",
+    "scope": "Overhead Door Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Novoferm NL",
+      "EBP"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_door",
+          "label": "Overhead Sectional Doors",
+          "defaultOn": true,
+          "text": "The Supplier shall supply industrial overhead sectional doors:\n\nModel: {{doorModel}}\nQuantity: {{doorQty}}\n\nPer door:\n- Opening: {{openW}} × {{openH}} mm\n- Panel: {{panelType}}, min {{panelThk}} mm, {{panelProf}}\n- Ext colour: {{extCol}}\n- Int colour: {{intCol}}\n- Rail: {{rail}}\n- Operation: {{op}}\n- Power: {{power}}\n- Wicket door: {{wicket}}\n- Glazing: {{glazing}}\n\nSafety (mandatory): light barrier, pinch protection, emergency release, safety edge.\n\nThe Supplier shall confirm in the quotation: type, U-value (panel and complete door), wind/water/air class, cycle rating, speed, DoP/CE, weight, headroom/sideroom requirements.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "doorModel",
+              "label": "Model",
+              "type": "text",
+              "default": "THERMO 40",
+              "delegateText": "Propose a door for the opening and thermal requirements.",
+              "altText": "Offer alternative door type with U-value, wind class and price differences."
+            },
+            {
+              "id": "doorQty",
+              "label": "Qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "openW",
+              "label": "Width (mm)",
+              "type": "number",
+              "default": "4000"
+            },
+            {
+              "id": "openH",
+              "label": "Height (mm)",
+              "type": "number",
+              "default": "4250"
+            },
+            {
+              "id": "panelType",
+              "label": "Panel",
+              "type": "text",
+              "default": "Double-skin insulated steel"
+            },
+            {
+              "id": "panelThk",
+              "label": "Panel (mm)",
+              "type": "number",
+              "default": "40"
+            },
+            {
+              "id": "panelProf",
+              "label": "Profile",
+              "type": "select",
+              "options": ["Micro-rib", "Cassette", "Smooth", "Stucco", "Woodgrain"],
+              "default": "Micro-rib"
+            },
+            {
+              "id": "extCol",
+              "label": "Ext colour",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Provide colour chart. STM confirms."
+            },
+            {
+              "id": "intCol",
+              "label": "Int colour",
+              "type": "text",
+              "default": "RAL 9002"
+            },
+            {
+              "id": "rail",
+              "label": "Rail system",
+              "type": "select",
+              "options": ["Standard (N)", "High lift (H)", "Vertical (V)", "Low headroom (T)", "Roof pitch (S)"],
+              "default": "Standard (N)",
+              "altText": "Quote standard and high lift with headroom and price difference."
+            },
+            {
+              "id": "op",
+              "label": "Operation",
+              "type": "select",
+              "options": ["Electric 400V/3ph", "Electric 230V/1ph", "Chain hoist", "Spring balanced"],
+              "default": "Electric 400V/3ph"
+            },
+            {
+              "id": "power",
+              "label": "Power",
+              "type": "select",
+              "options": ["400V/3ph/50Hz", "230V/1ph/50Hz"],
+              "default": "400V/3ph/50Hz"
+            },
+            {
+              "id": "wicket",
+              "label": "Wicket door",
+              "type": "select",
+              "options": ["Yes — integrated", "No", "Optional — quote separately"],
+              "default": "Yes — integrated"
+            },
+            {
+              "id": "glazing",
+              "label": "Glazing",
+              "type": "select",
+              "options": ["None", "1 row", "2 rows", "Full-view"],
+              "default": "None"
+            }
+          ]
+        },
+        {
+          "id": "b2_dock",
+          "label": "Dock Levellers",
+          "defaultOn": false,
+          "text": "The Supplier shall supply hydraulic dock levellers:\n\nModel: {{dockMod}}, Quantity: {{dockQty}}\nPlatform: {{dockW}} × {{dockL}} mm\nCapacity: min {{dockCap}} kg\nOperation: {{dockOp}}\n\nMandatory: automatic lip, wheel guides, safety struts, maintenance strut, CE marking.\n\nThe Supplier shall confirm: type, dynamic load capacity, pit dimensions, cycle rating, speed, CE/DoP, weight.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "dockMod",
+              "label": "Model",
+              "type": "text",
+              "default": "Novodock L320",
+              "delegateText": "Propose dock leveller for specified capacity."
+            },
+            {
+              "id": "dockQty",
+              "label": "Qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "dockW",
+              "label": "Width (mm)",
+              "type": "number",
+              "default": "2000"
+            },
+            {
+              "id": "dockL",
+              "label": "Length (mm)",
+              "type": "number",
+              "default": "3000"
+            },
+            {
+              "id": "dockCap",
+              "label": "Capacity (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "dockOp",
+              "label": "Operation",
+              "type": "select",
+              "options": ["Electro-hydraulic", "Air-hydraulic", "Manual"],
+              "default": "Electro-hydraulic"
+            }
+          ]
+        },
+        {
+          "id": "b2_ctrl",
+          "label": "Controls & Accessories",
+          "defaultOn": true,
+          "text": "The Supplier shall supply per door:\n- Control: {{ctrlType}}\n- Remote: {{remote}}\n- Traffic lights: {{traffic}}\n- Cable to {{cable}} point\n- Emergency stop\n\nThe Supplier shall state any required accessories not included in the above scope.",
+          "variables": [
+            {
+              "id": "ctrlType",
+              "label": "Control",
+              "type": "select",
+              "options": ["Push-button (int+ext)", "Push-button (int)", "Key switch"],
+              "default": "Push-button (int+ext)"
+            },
+            {
+              "id": "remote",
+              "label": "Remote",
+              "type": "select",
+              "options": ["Included", "No", "Optional"],
+              "default": "Optional"
+            },
+            {
+              "id": "traffic",
+              "label": "Traffic lights",
+              "type": "select",
+              "options": ["Yes", "No", "Optional"],
+              "default": "No"
+            },
+            {
+              "id": "cable",
+              "label": "Cable to",
+              "type": "select",
+              "options": ["Junction box", "Distribution board"],
+              "default": "Junction box"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "All products shall comply with at minimum:\n\n- EN 13241 (industrial, commercial, garage doors — performance)\n- EN 12604 (mechanical aspects)\n- EN 12453 (safety in use of power operated doors)\n- EN 12978 (safety devices)\n\nPerformance classes:\n- Wind resistance: min Class {{windCl}} per EN 12424\n- Water tightness: min Class {{waterCl}} per EN 12425\n- Air permeability: min Class {{airCl}} per EN 12426\n\nThermal performance:\n- U-value panel: max {{uPan}} W/m²K\n- U-value complete door: max {{uDoor}} W/m²K\n\nDock levellers (if in scope): EN 1398. Machinery Directive 2006/42/EC.\n\nAttach: DoP, performance test reports, wiring diagrams, installation requirements.",
+          "variables": [
+            {
+              "id": "windCl",
+              "label": "Wind class",
+              "type": "select",
+              "options": ["1", "2", "3", "4", "5"],
+              "default": "2"
+            },
+            {
+              "id": "waterCl",
+              "label": "Water class",
+              "type": "select",
+              "options": ["0", "1", "2", "3"],
+              "default": "1"
+            },
+            {
+              "id": "airCl",
+              "label": "Air class",
+              "type": "select",
+              "options": ["0", "1", "2", "3", "4", "5", "6"],
+              "default": "3"
+            },
+            {
+              "id": "uPan",
+              "label": "U panel (W/m²K)",
+              "type": "number",
+              "default": "0.50"
+            },
+            {
+              "id": "uDoor",
+              "label": "U door (W/m²K)",
+              "type": "number",
+              "default": "1.40"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per door — itemise separately:\n- Door body (panels, frame, seals)\n- Rail system\n- Motor and drive unit\n- Control panel and cabling\n- Wicket door (if applicable)\n- Glazing (if applicable)\n\nPer dock leveller: complete unit\nTransport: per delivery\n\nValidity: minimum {{validityDays}} days.\nState if prices subject to material index.\n\nPayment: {{paymentDays}} days after invoice.\n\nSurcharges not stated are deemed included and cannot be invoiced separately.",
+    "ch5_surchargeItems": "- Non-standard colour (outside standard RAL range)\n- Non-standard dimensions (outside standard production range)\n- Spare parts package\n- Extended warranty beyond standard",
+    "ch6_exclusionItems": "Excluded (procured separately by STM):\n\n- Installation and commissioning\n- Steel substructure and lintels\n- Electrical supply to junction box / distribution board\n- Builder's work (floor threshold, frame reveal)\n- Crane and lifting equipment\n- Scaffolding\n- Fire sealing at door reveals\n- VAT\n\nSupplier shall state additional exclusions. Items not listed and not excluded by Supplier are deemed included.\n\nInstallation instructions and documentation provided at no additional cost.",
+    "ch7_requiredDocuments": "Submit to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nInclude:\n1. Price schedule itemised per door (body, rail, motor, control, wicket, glazing)\n2. Data sheets per product\n3. DoP + CE certificate\n4. Performance test reports (wind, water, air class; U-values)\n5. Wiring diagrams\n6. Installation requirements (headroom, sideroom, lintel dimensions)\n7. Lead time after order confirmation\n8. Warranty statement\n9. General terms and conditions\n10. All deviations and assumptions with justification\n\nIncomplete quotations may be rejected.\nSTM is not obligated to award to lowest bidder.\nThis RFQ does not constitute a commitment to order."
+  }
+}

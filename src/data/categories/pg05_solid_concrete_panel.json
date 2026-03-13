@@ -1,0 +1,121 @@
+{
+  "_meta": {
+    "id": "solid_concrete_panel",
+    "pg": "PG05",
+    "scope": "Solid Concrete Panel Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Schelfhout",
+      "Olbecon",
+      "Preco"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_sol",
+          "label": "Solid Panels (PABE)",
+          "defaultOn": true,
+          "text": "Solid concrete panels:\n\nType: {{panelType}}\nThickness: {{thk}} mm\nConcrete: min {{concCl}}\nRebar: min {{rebar}} kg/m²\nExt: {{extFin}}, Int: {{intFin}}\nAnchors: {{anchor}}\n\nConfirm: fire resistance (EI), weight/m², max dims, DoP/CE.\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "panelType",
+              "label": "Type",
+              "type": "text",
+              "default": "PABE",
+              "delegateText": "Propose a solid panel type.",
+              "source": "specs"
+            },
+            {
+              "id": "thk",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "150",
+              "source": "specs"
+            },
+            {
+              "id": "concCl",
+              "label": "Concrete",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C30/37",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Rebar (kg/m²)",
+              "type": "number",
+              "default": "6.0",
+              "source": "specs"
+            },
+            {
+              "id": "extFin",
+              "label": "Ext finish",
+              "type": "text",
+              "default": "Fair-faced",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Int finish",
+              "type": "text",
+              "default": "Fair-faced",
+              "source": "specs"
+            },
+            {
+              "id": "anchor",
+              "label": "Anchors",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 14992, EN 13369, EN 206. Fire: EN 13501-2 min {{fireRes}}. Exposure: min {{expCl}}.\nAttach: DoP, fire reports, concrete mix.",
+          "variables": [
+            {
+              "id": "fireRes",
+              "label": "Fire",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "EI 180"],
+              "default": "EI 120"
+            },
+            {
+              "id": "expCl",
+              "label": "Exposure",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4"],
+              "default": "XC3"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m² per type\nPer piece: anchors\nPer load transport",
+    "ch6_exclusionItems": "- Erection\n- Steel substructure\n- Crane\n- Scaffolding\n- Joint sealant\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Data sheets\n3. DoP + CE\n4. Fire reports\n5. Lead time\n6. General terms\n7. Deviations"
+  }
+}

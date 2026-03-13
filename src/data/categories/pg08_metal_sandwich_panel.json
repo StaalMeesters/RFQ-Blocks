@@ -1,0 +1,251 @@
+{
+  "_meta": {
+    "id": "metal_sandwich_panel",
+    "pg": "PG08",
+    "scope": "Metal Sandwich Panel Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Cladding Point BV",
+      "SAB"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_pan",
+          "label": "Insulated Cladding Panels",
+          "defaultOn": true,
+          "text": "The Supplier shall supply insulated cladding panels for {{app}}:\n\nType: {{panelType}}\nThickness: min {{thk}} mm, width: {{width}} mm\nCore: {{core}}, fire: min {{fire}}\n\nExterior: {{extSh}} mm, {{extCoat}}, {{extCol}}, {{extProf}}\nInterior: {{intSh}} mm, {{intCoat}}, {{intCol}}, {{intProf}}\n\nFixing: {{fixing}}\nArea: {{area}} m²\nHeights: {{heights}}\nMax length: {{maxLen}} m\n\nConfirm: type, U-value, fire class, DoP/CE, max length, weight/m².\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "app",
+              "label": "Application",
+              "type": "select",
+              "options": ["wall", "roof", "wall and roof", "internal partition"],
+              "default": "wall",
+              "source": "specs"
+            },
+            {
+              "id": "panelType",
+              "label": "Panel type",
+              "type": "text",
+              "delegateText": "Propose panel for the application.",
+              "source": "specs"
+            },
+            {
+              "id": "thk",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "100",
+              "altText": "Offer alternative thickness with U-value and price.",
+              "source": "specs"
+            },
+            {
+              "id": "width",
+              "label": "Width (mm)",
+              "type": "number",
+              "default": "1000",
+              "source": "specs"
+            },
+            {
+              "id": "core",
+              "label": "Core",
+              "type": "select",
+              "options": ["PIR (B-s1-d0)", "MiWo (A2-s1-d0)", "PU", "EPS"],
+              "default": "PIR (B-s1-d0)",
+              "altText": "Offer alternative core: state fire class, U-value, price.",
+              "source": "specs"
+            },
+            {
+              "id": "fire",
+              "label": "Fire class",
+              "type": "text",
+              "default": "B-s1-d0",
+              "source": "specs"
+            },
+            {
+              "id": "extSh",
+              "label": "Ext steel (mm)",
+              "type": "number",
+              "default": "0.60",
+              "source": "specs"
+            },
+            {
+              "id": "extCoat",
+              "label": "Ext coating",
+              "type": "text",
+              "default": "HDX Granite 55µm",
+              "delegateText": "Propose coating with min 25yr warranty per EN 10169.",
+              "source": "specs"
+            },
+            {
+              "id": "extCol",
+              "label": "Ext colour",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Colour chart to be provided.",
+              "source": "specs"
+            },
+            {
+              "id": "extProf",
+              "label": "Ext profile",
+              "type": "select",
+              "options": ["Flat", "Rib 14", "Rib 16", "Micro-rib", "Box"],
+              "default": "Rib 14",
+              "source": "specs"
+            },
+            {
+              "id": "intSh",
+              "label": "Int steel (mm)",
+              "type": "number",
+              "default": "0.50",
+              "source": "specs"
+            },
+            {
+              "id": "intCoat",
+              "label": "Int coating",
+              "type": "text",
+              "default": "Polyester 25µm",
+              "source": "specs"
+            },
+            {
+              "id": "intCol",
+              "label": "Int colour",
+              "type": "text",
+              "default": "RAL 9002",
+              "source": "specs"
+            },
+            {
+              "id": "intProf",
+              "label": "Int profile",
+              "type": "select",
+              "options": ["Box", "Flat", "Micro-rib"],
+              "default": "Box",
+              "source": "specs"
+            },
+            {
+              "id": "fixing",
+              "label": "Fixing",
+              "type": "select",
+              "options": ["Concealed", "Visible"],
+              "default": "Concealed",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "heights",
+              "label": "Heights",
+              "type": "text",
+              "default": "per drawing",
+              "source": "specs"
+            },
+            {
+              "id": "maxLen",
+              "label": "Max (m)",
+              "type": "number",
+              "default": "12",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_fire",
+          "label": "Fire-Rated Panels",
+          "defaultOn": false,
+          "text": "Fire-rated panels: {{fireType}}\nResistance: {{fireRes}}\nCore: {{fireCore}}, thickness: min {{fireThk}} mm\nArea: {{fireArea}} m²\n\nConfirm: EI from both sides, orientation, max span, test reports.",
+          "variables": [
+            {
+              "id": "fireType",
+              "label": "Type",
+              "type": "text",
+              "delegateText": "Propose fire-rated panel compatible with standard panels.",
+              "source": "specs"
+            },
+            {
+              "id": "fireRes",
+              "label": "EI class",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120"],
+              "default": "EI 60",
+              "source": "specs"
+            },
+            {
+              "id": "fireCore",
+              "label": "Core",
+              "type": "text",
+              "default": "MiWo (A2-s1-d0)",
+              "source": "specs"
+            },
+            {
+              "id": "fireThk",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "80",
+              "source": "specs"
+            },
+            {
+              "id": "fireArea",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 14509, EN 10169, EN 10346.\nFire: EN 13501-1 min {{fire}}. Thermal: max U {{uVal}} W/m²K.\nCoating warranty: min {{coatWar}} years.\nAttach: DoP, fire reports, coating warranty, install guidelines.",
+          "variables": [
+            {
+              "id": "fire",
+              "label": "Fire class",
+              "type": "text",
+              "default": "B-s1-d0"
+            },
+            {
+              "id": "uVal",
+              "label": "U-value",
+              "type": "number",
+              "default": "0.22"
+            },
+            {
+              "id": "coatWar",
+              "label": "Warranty (yr)",
+              "type": "number",
+              "default": "25"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m² per panel type\n- Per load transport\n\nIncludes: production, packaging, QC, CE.",
+    "ch5_surchargeItems": "- Minimum order surcharge\n- Short panel surcharge\n- Non-standard colour surcharge\n- Packaging surcharge\n- Material index surcharge",
+    "ch6_exclusionItems": "- Installation\n- Substructure\n- Flashings/trims\n- Joint sealants\n- Crane\n- Scaffolding\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Data sheets\n3. DoP + CE\n4. Fire reports\n5. Coating warranty\n6. Lead time\n7. Delivery schedule\n8. General terms\n9. Deviations"
+  }
+}

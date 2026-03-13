@@ -1,0 +1,180 @@
+{
+  "_meta": {
+    "id": "flat_sheet",
+    "pg": "PG08",
+    "scope": "Flat Steel Sheet Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Cladding Point BV"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_flat",
+          "label": "Flat Steel Sheets",
+          "defaultOn": true,
+          "text": "The Supplier shall supply single-skin flat steel sheets for visible application:\n\nWidth: {{sheetWidth}} mm\nSteel thickness: min {{steelThickness}} mm\nSubstrate: {{substrate}}\nCoating: {{coating}}, min {{coatingThickness}} µm\nColour: {{colour}}\nApplication: {{application}}\nArea: {{area}} m²\nMax length: {{maxLength}} m\n\nFlatness tolerance: max {{flatnessTol}} mm/m (longitudinal), max {{flatnessTolT}} mm/m (transverse).\n\nThe Supplier shall confirm: flatness tolerances per EN 10143, suitability for visible application without additional finishing, substrate and coating specification, max sheet dimensions, weight per m².\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "sheetWidth",
+              "label": "Sheet width (mm)",
+              "type": "number",
+              "default": "1000",
+              "source": "specs"
+            },
+            {
+              "id": "steelThickness",
+              "label": "Steel thickness (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            },
+            {
+              "id": "substrate",
+              "label": "Substrate",
+              "type": "select",
+              "options": [
+                "Hot-dip galvanised Z275",
+                "Galvalume AZ185",
+                "Stainless 304"
+              ],
+              "default": "Hot-dip galvanised Z275",
+              "source": "specs"
+            },
+            {
+              "id": "coating",
+              "label": "Coating",
+              "type": "text",
+              "default": "Diamond 50µm",
+              "delegateText": "Propose coating system suitable for visible application with min 25-year warranty.",
+              "source": "specs"
+            },
+            {
+              "id": "coatingThickness",
+              "label": "Coating thickness (µm)",
+              "type": "number",
+              "default": "50",
+              "source": "specs"
+            },
+            {
+              "id": "colour",
+              "label": "Colour",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Colour chart to be provided. STM confirms.",
+              "source": "specs"
+            },
+            {
+              "id": "application",
+              "label": "Application",
+              "type": "select",
+              "options": [
+                "Wall cladding",
+                "Soffit",
+                "Fascia",
+                "Parapet cap",
+                "Decorative"
+              ],
+              "default": "Wall cladding",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "maxLength",
+              "label": "Max length (m)",
+              "type": "number",
+              "default": "6",
+              "source": "specs"
+            },
+            {
+              "id": "flatnessTol",
+              "label": "Flatness tol. longitudinal (mm/m)",
+              "type": "number",
+              "default": "1.0",
+              "source": "specs"
+            },
+            {
+              "id": "flatnessTolT",
+              "label": "Flatness tol. transverse (mm/m)",
+              "type": "number",
+              "default": "1.5",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_flat_acc",
+          "label": "Flashings & Accessories",
+          "defaultOn": true,
+          "text": "The Supplier shall supply matching flashings, corner pieces, and fixing accessories for flat sheet application:\n\nFlashing material: {{flashMaterial}}\nColour: {{flashColour}}\nThickness: {{flashThk}} mm\n\nIncludes: corner pieces, edge trims, base flashings, fixing clips, rivets, sealant tape.\n\nAll accessories shall match the main flat sheet substrate and coating specification.\n\nConfirm: compatibility with sheet system, corrosion resistance, availability of full accessory set.",
+          "variables": [
+            {
+              "id": "flashMaterial",
+              "label": "Flashing material",
+              "type": "select",
+              "options": [
+                "Matching galvanised steel",
+                "Matching coated steel",
+                "Aluminium",
+                "Stainless 304"
+              ],
+              "default": "Matching coated steel",
+              "source": "specs"
+            },
+            {
+              "id": "flashColour",
+              "label": "Flashing colour",
+              "type": "text",
+              "default": "per cladding spec",
+              "delegateText": "Match to main flat sheet colour. STM confirms.",
+              "source": "specs"
+            },
+            {
+              "id": "flashThk",
+              "label": "Flashing thickness (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 14782, EN 10143, EN 10169, EN 10346.\nCoating warranty: min 25 years.\nAttach: DoP, material certs, flatness test data, coating warranty.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m² flat sheet\n- Per m1 flashings\n- Per load transport",
+    "ch5_surchargeItems": "- Minimum order surcharge\n- Non-standard colour surcharge\n- Cut-to-size surcharge\n- Packaging surcharge",
+    "ch6_exclusionItems": "- Installation\n- Substructure\n- Joint sealants\n- Crane\n- Scaffolding\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Data sheets\n3. DoP + CE\n4. Flatness test data\n5. Coating warranty\n6. Colour samples\n7. Lead time\n8. General terms\n9. Deviations"
+  }
+}

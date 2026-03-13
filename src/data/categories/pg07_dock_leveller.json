@@ -1,0 +1,168 @@
+{
+  "_meta": {
+    "id": "dock_leveller",
+    "pg": "PG07",
+    "scope": "Dock Leveller Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Novoferm NL",
+      "Novoferm DE"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_leveller",
+          "label": "Hydraulic Dock Levellers",
+          "defaultOn": true,
+          "text": "The Supplier shall supply hydraulic dock levellers:\n\nModel: {{dockModel}}, Quantity: {{dockQty}}\n\nPer unit:\n- Platform width: {{platformWidth}} mm\n- Platform length: {{platformLength}} mm\n- Static load capacity: min {{staticLoad}} kg\n- Dynamic load capacity: min {{dynamicLoad}} kg\n- Operation: {{operation}}\n- Lip length: min {{lipLength}} mm\n- Working range: +{{rangeUp}} / -{{rangeDown}} mm\n- Pit dimensions: {{pitLength}} × {{pitWidth}} × {{pitDepth}} mm\n- Power supply: {{power}}\n\nSafety (mandatory): automatic lip, wheel guides, safety struts, maintenance strut.\n\nThe Supplier shall confirm in the quotation: type, dynamic load capacity, pit dimensions, cycle rating, speed, CE/DoP, weight.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "dockModel",
+              "label": "Model",
+              "type": "text",
+              "default": "Novodock L320",
+              "delegateText": "Propose dock leveller for specified capacity and pit dimensions."
+            },
+            {
+              "id": "dockQty",
+              "label": "Qty",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "platformWidth",
+              "label": "Platform width (mm)",
+              "type": "number",
+              "default": "2000"
+            },
+            {
+              "id": "platformLength",
+              "label": "Platform length (mm)",
+              "type": "number",
+              "default": "3000"
+            },
+            {
+              "id": "staticLoad",
+              "label": "Static load capacity (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "dynamicLoad",
+              "label": "Dynamic load capacity (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "operation",
+              "label": "Operation",
+              "type": "select",
+              "options": ["Electro-hydraulic", "Air-hydraulic", "Manual"],
+              "default": "Electro-hydraulic"
+            },
+            {
+              "id": "lipLength",
+              "label": "Lip length min (mm)",
+              "type": "number",
+              "default": "400"
+            },
+            {
+              "id": "rangeUp",
+              "label": "Working range up (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "rangeDown",
+              "label": "Working range down (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "pitLength",
+              "label": "Pit length (mm)",
+              "type": "number"
+            },
+            {
+              "id": "pitWidth",
+              "label": "Pit width (mm)",
+              "type": "number"
+            },
+            {
+              "id": "pitDepth",
+              "label": "Pit depth (mm)",
+              "type": "number",
+              "default": "600"
+            },
+            {
+              "id": "power",
+              "label": "Power supply",
+              "type": "select",
+              "options": ["400V/3ph/50Hz", "230V/1ph/50Hz"],
+              "default": "400V/3ph/50Hz"
+            }
+          ]
+        },
+        {
+          "id": "b2_accessories",
+          "label": "Dock Leveller Accessories",
+          "defaultOn": true,
+          "text": "The Supplier shall supply per dock leveller the following accessories:\n\n- Control unit: {{ctrlType}}\n- Bumpers: {{bumperType}}, quantity per leveller: {{bumperQty}}\n- Weather seals: included as standard\n\nAll accessories shall be compatible with the supplied dock leveller model. The Supplier shall confirm compatibility and state any accessories not included in the base price.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "ctrlType",
+              "label": "Control type",
+              "type": "select",
+              "options": ["Push-button panel", "Pendant control", "Integrated wall panel"],
+              "default": "Push-button panel"
+            },
+            {
+              "id": "bumperType",
+              "label": "Bumper type",
+              "type": "select",
+              "options": ["Rubber dock bumper (bolt-on)", "Rubber dock bumper (weld-on)", "Not required"],
+              "default": "Rubber dock bumper (bolt-on)"
+            },
+            {
+              "id": "bumperQty",
+              "label": "Bumpers per leveller",
+              "type": "number",
+              "default": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "All products shall comply with at minimum:\n\n- EN 1398 (dock levellers — safety requirements)\n- Machinery Directive 2006/42/EC\n- CE marking mandatory — DoP to be provided per unit\n\nLoad capacity certification shall be provided demonstrating compliance with stated static and dynamic load requirements.\n\nAttach: DoP, CE certificate, data sheets, wiring diagrams, pit dimension requirements, load capacity certification.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per piece dock leveller — complete unit including:\n- Platform, lip, hydraulic unit, seals\n- Control unit\n- Commissioning\n\nPer piece bumpers (per type)\nTransport: per delivery\n\nValidity: minimum {{validityDays}} days.\nState if prices subject to material index.\n\nPayment: {{paymentDays}} days after invoice.\n\nSurcharges not stated are deemed included and cannot be invoiced separately.",
+    "ch5_surchargeItems": "- Non-standard platform dimensions (outside standard production range)\n- Spare parts package\n- Extended warranty beyond standard",
+    "ch6_exclusionItems": "Excluded (procured separately by STM):\n\n- Installation and commissioning (unless quoted separately)\n- Steel substructure for pit frame\n- Electrical supply to control panel location\n- Builder's work and pit construction\n- Dock shelter\n- Overhead door\n- Crane and lifting equipment\n- VAT\n\nSupplier shall state additional exclusions. Items not listed and not excluded by Supplier are deemed included.\n\nInstallation instructions and documentation provided at no additional cost.",
+    "ch7_requiredDocuments": "Submit to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nInclude:\n1. Price schedule per unit\n2. Data sheets per product\n3. DoP + CE certificate\n4. Wiring diagrams\n5. Pit dimension requirements\n6. Load capacity certification (static and dynamic)\n7. Lead time after order confirmation\n8. Warranty statement\n9. General terms and conditions\n10. All deviations and assumptions with justification\n\nIncomplete quotations may be rejected.\nSTM is not obligated to award to lowest bidder.\nThis RFQ does not constitute a commitment to order."
+  }
+}

@@ -1,0 +1,351 @@
+{
+  "_meta": {
+    "id": "plumbing_hvac",
+    "pg": "PG09",
+    "scope": "Plumbing & HVAC",
+    "scopeType": "service",
+    "suppliers": [
+      "Loohuis"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch1": {
+      "id": "ch1",
+      "number": "1",
+      "title": "Introduction",
+      "blocks": [
+        {
+          "id": "b1_intro",
+          "label": "Request for Quotation",
+          "defaultOn": true,
+          "text": "{{companyName}} (hereafter: STM) requests {{supplierName}} (hereafter: Supplier) to submit a binding quotation for plumbing, sanitary, and HVAC works for the project:\n\n{{projectName}}\nProject number: {{projectNumber}}\nSite address: {{siteAddress}}, {{siteZip}} {{siteCity}}\n\nSTM contact: {{stmContact}}\nSupplier contact: {{supplierContact}}\n\nThe quotation shall be explicitly and exclusively based on the project documentation provided by STM, consisting of:\n- the IFC model (if provided);\n- the accompanying 2D drawings (PDF and/or DWG);\n- this Request for Quotation document.\n\nThe Supplier shall not deviate from the specifications set out in this document without prior written approval from STM. Any deviation, assumption, or exclusion not explicitly stated in the Supplier's quotation shall be deemed accepted as specified herein.\n\nThe scope encompasses all materials, provisions, and logistics necessary for a complete and functional delivery. Items not explicitly excluded under Chapter 6 are deemed included.\n\nSTM reserves the right to award part of the scope to alternative suppliers.",
+          "variables": [
+            {
+              "id": "companyName",
+              "label": "STM Entity",
+              "type": "select",
+              "options": [
+                "Staalmeesters Projects BV",
+                "STM Design & Build BV",
+                "STM Design & Build GmbH"
+              ],
+              "default": "Staalmeesters Projects BV",
+              "source": "specs"
+            },
+            {
+              "id": "supplierName",
+              "label": "Supplier name",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "projectName",
+              "label": "Project name",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "projectNumber",
+              "label": "Project number",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteAddress",
+              "label": "Site address",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteZip",
+              "label": "Postal code",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteCity",
+              "label": "Site city",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "stmContact",
+              "label": "STM contact",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "supplierContact",
+              "label": "Supplier contact",
+              "type": "text",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_plumb",
+          "label": "Plumbing & Sanitary",
+          "defaultOn": true,
+          "text": "Complete plumbing and sanitary:\n\nWater supply: {{water}}\nFixtures: per room schedule\nHot water: {{hotW}}\nInternal waste drainage: included\nExternal connection: {{extConn}}",
+          "variables": [
+            {
+              "id": "water",
+              "label": "Water",
+              "type": "select",
+              "options": [
+                "Municipal mains",
+                "Well",
+                "Rainwater",
+                "Combination"
+              ],
+              "default": "Municipal mains",
+              "source": "specs"
+            },
+            {
+              "id": "hotW",
+              "label": "Hot water",
+              "type": "select",
+              "options": [
+                "Electric boiler",
+                "Heat pump",
+                "Gas boiler",
+                "Solar thermal"
+              ],
+              "default": "Electric boiler",
+              "source": "specs"
+            },
+            {
+              "id": "extConn",
+              "label": "External",
+              "type": "select",
+              "options": [
+                "Included to boundary",
+                "By others"
+              ],
+              "default": "By others",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_hvac",
+          "label": "HVAC",
+          "defaultOn": false,
+          "text": "Heating: {{heating}}\nVentilation: {{vent}}\nAHU: {{ahu}}\n\nPer Bouwbesluit and NEN 1087.",
+          "variables": [
+            {
+              "id": "heating",
+              "label": "Heating",
+              "type": "select",
+              "options": [
+                "Gas unit heaters",
+                "Heat pump (air)",
+                "Radiant panels",
+                "Underfloor",
+                "Not in scope"
+              ],
+              "default": "Gas unit heaters",
+              "source": "specs"
+            },
+            {
+              "id": "vent",
+              "label": "Ventilation",
+              "type": "select",
+              "options": [
+                "Natural",
+                "Mech supply+extract",
+                "Mech extract",
+                "Demand (CO2)"
+              ],
+              "default": "Mech supply+extract",
+              "source": "specs"
+            },
+            {
+              "id": "ahu",
+              "label": "AHU",
+              "type": "text",
+              "delegateText": "Propose AHU for building volume and use.",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "NEN 1006, NEN 3215, NEN 1087, NEN 5077, NEN 7120/BENG, Bouwbesluit.\nAttach: installer cert, system specs, ventilation calc.",
+          "variables": []
+        }
+      ]
+    },
+    "ch4": {
+      "id": "ch4",
+      "number": "4",
+      "title": "Delivery & Execution",
+      "blocks": [
+        {
+          "id": "b4_del",
+          "label": "Execution Terms",
+          "defaultOn": true,
+          "text": "Site: {{siteAddress}}, {{siteZip}} {{siteCity}}.\n\nWorking hours: {{workingHours}}\nEstimated duration: {{duration}}\nStart date: {{startDate}}\n\nThe Supplier shall:\n- Mobilise within {{mobiliseDays}} working days after instruction\n- Coordinate with STM site manager\n- Maintain site cleanliness\n- Reinstate any damage caused by Supplier's operations\n\nQuantities indicative. STM may adjust +/- {{quantityTolerance}}% without price change per unit rate.",
+          "variables": [
+            {
+              "id": "siteAddress",
+              "label": "Site address",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteZip",
+              "label": "Postal code",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteCity",
+              "label": "Site city",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "workingHours",
+              "label": "Working hours",
+              "type": "text",
+              "default": "07:00–17:00, Mon–Fri",
+              "source": "specs"
+            },
+            {
+              "id": "duration",
+              "label": "Duration",
+              "type": "text",
+              "delegateText": "State estimated duration and resource availability.",
+              "source": "specs"
+            },
+            {
+              "id": "startDate",
+              "label": "Start date",
+              "type": "text",
+              "delegateText": "State earliest available start date.",
+              "source": "specs"
+            },
+            {
+              "id": "mobiliseDays",
+              "label": "Mobilise (d)",
+              "type": "number",
+              "default": "5",
+              "source": "specs"
+            },
+            {
+              "id": "quantityTolerance",
+              "label": "Qty tolerance (%)",
+              "type": "number",
+              "default": "15",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch5": {
+      "id": "ch5",
+      "number": "5",
+      "title": "Pricing & Surcharges",
+      "blocks": [
+        {
+          "id": "b5_pr",
+          "label": "Price Structure",
+          "defaultOn": true,
+          "text": "Complete price breakdown required:\n\nLump sum per system, or:\nPlumbing: per fixture\nHeating: per unit\nVentilation: per m³/h\nTesting: included\n\nValidity: minimum {{validityDays}} days.\nState if prices subject to material index.\n\nPayment: {{paymentDays}} days after invoice.\n\nSurcharges not stated are deemed included and cannot be invoiced separately.",
+          "variables": [
+            {
+              "id": "validityDays",
+              "label": "Validity (d)",
+              "type": "number",
+              "default": "30",
+              "source": "specs"
+            },
+            {
+              "id": "paymentDays",
+              "label": "Payment (d)",
+              "type": "number",
+              "default": "30",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch6": {
+      "id": "ch6",
+      "number": "6",
+      "title": "Exclusions",
+      "blocks": [
+        {
+          "id": "b6_ex",
+          "label": "Scope Exclusions",
+          "defaultOn": true,
+          "text": "Excluded (procured separately by STM):\n\n- External drainage\n- Gas connection\n- Electrical supply\n- Finishes\n- Structural penetrations\n- VAT\n\nSupplier shall state additional exclusions. Items not listed and not excluded by Supplier are deemed included.\n\nInstallation instructions and documentation provided at no additional cost.",
+          "variables": []
+        }
+      ]
+    },
+    "ch7": {
+      "id": "ch7",
+      "number": "7",
+      "title": "Quotation Requirements",
+      "blocks": [
+        {
+          "id": "b7_sub",
+          "label": "Submission",
+          "defaultOn": true,
+          "text": "Submit to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nInclude:\n1. Price schedule\n2. System specs\n3. Ventilation calc\n4. Energy performance\n5. Installer cert\n6. Duration\n7. General terms\n8. Deviations\n\nIncomplete quotations may be rejected.\nSTM is not obligated to award to lowest bidder.\nThis RFQ does not constitute a commitment to order.",
+          "variables": [
+            {
+              "id": "stmContact",
+              "label": "STM contact",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "stmEmail",
+              "label": "STM email",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "deadline",
+              "label": "Deadline",
+              "type": "date",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Lump sum per system, or:\nPlumbing: per fixture\nHeating: per unit\nVentilation: per m³/h\nTesting: included",
+    "ch6_exclusionItems": "- External drainage\n- Gas connection\n- Electrical supply\n- Finishes\n- Structural penetrations\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. System specs\n3. Ventilation calc\n4. Energy performance\n5. Installer cert\n6. Duration\n7. General terms\n8. Deviations"
+  }
+}

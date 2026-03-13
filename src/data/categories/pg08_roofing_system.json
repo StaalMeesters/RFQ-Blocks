@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "id": "roofing_system",
+    "pg": "PG08",
+    "scope": "Roofing System",
+    "scopeType": "service",
+    "suppliers": [
+      "HD Dak",
+      "Wierig",
+      "Primadak",
+      "Ponkratov"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_roof",
+          "label": "Roof Waterproofing",
+          "defaultOn": true,
+          "text": "Complete flat roof system:\n\nMembrane: {{membrane}}\nInsulation: {{insul}}, {{insulThk}} mm\nVapour barrier: {{vapour}}\nArea: {{area}} m²\nTarget U: max {{uVal}} W/m²K\n\nInstalled as warranted assembly.\nConfirm: warranty years + conditions, fire class of build-up.",
+          "variables": [
+            {
+              "id": "membrane",
+              "label": "Membrane",
+              "type": "select",
+              "options": [
+                "Bituminous (APP/SBS)",
+                "TPO",
+                "EPDM",
+                "PVC",
+                "Liquid applied"
+              ],
+              "default": "Bituminous (APP/SBS)",
+              "delegateText": "Propose waterproofing suitable for roof construction.",
+              "source": "specs"
+            },
+            {
+              "id": "insul",
+              "label": "Insulation",
+              "type": "select",
+              "options": ["PIR", "EPS", "MiWo", "XPS"],
+              "default": "PIR",
+              "source": "specs"
+            },
+            {
+              "id": "insulThk",
+              "label": "Insulation (mm)",
+              "type": "number",
+              "default": "120",
+              "source": "specs"
+            },
+            {
+              "id": "vapour",
+              "label": "Vapour barrier",
+              "type": "select",
+              "options": ["PE foil", "Bituminous", "Aluminium", "Not required"],
+              "default": "PE foil",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "uVal",
+              "label": "U-value",
+              "type": "number",
+              "default": "0.20",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_det",
+          "label": "Flashings & Details",
+          "defaultOn": true,
+          "text": "Include all flashings, upstands, penetrations, gutters, expansion joints. All covered by same warranty.",
+          "variables": []
+        },
+        {
+          "id": "b2_gut",
+          "label": "Gutters & Downpipes",
+          "defaultOn": false,
+          "text": "Gutters: {{gutType}}, {{gutMat}}, {{gutLen}} m.\nDownpipes: {{downDia}} mm.\nIncludes brackets, connections, leaf guards.",
+          "variables": [
+            {
+              "id": "gutType",
+              "label": "Gutter",
+              "type": "select",
+              "options": ["Box (bakgoot)", "Half-round", "Concealed"],
+              "default": "Box (bakgoot)",
+              "source": "specs"
+            },
+            {
+              "id": "gutMat",
+              "label": "Material",
+              "type": "select",
+              "options": ["Galvanised steel", "Aluminium", "Zinc", "PVC"],
+              "default": "Galvanised steel",
+              "source": "specs"
+            },
+            {
+              "id": "downDia",
+              "label": "Downpipe (mm)",
+              "type": "number",
+              "default": "100",
+              "source": "specs"
+            },
+            {
+              "id": "gutLen",
+              "label": "Length (m)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "BRL 4702/4708, KOMO certificate, NEN 6050, EN 13501-1, Bouwbesluit.\nWarranty: min {{warYr}} years (material + workmanship).\nAttach: KOMO cert, system data, warranty conditions, fire class.",
+          "variables": [
+            {
+              "id": "warYr",
+              "label": "Warranty (yr)",
+              "type": "number",
+              "default": "10"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m² complete system\n- Per m1 flashings/upstands\n- Per piece penetrations\n- Per m1 gutters\n- Per piece downpipes",
+    "ch5_surchargeItems": "- Phased access surcharge\n- Weekend working surcharge\n- Complex details surcharge",
+    "ch6_exclusionItems": "- Roof deck/structure\n- Fall protection (if separate)\n- Lightning protection\n- Roof lights\n- Solar panels\n- Crane\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. System spec\n3. KOMO cert\n4. Fire class\n5. Warranty conditions\n6. Method statement\n7. Duration\n8. VCA cert\n9. General terms\n10. Deviations"
+  }
+}

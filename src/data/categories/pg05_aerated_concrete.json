@@ -1,0 +1,133 @@
+{
+  "_meta": {
+    "id": "aerated_concrete",
+    "pg": "PG05",
+    "scope": "Aerated Concrete (AAC) Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "Aumer",
+      "Die Lente",
+      "Bittorf",
+      "Bauroc"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_aac",
+          "label": "AAC Blocks",
+          "defaultOn": true,
+          "text": "Aerated concrete blocks:\n\nType: {{blockType}}\nDensity: {{density}} kg/m³\nDimensions: {{dims}}\nStrength: min {{strength}} N/mm²\nVolume: {{vol}} m³\nLambda: max {{lambda}} W/mK\nFire: {{fire}}\n\nComply with EN 771-4.",
+          "variables": [
+            {
+              "id": "blockType",
+              "label": "Type",
+              "type": "text",
+              "delegateText": "Propose AAC block for application and thermal requirements.",
+              "source": "specs"
+            },
+            {
+              "id": "density",
+              "label": "Density",
+              "type": "select",
+              "options": ["350", "400", "500", "600", "700"],
+              "default": "500",
+              "source": "specs"
+            },
+            {
+              "id": "dims",
+              "label": "Dimensions",
+              "type": "text",
+              "default": "600×200×250 mm",
+              "source": "specs"
+            },
+            {
+              "id": "strength",
+              "label": "Strength (N/mm²)",
+              "type": "number",
+              "default": "3.0",
+              "source": "specs"
+            },
+            {
+              "id": "vol",
+              "label": "Volume (m³)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "lambda",
+              "label": "Lambda (W/mK)",
+              "type": "number",
+              "default": "0.12",
+              "source": "specs"
+            },
+            {
+              "id": "fire",
+              "label": "Fire class",
+              "type": "text",
+              "default": "A1",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_acc",
+          "label": "Lintels & Accessories",
+          "defaultOn": true,
+          "text": "Additionally supply: lintels {{lintelType}} × {{lintelQty}}, adhesive {{adhesive}}, U-shells if required. All compatible with block system.",
+          "variables": [
+            {
+              "id": "lintelType",
+              "label": "Lintel",
+              "type": "text",
+              "delegateText": "Propose compatible lintels.",
+              "source": "specs"
+            },
+            {
+              "id": "lintelQty",
+              "label": "Qty",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "adhesive",
+              "label": "Adhesive",
+              "type": "text",
+              "delegateText": "Specify recommended adhesive/mortar.",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 771-4, EN 998-2, EN 1996-1-1, DIN 4108-4 (DE).\nAttach: DoP, data sheets, thermal calc, fire class.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m³ AAC blocks\nPer piece lintels\nPer pallet adhesive\nPer load transport\n\nSurcharges: min order, cut-to-size.",
+    "ch6_exclusionItems": "- Masonry work\n- Structural design\n- Crane\n- Scaffolding\n- Plaster/render\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Data sheets\n3. DoP + CE\n4. Thermal calc\n5. Processing guidelines\n6. Lead time\n7. General terms\n8. Deviations"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "id": "zetwerk",
+    "pg": "PG08",
+    "scope": "Flashings & Zetwerk",
+    "scopeType": "material",
+    "suppliers": [
+      "Brinkers",
+      "Remmont"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_fl",
+          "label": "Flashings & Profiles",
+          "defaultOn": true,
+          "text": "Custom flashings and profiles:\n\nMaterial: {{flMat}}, {{flThk}} mm\nCoating: {{flCoat}}\nColour: {{flCol}}\n\nTypes: ridge caps, corners, sills, parapets, base flashings — per DWG/DXF.\n\nTotal length: {{totLen}} m\nProfile types: {{profCnt}}",
+          "variables": [
+            {
+              "id": "flMat",
+              "label": "Material",
+              "type": "select",
+              "options": ["Galvanised steel", "Aluminium", "Zinc", "Stainless"],
+              "default": "Galvanised steel",
+              "source": "specs"
+            },
+            {
+              "id": "flThk",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            },
+            {
+              "id": "flCoat",
+              "label": "Coating",
+              "type": "text",
+              "default": "Polyester 25µm",
+              "delegateText": "Match to main cladding.",
+              "source": "specs"
+            },
+            {
+              "id": "flCol",
+              "label": "Colour",
+              "type": "text",
+              "default": "per cladding spec",
+              "delegateText": "Match to main cladding. STM confirms.",
+              "source": "specs"
+            },
+            {
+              "id": "totLen",
+              "label": "Total (m)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "profCnt",
+              "label": "Profile types",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 14782, EN 10346, EN 10169.\nAttach: material certs, coating data.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m1 per profile type (state developed width)\n- Per load transport",
+    "ch5_surchargeItems": "- Minimum order surcharge\n- Small quantity surcharge\n- Non-standard colour surcharge",
+    "ch6_exclusionItems": "- Installation\n- Cladding panels\n- Sealant\n- Crane/scaffolding\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule per m1\n2. Material certs\n3. Coating specs\n4. Lead time\n5. General terms\n6. Deviations"
+  }
+}

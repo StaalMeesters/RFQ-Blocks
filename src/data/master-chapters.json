@@ -1,0 +1,336 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "description": "Master shared chapter templates. Edit here, push to all categories. Categories can override.",
+    "last_updated": null,
+    "updated_by": null
+  },
+  "ch1_introduction": {
+    "id": "ch1",
+    "number": "1",
+    "title": "Introduction",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b1_intro",
+        "label": "Request for Quotation",
+        "defaultOn": true,
+        "text": "{{companyName}} (hereafter: STM) requests {{supplierName}} (hereafter: Supplier) to submit a binding quotation for {{scopeDescription}} for the project:\n\n{{projectName}}\nProject number: {{projectNumber}}\nSite address: {{siteAddress}}, {{siteZip}} {{siteCity}}\n\nSTM contact: {{stmContact}}\nSupplier contact: {{supplierContact}}\n\nThe quotation shall be explicitly and exclusively based on the project documentation provided by STM, consisting of:\n- the IFC model (if provided);\n- the accompanying 2D drawings (PDF and/or DWG);\n- this Request for Quotation document.\n\nThe Supplier shall not deviate from the specifications set out in this document without prior written approval from STM. Any deviation, assumption, or exclusion not explicitly stated in the Supplier's quotation shall be deemed accepted as specified herein.\n\nThe scope encompasses all materials, provisions, and logistics necessary for a complete and functional delivery. Items not explicitly excluded under Chapter 6 are deemed included.\n\nSTM reserves the right to award part of the scope to alternative suppliers.",
+        "variables": [
+          {
+            "id": "companyName",
+            "label": "STM Entity",
+            "type": "select",
+            "options": ["Staalmeesters Projects BV", "STM Design & Build BV", "STM Design & Build GmbH"],
+            "source": "company",
+            "default": "Staalmeesters Projects BV"
+          },
+          {
+            "id": "supplierName",
+            "label": "Supplier name",
+            "type": "text",
+            "source": "supplier"
+          },
+          {
+            "id": "scopeDescription",
+            "label": "Scope description",
+            "type": "text",
+            "source": "auto",
+            "default": "(auto-filled from category)"
+          },
+          {
+            "id": "projectName",
+            "label": "Project name",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "projectNumber",
+            "label": "Project number",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteAddress",
+            "label": "Site address",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteZip",
+            "label": "Postal code",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteCity",
+            "label": "Site city",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "stmContact",
+            "label": "STM contact",
+            "type": "text",
+            "source": "company"
+          },
+          {
+            "id": "supplierContact",
+            "label": "Supplier contact",
+            "type": "text",
+            "source": "supplier"
+          }
+        ]
+      }
+    ]
+  },
+  "ch4_delivery_material": {
+    "id": "ch4",
+    "number": "4",
+    "title": "Delivery & Transport",
+    "shared": true,
+    "appliesTo": "material",
+    "blocks": [
+      {
+        "id": "b4_delivery",
+        "label": "Delivery Terms",
+        "defaultOn": true,
+        "text": "Delivery: {{deliveryTerm}} to {{siteAddress}}, {{siteZip}} {{siteCity}}.\n\nThe Supplier shall include in the quotation:\n- Price per load / per delivery\n- Maximum load capacity (kg and units per load)\n- Maximum transportable dimensions\n- Unloading requirements (crane capacity, forklift, manual)\n- Maximum waiting time included in delivery price\n\nSchedule:\n- Delivery period: {{deliveryPeriod}}\n- Confirm production lead time after receipt of approved shop drawings\n- Coordinate deliveries minimum {{scheduleLeadDays}} working days in advance\n- Delivery sequence per erection / installation plan (if applicable)\n\nPackaging: included in price, or surcharge to be stated explicitly.\n\nThe Supplier bears full responsibility for transport damage until completion of unloading. Damaged or defective items shall be replaced within {{replacementDays}} working days at the Supplier's cost, including transport.\n\nQuantities stated are indicative. STM reserves the right to adjust quantities by +/- {{quantityTolerance}}% without price change per unit rate.",
+        "variables": [
+          {
+            "id": "deliveryTerm",
+            "label": "Delivery terms",
+            "type": "select",
+            "options": ["DAP (Delivered at Place)", "EXW (Ex Works)", "FCA (Free Carrier)", "DDP (Delivered Duty Paid)"],
+            "source": "manual",
+            "default": "DAP (Delivered at Place)"
+          },
+          {
+            "id": "siteAddress",
+            "label": "Site address",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteZip",
+            "label": "Postal code",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteCity",
+            "label": "Site city",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "deliveryPeriod",
+            "label": "Delivery period",
+            "type": "text",
+            "source": "manual",
+            "delegateText": "The Supplier shall state the earliest available delivery period and confirm production lead time from order confirmation."
+          },
+          {
+            "id": "scheduleLeadDays",
+            "label": "Schedule lead (days)",
+            "type": "number",
+            "source": "manual",
+            "default": "5"
+          },
+          {
+            "id": "replacementDays",
+            "label": "Replacement lead (days)",
+            "type": "number",
+            "source": "manual",
+            "default": "10"
+          },
+          {
+            "id": "quantityTolerance",
+            "label": "Qty tolerance (%)",
+            "type": "number",
+            "source": "manual",
+            "default": "10"
+          }
+        ]
+      }
+    ]
+  },
+  "ch4_delivery_service": {
+    "id": "ch4",
+    "number": "4",
+    "title": "Delivery & Execution",
+    "shared": true,
+    "appliesTo": "service",
+    "blocks": [
+      {
+        "id": "b4_execution",
+        "label": "Execution Terms",
+        "defaultOn": true,
+        "text": "Site: {{siteAddress}}, {{siteZip}} {{siteCity}}.\n\nWorking hours: {{workingHours}}\nEstimated duration: {{duration}}\nStart date: {{startDate}} (subject to coordination with main contractor)\n\nThe Supplier shall:\n- Mobilise equipment and personnel within {{mobiliseDays}} working days after written instruction to commence\n- Coordinate with STM's site manager regarding access, sequence, and interfaces with other trades\n- Provide daily progress reporting if requested by STM\n- Maintain site cleanliness and manage own waste and debris\n- Reinstate any damage to existing surfaces, structures, or services caused by the Supplier's operations\n\nThe Supplier bears full responsibility for all equipment, temporary facilities, consumables, and personnel required for the execution of the works.\n\nQuantities stated are indicative and based on drawings. Final quantities shall be measured on site. STM reserves the right to adjust the scope by +/- {{quantityTolerance}}% without change to unit rates.",
+        "variables": [
+          {
+            "id": "siteAddress",
+            "label": "Site address",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteZip",
+            "label": "Postal code",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "siteCity",
+            "label": "Site city",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "workingHours",
+            "label": "Working hours",
+            "type": "text",
+            "source": "manual",
+            "default": "07:00 – 17:00, Monday – Friday"
+          },
+          {
+            "id": "duration",
+            "label": "Est. duration",
+            "type": "text",
+            "source": "manual",
+            "delegateText": "The Supplier shall state the estimated duration based on the described scope and confirm resource availability."
+          },
+          {
+            "id": "startDate",
+            "label": "Start date",
+            "type": "text",
+            "source": "manual",
+            "delegateText": "The Supplier shall state the earliest available start date."
+          },
+          {
+            "id": "mobiliseDays",
+            "label": "Mobilise (days)",
+            "type": "number",
+            "source": "manual",
+            "default": "5"
+          },
+          {
+            "id": "quantityTolerance",
+            "label": "Qty tolerance (%)",
+            "type": "number",
+            "source": "manual",
+            "default": "15"
+          }
+        ]
+      }
+    ]
+  },
+  "ch5_pricing": {
+    "id": "ch5",
+    "number": "5",
+    "title": "Pricing & Surcharges",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b5_pricing",
+        "label": "Price Structure",
+        "defaultOn": true,
+        "text": "The Supplier shall provide a complete price breakdown as follows:\n\n{{priceBreakdownItems}}\n\nBase price shall include: all materials, production, quality control, testing, documentation, and CE marking (where applicable).\n\nSurcharges — the Supplier shall state explicitly:\n{{surchargeItems}}\n\nPrice validity: minimum {{validityDays}} days from date of quotation.\nState clearly if prices are subject to a material index and specify which index applies.\n\nPayment terms: {{paymentDays}} days after date of invoice.\n\nSurcharges, exclusions, or limitations not explicitly stated in the Supplier's quotation are deemed included in the base price and cannot be invoiced separately.",
+        "variables": [
+          {
+            "id": "priceBreakdownItems",
+            "label": "Price breakdown items",
+            "type": "textarea",
+            "source": "category",
+            "default": "(filled per product category)"
+          },
+          {
+            "id": "surchargeItems",
+            "label": "Surcharge items",
+            "type": "textarea",
+            "source": "category",
+            "default": "(filled per product category)"
+          },
+          {
+            "id": "validityDays",
+            "label": "Validity (days)",
+            "type": "number",
+            "source": "manual",
+            "default": "30"
+          },
+          {
+            "id": "paymentDays",
+            "label": "Payment (days)",
+            "type": "number",
+            "source": "manual",
+            "default": "30"
+          }
+        ]
+      }
+    ]
+  },
+  "ch6_exclusions": {
+    "id": "ch6",
+    "number": "6",
+    "title": "Exclusions",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b6_exclusions",
+        "label": "Scope Exclusions",
+        "defaultOn": true,
+        "text": "The following items are excluded from this scope and are procured separately by STM:\n\n{{exclusionItems}}\n\nThe Supplier shall state any additional exclusions in the quotation. Items not listed above and not explicitly excluded by the Supplier in the quotation are deemed included in the Supplier's scope and price.\n\nInstallation instructions, technical documentation, and processing guidelines shall be provided at no additional cost.",
+        "variables": [
+          {
+            "id": "exclusionItems",
+            "label": "Exclusion list",
+            "type": "textarea",
+            "source": "category",
+            "default": "(filled per product category)"
+          }
+        ]
+      }
+    ]
+  },
+  "ch7_submission": {
+    "id": "ch7",
+    "number": "7",
+    "title": "Quotation Requirements",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b7_submission",
+        "label": "Submission Requirements",
+        "defaultOn": true,
+        "text": "The Supplier shall submit the quotation to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nThe quotation shall include:\n{{requiredDocuments}}\n\nIncomplete quotations may be rejected without further consideration.\n\nSTM is not obligated to award the contract to the lowest bidder or to any bidder.\n\nThis Request for Quotation does not constitute a commitment to place an order. STM reserves the right to cancel this RFQ at any time without obligation.",
+        "variables": [
+          {
+            "id": "stmContact",
+            "label": "STM contact",
+            "type": "text",
+            "source": "company"
+          },
+          {
+            "id": "stmEmail",
+            "label": "STM email",
+            "type": "text",
+            "source": "company"
+          },
+          {
+            "id": "deadline",
+            "label": "Submission deadline",
+            "type": "date",
+            "source": "manual"
+          },
+          {
+            "id": "requiredDocuments",
+            "label": "Required documents",
+            "type": "textarea",
+            "source": "category",
+            "default": "(filled per product category)"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "_meta": {
+    "id": "concrete_sandwich_panel",
+    "pg": "PG05",
+    "scope": "Concrete Sandwich Panel Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "NV Schelfhout",
+      "Preco"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_sand",
+          "label": "Sandwich Panels",
+          "defaultOn": true,
+          "text": "The Supplier shall supply precast concrete sandwich panels:\n\nType: {{panelType}}\nConstruction: {{construction}}\nThickness: min {{totalThk}} mm\nInsulation: {{insCore}}, min {{insThk}} mm\nExt leaf: min {{extLeaf}} mm\nInt leaf: min {{intLeaf}} mm\nReinforcement: min {{rebar}} kg/m²\n\nExterior finish: {{extFinish}}, colour/aggregate: {{extCol}}\nInterior: {{intFin}}\nMin calc area: {{minCalc}} m²\nAnchors: {{anchorType}}, {{anchorQty}}/panel\n\nConfirm: type, U-value, fire class, DoP/CE, weight/m², max dimensions, concrete class.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "panelType",
+              "label": "Panel type",
+              "type": "text",
+              "default": "SAFESI 25",
+              "delegateText": "The Supplier shall propose a panel suitable for the application.",
+              "source": "specs"
+            },
+            {
+              "id": "construction",
+              "label": "Construction",
+              "type": "text",
+              "default": "75/100/75",
+              "altText": "The Supplier shall offer alternative constructions with U-value and price.",
+              "source": "specs"
+            },
+            {
+              "id": "totalThk",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "250",
+              "source": "specs"
+            },
+            {
+              "id": "insCore",
+              "label": "Insulation",
+              "type": "select",
+              "options": ["EPS", "XPS", "PIR", "PU", "MiWo"],
+              "default": "EPS",
+              "altText": "Offer alternative insulation: state fire class, U-value, price impact.",
+              "source": "specs"
+            },
+            {
+              "id": "insThk",
+              "label": "Insulation (mm)",
+              "type": "number",
+              "default": "100",
+              "source": "specs"
+            },
+            {
+              "id": "extLeaf",
+              "label": "Ext leaf (mm)",
+              "type": "number",
+              "default": "75",
+              "source": "specs"
+            },
+            {
+              "id": "intLeaf",
+              "label": "Int leaf (mm)",
+              "type": "number",
+              "default": "75",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Rebar (kg/m²)",
+              "type": "number",
+              "default": "5.5",
+              "source": "specs"
+            },
+            {
+              "id": "extFinish",
+              "label": "Ext finish",
+              "type": "select",
+              "options": ["Exposed aggregate", "Acid-etched", "Polished", "Fair-faced", "Sandblasted"],
+              "default": "Exposed aggregate",
+              "delegateText": "Propose finish with samples for STM approval.",
+              "source": "specs"
+            },
+            {
+              "id": "extCol",
+              "label": "Aggregate/colour",
+              "type": "text",
+              "default": "graniet wit/zwart 8/12",
+              "delegateText": "Propose aggregate. STM confirms on samples.",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Int finish",
+              "type": "select",
+              "options": ["Fair-faced", "Rough", "Painted"],
+              "default": "Fair-faced",
+              "source": "specs"
+            },
+            {
+              "id": "minCalc",
+              "label": "Min calc (m²)",
+              "type": "number",
+              "default": "2.5",
+              "source": "specs"
+            },
+            {
+              "id": "anchorType",
+              "label": "Anchor type",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "delegateText": "Specify anchor for steel connection.",
+              "source": "specs"
+            },
+            {
+              "id": "anchorQty",
+              "label": "Anchors/panel",
+              "type": "number",
+              "default": "4",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_cut",
+          "label": "Openings & Cutouts",
+          "defaultOn": true,
+          "text": "Cutouts: {{cutQty}} pieces, std max {{cutMax}} m².\nPer cutout: reinforcement at edges + dagkanten.\nDagkant: {{dagType}}.\nPrice: per cutout (std) and per m1 dagkant.",
+          "variables": [
+            {
+              "id": "cutQty",
+              "label": "Cutouts",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "cutMax",
+              "label": "Std max (m²)",
+              "type": "number",
+              "default": "4",
+              "source": "specs"
+            },
+            {
+              "id": "dagType",
+              "label": "Dagkant",
+              "type": "text",
+              "default": "prefab, matching finish",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_sur",
+          "label": "Surcharges",
+          "defaultOn": true,
+          "text": "State all surcharges:\n- Non-standard height: per panel with thresholds\n- Small panel: below {{smallThresh}} m²\n- Special aggregate/colour\n- Engineering costs\n\nSurcharges not stated are deemed included.",
+          "variables": [
+            {
+              "id": "smallThresh",
+              "label": "Small below (m²)",
+              "type": "number",
+              "default": "2.5",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "Comply with: EN 14992, EN 13369, EN 206, NEN-EN 1992-1-1.\n\nFire: EN 13501-1 min {{fireReact}}, EN 13501-2 min {{fireRes}}.\nThermal: max U-value {{uVal}} W/m²K.\nExposure: min {{expCl}}. Concrete: min {{concCl}}.\n\nAttach: DoP, fire reports, concrete mix, thermal calc.",
+          "variables": [
+            {
+              "id": "fireReact",
+              "label": "Fire reaction",
+              "type": "text",
+              "default": "A1"
+            },
+            {
+              "id": "fireRes",
+              "label": "Fire resistance",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "N/A"],
+              "default": "EI 60"
+            },
+            {
+              "id": "uVal",
+              "label": "U-value",
+              "type": "number",
+              "default": "0.28"
+            },
+            {
+              "id": "expCl",
+              "label": "Exposure",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4"],
+              "default": "XC4"
+            },
+            {
+              "id": "concCl",
+              "label": "Concrete",
+              "type": "select",
+              "options": ["C20/25", "C25/30", "C30/37", "C35/45"],
+              "default": "C30/37"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m² per panel type\nPer piece: anchors, dagkanten, cutouts\nPer m1: dagkanten, plinths\nPer load: transport\n\nIncludes: production, curing, QC, CE.\nSurcharges: height, small panel, special aggregate, engineering, index.",
+    "ch6_exclusionItems": "- Erection/installation\n- Steel substructure\n- Crane\n- Scaffolding\n- Joint sealant\n- Fire-stop at joints\n- Surface treatment after install\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Data sheets\n3. DoP + CE\n4. Fire reports\n5. Concrete mix + exposure\n6. Thermal calc\n7. Lead time\n8. Sample ref for finish\n9. General terms\n10. Deviations"
+  }
+}

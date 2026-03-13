@@ -1,0 +1,105 @@
+{
+  "_meta": {
+    "id": "hollow_core_slab",
+    "pg": "PG05",
+    "scope": "Hollow Core Slab Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "VBI",
+      "Olbecon",
+      "Preco"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_hcs",
+          "label": "Hollow Core Slabs",
+          "defaultOn": true,
+          "text": "Prestressed hollow core floor slabs:\n\nType: {{slabType}}\nDepth: {{depth}} mm\nLoad: {{load}} kN/m² (imposed)\nSpan: max {{span}} m\nArea: {{area}} m²\nTopping: {{topping}}\n\nConfirm: camber, weight/m², widths, DoP/CE, fire rating.\nShop drawings based on STM structural drawings.",
+          "variables": [
+            {
+              "id": "slabType",
+              "label": "Type",
+              "type": "text",
+              "delegateText": "Propose HCS for stated load and span.",
+              "source": "specs"
+            },
+            {
+              "id": "depth",
+              "label": "Depth (mm)",
+              "type": "select",
+              "options": ["150", "200", "260", "320", "400", "500"],
+              "default": "200",
+              "source": "specs"
+            },
+            {
+              "id": "load",
+              "label": "Load (kN/m²)",
+              "type": "number",
+              "default": "5.0",
+              "source": "specs"
+            },
+            {
+              "id": "span",
+              "label": "Span (m)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Area (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "topping",
+              "label": "Topping",
+              "type": "select",
+              "options": ["None", "50mm + mesh", "70mm + mesh", "Per engineer"],
+              "default": "Per engineer",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "EN 1168, EN 13369, EN 206, NEN-EN 1992-1-1. Fire: min {{fireRes}} per EN 13501-2.\nAttach: DoP, structural calc, fire report.",
+          "variables": [
+            {
+              "id": "fireRes",
+              "label": "Fire",
+              "type": "select",
+              "options": ["REI 30", "REI 60", "REI 90", "REI 120"],
+              "default": "REI 60"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m² HCS (per depth)\nPer m² structural topping\nPer load transport",
+    "ch6_exclusionItems": "- Erection\n- Crane\n- Structural topping (if by others)\n- Steel structure\n- Grouting joints\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Structural calc\n3. Shop drawings\n4. DoP + CE\n5. Fire report\n6. Lead time\n7. General terms\n8. Deviations"
+  }
+}

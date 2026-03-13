@@ -1,0 +1,234 @@
+{
+  "_meta": {
+    "id": "concrete_plinth",
+    "pg": "PG05",
+    "scope": "Concrete Plinth Supply",
+    "scopeType": "material",
+    "suppliers": [
+      "NV Schelfhout"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_plinth",
+          "label": "Concrete Plinths",
+          "defaultOn": true,
+          "text": "The Supplier SHALL supply precast concrete plinths (sokkelplaten) for use at the base of sandwich panel facades:\n\nProduct type: {{plinthType}}\nHeight: {{height}} mm\nThickness: {{thickness}} mm\nLengths: {{length}}\nConcrete class: min {{concCl}}\nExposure class: min {{expCl}}\nReinforcement: {{rebar}}\n\nExterior finish: {{extFin}}\nInterior finish: {{intFin}}\nColour/aggregate: {{colour}}\n\nAnchors: {{anchors}}\n\nTotal quantity: {{qty}} pieces / {{totalLength}} m1\n\nThe Supplier SHALL:\n- Manufacture plinths in accordance with the project drawings and this specification\n- Ensure dimensional tolerances comply with EN 14992\n- Provide cast-in anchor inserts at positions shown on drawings\n- Ensure exterior face finish matches or is compatible with the adjacent sandwich panels\n- Confirm maximum transportable piece length\n- Confirm weight per piece\n\nConfirm: concrete class, exposure class, fire classification, DoP/CE, weight/m1, maximum piece dimensions.\n\nSTM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "plinthType",
+              "label": "Product type",
+              "type": "select",
+              "options": ["PLIBE", "PLISAFESI"],
+              "default": "PLIBE",
+              "delegateText": "The Supplier shall propose the appropriate plinth product for the specified dimensions and application.",
+              "source": "specs"
+            },
+            {
+              "id": "height",
+              "label": "Height (mm)",
+              "type": "number",
+              "default": "400",
+              "source": "specs"
+            },
+            {
+              "id": "thickness",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "150",
+              "source": "specs"
+            },
+            {
+              "id": "length",
+              "label": "Lengths (mm)",
+              "type": "text",
+              "default": "per drawing",
+              "delegateText": "The Supplier shall confirm maximum standard piece length and available modular lengths.",
+              "source": "specs"
+            },
+            {
+              "id": "concCl",
+              "label": "Concrete class",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C35/45",
+              "source": "specs"
+            },
+            {
+              "id": "expCl",
+              "label": "Exposure class",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4", "XD1", "XF1", "XF2"],
+              "default": "XC4",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Reinforcement",
+              "type": "text",
+              "default": "per structural design",
+              "delegateText": "The Supplier shall confirm the reinforcement design and provide calculations or reference to type-tested design.",
+              "source": "specs"
+            },
+            {
+              "id": "extFin",
+              "label": "Ext finish",
+              "type": "select",
+              "options": ["Fair-faced", "Exposed aggregate", "Sandblasted", "Acid-etched"],
+              "default": "Fair-faced",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Int finish",
+              "type": "select",
+              "options": ["Fair-faced", "Rough"],
+              "default": "Fair-faced",
+              "source": "specs"
+            },
+            {
+              "id": "colour",
+              "label": "Colour/aggregate",
+              "type": "text",
+              "default": "natural grey",
+              "delegateText": "The Supplier shall propose colour and aggregate to match or complement adjacent panels. STM confirms on samples.",
+              "source": "specs"
+            },
+            {
+              "id": "anchors",
+              "label": "Anchors",
+              "type": "text",
+              "default": "Frimeda 28/15 or equivalent",
+              "delegateText": "The Supplier shall specify anchor type, positions, and load capacity. Anchors shall be compatible with the adjacent sandwich panel anchor system.",
+              "source": "specs"
+            },
+            {
+              "id": "qty",
+              "label": "Qty (pieces)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "totalLength",
+              "label": "Total length (m1)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_plinth_cut",
+          "label": "Cutouts & Openings in Plinths",
+          "defaultOn": true,
+          "text": "Cutouts in plinths: {{cutQty}} pieces, standard max {{cutMax}} m².\n\nPer cutout: reinforcement at edges. Dagkant treatment: {{dagType}}.\n\nThe Supplier SHALL ensure structural integrity is maintained at all cutout locations and shall confirm maximum cutout dimensions without additional reinforcement.\n\nPrice: per cutout (standard) and per m1 dagkant.",
+          "variables": [
+            {
+              "id": "cutQty",
+              "label": "Cutouts",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "cutMax",
+              "label": "Std max (m²)",
+              "type": "number",
+              "default": "1",
+              "source": "specs"
+            },
+            {
+              "id": "dagType",
+              "label": "Dagkant",
+              "type": "text",
+              "default": "prefab, matching exterior finish",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b2_plinth_acc",
+          "label": "Accessories & Anchors",
+          "defaultOn": true,
+          "text": "The Supplier SHALL supply all cast-in items and accessories required for a complete plinth installation:\n\n- Cast-in anchor inserts: {{anchorType}}, qty per piece: {{anchorQty}}\n- Lifting anchors: included, type per Supplier's standard\n- Grout pockets / levelling provisions: {{groutPocket}}\n- Sealing strip / EPDM at base: {{sealingStrip}}\n\nAll cast-in items shall be supplied in stainless steel A4 or hot-dip galvanised unless specified otherwise.\n\nThe Supplier SHALL confirm:\n- Anchor load capacity (tension and shear per anchor)\n- Compatibility with steel substructure connection\n- Installation instructions and setting-out templates",
+          "variables": [
+            {
+              "id": "anchorType",
+              "label": "Anchor type",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "delegateText": "The Supplier shall specify the anchor system and provide load tables.",
+              "source": "specs"
+            },
+            {
+              "id": "anchorQty",
+              "label": "Anchors/piece",
+              "type": "number",
+              "default": "2",
+              "source": "specs"
+            },
+            {
+              "id": "groutPocket",
+              "label": "Grout pockets",
+              "type": "select",
+              "options": ["Included", "Not required", "Per drawing"],
+              "default": "Per drawing",
+              "source": "specs"
+            },
+            {
+              "id": "sealingStrip",
+              "label": "Sealing strip",
+              "type": "select",
+              "options": ["EPDM — included", "Compriband — included", "By others", "Not required"],
+              "default": "By others",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "All plinths SHALL comply with at minimum:\n\n- EN 14992 (Precast concrete products — Wall elements)\n- EN 13369 (Common rules for precast concrete products)\n- EN 206 (Concrete — specification, performance, production and conformity)\n- NEN-EN 1992-1-1 (Eurocode 2 — Design of concrete structures)\n\nFire: EN 13501-2 min {{fireRes}} (where applicable to application).\nExposure: min class {{expCl}} as per EN 206 / EN 1992-1-1.\n\nThe Supplier SHALL hold CE marking (DoP) for the supplied elements.\nConcrete production SHALL be from a BFBN-certified plant or equivalent.\nReinforcement certificates: EN 10080, 3.1 mill certificates required.\n\nAttach: DoP, concrete mix design, fire classification, exposure class confirmation.",
+          "variables": [
+            {
+              "id": "fireRes",
+              "label": "Fire resistance",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "N/A"],
+              "default": "EI 60"
+            },
+            {
+              "id": "expCl",
+              "label": "Exposure class",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4", "XD1", "XF1"],
+              "default": "XC4"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m1 plinth (per height × thickness combination)\nPer piece: standard cutout\nPer m1: dagkant treatment\nPer piece: anchor insert (if not included in m1 rate)\nPer load: transport\n\nIncludes: production, curing, QC, CE, lifting anchors, standard cast-in inserts.\nSurcharges: non-standard length, special finish/colour, engineering costs, small order.",
+    "ch6_exclusionItems": "- Erection/installation of plinths\n- Foundation works and setting-out\n- Crane and lifting equipment\n- Grouting and bedding mortar\n- Joint sealant between plinths\n- Waterproofing at plinth base\n- Backfill against plinth\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule (per m1 per type, per piece accessories)\n2. Product data sheets (PLIBE / PLISAFESI)\n3. DoP + CE marking documentation\n4. Concrete mix design and exposure class confirmation\n5. Fire classification report (EN 13501-2)\n6. Anchor load tables and compatibility confirmation\n7. Maximum transportable piece dimensions and weight\n8. Lead time after approved shop drawings\n9. General terms and conditions\n10. All deviations and assumptions with justification"
+  }
+}

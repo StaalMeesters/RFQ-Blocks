@@ -1,0 +1,176 @@
+{
+  "_meta": {
+    "id": "foundation_concrete",
+    "pg": "PG04",
+    "scope": "Foundation Concrete Works",
+    "scopeType": "service",
+    "suppliers": [
+      "Exterkate",
+      "Wilmink",
+      "Niehof",
+      "Kuipers",
+      "Vroom"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_foundations",
+          "label": "Strip & Pad Foundations",
+          "defaultOn": true,
+          "text": "The Supplier shall execute in-situ concrete foundation works:\n\nFoundation type: {{foundationType}}\nConcrete class: {{concreteClass}}\nExposure class: {{exposureClass}}\nReinforcement: {{reinforcementType}}\n\nThe Supplier shall:\n- Supply and place formwork\n- Supply, cut, bend, and fix reinforcement\n- Supply, pour, compact, and cure concrete\n- Strip formwork after curing\n- Set anchor bolts and cast-in items per drawing\n\nEstimated concrete volume: {{concreteVolume}} m³\nEstimated reinforcement: {{rebarWeight}} kg\n\nFinished levels per structural drawings. Tolerance: +/- {{levelTolerance}} mm.\nAnchor bolt setting accuracy: +/- {{boltTolerance}} mm.",
+          "variables": [
+            {
+              "id": "foundationType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Strip foundation (strook)",
+                "Pad foundation (poer)",
+                "Combined (strip + pad)",
+                "Raft foundation (plaatfundering)"
+              ],
+              "default": "Combined (strip + pad)"
+            },
+            {
+              "id": "concreteClass",
+              "label": "Concrete class",
+              "type": "select",
+              "options": [
+                "C20/25",
+                "C25/30",
+                "C30/37",
+                "C35/45"
+              ],
+              "default": "C30/37"
+            },
+            {
+              "id": "exposureClass",
+              "label": "Exposure class",
+              "type": "select",
+              "options": [
+                "XC1",
+                "XC2",
+                "XC3",
+                "XC4",
+                "XD1"
+              ],
+              "default": "XC2"
+            },
+            {
+              "id": "reinforcementType",
+              "label": "Reinforcement",
+              "type": "select",
+              "options": [
+                "B500B (loose bars)",
+                "B500A (mesh)",
+                "Combination"
+              ],
+              "default": "B500B (loose bars)"
+            },
+            {
+              "id": "concreteVolume",
+              "label": "Volume (m³)",
+              "type": "number"
+            },
+            {
+              "id": "rebarWeight",
+              "label": "Rebar (kg)",
+              "type": "number"
+            },
+            {
+              "id": "levelTolerance",
+              "label": "Level tol. (mm)",
+              "type": "number",
+              "default": "5"
+            },
+            {
+              "id": "boltTolerance",
+              "label": "Bolt tol. (mm)",
+              "type": "number",
+              "default": "3"
+            }
+          ]
+        },
+        {
+          "id": "b2_floorslab",
+          "label": "Floor Slab on Grade",
+          "defaultOn": false,
+          "text": "The Supplier shall execute ground floor slab:\n\nSlab thickness: {{slabThickness}} mm\nConcrete class: {{slabConcreteClass}}\nReinforcement: {{slabReinforcement}}\nFinish: {{slabFinish}}\nEstimated area: {{slabArea}} m²\n\nIncludes: damp proof membrane, insulation (if specified), joint layout, power floating / finishing.",
+          "variables": [
+            {
+              "id": "slabThickness",
+              "label": "Thickness (mm)",
+              "type": "number",
+              "default": "200"
+            },
+            {
+              "id": "slabConcreteClass",
+              "label": "Concrete",
+              "type": "select",
+              "options": [
+                "C20/25",
+                "C25/30",
+                "C30/37"
+              ],
+              "default": "C25/30"
+            },
+            {
+              "id": "slabReinforcement",
+              "label": "Reinforcement",
+              "type": "text",
+              "default": "Q335 mesh"
+            },
+            {
+              "id": "slabFinish",
+              "label": "Finish",
+              "type": "select",
+              "options": [
+                "Power float",
+                "Tamped / broom",
+                "Polished",
+                "Smooth trowelled"
+              ],
+              "default": "Power float"
+            },
+            {
+              "id": "slabArea",
+              "label": "Area (m²)",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_standards",
+          "label": "Applicable Standards",
+          "defaultOn": true,
+          "text": "All works shall comply with:\n\n- NEN-EN 206 (concrete specification)\n- NEN-EN 13670 (execution of concrete structures)\n- NEN-EN 1992-1-1 (Eurocode 2 — design of concrete structures)\n- NEN-EN 10080 (reinforcing steel)\n- NEN 8005 (NL national annex)\n\nConcrete supplier shall be BFBN certified.\nReinforcement supplier shall provide 3.1 certificates per EN 10204.\n\nAttach: concrete mix design, reinforcement certificates, formwork design (if required).",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Concrete:\n- Per m³ concrete (supply, pour, compact, cure)\n- Per m² formwork (supply, erect, strip)\n\nReinforcement:\n- Per kg reinforcement (supply, cut, bend, fix)\n- Per piece anchor bolt set (supply, template, fix)\n\nFinishing:\n- Per m² floor finishing (if applicable)\n\nMobilisation / demobilisation: lump sum\nPump hire: per pour session or per m³",
+    "ch5_surchargeItems": "- Rock or obstruction removal\n- Additional pours beyond schedule\n- Weekend / night concrete pours\n- Accelerated curing",
+    "ch6_exclusionItems": "- Excavation (by others)\n- Structural design (by STM engineer)\n- Steel structure\n- Backfill after foundation\n- Waterproofing / tanking\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule — per m³, per kg, per m²\n2. Method statement\n3. Concrete mix design proposal\n4. Equipment list\n5. BFBN certificate (concrete supplier)\n6. Reinforcement 3.1 certificates\n7. Estimated duration\n8. General terms and conditions\n9. All deviations with justification"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "_meta": {
+    "id": "panel_montage",
+    "pg": "PG08",
+    "scope": "Panel Montage (Installation)",
+    "scopeType": "service",
+    "suppliers": [
+      "Brinkers",
+      "Remmont"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_mont",
+          "label": "Panel Installation",
+          "defaultOn": true,
+          "text": "Install wall and roof cladding panels:\n\nPanels: {{panDesc}}\nWall: {{wallA}} m², Roof: {{roofA}} m²\n\nIncludes: receiving, install per manufacturer, cutting, fitting, sealing, touch-up.\n\nCrane: {{crane}}\nScaffolding: {{scaffold}}",
+          "variables": [
+            {
+              "id": "panDesc",
+              "label": "Panel type",
+              "type": "text",
+              "default": "insulated sandwich panels (supplied by others)",
+              "source": "specs"
+            },
+            {
+              "id": "wallA",
+              "label": "Wall (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "roofA",
+              "label": "Roof (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "crane",
+              "label": "Crane",
+              "type": "select",
+              "options": ["Included", "By STM", "To be coordinated"],
+              "default": "Included",
+              "source": "specs"
+            },
+            {
+              "id": "scaffold",
+              "label": "Scaffolding",
+              "type": "select",
+              "options": ["Included", "By STM", "Mobile platform incl."],
+              "default": "Included",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "Manufacturer's guidelines, EN 1090-2 (if structural), Arbobesluit, VCA**.\nAttach: VCA, method statement, risk assessment.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "- Per m² wall install\n- Per m² roof install\n- Per m1 flashings\n- Per piece penetrations\n- Lump sum: mobilisation, crane",
+    "ch5_surchargeItems": "",
+    "ch6_exclusionItems": "- Panel supply\n- Flashings supply (if separate)\n- Fall protection\n- Services penetrations\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Method statement\n3. VCA**\n4. Risk assessment\n5. Equipment\n6. Team composition\n7. Duration\n8. Insurance\n9. General terms\n10. Deviations"
+  }
+}

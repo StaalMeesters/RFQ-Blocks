@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "id": "paving",
+    "pg": "PG04",
+    "scope": "Paving & Hardstanding",
+    "scopeType": "service",
+    "suppliers": [
+      "Oosterveld"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_paving",
+          "label": "External Paving",
+          "defaultOn": true,
+          "text": "The Supplier shall execute external paving and hardstanding:\n\nPaving type: {{pavingType}}\nEstimated area: {{pavingArea}} m²\nSubbase: {{subbase}}\nEdge restraint: {{edgeRestraint}}\nLaying pattern: {{layingPattern}}\n\nThe Supplier shall:\n- Prepare subgrade to required levels and compaction\n- Install subbase layer\n- Install edge restraints\n- Lay paving to specified pattern and tolerances\n- Provide compaction / level verification\n\nAll work per CROW guidelines.",
+          "variables": [
+            {
+              "id": "pavingType",
+              "label": "Paving type",
+              "type": "select",
+              "options": [
+                "Concrete paving blocks (betonklinkers)",
+                "Asphalt",
+                "Concrete slab",
+                "Gravel / open paving"
+              ],
+              "default": "Concrete paving blocks (betonklinkers)"
+            },
+            {
+              "id": "pavingArea",
+              "label": "Paving area (m²)",
+              "type": "number"
+            },
+            {
+              "id": "subbase",
+              "label": "Subbase",
+              "type": "text",
+              "default": "150 mm compacted sand on geotextile",
+              "delegateText": "The Supplier shall propose a subbase construction suitable for the expected traffic load."
+            },
+            {
+              "id": "edgeRestraint",
+              "label": "Edge restraint",
+              "type": "text",
+              "default": "concrete kerbs (opsluitbanden)",
+              "delegateText": "The Supplier shall propose edge restraint compatible with the paving system and site levels."
+            },
+            {
+              "id": "layingPattern",
+              "label": "Pattern",
+              "type": "select",
+              "options": [
+                "Herringbone (keperverband)",
+                "Stretcher bond (halfsteensverband)",
+                "Running bond",
+                "Per drawing"
+              ],
+              "default": "Herringbone (keperverband)"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_standards",
+          "label": "Applicable Standards",
+          "defaultOn": true,
+          "text": "All works shall comply with:\n\n- CROW Publication 320 (paving design)\n- CROW Publication 321 (paving materials)\n- NEN-EN 1338 (concrete paving blocks)\n- NEN-EN 1339 (concrete paving flags)\n- NEN-EN 1340 (concrete kerbs)\n\nSafety: VCA** certification required.\n\nAttach: VCA certificate, material certificates, compaction test results.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Per m² paving complete (incl. subbase, sand bed, laying)\nPer m1 edge restraint (opsluitbanden)\nPer m1 kerbs\nSubgrade preparation: per m²\nMobilisation / demobilisation: lump sum",
+    "ch5_surchargeItems": "- Minimum area surcharge\n- Complex patterns\n- Weekend working",
+    "ch6_exclusionItems": "- Excavation (by others)\n- Foundation works\n- Underground services\n- Landscaping\n- Permanent road markings\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule — per m², per m1\n2. Method statement\n3. VCA** certificate\n4. Material certificates\n5. Estimated duration\n6. General terms and conditions\n7. All deviations with justification"
+  }
+}

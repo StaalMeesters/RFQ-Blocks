@@ -1,0 +1,241 @@
+{
+  "_meta": {
+    "id": "excavation",
+    "pg": "PG04",
+    "scope": "Earthwork & Excavation",
+    "scopeType": "service",
+    "suppliers": [
+      "Oosterveld",
+      "Huiskamp",
+      "Wilmink",
+      "Eijsink"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_excavation",
+          "label": "Excavation — Foundation Trenches",
+          "defaultOn": true,
+          "text": "The Supplier shall execute excavation of foundation trenches in accordance with the foundation plan:\n\nExcavation depth: {{excDepth}} m below {{excReference}}\nFinished level: {{finishedLevel}}\nEstimated excavation volume: {{excVolume}} m³ (indicative — final quantities based on actual site conditions)\n\nSoil type (expected): {{soilType}}\nSoil classification: {{soilClass}}\nGroundwater level (expected): {{groundwaterLevel}}\n\nThe Supplier shall:\n- Excavate to the specified depth and tolerances per the foundation plan\n- Maintain trench stability (shoring, sheet piling, or sloped excavation as required)\n- Keep excavations dry (dewatering included unless explicitly excluded)\n- Provide level and compacted trench bottom suitable for foundation placement\n- Stockpile suitable excavated soil on site for backfill (if instructed by STM)\n\nThe Supplier shall confirm in the quotation:\n- Method of excavation\n- Equipment to be deployed\n- Dewatering method (if applicable)\n- Assumed soil conditions and classification\n- Any assumptions regarding contamination or obstructions\n\nAny deviation from the above specifications shall be explicitly stated with technical justification. STM reserves the right to reject non-compliant alternatives.",
+          "variables": [
+            {
+              "id": "excDepth",
+              "label": "Excavation depth (m)",
+              "type": "number",
+              "default": "0.45"
+            },
+            {
+              "id": "excReference",
+              "label": "Reference level",
+              "type": "select",
+              "options": [
+                "ground level",
+                "NAP (Normaal Amsterdams Peil)",
+                "finished floor level (FFL)",
+                "top of foundation"
+              ],
+              "default": "ground level"
+            },
+            {
+              "id": "finishedLevel",
+              "label": "Finished level",
+              "type": "text",
+              "default": "per foundation plan",
+              "delegateText": "The Supplier shall confirm the reference levels used and any assumptions regarding existing ground level."
+            },
+            {
+              "id": "excVolume",
+              "label": "Est. volume (m³)",
+              "type": "number",
+              "default": "290"
+            },
+            {
+              "id": "soilType",
+              "label": "Soil type",
+              "type": "select",
+              "options": [
+                "Sand (zand)",
+                "Clay (klei)",
+                "Loam (leem)",
+                "Peat (veen)",
+                "Mixed / unknown"
+              ],
+              "default": "Sand (zand)",
+              "delegateText": "The Supplier shall state the assumed soil type. If actual conditions deviate materially, the Supplier shall notify STM immediately before proceeding."
+            },
+            {
+              "id": "soilClass",
+              "label": "Soil classification",
+              "type": "select",
+              "options": [
+                "Clean — reusable on site",
+                "Lightly contaminated — class Wonen",
+                "Contaminated — class Industrie",
+                "Heavily contaminated — requires remediation",
+                "Not yet classified"
+              ],
+              "default": "Clean — reusable on site"
+            },
+            {
+              "id": "groundwaterLevel",
+              "label": "Groundwater level",
+              "type": "text",
+              "default": "below excavation depth (assumed)",
+              "delegateText": "The Supplier shall state assumed groundwater conditions and the dewatering method to be applied if groundwater is encountered."
+            }
+          ]
+        },
+        {
+          "id": "b2_disposal",
+          "label": "Soil Disposal & Transport",
+          "defaultOn": true,
+          "text": "The Supplier shall dispose of surplus excavated soil (afvoer vrijkomende grond):\n\nEstimated disposal volume: {{disposalVolume}} m³\nSoil destination: {{soilDestination}}\nMaximum transport distance included: {{maxDistance}} km\n\nPFAS classification: {{pfasClass}}\nAP04 / soil report: {{soilReport}}\n\nThe Supplier shall:\n- Load, transport, and dispose of surplus soil at a licensed receiving facility\n- Provide transport tickets (weegbonnen) per load\n- Comply with all applicable environmental regulations (Besluit bodemkwaliteit)\n\nIf soil conditions deviate from the classification assumed (e.g. contamination discovered during excavation), the Supplier shall halt work and notify STM immediately. Additional costs for contaminated soil disposal shall be agreed prior to execution.\n\nPricing:\n- Per m³ loose measure (los gemeten) or per m³ in-situ — state clearly which basis\n- Per load transport (state vehicle type and capacity)\n- Tipping fee: included or stated separately",
+          "variables": [
+            {
+              "id": "disposalVolume",
+              "label": "Disposal volume (m³)",
+              "type": "number",
+              "default": "290"
+            },
+            {
+              "id": "soilDestination",
+              "label": "Destination",
+              "type": "select",
+              "options": [
+                "Licensed depot (grondbank)",
+                "Reuse on site (hergebruik)",
+                "STM-nominated facility",
+                "Supplier-nominated facility"
+              ],
+              "default": "Licensed depot (grondbank)"
+            },
+            {
+              "id": "maxDistance",
+              "label": "Max distance (km)",
+              "type": "number",
+              "default": "30"
+            },
+            {
+              "id": "pfasClass",
+              "label": "PFAS classification",
+              "type": "select",
+              "options": [
+                "Below detection limit",
+                "Below background value (achtergrondwaarde)",
+                "Above background value — restricted",
+                "Not yet tested"
+              ],
+              "default": "Below background value (achtergrondwaarde)"
+            },
+            {
+              "id": "soilReport",
+              "label": "AP04 / soil report",
+              "type": "select",
+              "options": [
+                "Available — attached",
+                "Available — to be provided on request",
+                "Not yet available — Supplier to assume clean soil",
+                "Supplier to arrange testing"
+              ],
+              "default": "Available — to be provided on request"
+            }
+          ]
+        },
+        {
+          "id": "b2_backfill",
+          "label": "Backfill & Compaction",
+          "defaultOn": true,
+          "text": "The Supplier shall backfill and compact after foundation works:\n\nBackfill material: {{backfillMaterial}}\nCompaction requirement: {{compactionReq}}\nEstimated backfill volume: {{backfillVolume}} m³\n\nThe Supplier shall:\n- Backfill in layers not exceeding {{layerThickness}} mm\n- Compact each layer to the specified density\n- Provide compaction test results if requested by STM\n- Grade finished surface to specified levels and tolerances\n\nIf imported fill material is required, the Supplier shall state the source and confirm compliance with Besluit bodemkwaliteit.",
+          "variables": [
+            {
+              "id": "backfillMaterial",
+              "label": "Backfill material",
+              "type": "select",
+              "options": [
+                "Reuse of excavated soil (hergebruik)",
+                "Imported clean sand",
+                "Gravel / crusher run",
+                "As specified by engineer"
+              ],
+              "default": "Reuse of excavated soil (hergebruik)"
+            },
+            {
+              "id": "compactionReq",
+              "label": "Compaction",
+              "type": "text",
+              "default": "≥ 98% Proctor",
+              "delegateText": "The Supplier shall state the compaction method and achievable density."
+            },
+            {
+              "id": "backfillVolume",
+              "label": "Volume (m³)",
+              "type": "number"
+            },
+            {
+              "id": "layerThickness",
+              "label": "Max layer (mm)",
+              "type": "number",
+              "default": "300"
+            }
+          ]
+        },
+        {
+          "id": "b2_siteprep",
+          "label": "Site Preparation & Grading",
+          "defaultOn": false,
+          "text": "The Supplier shall execute site preparation and grading works:\n\nScope:\n- Strip topsoil to depth of {{stripDepth}} mm across {{stripArea}} m²\n- Stockpile topsoil on site at designated location\n- Grade subgrade to specified levels (per site plan)\n- Install temporary access roads / hardstanding (if required)\n\nFinished subgrade tolerance: +/- {{gradeTolerance}} mm\n\nThe Supplier shall confirm equipment and duration required.",
+          "variables": [
+            {
+              "id": "stripDepth",
+              "label": "Strip depth (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "stripArea",
+              "label": "Strip area (m²)",
+              "type": "number"
+            },
+            {
+              "id": "gradeTolerance",
+              "label": "Tolerance (mm)",
+              "type": "number",
+              "default": "25"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards & Compliance",
+      "blocks": [
+        {
+          "id": "b3_standards",
+          "label": "Applicable Standards",
+          "defaultOn": true,
+          "text": "All works shall comply with at minimum:\n\n- NEN-EN 16907 (earthworks)\n- CROW Publication 400 (Grondwerk en grondmechanica)\n- Besluit bodemkwaliteit (soil quality regulations)\n- Regeling bodemkwaliteit\n- PFAS handelingskader (current version)\n- AP04 testing protocol\n\nSafety:\n- VCA** certification required\n- CROW 96b (working along roads, if applicable)\n\nThe Supplier shall confirm VCA certification status and provide a copy upon request.\nThe Supplier shall confirm compliance with all applicable PFAS limits for the project location.\n\nAttach: VCA certificate, method statement, waste management plan.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Excavation:\n- Per m³ excavation (state: in-situ or loose measure)\n- Per m³ backfill and compaction\n\nSoil disposal:\n- Per m³ clean soil disposal (including transport and tipping)\n- Per m³ contaminated soil disposal (if applicable — state classification)\n- Per load transport (state vehicle type and capacity)\n\nAdditional rates:\n- Per hour standby / waiting time\n- Per day dewatering (if applicable)\n- Mobilisation / demobilisation: lump sum",
+    "ch5_surchargeItems": "- Minimum order surcharge\n- Weekend or extended hours working\n- Additional dewatering beyond assumed conditions\n- Rock or obstruction removal\n- Emergency contamination handling",
+    "ch6_exclusionItems": "- Foundation concrete works (by others)\n- Steel structure and superstructure\n- Building permits and environmental permits (by STM)\n- Soil investigation / geotechnical survey (by STM)\n- Archaeological survey (if required)\n- Traffic management plan (if on public road — by STM)\n- Utility diversions (gas, water, electricity, telecom)\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule — unit rates per activity\n2. Method statement (excavation, disposal, compaction)\n3. Equipment list\n4. Assumed soil conditions and classification\n5. VCA** certificate (valid)\n6. Waste management plan / disposal route\n7. Estimated duration and proposed start date\n8. Insurance certificate (CAR / AVB)\n9. General terms and conditions\n10. All deviations and assumptions with justification"
+  }
+}

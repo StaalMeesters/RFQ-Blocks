@@ -1,0 +1,338 @@
+{
+  "_meta": {
+    "id": "electrical",
+    "pg": "PG09",
+    "scope": "Electrical Installation",
+    "scopeType": "service",
+    "suppliers": [
+      "Loohuis",
+      "Engberink",
+      "Brusche"
+    ],
+    "version": "1.0.0",
+    "status": "draft",
+    "lastUpdated": null,
+    "updatedBy": null,
+    "reviewedBy": [],
+    "frozen": false
+  },
+  "chapters": {
+    "ch1": {
+      "id": "ch1",
+      "number": "1",
+      "title": "Introduction",
+      "blocks": [
+        {
+          "id": "b1_intro",
+          "label": "Request for Quotation",
+          "defaultOn": true,
+          "text": "{{companyName}} (hereafter: STM) requests {{supplierName}} (hereafter: Supplier) to submit a binding quotation for electrical installation works for the project:\n\n{{projectName}}\nProject number: {{projectNumber}}\nSite address: {{siteAddress}}, {{siteZip}} {{siteCity}}\n\nSTM contact: {{stmContact}}\nSupplier contact: {{supplierContact}}\n\nThe quotation shall be explicitly and exclusively based on the project documentation provided by STM, consisting of:\n- the IFC model (if provided);\n- the accompanying 2D drawings (PDF and/or DWG);\n- this Request for Quotation document.\n\nThe Supplier shall not deviate from the specifications set out in this document without prior written approval from STM. Any deviation, assumption, or exclusion not explicitly stated in the Supplier's quotation shall be deemed accepted as specified herein.\n\nThe scope encompasses all materials, provisions, and logistics necessary for a complete and functional delivery. Items not explicitly excluded under Chapter 6 are deemed included.\n\nSTM reserves the right to award part of the scope to alternative suppliers.",
+          "variables": [
+            {
+              "id": "companyName",
+              "label": "STM Entity",
+              "type": "select",
+              "options": [
+                "Staalmeesters Projects BV",
+                "STM Design & Build BV",
+                "STM Design & Build GmbH"
+              ],
+              "default": "Staalmeesters Projects BV",
+              "source": "specs"
+            },
+            {
+              "id": "supplierName",
+              "label": "Supplier name",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "projectName",
+              "label": "Project name",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "projectNumber",
+              "label": "Project number",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteAddress",
+              "label": "Site address",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteZip",
+              "label": "Postal code",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteCity",
+              "label": "Site city",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "stmContact",
+              "label": "STM contact",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "supplierContact",
+              "label": "Supplier contact",
+              "type": "text",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch2": {
+      "id": "ch2",
+      "number": "2",
+      "title": "Scope of Supply",
+      "blocks": [
+        {
+          "id": "b2_elec",
+          "label": "Electrical Installation",
+          "defaultOn": true,
+          "text": "Complete electrical installation:\n\nMain DB: {{mainDB}}\nSub-DBs: {{subQty}}\nLighting: {{lighting}}\nSockets: per room schedule\nCable routing: {{cabling}}\nFire alarm: {{fireAl}}\nEmergency lighting: {{emerLt}}\n\nBased on electrical design drawings and room schedules.\nFinal mains connection by grid operator (excluded).",
+          "variables": [
+            {
+              "id": "mainDB",
+              "label": "Main DB",
+              "type": "text",
+              "delegateText": "Propose main DB for total connected load.",
+              "source": "specs"
+            },
+            {
+              "id": "subQty",
+              "label": "Sub-DBs",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "lighting",
+              "label": "Lighting",
+              "type": "select",
+              "options": [
+                "LED panel (office)",
+                "LED highbay (warehouse)",
+                "LED tube",
+                "Combination per schedule"
+              ],
+              "default": "Combination per schedule",
+              "source": "specs"
+            },
+            {
+              "id": "cabling",
+              "label": "Cables",
+              "type": "select",
+              "options": [
+                "Cable tray",
+                "Cable ladder",
+                "Conduit",
+                "Combination"
+              ],
+              "default": "Combination",
+              "source": "specs"
+            },
+            {
+              "id": "fireAl",
+              "label": "Fire alarm",
+              "type": "select",
+              "options": [
+                "Conventional",
+                "Addressable",
+                "Not in scope",
+                "Per fire report"
+              ],
+              "default": "Per fire report",
+              "source": "specs"
+            },
+            {
+              "id": "emerLt",
+              "label": "Emergency",
+              "type": "select",
+              "options": [
+                "Self-contained LED",
+                "Central battery",
+                "Not in scope"
+              ],
+              "default": "Self-contained LED",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch3": {
+      "id": "ch3",
+      "number": "3",
+      "title": "Standards",
+      "blocks": [
+        {
+          "id": "b3_std",
+          "label": "Standards",
+          "defaultOn": true,
+          "text": "NEN 1010, NEN 3140, NEN-EN 50110-1, NEN-EN 12464-1, NEN 2535 (if appl.), Bouwbesluit.\nErkend Installateur required. SCIOS inspection.\nAttach: installer cert, NEN 1010 plan, Dialux calc.",
+          "variables": []
+        }
+      ]
+    },
+    "ch4": {
+      "id": "ch4",
+      "number": "4",
+      "title": "Delivery & Execution",
+      "blocks": [
+        {
+          "id": "b4_del",
+          "label": "Execution Terms",
+          "defaultOn": true,
+          "text": "Site: {{siteAddress}}, {{siteZip}} {{siteCity}}.\n\nWorking hours: {{workingHours}}\nEstimated duration: {{duration}}\nStart date: {{startDate}}\n\nThe Supplier shall:\n- Mobilise within {{mobiliseDays}} working days after instruction\n- Coordinate with STM site manager\n- Maintain site cleanliness\n- Reinstate any damage caused by Supplier's operations\n\nQuantities indicative. STM may adjust +/- {{quantityTolerance}}% without price change per unit rate.",
+          "variables": [
+            {
+              "id": "siteAddress",
+              "label": "Site address",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteZip",
+              "label": "Postal code",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "siteCity",
+              "label": "Site city",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "workingHours",
+              "label": "Working hours",
+              "type": "text",
+              "default": "07:00–17:00, Mon–Fri",
+              "source": "specs"
+            },
+            {
+              "id": "duration",
+              "label": "Duration",
+              "type": "text",
+              "delegateText": "State estimated duration and resource availability.",
+              "source": "specs"
+            },
+            {
+              "id": "startDate",
+              "label": "Start date",
+              "type": "text",
+              "delegateText": "State earliest available start date.",
+              "source": "specs"
+            },
+            {
+              "id": "mobiliseDays",
+              "label": "Mobilise (d)",
+              "type": "number",
+              "default": "5",
+              "source": "specs"
+            },
+            {
+              "id": "quantityTolerance",
+              "label": "Qty tolerance (%)",
+              "type": "number",
+              "default": "15",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch5": {
+      "id": "ch5",
+      "number": "5",
+      "title": "Pricing & Surcharges",
+      "blocks": [
+        {
+          "id": "b5_pr",
+          "label": "Price Structure",
+          "defaultOn": true,
+          "text": "Complete price breakdown required:\n\nLump sum complete, or itemised:\nPer piece: DB, luminaire, socket, switch\nPer m1: cable, tray/conduit\nLump sum: fire alarm, testing\nPer hour: variations\n\nValidity: minimum {{validityDays}} days.\nState if prices subject to material index.\n\nPayment: {{paymentDays}} days after invoice.\n\nSurcharges not stated are deemed included and cannot be invoiced separately.",
+          "variables": [
+            {
+              "id": "validityDays",
+              "label": "Validity (d)",
+              "type": "number",
+              "default": "30",
+              "source": "specs"
+            },
+            {
+              "id": "paymentDays",
+              "label": "Payment (d)",
+              "type": "number",
+              "default": "30",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch6": {
+      "id": "ch6",
+      "number": "6",
+      "title": "Exclusions",
+      "blocks": [
+        {
+          "id": "b6_ex",
+          "label": "Scope Exclusions",
+          "defaultOn": true,
+          "text": "Excluded (procured separately by STM):\n\n- Grid connection\n- Structural works\n- Finishes\n- Solar/PV\n- IT/data cabling\n- Access control/CCTV\n- VAT\n\nSupplier shall state additional exclusions. Items not listed and not excluded by Supplier are deemed included.\n\nInstallation instructions and documentation provided at no additional cost.",
+          "variables": []
+        }
+      ]
+    },
+    "ch7": {
+      "id": "ch7",
+      "number": "7",
+      "title": "Quotation Requirements",
+      "blocks": [
+        {
+          "id": "b7_sub",
+          "label": "Submission",
+          "defaultOn": true,
+          "text": "Submit to {{stmContact}} at {{stmEmail}} before {{deadline}}.\n\nInclude:\n1. Price schedule\n2. Design verification\n3. Dialux calc\n4. Single-line diagram\n5. Equipment specs\n6. NEN 1010 plan\n7. Installer cert\n8. Duration\n9. General terms\n10. Deviations\n\nIncomplete quotations may be rejected.\nSTM is not obligated to award to lowest bidder.\nThis RFQ does not constitute a commitment to order.",
+          "variables": [
+            {
+              "id": "stmContact",
+              "label": "STM contact",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "stmEmail",
+              "label": "STM email",
+              "type": "text",
+              "source": "specs"
+            },
+            {
+              "id": "deadline",
+              "label": "Deadline",
+              "type": "date",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch5_priceBreakdownItems": "Lump sum complete, or itemised:\nPer piece: DB, luminaire, socket, switch\nPer m1: cable, tray/conduit\nLump sum: fire alarm, testing\nPer hour: variations",
+    "ch6_exclusionItems": "- Grid connection\n- Structural works\n- Finishes\n- Solar/PV\n- IT/data cabling\n- Access control/CCTV\n- VAT",
+    "ch7_requiredDocuments": "1. Price schedule\n2. Design verification\n3. Dialux calc\n4. Single-line diagram\n5. Equipment specs\n6. NEN 1010 plan\n7. Installer cert\n8. Duration\n9. General terms\n10. Deviations"
+  }
+}
