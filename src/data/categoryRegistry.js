@@ -88,17 +88,15 @@ export const PG_GROUPS = [
 ];
 
 export const DEFAULT_CHAPTER_ORDER = [
+  'ch_rfq_info',
   'ch_inleiding',
   'ch_scope',
   'ch_technisch',
-  'ch_montage',
   'ch_normering',
   'ch_bim',
-  'ch_levering',
-  'ch_prijs',
+  'ch_montage',
+  'ch_planning',
   'ch_financieel',
-  'ch_wettelijk',
-  'ch_uitsluitingen',
   'ch_offerte',
   'ch_bijlagen',
 ];

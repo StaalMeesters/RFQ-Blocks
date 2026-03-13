@@ -167,13 +167,6 @@ export async function exportWord({
     }
   }
 
-  // ── German §13b / §48b notice (before closing) ──
-  if (entity.country === 'DE') {
-    bodyXml.push(emptyPara());
-    bodyXml.push(normalPara(boldRun('Wichtig:'), run(' Rechnungsstellung gemäß § 13b bezüglich der Mehrwertsteuer. Siehe Bijlage Freistellungsbescheinigung.')));
-    bodyXml.push(normalPara(run('Arbeid volgens § 48b: Graag uw geldige §48b document aan ons sturen zodat we dit kunnen toevoegen aan de Staalmeesters boekhouding.')));
-  }
-
   // ── Bijlagen chapter (merged with appendix listing) ──
   chapterNum++;
   bodyXml.push(emptyPara());

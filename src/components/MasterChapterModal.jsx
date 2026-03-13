@@ -5,16 +5,13 @@ import { loadMasterOverrides, saveMasterOverrides } from '../utils/storage.js';
 
 // Shared chapters that can be edited via master override
 const SHARED_CHAPTERS = [
-  { key: 'ch_inleiding', title: 'Inleiding' },
-  { key: 'ch_levering_material', title: 'Levering & Transport' },
-  { key: 'ch_levering_service', title: 'Uitvoering & Planning' },
-  { key: 'ch_prijs', title: 'Prijs & Toeslagen' },
-  { key: 'ch_financieel', title: 'Financieel & Voorwaarden' },
-  { key: 'ch_wettelijk_nl', title: 'Wettelijke Vereisten (NL)' },
-  { key: 'ch_wettelijk_de', title: 'Wettelijke Vereisten (DE)' },
-  { key: 'ch_montage', title: 'Montage / Installatie' },
-  { key: 'ch_bim', title: 'BIM, IFC & Trimble Connect' },
-  { key: 'ch_uitsluitingen', title: 'Uitsluitingen' },
+  { key: 'ch_rfq_info', title: 'RFQ Informatie' },
+  { key: 'ch_inleiding', title: 'Projectinleiding' },
+  { key: 'ch_bim', title: 'Engineering / BIM Vereisten' },
+  { key: 'ch_montage', title: 'Montage / Uitvoering' },
+  { key: 'ch_planning_material', title: 'Planning & Levering' },
+  { key: 'ch_planning_service', title: 'Planning & Uitvoering' },
+  { key: 'ch_financieel', title: 'Commerciële Voorwaarden' },
   { key: 'ch_offerte', title: 'Offerte Vereisten' },
   { key: 'ch_bijlagen', title: 'Bijlagen' },
 ];

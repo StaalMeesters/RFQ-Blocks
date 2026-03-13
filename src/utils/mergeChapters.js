@@ -30,14 +30,22 @@ export const PRODUCT_CHAPTER_IDS = ['ch_scope', 'ch_technisch', 'ch_normering'];
 export function mergeChapters(categoryJson, entityId, options = {}) {
   const { montageEnabled = false, bimEnabled = false } = options;
   const entity = entities[entityId] || entities.stp;
-  const country = entity.country; // NL or DE
+  const country = entity.country;
   const scopeType = categoryJson._meta.scopeType;
   const catChapters = categoryJson.chapters || {};
   const overrides = categoryJson.overrides || {};
 
   const chapterMap = {};
 
-  // ch_inleiding — shared
+  // ch_rfq_info — RFQ header
+  chapterMap.ch_rfq_info = cloneChapter(getMasterData('ch_rfq_info'));
+  fillOverride(chapterMap.ch_rfq_info, 'bedrijfsnaam', entity.name);
+  fillOverride(chapterMap.ch_rfq_info, 'scopeBeschrijving', categoryJson._meta.scope);
+  if (!montageEnabled) {
+    fillOverride(chapterMap.ch_rfq_info, 'montageClause', '');
+  }
+
+  // ch_inleiding — Projectinleiding
   chapterMap.ch_inleiding = cloneChapter(getMasterData('ch_inleiding'));
 
   // ch_scope — category-specific
@@ -50,13 +58,6 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
     chapterMap.ch_technisch = cloneChapter(catChapters.ch_technisch);
   }
 
-  // ch_montage — shared, toggleable
-  if (montageEnabled) {
-    chapterMap.ch_montage = cloneChapter(getMasterData('ch_montage'));
-    fillOverride(chapterMap.ch_montage, 'montageScopeItems', overrides.ch_montage_scope);
-    fillOverride(chapterMap.ch_montage, 'montageInbegrepen', overrides.ch_montage_grenzen);
-  }
-
   // ch_normering — category-specific
   if (catChapters.ch_normering) {
     chapterMap.ch_normering = cloneChapter(catChapters.ch_normering);
@@ -67,31 +68,34 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
     chapterMap.ch_bim = cloneChapter(getMasterData('ch_bim'));
   }
 
-  // ch_levering — shared, depends on scopeType
-  const leveringKey = scopeType === 'service' ? 'ch_levering_service' : 'ch_levering_material';
-  chapterMap.ch_levering = cloneChapter(getMasterData(leveringKey));
-
-  // ch_prijs — shared + overrides
-  chapterMap.ch_prijs = cloneChapter(getMasterData('ch_prijs'));
-  fillOverride(chapterMap.ch_prijs, 'prijsOpbouwItems', overrides.ch_prijs_items);
-  fillOverride(chapterMap.ch_prijs, 'toeslagItems', overrides.ch_prijs_toeslagen);
-
-  // ch_financieel — shared
-  chapterMap.ch_financieel = cloneChapter(getMasterData('ch_financieel'));
-  fillEntityVars(chapterMap.ch_financieel, entity);
-
-  // ch_wettelijk — per country
-  const wettelijkKey = country === 'DE' ? 'ch_wettelijk_de' : 'ch_wettelijk_nl';
-  chapterMap.ch_wettelijk = cloneChapter(getMasterData(wettelijkKey));
-  if (country === 'DE' && entity.freistellung) {
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungNummer', entity.freistellung.nummer);
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigVan', entity.freistellung.validFrom);
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigTot', entity.freistellung.validTo);
+  // ch_montage — shared, toggleable
+  if (montageEnabled) {
+    chapterMap.ch_montage = cloneChapter(getMasterData('ch_montage'));
+    fillOverride(chapterMap.ch_montage, 'montageScopeItems', overrides.ch_montage_scope);
+    fillOverride(chapterMap.ch_montage, 'montageInbegrepen', overrides.ch_montage_grenzen);
   }
 
-  // ch_uitsluitingen — shared + overrides
-  chapterMap.ch_uitsluitingen = cloneChapter(getMasterData('ch_uitsluitingen'));
-  fillOverride(chapterMap.ch_uitsluitingen, 'uitsluitingItems', overrides.ch_uitsluitingen_items);
+  // ch_planning (was ch_levering)
+  const planningKey = scopeType === 'service' ? 'ch_planning_service' : 'ch_planning_material';
+  chapterMap.ch_planning = cloneChapter(getMasterData(planningKey));
+
+  // ch_financieel — "Commerciële Voorwaarden" (includes prijs, payment, wettelijk)
+  chapterMap.ch_financieel = cloneChapter(getMasterData('ch_financieel'));
+  fillOverride(chapterMap.ch_financieel, 'prijsOpbouwItems', overrides.ch_prijs_items);
+  fillOverride(chapterMap.ch_financieel, 'toeslagItems', overrides.ch_prijs_toeslagen);
+  fillEntityVars(chapterMap.ch_financieel, entity);
+  // Filter wettelijk blocks by country
+  if (chapterMap.ch_financieel.blocks) {
+    chapterMap.ch_financieel.blocks = chapterMap.ch_financieel.blocks.filter(b => {
+      if (!b.conditional) return true;
+      return b.conditional === country;
+    });
+  }
+  if (country === 'DE' && entity.freistellung) {
+    fillOverride(chapterMap.ch_financieel, 'freistellungNummer', entity.freistellung.nummer);
+    fillOverride(chapterMap.ch_financieel, 'freistellungGeldigVan', entity.freistellung.validFrom);
+    fillOverride(chapterMap.ch_financieel, 'freistellungGeldigTot', entity.freistellung.validTo);
+  }
 
   // ch_offerte — shared + overrides
   chapterMap.ch_offerte = cloneChapter(getMasterData('ch_offerte'));
@@ -104,13 +108,6 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
   if (bimEnabled) bijlagen.push('- BIM-vereisten');
   bijlagen.push('- Tekeningen');
   fillOverride(chapterMap.ch_bijlagen, 'bijlagenLijst', bijlagen.join('\n'));
-
-  // Auto-fill entity name in inleiding
-  fillOverride(chapterMap.ch_inleiding, 'bedrijfsnaam', entity.name);
-  fillOverride(chapterMap.ch_inleiding, 'scopeBeschrijving', categoryJson._meta.scope);
-  if (!montageEnabled) {
-    fillOverride(chapterMap.ch_inleiding, 'montageClause', '');
-  }
 
   return chapterMap;
 }
@@ -126,21 +123,22 @@ export function mergeMultiProductChapters(products, entityId, options = {}) {
   const country = entity.country;
   const isMulti = products.length > 1;
 
-  // Determine scopeType: use 'service' if ANY product is service type
   const hasService = products.some(p => p.catJson._meta.scopeType === 'service');
   const scopeType = hasService ? 'service' : 'material';
 
-  // Build shared chapters from master templates
   const chapterMap = {};
 
-  // ch_inleiding
-  chapterMap.ch_inleiding = cloneChapter(getMasterData('ch_inleiding'));
-  fillOverride(chapterMap.ch_inleiding, 'bedrijfsnaam', entity.name);
+  // ch_rfq_info — RFQ header/meta (split from old ch_inleiding)
+  chapterMap.ch_rfq_info = cloneChapter(getMasterData('ch_rfq_info'));
+  fillOverride(chapterMap.ch_rfq_info, 'bedrijfsnaam', entity.name);
   const scopeDesc = products.map(p => p.label).join(', ');
-  fillOverride(chapterMap.ch_inleiding, 'scopeBeschrijving', scopeDesc);
+  fillOverride(chapterMap.ch_rfq_info, 'scopeBeschrijving', scopeDesc);
   if (!montageEnabled) {
-    fillOverride(chapterMap.ch_inleiding, 'montageClause', '');
+    fillOverride(chapterMap.ch_rfq_info, 'montageClause', '');
   }
+
+  // ch_inleiding — Projectinleiding (project context, no meta)
+  chapterMap.ch_inleiding = cloneChapter(getMasterData('ch_inleiding'));
 
   // Product-specific chapters: ch_scope, ch_technisch, ch_normering
   for (const chId of PRODUCT_CHAPTER_IDS) {
@@ -149,21 +147,40 @@ export function mergeMultiProductChapters(products, entityId, options = {}) {
       const prod = products[i];
       const catChapters = prod.catJson.chapters || {};
       if (catChapters[chId]) {
+        const sectionBlocks = cloneChapter(catChapters[chId]).blocks || [];
+        // For ch_scope, append exclusion block from overrides
+        if (chId === 'ch_scope') {
+          const ov = prod.catJson.overrides || {};
+          if (ov.ch_uitsluitingen_items) {
+            sectionBlocks.push({
+              id: `b_uitsluitingen_${prod.categoryId}`,
+              label: 'Uitsluitingen',
+              defaultOn: true,
+              text: 'De volgende werkzaamheden/materialen zijn uitgesloten van deze scope:\n\n{{uitsluitingItems_' + prod.categoryId + '}}\n\nItems die hierboven niet zijn vermeld en niet expliciet door de Leverancier in de aanbieding zijn uitgesloten, worden geacht inbegrepen te zijn.',
+              variables: [{
+                id: 'uitsluitingItems_' + prod.categoryId,
+                label: 'Uitsluitingen',
+                type: 'textarea',
+                source: 'category',
+                default: ov.ch_uitsluitingen_items,
+              }],
+            });
+          }
+        }
         sections.push({
           productIndex: i,
           categoryId: prod.categoryId,
           label: prod.label,
-          blocks: cloneChapter(catChapters[chId]).blocks || [],
+          blocks: sectionBlocks,
         });
       }
     }
     if (sections.length > 0) {
-      // Get title from the first product that has this chapter, or from master
       const firstCat = products.find(p => p.catJson.chapters?.[chId]);
       const title = firstCat?.catJson.chapters[chId].title
         || (chId === 'ch_scope' ? 'Scope van Levering'
-          : chId === 'ch_technisch' ? 'Technische Specificatie'
-            : 'Normering');
+          : chId === 'ch_technisch' ? 'Technische Eisen'
+            : 'Normering & Regelgeving');
       chapterMap[chId] = {
         id: chId,
         title,
@@ -171,6 +188,11 @@ export function mergeMultiProductChapters(products, entityId, options = {}) {
         productSections: sections,
       };
     }
+  }
+
+  // ch_bim — shared, toggleable
+  if (bimEnabled) {
+    chapterMap.ch_bim = cloneChapter(getMasterData('ch_bim'));
   }
 
   // ch_montage — shared, toggleable
@@ -194,37 +216,30 @@ export function mergeMultiProductChapters(products, entityId, options = {}) {
     if (grenzParts.length > 0) fillOverride(chapterMap.ch_montage, 'montageInbegrepen', grenzParts.join('\n\n'));
   }
 
-  // ch_bim — shared, toggleable
-  if (bimEnabled) {
-    chapterMap.ch_bim = cloneChapter(getMasterData('ch_bim'));
-  }
+  // ch_planning (was ch_levering)
+  const planningKey = scopeType === 'service' ? 'ch_planning_service' : 'ch_planning_material';
+  chapterMap.ch_planning = cloneChapter(getMasterData(planningKey));
 
-  // ch_levering
-  const leveringKey = scopeType === 'service' ? 'ch_levering_service' : 'ch_levering_material';
-  chapterMap.ch_levering = cloneChapter(getMasterData(leveringKey));
-
-  // ch_prijs — merge overrides from all products
-  chapterMap.ch_prijs = cloneChapter(getMasterData('ch_prijs'));
-  mergeOverrideFromProducts(chapterMap.ch_prijs, 'prijsOpbouwItems', 'ch_prijs_items', products, isMulti);
-  mergeOverrideFromProducts(chapterMap.ch_prijs, 'toeslagItems', 'ch_prijs_toeslagen', products, isMulti);
-
-  // ch_financieel
+  // ch_financieel — "Commerciële Voorwaarden" (includes prijs, payment, wettelijk)
   chapterMap.ch_financieel = cloneChapter(getMasterData('ch_financieel'));
+  // Fill price overrides from products
+  mergeOverrideFromProducts(chapterMap.ch_financieel, 'prijsOpbouwItems', 'ch_prijs_items', products, isMulti);
+  mergeOverrideFromProducts(chapterMap.ch_financieel, 'toeslagItems', 'ch_prijs_toeslagen', products, isMulti);
   fillEntityVars(chapterMap.ch_financieel, entity);
   addContractTypeBlocks(chapterMap.ch_financieel, options.contractType);
-
-  // ch_wettelijk
-  const wettelijkKey = country === 'DE' ? 'ch_wettelijk_de' : 'ch_wettelijk_nl';
-  chapterMap.ch_wettelijk = cloneChapter(getMasterData(wettelijkKey));
-  if (country === 'DE' && entity.freistellung) {
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungNummer', entity.freistellung.nummer);
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigVan', entity.freistellung.validFrom);
-    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigTot', entity.freistellung.validTo);
+  // Filter wettelijk blocks by country (conditional blocks)
+  if (chapterMap.ch_financieel.blocks) {
+    chapterMap.ch_financieel.blocks = chapterMap.ch_financieel.blocks.filter(b => {
+      if (!b.conditional) return true;
+      return b.conditional === country;
+    });
   }
-
-  // ch_uitsluitingen — merge from all products
-  chapterMap.ch_uitsluitingen = cloneChapter(getMasterData('ch_uitsluitingen'));
-  mergeOverrideFromProducts(chapterMap.ch_uitsluitingen, 'uitsluitingItems', 'ch_uitsluitingen_items', products, isMulti);
+  // Fill Freistellung entity vars for DE
+  if (country === 'DE' && entity.freistellung) {
+    fillOverride(chapterMap.ch_financieel, 'freistellungNummer', entity.freistellung.nummer);
+    fillOverride(chapterMap.ch_financieel, 'freistellungGeldigVan', entity.freistellung.validFrom);
+    fillOverride(chapterMap.ch_financieel, 'freistellungGeldigTot', entity.freistellung.validTo);
+  }
 
   // ch_offerte — merge from all products
   chapterMap.ch_offerte = cloneChapter(getMasterData('ch_offerte'));
