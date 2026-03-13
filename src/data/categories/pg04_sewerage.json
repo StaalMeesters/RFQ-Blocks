@@ -1,0 +1,144 @@
+{
+  "_meta": {
+    "id": "sewerage",
+    "pg": "PG04",
+    "scope": "Riolering & Drainage",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Oosterveld",
+      "DOMS"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_rainwater",
+          "label": "Hemelwaterafvoer",
+          "defaultOn": true,
+          "text": "De Leverancier dient de hemelwaterafvoer aan te leggen:\n\nLeidingmateriaal: {{pipeMaterial}}\nLeidingdiameter: {{pipeDiameter}} mm\nGeschatte totale lengte: {{pipeLength}} m\nPutten / inspectieputten: {{manholeQty}} stuks\n\nDe Leverancier dient sleuven te graven, leidingen op correct afschot te leggen, aan te vullen, te verdichten en te herstellen.\nCamera-inspectie en dichtheidsproef na oplevering: inbegrepen.",
+          "variables": [
+            {
+              "id": "pipeMaterial",
+              "label": "Leidingmateriaal",
+              "type": "select",
+              "options": [
+                "PVC (SN8)",
+                "PP",
+                "PE",
+                "Beton"
+              ],
+              "default": "PVC (SN8)"
+            },
+            {
+              "id": "pipeDiameter",
+              "label": "Diameter (mm)",
+              "type": "number",
+              "default": "160"
+            },
+            {
+              "id": "pipeLength",
+              "label": "Lengte (m)",
+              "type": "number"
+            },
+            {
+              "id": "manholeQty",
+              "label": "Aantal putten",
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_foulwater",
+          "label": "Vuilwateraansluiting",
+          "defaultOn": true,
+          "text": "Vuilwateraansluiting:\n\nAansluitpunt: {{foulConnection}}\nLeidingdiameter: {{foulDiameter}} mm\nLeidingmateriaal: {{foulMaterial}}\n\nAlle aansluitingen conform gemeentelijke voorschriften en NEN 3215.",
+          "variables": [
+            {
+              "id": "foulConnection",
+              "label": "Aansluitpunt",
+              "type": "text",
+              "default": "gemeentelijk riool op perceelgrens"
+            },
+            {
+              "id": "foulDiameter",
+              "label": "Diameter (mm)",
+              "type": "number",
+              "default": "125"
+            },
+            {
+              "id": "foulMaterial",
+              "label": "Materiaal",
+              "type": "select",
+              "options": [
+                "PVC (SN8)",
+                "PP",
+                "PE"
+              ],
+              "default": "PVC (SN8)"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_infiltration",
+          "label": "Infiltratiesysteem",
+          "defaultOn": false,
+          "text": "Infiltratiesysteem:\n\nType: {{infiltrationType}}\nBergingscapaciteit: {{infiltrationCapacity}} liter\nInfiltratieoppervlak: {{infiltrationArea}} m2\n\nDe Leverancier dient capaciteitsberekeningen conform eisen van het plaatselijk waterschap te bevestigen.",
+          "variables": [
+            {
+              "id": "infiltrationType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Kunststof infiltratiekratten",
+                "Infiltratieput",
+                "Wadi"
+              ],
+              "default": "Kunststof infiltratiekratten"
+            },
+            {
+              "id": "infiltrationCapacity",
+              "label": "Capaciteit (l)",
+              "type": "number"
+            },
+            {
+              "id": "infiltrationArea",
+              "label": "Oppervlak (m2)",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": []
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_normering",
+          "label": "Toepasselijke normen",
+          "defaultOn": true,
+          "text": "Alle werkzaamheden dienen te voldoen aan:\n\n- NEN 3215 (binnenriolering)\n- NEN-EN 1401 (PVC-U buisleidingsystemen)\n- KOMO- / KIWA-gecertificeerde buizen en hulpstukken\n- Gemeentelijke drainage-eisen en aansluitvergunningen\n- Waterschapsverordening\n\nVeiligheid: VCA**-certificering vereist.\n\nBij te voegen: VCA-certificaat, camera-inspectierapport, dichtheidsproefrapport, revisietekeningen.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m1 gelegde leiding (per diameter)\nPer stuk: put / inspectieput\nPer m2 infiltratiesysteem\nPer aansluiting: gemeentelijke rioolaansluiting\nCamera-inspectie: vaste prijs\nDichtheidsproef: vaste prijs\nMobilisatie / demobilisatie: vaste prijs",
+    "ch_prijs_toeslagen": "- Minimale opdrachtwaarde toeslag\n- Verwijdering van obstakels of rotsachtige ondergrond\n- Aanvullende diepte buiten specificatie\n- Weekendwerk",
+    "ch_uitsluitingen_items": "- Binnenriolering in het gebouw (door derden)\n- Dakafvoersystemen (door derden)\n- Funderingswerkzaamheden\n- Vergunningen (door STM)\n- Wegwerkzaamheden en verkeersmaatregelen\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave — per m1, per stuk, vaste prijzen\n2. Werkplan\n3. VCA**-certificaat\n4. Materiaalcertificaten (KOMO/KIWA)\n5. Geschatte doorlooptijd\n6. Toezegging revisietekening\n7. Algemene voorwaarden\n8. Alle afwijkingen met onderbouwing",
+    "ch_montage_scope": "De scope omvat de volledige aanleg van alle hierboven beschreven rioleringswerkzaamheden, inclusief:\n- Graven van sleuven en leggen van leidingen op correct afschot\n- Plaatsen van putten en inspectieputten\n- Aanvullen en verdichten\n- Camera-inspectie en dichtheidsproef\n\nDe Leverancier dient alle benodigde materieel, hulpmiddelen en personeel in de aanbieding op te nemen.",
+    "ch_montage_grenzen": "Inbegrepen in de uitvoering:\n- Alle grondwerk voor rioolsleuven\n- Leggen en aansluiten van leidingen en putten\n- Aanvullen en verdichten\n- Camera-inspectie en dichtheidsproef\n- Revisietekeningen\n\nUitgesloten van de uitvoering:\n- Binnenriolering in het gebouw\n- Dakafvoersystemen\n- Funderingswerkzaamheden\n- Aanleg wegverharding boven sleuven"
+  }
+}

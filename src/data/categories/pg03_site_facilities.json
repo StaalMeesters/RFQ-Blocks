@@ -1,0 +1,183 @@
+{
+  "_meta": {
+    "id": "site_facilities",
+    "pg": "PG03",
+    "scope": "Bouwplaatsvoorzieningen",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": false,
+    "suppliers": [
+      "BPi Bouwplaatsinrichters"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_units",
+          "label": "Bouwketen & Containers",
+          "defaultOn": true,
+          "text": "De Leverancier dient tijdelijke bouwplaatsvoorzieningen te leveren en te plaatsen:\n\nBouwkeet / kantoorunit: {{officeType}}, aantal: {{officeQty}}\nOpslagcontainer(s): {{storageQty}} x {{storageSize}}\nKantine / verblijfsruimte: {{canteenType}}\n\nAlle units dienen:\n- Weer- en winddicht en afsluitbaar te zijn\n- Elektrisch aangesloten te zijn (230V, verlichting, verwarming)\n- Ingericht te zijn conform specificatie (bureaus, stoelen, plantafel voor kantoor; tafels, banken, koelkast, magnetron voor kantine)\n\nHuurperiode: {{rentalPeriod}}\nAan- en afvoer: inbegrepen in de prijs.\n\nDe Leverancier dient afmetingen, staat (nieuw/gebruikt) en eventuele beperkingen ten aanzien van plaatsing te bevestigen.",
+          "variables": [
+            {
+              "id": "officeType",
+              "label": "Kantoortype",
+              "type": "select",
+              "options": [
+                "Standaard 6m container",
+                "Dubbele 6m unit",
+                "Portacabin 3x6m",
+                "Portacabin 3x9m"
+              ],
+              "default": "Standaard 6m container"
+            },
+            {
+              "id": "officeQty",
+              "label": "Aantal kantoorunits",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "storageQty",
+              "label": "Aantal opslagcontainers",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "storageSize",
+              "label": "Afmeting opslagcontainer",
+              "type": "select",
+              "options": [
+                "3m (10ft)",
+                "6m (20ft)",
+                "12m (40ft)"
+              ],
+              "default": "6m (20ft)"
+            },
+            {
+              "id": "canteenType",
+              "label": "Kantine",
+              "type": "select",
+              "options": [
+                "Standaard 6m container",
+                "Dubbele unit",
+                "Niet benodigd"
+              ],
+              "default": "Standaard 6m container"
+            },
+            {
+              "id": "rentalPeriod",
+              "label": "Huurperiode",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor huurperiode, inclusief minimale huurperiode en week-/maandtarieven."
+            }
+          ]
+        },
+        {
+          "id": "b_scope_sanitary",
+          "label": "Sanitaire Voorzieningen",
+          "defaultOn": true,
+          "text": "De Leverancier dient sanitaire voorzieningen te leveren:\n\nToiletunits: {{toiletQty}} x {{toiletType}}\nSchoonmaakschema: {{cleaningSchedule}}\n\nAlle units dienen te voldoen aan de eisen uit het Arbobesluit voor bouwplaatsen.\nAfvalinzameling en -afvoer: inbegrepen.",
+          "variables": [
+            {
+              "id": "toiletQty",
+              "label": "Aantal toiletunits",
+              "type": "number",
+              "default": "2"
+            },
+            {
+              "id": "toiletType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Chemisch toilet (Dixi)",
+                "Aangesloten toiletunit",
+                "Toilet-/douchecombinatie"
+              ],
+              "default": "Chemisch toilet (Dixi)"
+            },
+            {
+              "id": "cleaningSchedule",
+              "label": "Schoonmaak",
+              "type": "select",
+              "options": [
+                "1x per week",
+                "2x per week",
+                "Dagelijks"
+              ],
+              "default": "1x per week"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_fencing",
+          "label": "Bouwhekken & Beveiliging",
+          "defaultOn": false,
+          "text": "De Leverancier dient tijdelijke bouwplaatsomheining te leveren:\n\nType hekwerk: {{fenceType}}\nGeschatte omtrek: {{fenceLength}} m\nPoorten: {{gateQty}} x {{gateWidth}} m breed\nMinimale hoogte: {{fenceHeight}} m\n\nHet hekwerk dient stabiel, vrijstaand en conform lokale voorschriften te zijn.\nLevering, plaatsing en verwijdering: inbegrepen in de prijs.",
+          "variables": [
+            {
+              "id": "fenceType",
+              "label": "Type hekwerk",
+              "type": "select",
+              "options": [
+                "Bouwhekken (Heras, standaard)",
+                "Houten schutting",
+                "Anti-klimgaas"
+              ],
+              "default": "Bouwhekken (Heras, standaard)"
+            },
+            {
+              "id": "fenceLength",
+              "label": "Omtrek (m)",
+              "type": "number"
+            },
+            {
+              "id": "gateQty",
+              "label": "Aantal poorten",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "gateWidth",
+              "label": "Poortbreedte (m)",
+              "type": "number",
+              "default": "4"
+            },
+            {
+              "id": "fenceHeight",
+              "label": "Min. hoogte (m)",
+              "type": "number",
+              "default": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": []
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_normering",
+          "label": "Toepasselijke normen",
+          "defaultOn": true,
+          "text": "Alle voorzieningen dienen te voldoen aan:\n\n- Arbobesluit (Arbeidsomstandighedenbesluit) — eisen aan bouwplaatsvoorzieningen\n- Bouwbesluit 2012 (voor zover van toepassing op tijdelijke bouwwerken)\n- NEN 3140 (elektrische veiligheid)\n- Lokale gemeentelijke voorschriften voor tijdelijke bouwwerken\n\nDe Leverancier dient te beschikken over een geldig VCA*- of VCA**-certificaat.\nAlle units dienen waar van toepassing voorzien te zijn van CE-markering.\n\nBij te voegen: VCA-certificaat, unitspecificaties, elektrische veiligheidscertificaten.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per unit per periode:\n- Kantoorunit: per week / per maand\n- Opslagcontainer: per week / per maand\n- Kantineunit: per week / per maand\n- Toiletunit: per week (inclusief schoonmaak en afvalverwijdering)\n\nEenmalige kosten:\n- Levering en plaatsing: vaste prijs\n- Ophalen en verwijdering: vaste prijs\n- Elektrische aansluiting per unit: vaste prijs\n- Meubileringspakket per unit: vaste prijs",
+    "ch_prijs_toeslagen": "- Verlenging huurperiode: tarief per extra week\n- Aanvullende verplaatsingen binnen de bouwplaats\n- Weekend- of avondlevering/-ophaling\n- Extra schoonmaakbeurten\n- Schadeherstel",
+    "ch_uitsluitingen_items": "- Permanente elektriciteitsvoorziening tot terreingrens\n- Wateraansluiting\n- Grondvoorbereiding / verharding voor plaatsing units\n- Omgevingsvergunningen voor tijdelijke bouwwerken\n- Beveiligingsdiensten / camerabewaking\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave per unit per periode\n2. Unitspecificaties en afmetingen\n3. VCA-certificaat (geldig)\n4. Elektrische veiligheidscertificaten\n5. Verzekeringscertificaat\n6. Leverings- en plaatsingsplanning\n7. Algemene voorwaarden\n8. Alle afwijkingen met onderbouwing"
+  }
+}

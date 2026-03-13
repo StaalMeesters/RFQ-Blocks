@@ -1,0 +1,55 @@
+{
+  "stp": {
+    "name": "Staalmeesters Projects BV",
+    "short": "STP",
+    "country": "NL",
+    "template": "STM_Steel_Background.dotx",
+    "conditions": "Metaalunievoorwaarden 2019",
+    "conditionsRef": ", gedeponeerd bij de Rechtbank Rotterdam op 1 januari 2019",
+    "conditionsDoc": "Algemene_Voorwaarden_Staalmeesters_BV.pdf",
+    "defaultPayment": "30 dagen",
+    "compliance": [],
+    "invoiceEmail": "invoices@staalmeesters.com"
+  },
+  "db_bv": {
+    "name": "STM Design & Build BV",
+    "short": "D&B BV",
+    "country": "NL",
+    "template": "STM_Design___Build_BV_Background.dotx",
+    "conditions": "Metaalunievoorwaarden 2019",
+    "conditionsRef": ", gedeponeerd bij de Rechtbank Rotterdam op 1 januari 2019",
+    "conditionsDoc": "Algemene_Voorwaarden_Staalmeesters_BV.pdf",
+    "defaultPayment": "30 dagen",
+    "compliance": [],
+    "invoiceEmail": "invoices@staalmeesters.com"
+  },
+  "db_gmbh": {
+    "name": "STM Design & Build GmbH",
+    "short": "D&B GmbH",
+    "country": "DE",
+    "template": "STM_Design___Build_GmbH_Background.dotx",
+    "conditions": "Allgemeine Geschäftsbedingungen der Metaalunie 2019",
+    "conditionsRef": ", hinterlegt bei der Geschäftsstelle des Gerichts Rotterdam am 1. Januar 2019",
+    "conditionsDoc": "General_Conditions_Staalmeesters_Group_BV_DLD_Version.pdf",
+    "defaultPayment": "30 Tage",
+    "compliance": ["par13b", "par48b"],
+    "invoiceEmail": "invoices@staalmeesters.com",
+    "freistellung": {
+      "nummer": "00470013",
+      "validFrom": "08.02.2024",
+      "validTo": "07.02.2027"
+    }
+  },
+  "stm_group": {
+    "name": "Staalmeesters Group BV",
+    "short": "STM Group",
+    "country": "NL",
+    "template": "STM_Group_Background.dotx",
+    "conditions": "Metaalunievoorwaarden 2019",
+    "conditionsRef": ", gedeponeerd bij de Rechtbank Rotterdam op 1 januari 2019",
+    "conditionsDoc": "Algemene_Voorwaarden_Staalmeesters_BV.pdf",
+    "defaultPayment": "30 dagen",
+    "compliance": [],
+    "invoiceEmail": "invoices@staalmeesters.com"
+  }
+}

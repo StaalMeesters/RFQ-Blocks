@@ -1,0 +1,140 @@
+{
+  "_meta": {
+    "id": "plumbing_hvac",
+    "pg": "PG09",
+    "scope": "Sanitair & HVAC",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": true,
+    "suppliers": ["Loohuis"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_plumb",
+          "label": "Sanitair en leidingwerk",
+          "defaultOn": true,
+          "text": "De Leverancier dient een volledige sanitaire installatie te leveren en te installeren conform de projectdocumentatie.\n\nWatervoorziening: {{water}}\nSanitaire toestellen: conform ruimtestaat\nWarmwatervoorziening: {{hotW}}\nBinnenriolering: inbegrepen\nBuitenaansluiting: {{extConn}}",
+          "variables": [
+            {
+              "id": "water",
+              "label": "Watervoorziening",
+              "type": "select",
+              "options": [
+                "Gemeentelijk waterleidingnet",
+                "Bron/put",
+                "Regenwater",
+                "Combinatie"
+              ],
+              "default": "Gemeentelijk waterleidingnet",
+              "source": "specs"
+            },
+            {
+              "id": "hotW",
+              "label": "Warmwatervoorziening",
+              "type": "select",
+              "options": [
+                "Elektrische boiler",
+                "Warmtepomp",
+                "Gasgestookte ketel",
+                "Zonneboiler"
+              ],
+              "default": "Elektrische boiler",
+              "source": "specs"
+            },
+            {
+              "id": "extConn",
+              "label": "Buitenaansluiting",
+              "type": "select",
+              "options": [
+                "Inbegrepen tot perceelgrens",
+                "Door derden"
+              ],
+              "default": "Door derden",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_hvac",
+          "label": "HVAC",
+          "defaultOn": false,
+          "text": "Verwarming: {{heating}}\nVentilatie: {{vent}}\nLuchtbehandelingskast: {{ahu}}\n\nConform Bouwbesluit en NEN 1087.",
+          "variables": [
+            {
+              "id": "heating",
+              "label": "Verwarming",
+              "type": "select",
+              "options": [
+                "Gasgestookte luchtverwarmers",
+                "Warmtepomp (lucht)",
+                "Stralingspanelen",
+                "Vloerverwarming",
+                "Niet in scope"
+              ],
+              "default": "Gasgestookte luchtverwarmers",
+              "source": "specs"
+            },
+            {
+              "id": "vent",
+              "label": "Ventilatie",
+              "type": "select",
+              "options": [
+                "Natuurlijk",
+                "Mechanische toe- en afvoer",
+                "Mechanische afvoer",
+                "Vraaggestuurd (CO2)"
+              ],
+              "default": "Mechanische toe- en afvoer",
+              "source": "specs"
+            },
+            {
+              "id": "ahu",
+              "label": "Luchtbehandelingskast",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor de luchtbehandelingskast op basis van het gebouwvolume en de gebruiksfunctie.",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_plumb",
+          "label": "Technische eisen sanitair en HVAC",
+          "defaultOn": true,
+          "text": "De Leverancier dient de installatie te ontwerpen en uit te voeren conform de volgende technische eisen:\n\n- Leidingdimensionering conform NEN 1006 (sanitair) en NEN 1087 (ventilatie)\n- Geluidsniveau conform NEN 5077\n- Energieprestatie conform NEN 7120 / BENG-eisen\n- Isolatie van alle leidingen conform de geldende energieprestatie-eisen\n- Brandmanchetten bij doorvoeren door brandscheidingen\n\nDe Leverancier dient een volledig installatieontwerp ter goedkeuring voor te leggen aan STM, bestaande uit:\n- Leidingschema's (warm- en koudwater, riolering)\n- Ventilatieberekening en kanaalschema's\n- Toestelkeuze en specificaties\n- Energieprestatieberekening (indien van toepassing)\n\nSTM behoudt zich het recht voor het ontwerp te laten toetsen door een externe adviseur.",
+          "variables": []
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_plumb",
+          "label": "Normen en certificering",
+          "defaultOn": true,
+          "text": "De sanitaire en HVAC-installatie dient te voldoen aan de volgende normen en regelgeving:\n\n- NEN 1006 — Algemene voorschriften voor drinkwaterinstallaties (AVWI)\n- NEN 3215 — Binnenriolering: eisen en bepalingsmethoden\n- NEN 1087 — Ventilatie van gebouwen\n- NEN 5077 — Geluidwering in gebouwen\n- NEN 7120 / BENG — Energieprestatie van gebouwen\n- Bouwbesluit 2012 / Besluit bouwwerken leefomgeving\n\nDe Leverancier dient een erkend installatiebedrijf te zijn.\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Installateurscertificaat\n- Systeemspecificaties en productbladen\n- Ventilatieberekening\n- Referenties van vergelijkbare projecten",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Lump sum per systeem, of gespecificeerd:\n- Sanitair: per toestel (wastafel, toilet, douche, etc.)\n- Verwarming: per toestel/unit\n- Ventilatie: per m³/h capaciteit\n- Keuring en inbedrijfstelling: inbegrepen",
+    "ch_prijs_toeslagen": "- Toeslag voor werken buiten reguliere werktijden\n- Toeslag voor gefaseerde oplevering\n- Toeslag voor wijzigingen na goedkeuring ontwerp",
+    "ch_uitsluitingen_items": "- Buitenriolering en hemelwaterafvoer\n- Gasaansluiting door netbeheerder\n- Elektrotechnische voeding (door elektro-installateur)\n- Afwerklagen (schilderwerk, tegelwerk)\n- Constructieve sparingen en doorbraken\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per systeem/onderdeel\n2. Systeemspecificaties en productbladen\n3. Ventilatieberekening\n4. Energieprestatieberekening\n5. Installateurscertificaat\n6. Geschatte uitvoeringsduur\n7. Algemene voorwaarden\n8. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige aanleg van sanitaire installatie, verwarming en ventilatie\n- Plaatsing en aansluiting van alle toestellen, kranen en appendages\n- Aanleg van leidingwerk (water, riolering, verwarming, ventilatie)\n- Isolatie van leidingen conform eisen\n- Aanbrengen van brandmanchetten bij doorvoeren\n- Inbedrijfstelling, meten en beproeven\n- Opleverdocumentatie en revisietekeningen",
+    "ch_montage_grenzen": "Inbegrepen:\n- Alle materialen, leidingen, toestellen en appendages\n- Klein materiaal: bevestigingsmiddelen, kit, beugels\n- Gereedschap en meetapparatuur\n- Coördinatie met overige disciplines op de bouwplaats\n\nUitgesloten:\n- Constructieve sparingen en doorbraken (door STM/aannemer)\n- Buitenriolering en hemelwaterafvoer\n- Aansluiting op het openbare net (door netbeheerder)\n- Afwerking van wand- en vloerdoorvoeren (door afwerkploeg)"
+  }
+}

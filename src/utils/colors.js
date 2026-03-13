@@ -1,0 +1,18 @@
+export const C = {
+  o: '#F94816',
+  dk: '#22293B',
+  dk2: '#314056',
+  lt: '#F6F7F9',
+  wh: '#fff',
+  gr: '#2ECC71',
+  grL: '#E8F8F0',
+  bl: '#4A90D9',
+  blL: '#EBF3FC',
+  bor: '#E2E5EA',
+  txt: '#333',
+  txtL: '#888',
+  red: '#E74C3C',
+  amber: '#D97706',
+  amberL: '#FEF3C7',
+  heading: '#C52F05',
+};

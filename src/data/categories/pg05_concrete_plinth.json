@@ -1,0 +1,250 @@
+{
+  "_meta": {
+    "id": "concrete_plinth",
+    "pg": "PG05",
+    "scope": "Betonnen Plint",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": true,
+    "suppliers": ["NV Schelfhout"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_plinth",
+          "label": "Betonnen Plinten",
+          "defaultOn": true,
+          "text": "De Leverancier dient prefab betonnen plinten (sokkelplaten) te leveren voor toepassing aan de voet van sandwichpaneel-gevels:\n\nProducttype: {{plinthType}}\nHoogte: {{height}} mm\nDikte: {{thickness}} mm\nLengtes: {{length}}\nBetonklasse: min. {{concCl}}\nMilieuklasse: min. {{expCl}}\nWapening: {{rebar}}\n\nBuitenafwerking: {{extFin}}\nBinnenafwerking: {{intFin}}\nKleur/toeslagmateriaal: {{colour}}\n\nAnkers: {{anchors}}\n\nTotale hoeveelheid: {{qty}} stuks / {{totalLength}} m1\n\nDe Leverancier dient:\n- Plinten te vervaardigen conform de projecttekeningen en deze specificatie\n- Maattoleranties conform EN 14992 te waarborgen\n- Ingestorte ankerinserts op de op tekening aangegeven posities te plaatsen\n- De buitenafwerking af te stemmen op of compatibel te maken met de aangrenzende sandwichpanelen\n- De maximaal transporteerbare stuklengte te bevestigen\n- Het gewicht per stuk te bevestigen\n\nDe Leverancier dient te bevestigen: betonklasse, milieuklasse, brandclassificatie, DoP/CE-markering, gewicht per m1 en maximale stukafmetingen.\n\nAfwijkende of lagere specificaties zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "plinthType",
+              "label": "Producttype",
+              "type": "select",
+              "options": ["PLIBE", "PLISAFESI"],
+              "default": "PLIBE",
+              "delegateText": "De Leverancier dient een voorstel te doen voor producttype passend bij de opgegeven afmetingen en toepassing en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "height",
+              "label": "Hoogte (mm)",
+              "type": "number",
+              "default": "400",
+              "source": "specs"
+            },
+            {
+              "id": "thickness",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "150",
+              "source": "specs"
+            },
+            {
+              "id": "length",
+              "label": "Lengtes (mm)",
+              "type": "text",
+              "default": "conform tekening",
+              "delegateText": "De Leverancier dient de maximale standaard stuklengte en beschikbare modulaire lengtes te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "concCl",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C35/45",
+              "source": "specs"
+            },
+            {
+              "id": "expCl",
+              "label": "Milieuklasse",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4", "XD1", "XF1", "XF2"],
+              "default": "XC4",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Wapening",
+              "type": "text",
+              "default": "conform constructief ontwerp",
+              "delegateText": "De Leverancier dient het wapeningsontwerp te bevestigen en berekeningen of verwijzing naar typegeteste ontwerpen te overleggen.",
+              "source": "specs"
+            },
+            {
+              "id": "extFin",
+              "label": "Buitenafwerking",
+              "type": "select",
+              "options": ["Glad bekist", "Uitgewassen", "Gezandstraald", "Zuurgeëtst"],
+              "default": "Glad bekist",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Binnenafwerking",
+              "type": "select",
+              "options": ["Glad bekist", "Ruw"],
+              "default": "Glad bekist",
+              "source": "specs"
+            },
+            {
+              "id": "colour",
+              "label": "Kleur/toeslagmateriaal",
+              "type": "text",
+              "default": "natuurgrijs",
+              "delegateText": "De Leverancier dient een voorstel te doen voor kleur en toeslagmateriaal passend bij of complementair aan de aangrenzende panelen. STM bevestigt op basis van monsters.",
+              "source": "specs"
+            },
+            {
+              "id": "anchors",
+              "label": "Ankers",
+              "type": "text",
+              "default": "Frimeda 28/15 of gelijkwaardig",
+              "delegateText": "De Leverancier dient het ankertype, posities en belastingscapaciteit te specificeren. Ankers dienen compatibel te zijn met het ankersysteem van de aangrenzende sandwichpanelen.",
+              "source": "specs"
+            },
+            {
+              "id": "qty",
+              "label": "Aantal (stuks)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "totalLength",
+              "label": "Totale lengte (m1)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_plinth_cut",
+          "label": "Sparingen & Uitsparingen in Plinten",
+          "defaultOn": true,
+          "text": "Uitsparingen in plinten: {{cutQty}} stuks, standaard max. {{cutMax}} m².\n\nPer uitsparing: wapening langs randen. Dagkantafwerking: {{dagType}}.\n\nDe Leverancier dient de constructieve integriteit bij alle uitsparingen te waarborgen en de maximale uitsparingsafmetingen zonder aanvullende wapening te bevestigen.\n\nPrijs: per uitsparing (standaard) en per m1 dagkant.",
+          "variables": [
+            {
+              "id": "cutQty",
+              "label": "Aantal uitsparingen",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "cutMax",
+              "label": "Standaard max. (m²)",
+              "type": "number",
+              "default": "1",
+              "source": "specs"
+            },
+            {
+              "id": "dagType",
+              "label": "Dagkantafwerking",
+              "type": "text",
+              "default": "prefab, passend bij buitenafwerking",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_plinth_acc",
+          "label": "Toebehoren & Ankers",
+          "defaultOn": true,
+          "text": "De Leverancier dient alle ingestorte onderdelen en toebehoren te leveren die nodig zijn voor een complete plintinstallatie:\n\n- Ingestorte ankerinserts: {{anchorType}}, aantal per stuk: {{anchorQty}}\n- Hijsankers: inbegrepen, type conform standaard Leverancier\n- Mortelzakken / nivelleringsvoorzieningen: {{groutPocket}}\n- Afdichtstrip / EPDM aan onderzijde: {{sealingStrip}}\n\nAlle ingestorte onderdelen dienen te worden uitgevoerd in RVS A4 of thermisch verzinkt, tenzij anders gespecificeerd.\n\nDe Leverancier dient te bevestigen:\n- Ankerbelastingscapaciteit (trek en afschuiving per anker)\n- Compatibiliteit met staalconstructie-aansluiting\n- Montage-instructies en uitzettemplates",
+          "variables": [
+            {
+              "id": "anchorType",
+              "label": "Ankertype",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "delegateText": "De Leverancier dient het ankersysteem te specificeren en belastingstabellen te overleggen.",
+              "source": "specs"
+            },
+            {
+              "id": "anchorQty",
+              "label": "Ankers per stuk",
+              "type": "number",
+              "default": "2",
+              "source": "specs"
+            },
+            {
+              "id": "groutPocket",
+              "label": "Mortelzakken",
+              "type": "select",
+              "options": ["Inbegrepen", "Niet vereist", "Conform tekening"],
+              "default": "Conform tekening",
+              "source": "specs"
+            },
+            {
+              "id": "sealingStrip",
+              "label": "Afdichtstrip",
+              "type": "select",
+              "options": ["EPDM — inbegrepen", "Compriband — inbegrepen", "Door derden", "Niet vereist"],
+              "default": "Door derden",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_plinth",
+          "label": "Technische eisen plinten",
+          "defaultOn": true,
+          "text": "De Leverancier dient te voldoen aan de volgende technische eisen:\n\n- Betonklasse: min. {{concCl}} conform EN 206\n- Milieuklasse: min. {{expCl}} conform EN 206 / NEN-EN 1992-1-1\n- Brandwerendheid: EN 13501-2, min. {{fireRes}} (indien van toepassing)\n- Maattoleranties: conform EN 14992\n\nDe Leverancier dient productietekeningen (werktekeningen) op te stellen op basis van de door STM verstrekte constructietekeningen en het IFC-model.\n\nAfwijkende of lagere waarden zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "concCl",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C35/45",
+              "source": "specs"
+            },
+            {
+              "id": "fireRes",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "N.v.t."],
+              "default": "EI 60",
+              "source": "specs"
+            },
+            {
+              "id": "expCl",
+              "label": "Milieuklasse",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4", "XD1", "XF1"],
+              "default": "XC4",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_plinth",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Alle geleverde elementen dienen te voldoen aan minimaal de volgende normen:\n\n- EN 14992 — Prefab betonelementen: wandelementen\n- EN 13369 — Gemeenschappelijke regels voor prefab betonelementen\n- EN 206 — Beton: specificatie, eigenschappen, vervaardiging en conformiteit\n- NEN-EN 1992-1-1 — Eurocode 2: Ontwerp en berekening van betonconstructies\n- EN 13501-2 — Brandclassificatie: brandwerendheid (indien van toepassing)\n\nDe Leverancier dient te beschikken over CE-markering (DoP) voor de geleverde elementen.\nBetonproductie dient plaats te vinden in een BFBN-gecertificeerde fabriek of gelijkwaardig.\nWapeningscertificaten: EN 10080, 3.1 walscertificaten vereist.\n\nBij te voegen: DoP, betonsamenstelling, brandclassificatie, milieuklasse bevestiging.\n\nBij tegenstrijdigheden geldt de strengste norm als leidend.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m1 plint (per hoogte × dikte combinatie)\nPer stuk: standaard uitsparing\nPer m1: dagkantafwerking\nPer stuk: ankerinsert (indien niet inbegrepen in m1-tarief)\nPer vracht: transport\n\nInbegrepen: productie, uitharding, kwaliteitscontrole, CE-markering, hijsankers, standaard ingestorte onderdelen.\nToeslagen: niet-standaard lengte, speciale afwerking/kleur, engineeringkosten, kleine bestelling.",
+    "ch_prijs_toeslagen": "- Niet-standaard lengte (afwijkend van modulaire maten)\n- Speciale afwerking of kleur\n- Engineeringkosten\n- Kleine bestelling (onder minimale bestelhoeveelheid)\n- Materiaalindex (specificeer welke index van toepassing is)",
+    "ch_uitsluitingen_items": "- Montage/plaatsing van plinten\n- Funderingswerkzaamheden en uitzetten\n- Kraan en hijsmiddelen\n- Mortel en ondergieting\n- Voegkit tussen plinten\n- Waterdichting aan plintonderzijde\n- Aanvulling tegen plint\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave (per m1 per type, per stuk toebehoren)\n2. Technische productbladen (PLIBE / PLISAFESI)\n3. DoP + CE-markering documentatie\n4. Betonsamenstelling en milieuklasse bevestiging\n5. Brandclassificatierapport (EN 13501-2)\n6. Anker belastingstabellen en compatibiliteitsbevestiging\n7. Maximaal transporteerbare stukafmetingen en gewicht\n8. Levertijd na goedgekeurde werktekeningen\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing"
+  }
+}

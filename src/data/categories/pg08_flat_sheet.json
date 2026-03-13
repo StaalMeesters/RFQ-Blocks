@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "id": "flat_sheet",
+    "pg": "PG08",
+    "scope": "Vlakke Staalplaat",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": false,
+    "suppliers": [
+      "Cladding Point BV"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_flat",
+          "label": "Vlakke Staalplaten",
+          "defaultOn": true,
+          "text": "De Leverancier dient enkelwandige vlakke staalplaten te leveren voor zichtbare toepassing:\n\nBreedte: {{sheetWidth}} mm\nStaaldikte: min {{steelThickness}} mm\nSubstraat: {{substrate}}\nCoating: {{coating}}, min {{coatingThickness}} um\nKleur: {{colour}}\nToepassing: {{application}}\nOppervlakte: {{area}} m2\nMax lengte: {{maxLength}} m\n\nVlakheidstolerantie: max {{flatnessTol}} mm/m (lengterichting), max {{flatnessTolT}} mm/m (dwarsrichting).\n\nDe Leverancier dient te bevestigen: vlakheidstoleranties conform EN 10143, geschiktheid voor zichtbare toepassing zonder aanvullende nabewerking, substraat- en coatingspecificatie, maximale plaatafmetingen, gewicht per m2.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "sheetWidth",
+              "label": "Plaatbreedte (mm)",
+              "type": "number",
+              "default": "1000",
+              "source": "specs"
+            },
+            {
+              "id": "steelThickness",
+              "label": "Staaldikte (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            },
+            {
+              "id": "substrate",
+              "label": "Substraat",
+              "type": "select",
+              "options": [
+                "Thermisch verzinkt Z275",
+                "Galvalume AZ185",
+                "RVS 304"
+              ],
+              "default": "Thermisch verzinkt Z275",
+              "source": "specs"
+            },
+            {
+              "id": "coating",
+              "label": "Coating",
+              "type": "text",
+              "default": "Diamond 50um",
+              "delegateText": "Stel coatingsysteem voor geschikt voor zichtbare toepassing met min 25 jaar garantie.",
+              "source": "specs"
+            },
+            {
+              "id": "coatingThickness",
+              "label": "Coatingdikte (um)",
+              "type": "number",
+              "default": "50",
+              "source": "specs"
+            },
+            {
+              "id": "colour",
+              "label": "Kleur",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Kleurenkaart aan te leveren. STM bevestigt.",
+              "source": "specs"
+            },
+            {
+              "id": "application",
+              "label": "Toepassing",
+              "type": "select",
+              "options": [
+                "Gevelbekleding",
+                "Onderlijst (soffit)",
+                "Boeideel (fascia)",
+                "Muurafdekker",
+                "Decoratief"
+              ],
+              "default": "Gevelbekleding",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Oppervlakte (m2)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "maxLength",
+              "label": "Max lengte (m)",
+              "type": "number",
+              "default": "6",
+              "source": "specs"
+            },
+            {
+              "id": "flatnessTol",
+              "label": "Vlakheidstol. lengterichting (mm/m)",
+              "type": "number",
+              "default": "1.0",
+              "source": "specs"
+            },
+            {
+              "id": "flatnessTolT",
+              "label": "Vlakheidstol. dwarsrichting (mm/m)",
+              "type": "number",
+              "default": "1.5",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_flat_acc",
+          "label": "Sluitstukken & Accessoires",
+          "defaultOn": true,
+          "text": "De Leverancier dient bijpassende sluitstukken, hoekstukken en bevestigingsaccessoires te leveren voor de vlakke plaattoepassing:\n\nSluitstukmateriaal: {{flashMaterial}}\nKleur: {{flashColour}}\nDikte: {{flashThk}} mm\n\nInbegrepen: hoekstukken, randprofielen, voetsluitstukken, bevestigingsclips, popnagels, afdichtingstape.\n\nAlle accessoires dienen overeen te komen met het substraat en de coatingspecificatie van de vlakke plaat.\n\nBevestigen: compatibiliteit met plaatsysteem, corrosiebestendigheid, beschikbaarheid van compleet accessoirepakket.",
+          "variables": [
+            {
+              "id": "flashMaterial",
+              "label": "Sluitstukmateriaal",
+              "type": "select",
+              "options": [
+                "Bijpassend gegalvaniseerd staal",
+                "Bijpassend gecoat staal",
+                "Aluminium",
+                "RVS 304"
+              ],
+              "default": "Bijpassend gecoat staal",
+              "source": "specs"
+            },
+            {
+              "id": "flashColour",
+              "label": "Sluitstukkleur",
+              "type": "text",
+              "default": "conform gevelspecificatie",
+              "delegateText": "Afstemmen op kleur vlakke plaat. STM bevestigt.",
+              "source": "specs"
+            },
+            {
+              "id": "flashThk",
+              "label": "Sluitstukdikte (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_vlakheid",
+          "label": "Vlakheid & Oppervlaktekwaliteit",
+          "defaultOn": true,
+          "text": "De vlakke staalplaat dient te voldoen aan vlakheidstoleranties conform EN 10143.\n\nVoor zichtbare toepassingen geldt:\n- Vlakheidstolerantie lengterichting: max {{flatnessTol}} mm/m\n- Vlakheidstolerantie dwarsrichting: max {{flatnessTolT}} mm/m\n\nDe plaat dient geschikt te zijn voor zichtbare toepassing zonder aanvullende nabewerking (geen olievelekken, krassen, deuken of kleurverschillen zichtbaar op 3 meter afstand).\n\nDe Leverancier dient vlakheidstestgegevens bij te voegen.",
+          "variables": [
+            {
+              "id": "flatnessTol",
+              "label": "Vlakheidstol. lengterichting (mm/m)",
+              "type": "number",
+              "default": "1.0"
+            },
+            {
+              "id": "flatnessTolT",
+              "label": "Vlakheidstol. dwarsrichting (mm/m)",
+              "type": "number",
+              "default": "1.5"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 14782 (zelfdragende metalen platen voor dakbedekking en gevelbekleding)\n- EN 10143 (continu verzinkte dunne staalplaat — toleranties)\n- EN 10169 (organische coatings op staalplaat)\n- EN 10346 (continu thermisch verzinkt staal)\n\nCoatinggarantie: minimaal 25 jaar.\n\nBij te voegen: DoP, materiaalcertificaten, vlakheidstestgegevens, coatinggarantie.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m2 vlakke plaat\n- Per m1 sluitstukken\n- Per vracht transport",
+    "ch_prijs_toeslagen": "- Minimale bestelhoeveelheid toeslag\n- Niet-standaard kleur toeslag\n- Op-maat-geknipte toeslag\n- Verpakkingstoeslag",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage\n- Onderconstructie\n- Voegkitten\n- Kraan\n- Steiger\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nVerwerkingsrichtlijnen worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie\n2. Productbladen\n3. DoP + CE-certificaat\n4. Vlakheidstestgegevens\n5. Coatinggarantie\n6. Kleurstalen\n7. Levertijd\n8. Algemene voorwaarden\n9. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "",
+    "ch_montage_grenzen": ""
+  }
+}

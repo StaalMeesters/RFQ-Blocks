@@ -1,0 +1,121 @@
+{
+  "_meta": {
+    "id": "fall_protection",
+    "pg": "PG08",
+    "scope": "Valbeveiliging",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": ["HD Dak"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_fp",
+          "label": "Permanente valbeveiliging dak",
+          "defaultOn": true,
+          "text": "De Leverancier dient een volledige permanente valbeveiliging te leveren en te installeren conform de projectdocumentatie.\n\nSysteem: {{fpType}}\nMaximaal aantal gelijktijdige gebruikers: {{fpUsers}}\nAnkerpunten: {{ancQty}} stuks\nLijnsysteem: {{llLen}} m\n\nDe scope omvat alle benodigde materialen, bevestigingsmiddelen, engineering en certificering voor een volledig functioneel en gecertificeerd valbeveiligingssysteem.\n\nDe Leverancier dient een gebruikershandleiding en jaarlijks inspectieprotocol aan te leveren. Deze documenten zijn inbegrepen in de aanbieding.",
+          "variables": [
+            {
+              "id": "fpType",
+              "label": "Systeemtype",
+              "type": "select",
+              "options": [
+                "Ankerpunten",
+                "Horizontaal lijnsysteem (kabel)",
+                "Lijnsysteem (rail)",
+                "Combinatie",
+                "Randbeveiliging (hekwerk)"
+              ],
+              "default": "Ankerpunten",
+              "source": "specs"
+            },
+            {
+              "id": "fpUsers",
+              "label": "Max. gebruikers",
+              "type": "number",
+              "default": "1",
+              "source": "specs"
+            },
+            {
+              "id": "ancQty",
+              "label": "Aantal ankerpunten",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "llLen",
+              "label": "Lijnsysteem lengte (m)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_fp",
+          "label": "Technische eisen valbeveiliging",
+          "defaultOn": true,
+          "text": "De Leverancier dient het valbeveiligingssysteem te dimensioneren en te ontwerpen op basis van:\n\n- Dakconstructie: {{dakType}}\n- Dakbedekking: {{dakBedekking}}\n- Windbelasting conform NEN-EN 1991-1-4\n- Maximale valafstand conform EN 795\n\nDe ankerpunten dienen geschikt te zijn voor de opgegeven dakconstructie. De Leverancier dient de bevestigingsmethode en trekkrachten te specificeren in de aanbieding.\n\nBij toepassing van een lijnsysteem dient de Leverancier de doorbuiging en de minimale vrije hoogte onder het dak te berekenen en te vermelden.\n\nAlle componenten dienen van roestvrij staal of gelijkwaardig corrosiebestendig materiaal te zijn.\n\nDe Leverancier dient een volledig installatieplan aan te leveren, inclusief positionering van ankerpunten en looproutes.",
+          "variables": [
+            {
+              "id": "dakType",
+              "label": "Dakconstructie",
+              "type": "select",
+              "options": [
+                "Stalen dakplaten op gordingen",
+                "Sandwichpanelen",
+                "Betonnen dakvloer",
+                "Houtconstructie"
+              ],
+              "default": "Stalen dakplaten op gordingen",
+              "source": "specs"
+            },
+            {
+              "id": "dakBedekking",
+              "label": "Dakbedekking",
+              "type": "select",
+              "options": [
+                "PVC dakbaan",
+                "Bitumineus",
+                "Sandwichpaneel (gecoat)",
+                "Staalplaat geprofileerd"
+              ],
+              "default": "PVC dakbaan",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_fp",
+          "label": "Normen en certificering",
+          "defaultOn": true,
+          "text": "De valbeveiliging dient te voldoen aan de volgende normen:\n\n- EN 795 — Persoonlijke beschermingsmiddelen tegen vallen van hoogte: ankerpunten\n- EN 365 — Persoonlijke beschermingsmiddelen: algemene eisen voor gebruiksaanwijzingen, onderhoud en periodieke controle\n- NEN 8112 — Valbeveiliging van gebouwen\n- Arbobesluit, hoofdstuk 3.16 — Valgevaar\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- CE-certificaat van het systeem\n- Installatiehandleiding\n- Inspectieprotocol voor jaarlijkse keuring\n- Berekening trekkrachten op dakconstructie",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per stuk ankerpunt (levering en montage)\n- Per m1 lijnsysteem (levering en montage)\n- Lump sum: engineering, certificering en documentatie\n- Jaarlijkse inspectie: per bezoek",
+    "ch_prijs_toeslagen": "- Toeslag voor werken buiten reguliere werktijden\n- Toeslag voor gefaseerde uitvoering",
+    "ch_uitsluitingen_items": "- Dakconstructie en dakbedekking\n- Waterdichting en herstel dakbedekking rondom bevestigingen\n- PBM (valharnassen, vanglijn e.d.)\n- Gebruikerstraining en instructie\n- Jaarlijkse periodieke keuring (separaat aan te bieden)\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per onderdeel\n2. Systeemspecificatie en productbladen\n3. CE-certificaten\n4. Installatieplan met positionering\n5. Inspectieprotocol\n6. Garantievoorwaarden\n7. Algemene voorwaarden\n8. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige installatie van ankerpunten en/of lijnsysteem op het dak\n- Bevestiging aan de draagconstructie conform fabrikantvoorschriften\n- Afdichting van alle dakdoorvoeren\n- Inbedrijfstelling en oplevering met certificaat\n- Aanlevering van as-built documentatie",
+    "ch_montage_grenzen": "Inbegrepen:\n- Alle hefmiddelen en steigers benodigd voor de installatie\n- Klein materiaal en bevestigingsmiddelen\n- Afdichtingsmateriaal rondom dakdoorvoeren\n\nUitgesloten:\n- Aanpassingen aan de draagconstructie\n- Herstel van dakbedekking buiten directe bevestigingspunten\n- Werkzaamheden aan de onderzijde van het dak"
+  }
+}
