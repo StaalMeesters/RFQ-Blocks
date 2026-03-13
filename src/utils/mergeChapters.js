@@ -2,9 +2,12 @@ import masterData from '../data/master-chapters.json';
 import entities from '../data/entities.json';
 import { DEFAULT_CHAPTER_ORDER } from '../data/categoryRegistry.js';
 
+/** Chapters that are product-specific (duplicated per product in multi-product mode) */
+export const PRODUCT_CHAPTER_IDS = ['ch_scope', 'ch_technisch', 'ch_normering'];
+
 /**
- * Merge master shared chapters with category-specific chapters.
- * Returns an ordered array of chapter objects.
+ * Merge master shared chapters with category-specific chapters (single product).
+ * Returns a chapter map keyed by chapter ID.
  */
 export function mergeChapters(categoryJson, entityId, options = {}) {
   const { montageEnabled = false, bimEnabled = false } = options;
@@ -32,7 +35,6 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
   // ch_montage — shared, toggleable
   if (montageEnabled) {
     chapterMap.ch_montage = cloneChapter(masterData.ch_montage);
-    // Fill overrides
     fillOverride(chapterMap.ch_montage, 'montageScopeItems', overrides.ch_montage_scope);
     fillOverride(chapterMap.ch_montage, 'montageInbegrepen', overrides.ch_montage_grenzen);
   }
@@ -58,7 +60,6 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
 
   // ch_financieel — shared
   chapterMap.ch_financieel = cloneChapter(masterData.ch_financieel);
-  // Auto-fill entity variables
   fillEntityVars(chapterMap.ch_financieel, entity);
 
   // ch_wettelijk — per country
@@ -80,7 +81,6 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
 
   // ch_bijlagen — shared
   chapterMap.ch_bijlagen = cloneChapter(masterData.ch_bijlagen);
-  // Auto-generate appendix list
   const bijlagen = [`- ${entity.conditions}`];
   if (country === 'DE') bijlagen.push('- Freistellungsbescheinigung');
   if (bimEnabled) bijlagen.push('- BIM-vereisten');
@@ -89,9 +89,7 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
 
   // Auto-fill entity name in inleiding
   fillOverride(chapterMap.ch_inleiding, 'bedrijfsnaam', entity.name);
-  // Auto-fill scope description
   fillOverride(chapterMap.ch_inleiding, 'scopeBeschrijving', categoryJson._meta.scope);
-  // Handle montage clause
   if (!montageEnabled) {
     fillOverride(chapterMap.ch_inleiding, 'montageClause', '');
   }
@@ -100,7 +98,145 @@ export function mergeChapters(categoryJson, entityId, options = {}) {
 }
 
 /**
- * Order chapters based on user order or defaults
+ * Merge chapters for multiple products.
+ * products: [{ catJson, categoryId, label }, ...]
+ * Returns a chapter map where product-specific chapters have productSections.
+ */
+export function mergeMultiProductChapters(products, entityId, options = {}) {
+  const { montageEnabled = false, bimEnabled = false } = options;
+  const entity = entities[entityId] || entities.stp;
+  const country = entity.country;
+  const isMulti = products.length > 1;
+
+  // Determine scopeType: use 'service' if ANY product is service type
+  const hasService = products.some(p => p.catJson._meta.scopeType === 'service');
+  const scopeType = hasService ? 'service' : 'material';
+
+  // Build shared chapters from master templates
+  const chapterMap = {};
+
+  // ch_inleiding
+  chapterMap.ch_inleiding = cloneChapter(masterData.ch_inleiding);
+  fillOverride(chapterMap.ch_inleiding, 'bedrijfsnaam', entity.name);
+  const scopeDesc = products.map(p => p.label).join(', ');
+  fillOverride(chapterMap.ch_inleiding, 'scopeBeschrijving', scopeDesc);
+  if (!montageEnabled) {
+    fillOverride(chapterMap.ch_inleiding, 'montageClause', '');
+  }
+
+  // Product-specific chapters: ch_scope, ch_technisch, ch_normering
+  for (const chId of PRODUCT_CHAPTER_IDS) {
+    const sections = [];
+    for (let i = 0; i < products.length; i++) {
+      const prod = products[i];
+      const catChapters = prod.catJson.chapters || {};
+      if (catChapters[chId]) {
+        sections.push({
+          productIndex: i,
+          categoryId: prod.categoryId,
+          label: prod.label,
+          blocks: cloneChapter(catChapters[chId]).blocks || [],
+        });
+      }
+    }
+    if (sections.length > 0) {
+      // Get title from the first product that has this chapter, or from master
+      const firstCat = products.find(p => p.catJson.chapters?.[chId]);
+      const title = firstCat?.catJson.chapters[chId].title
+        || (chId === 'ch_scope' ? 'Scope van Levering'
+          : chId === 'ch_technisch' ? 'Technische Specificatie'
+            : 'Normering');
+      chapterMap[chId] = {
+        id: chId,
+        title,
+        isProductChapter: true,
+        productSections: sections,
+      };
+    }
+  }
+
+  // ch_montage — shared, toggleable
+  if (montageEnabled) {
+    chapterMap.ch_montage = cloneChapter(masterData.ch_montage);
+    const montageParts = [];
+    for (const prod of products) {
+      const ov = prod.catJson.overrides || {};
+      if (ov.ch_montage_scope) {
+        montageParts.push(isMulti ? `--- ${prod.label} ---\n${ov.ch_montage_scope}` : ov.ch_montage_scope);
+      }
+    }
+    if (montageParts.length > 0) fillOverride(chapterMap.ch_montage, 'montageScopeItems', montageParts.join('\n\n'));
+    const grenzParts = [];
+    for (const prod of products) {
+      const ov = prod.catJson.overrides || {};
+      if (ov.ch_montage_grenzen) {
+        grenzParts.push(isMulti ? `--- ${prod.label} ---\n${ov.ch_montage_grenzen}` : ov.ch_montage_grenzen);
+      }
+    }
+    if (grenzParts.length > 0) fillOverride(chapterMap.ch_montage, 'montageInbegrepen', grenzParts.join('\n\n'));
+  }
+
+  // ch_bim — shared, toggleable
+  if (bimEnabled) {
+    chapterMap.ch_bim = cloneChapter(masterData.ch_bim);
+  }
+
+  // ch_levering
+  const leveringKey = scopeType === 'service' ? 'ch_levering_service' : 'ch_levering_material';
+  chapterMap.ch_levering = cloneChapter(masterData[leveringKey]);
+
+  // ch_prijs — merge overrides from all products
+  chapterMap.ch_prijs = cloneChapter(masterData.ch_prijs);
+  mergeOverrideFromProducts(chapterMap.ch_prijs, 'prijsOpbouwItems', 'ch_prijs_items', products, isMulti);
+  mergeOverrideFromProducts(chapterMap.ch_prijs, 'toeslagItems', 'ch_prijs_toeslagen', products, isMulti);
+
+  // ch_financieel
+  chapterMap.ch_financieel = cloneChapter(masterData.ch_financieel);
+  fillEntityVars(chapterMap.ch_financieel, entity);
+
+  // ch_wettelijk
+  const wettelijkKey = country === 'DE' ? 'ch_wettelijk_de' : 'ch_wettelijk_nl';
+  chapterMap.ch_wettelijk = cloneChapter(masterData[wettelijkKey]);
+  if (country === 'DE' && entity.freistellung) {
+    fillOverride(chapterMap.ch_wettelijk, 'freistellungNummer', entity.freistellung.nummer);
+    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigVan', entity.freistellung.validFrom);
+    fillOverride(chapterMap.ch_wettelijk, 'freistellungGeldigTot', entity.freistellung.validTo);
+  }
+
+  // ch_uitsluitingen — merge from all products
+  chapterMap.ch_uitsluitingen = cloneChapter(masterData.ch_uitsluitingen);
+  mergeOverrideFromProducts(chapterMap.ch_uitsluitingen, 'uitsluitingItems', 'ch_uitsluitingen_items', products, isMulti);
+
+  // ch_offerte — merge from all products
+  chapterMap.ch_offerte = cloneChapter(masterData.ch_offerte);
+  mergeOverrideFromProducts(chapterMap.ch_offerte, 'vereistDocumenten', 'ch_offerte_documenten', products, isMulti);
+
+  // ch_bijlagen
+  chapterMap.ch_bijlagen = cloneChapter(masterData.ch_bijlagen);
+  const bijlagen = [`- ${entity.conditions}`];
+  if (country === 'DE') bijlagen.push('- Freistellungsbescheinigung');
+  if (bimEnabled) bijlagen.push('- BIM-vereisten');
+  bijlagen.push('- Tekeningen');
+  fillOverride(chapterMap.ch_bijlagen, 'bijlagenLijst', bijlagen.join('\n'));
+
+  return chapterMap;
+}
+
+/** Merge an override variable from all products into a single chapter */
+function mergeOverrideFromProducts(chapter, varId, overrideKey, products, isMulti) {
+  const parts = [];
+  for (const prod of products) {
+    const ov = prod.catJson.overrides || {};
+    if (ov[overrideKey]) {
+      parts.push(isMulti ? `--- ${prod.label} ---\n${ov[overrideKey]}` : ov[overrideKey]);
+    }
+  }
+  if (parts.length > 0) fillOverride(chapter, varId, parts.join('\n\n'));
+}
+
+/**
+ * Order chapters based on user order or defaults.
+ * Handles both single-product (blocks) and multi-product (productSections) chapters.
  */
 export function orderChapters(chapterMap, customOrder) {
   const order = customOrder || DEFAULT_CHAPTER_ORDER;
@@ -154,18 +290,73 @@ function fillEntityVars(chapter, entity) {
 }
 
 /**
- * Get all variables from a chapter map, flattened
+ * Get all variables from a chapter map, flattened.
+ * Handles both single-product and multi-product chapter structures.
  */
 export function getAllVariables(chapterMap) {
   const vars = [];
   for (const [chId, ch] of Object.entries(chapterMap)) {
-    if (!ch.blocks) continue;
-    for (const block of ch.blocks) {
-      if (!block.variables) continue;
-      for (const v of block.variables) {
-        vars.push({ ...v, chapterId: chId, blockId: block.id });
+    if (ch.blocks) {
+      for (const block of ch.blocks) {
+        if (!block.variables) continue;
+        for (const v of block.variables) {
+          vars.push({ ...v, chapterId: chId, blockId: block.id });
+        }
+      }
+    }
+    if (ch.productSections) {
+      for (const section of ch.productSections) {
+        for (const block of section.blocks) {
+          if (!block.variables) continue;
+          for (const v of block.variables) {
+            vars.push({ ...v, chapterId: chId, blockId: block.id, productIndex: section.productIndex });
+          }
+        }
       }
     }
   }
   return vars;
+}
+
+/**
+ * Build a map of blockId → productIndex from combined chapters.
+ * Returns undefined for blocks in shared chapters.
+ */
+export function buildBlockProductMap(chapters) {
+  const map = {};
+  for (const ch of chapters) {
+    if (ch.productSections) {
+      for (const section of ch.productSections) {
+        for (const block of section.blocks) {
+          map[block.id] = section.productIndex;
+        }
+      }
+    }
+  }
+  return map;
+}
+
+/**
+ * Find a block and its context in the combined chapters structure.
+ */
+export function findBlockInChapters(chapters, blockId) {
+  for (const ch of chapters) {
+    if (ch.blocks) {
+      for (const b of ch.blocks) {
+        if (b.id === blockId) {
+          return { block: b, chapter: ch, productIndex: undefined };
+        }
+      }
+    }
+    if (ch.productSections) {
+      for (const section of ch.productSections) {
+        for (const b of section.blocks) {
+          if (b.id === blockId) {
+            return { block: b, chapter: ch, productIndex: section.productIndex, productLabel: section.label };
+          }
+        }
+      }
+    }
+  }
+  return null;
 }

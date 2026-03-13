@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { C } from './utils/colors.js';
 import { exportWord } from './utils/exportWord.js';
-import useCategoryData from './hooks/useCategoryData.js';
+import useMultiProductData from './hooks/useMultiProductData.js';
 import EntitySelector from './components/EntitySelector.jsx';
 import TopBar from './components/TopBar.jsx';
 import LeftPanel from './components/LeftPanel.jsx';
@@ -11,18 +11,18 @@ import RFQPreview from './components/RFQPreview.jsx';
 export default function App() {
   const [screen, setScreen] = useState('select'); // 'select' or 'editor'
   const [entityId, setEntityId] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [categoryIds, setCategoryIds] = useState([]); // multi-select
 
   // Resizable panels
   const [leftWidth, setLeftWidth] = useState(260);
   const [rightWidth, setRightWidth] = useState(340);
   const dragging = useRef(null);
 
-  const data = useCategoryData(entityId, categoryId);
+  const data = useMultiProductData(entityId, categoryIds);
 
-  const handleStart = (eid, cid) => {
+  const handleStart = (eid, catIds) => {
     setEntityId(eid);
-    setCategoryId(cid);
+    setCategoryIds(catIds);
     setScreen('editor');
   };
 
@@ -31,30 +31,26 @@ export default function App() {
     setScreen('select');
   };
 
-  const handleCategoryChange = (newCatId) => {
-    data.save();
-    setCategoryId(newCatId);
-  };
-
   const handleExportWord = () => {
     exportWord({
       chapters: data.chapters,
       selectedBlocks: data.selectedBlocks,
-      vals: data.vals,
+      sharedVals: data.sharedVals,
       editedTexts: data.editedTexts,
       delBlocks: data.delBlocks,
-      removedVars: data.removedVars,
-      altVars: data.altVars,
-      altProduct: data.altProduct,
       entityId,
-      categoryId,
-      catMeta: data.catMeta,
+      products: data.products,
+      catMetas: data.catMetas,
+      getValsForProduct: data.getValsForProduct,
+      getRemovedVarsForProduct: data.getRemovedVarsForProduct,
+      getAltVarsForProduct: data.getAltVarsForProduct,
+      getAltProductForProduct: data.getAltProductForProduct,
     });
   };
 
   const handleReset = () => {
-    if (confirm('Alle wijzigingen voor deze categorie herstellen naar standaard?')) {
-      data.resetCategory();
+    if (confirm('Alle wijzigingen herstellen naar standaard?')) {
+      data.resetAll();
     }
   };
 
@@ -101,8 +97,7 @@ export default function App() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <TopBar
         entityId={entityId}
-        categoryId={categoryId}
-        onCategoryChange={handleCategoryChange}
+        products={data.products}
         onBack={handleBack}
         onUndo={data.undo}
         onRedo={data.redo}
@@ -116,6 +111,10 @@ export default function App() {
         onToggleFreeze={data.toggleFreeze}
         reviewStatus={data.reviewStatus}
         onSetReview={data.setReview}
+        activeProductIndex={data.activeProductIndex}
+        productStates={null} // presets use loadPresetIntoProduct directly
+        onLoadPreset={data.loadPresetIntoProduct}
+        getValsForProduct={data.getValsForProduct}
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
@@ -129,6 +128,7 @@ export default function App() {
         }}>
           <LeftPanel
             chapters={data.chapters}
+            products={data.products}
             selectedBlocks={data.selectedBlocks}
             activeBlock={data.activeBlock}
             delBlocks={data.delBlocks}
@@ -142,6 +142,8 @@ export default function App() {
             bimEnabled={data.bimEnabled}
             onToggleMontage={data.toggleMontage}
             onToggleBim={data.toggleBim}
+            onAddProduct={data.addProduct}
+            onRemoveProduct={data.removeProduct}
           />
         </div>
 
@@ -163,15 +165,16 @@ export default function App() {
           <MiddlePanel
             chapters={data.chapters}
             activeBlock={data.activeBlock}
+            activeBlockContext={data.activeBlockContext}
             selectedBlocks={data.selectedBlocks}
-            vals={data.vals}
+            vals={data.currentVals}
             editedTexts={data.editedTexts}
             delBlocks={data.delBlocks}
-            removedVars={data.removedVars}
-            altVars={data.altVars}
-            altProduct={data.altProduct}
+            removedVars={data.currentRemovedVars}
+            altVars={data.currentAltVars}
+            altProduct={data.currentAltProduct}
             frozen={data.frozen}
-            customSpecs={data.customSpecs}
+            customSpecs={data.currentCustomSpecs}
             onSetVal={data.setVal}
             onToggleDelegate={data.toggleDelegate}
             onToggleAltVar={data.toggleAltVar}
@@ -181,6 +184,7 @@ export default function App() {
             onUpdateText={data.updateText}
             onAddCustomSpec={data.addCustomSpec}
             getOriginalText={data.getOriginalText}
+            isMultiProduct={data.products.length > 1}
           />
         </div>
 
@@ -207,15 +211,17 @@ export default function App() {
         }}>
           <RFQPreview
             chapters={data.chapters}
+            products={data.products}
             selectedBlocks={data.selectedBlocks}
-            vals={data.vals}
+            sharedVals={data.sharedVals}
             editedTexts={data.editedTexts}
             delBlocks={data.delBlocks}
-            removedVars={data.removedVars}
-            altVars={data.altVars}
-            altProduct={data.altProduct}
             getOriginalText={data.getOriginalText}
             entityId={entityId}
+            getValsForProduct={data.getValsForProduct}
+            getRemovedVarsForProduct={data.getRemovedVarsForProduct}
+            getAltVarsForProduct={data.getAltVarsForProduct}
+            getAltProductForProduct={data.getAltProductForProduct}
           />
         </div>
       </div>

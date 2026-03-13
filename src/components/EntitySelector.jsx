@@ -12,9 +12,23 @@ const entityList = [
 
 export default function EntitySelector({ onStart }) {
   const [entityId, setEntityId] = useState('');
-  const [categoryId, setCategoryId] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState(new Set());
 
-  const canStart = entityId && categoryId;
+  const canStart = entityId && selectedCategories.size > 0;
+
+  const toggleCategory = (catId) => {
+    setSelectedCategories(prev => {
+      const next = new Set(prev);
+      if (next.has(catId)) next.delete(catId);
+      else next.add(catId);
+      return next;
+    });
+  };
+
+  const handleStart = () => {
+    if (!canStart) return;
+    onStart(entityId, [...selectedCategories]);
+  };
 
   return (
     <div style={{
@@ -30,8 +44,10 @@ export default function EntitySelector({ onStart }) {
         padding: '48px 56px',
         borderRadius: 12,
         boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
-        maxWidth: 520,
+        maxWidth: 600,
         width: '100%',
+        maxHeight: '90vh',
+        overflow: 'auto',
       }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <span style={{ color: C.o, fontWeight: 700, fontSize: 28 }}>STM</span>
@@ -41,6 +57,7 @@ export default function EntitySelector({ onStart }) {
           </h2>
         </div>
 
+        {/* Step 1: Entity */}
         <div style={{ marginBottom: 24 }}>
           <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: 'block', marginBottom: 8 }}>
             Stap 1: Selecteer STM entiteit
@@ -87,37 +104,93 @@ export default function EntitySelector({ onStart }) {
           </div>
         </div>
 
-        <div style={{ marginBottom: 32 }}>
+        {/* Step 2: Multi-select categories */}
+        <div style={{ marginBottom: 24 }}>
           <label style={{ fontSize: 13, fontWeight: 600, color: C.dk, display: 'block', marginBottom: 8 }}>
-            Stap 2: Selecteer productcategorie
+            Stap 2: Selecteer producten voor deze aanvraag
           </label>
-          <select
-            value={categoryId}
-            onChange={e => setCategoryId(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '10px 12px',
-              borderRadius: 6,
-              border: `1px solid ${C.bor}`,
-              fontSize: 14,
-              color: C.dk,
-              background: C.wh,
-            }}
-          >
-            <option value="">— Selecteer categorie —</option>
-            {PG_GROUPS.map(g => (
-              <optgroup key={g.pg} label={`${g.pg} — ${g.label}`}>
-                {CATEGORY_LIST.filter(c => c.pg === g.pg).map(c => (
-                  <option key={c.id} value={c.id}>{c.scope}</option>
-                ))}
-              </optgroup>
-            ))}
-          </select>
+          <div style={{
+            border: `1px solid ${C.bor}`,
+            borderRadius: 8,
+            maxHeight: 340,
+            overflow: 'auto',
+          }}>
+            {PG_GROUPS.map(g => {
+              const cats = CATEGORY_LIST.filter(c => c.pg === g.pg);
+              return (
+                <div key={g.pg}>
+                  <div style={{
+                    padding: '8px 14px',
+                    background: C.lt,
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: C.dk,
+                    borderBottom: `1px solid ${C.bor}`,
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 1,
+                  }}>
+                    {g.pg} — {g.label}
+                  </div>
+                  {cats.map(cat => {
+                    const isChecked = selectedCategories.has(cat.id);
+                    return (
+                      <label
+                        key={cat.id}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 10,
+                          padding: '8px 14px 8px 28px',
+                          cursor: 'pointer',
+                          background: isChecked ? '#FFF5F2' : 'transparent',
+                          borderBottom: `1px solid ${C.bor}`,
+                          transition: 'background 0.1s',
+                        }}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isChecked}
+                          onChange={() => toggleCategory(cat.id)}
+                          style={{ accentColor: C.o, width: 15, height: 15 }}
+                        />
+                        <span style={{
+                          fontSize: 13,
+                          color: isChecked ? C.dk : C.txt,
+                          fontWeight: isChecked ? 600 : 400,
+                          flex: 1,
+                        }}>
+                          {cat.scope}
+                        </span>
+                        <span style={{
+                          fontSize: 10,
+                          color: C.txtL,
+                          fontWeight: 500,
+                        }}>
+                          {cat.scopeType === 'service' ? 'dienst' : 'materiaal'}
+                        </span>
+                      </label>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+          {selectedCategories.size > 0 && (
+            <div style={{
+              marginTop: 8,
+              fontSize: 13,
+              fontWeight: 600,
+              color: C.o,
+            }}>
+              Geselecteerd: {selectedCategories.size} product{selectedCategories.size !== 1 ? 'en' : ''}
+            </div>
+          )}
         </div>
 
         <button
           disabled={!canStart}
-          onClick={() => onStart(entityId, categoryId)}
+          onClick={handleStart}
           style={{
             width: '100%',
             padding: '12px 0',

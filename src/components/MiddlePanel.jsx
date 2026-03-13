@@ -3,27 +3,19 @@ import { C } from '../utils/colors.js';
 import SpecGrid from './SpecGrid.jsx';
 import AddCustomSpec from './AddCustomSpec.jsx';
 
+const SUB_LABELS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 export default function MiddlePanel({
-  chapters, activeBlock, selectedBlocks, vals, editedTexts,
+  chapters, activeBlock, activeBlockContext, selectedBlocks, vals, editedTexts,
   delBlocks, removedVars, altVars, altProduct, frozen, customSpecs,
   onSetVal, onToggleDelegate, onToggleAltVar, onToggleAltProduct,
   onRemoveVar, onRestoreVar, onUpdateText, onAddCustomSpec,
-  getOriginalText,
+  getOriginalText, isMultiProduct,
 }) {
-  // Find active block data
-  let activeBlockData = null;
-  let activeChapter = null;
-  for (const ch of chapters) {
-    if (!ch.blocks) continue;
-    for (const b of ch.blocks) {
-      if (b.id === activeBlock) {
-        activeBlockData = b;
-        activeChapter = ch;
-        break;
-      }
-    }
-    if (activeBlockData) break;
-  }
+  // Use the pre-computed block context from the hook
+  const ctx = activeBlockContext;
+  const activeBlockData = ctx?.block || null;
+  const activeChapter = ctx?.chapter || null;
 
   if (!activeBlockData) {
     return (
@@ -48,6 +40,12 @@ export default function MiddlePanel({
   const isEdited = editedTexts[activeBlock] !== undefined && editedTexts[activeBlock] !== originalText;
   const blockVars = (activeBlockData.variables || []).filter(v => !removedVars.has(v.id) && v.type !== 'hidden');
 
+  // Build breadcrumb
+  let breadcrumb = `${activeChapter.number}. ${activeChapter.title}`;
+  if (ctx.productIndex !== undefined && isMultiProduct) {
+    breadcrumb = `${activeChapter.number}${SUB_LABELS[ctx.productIndex]}. ${ctx.productLabel || activeChapter.title}`;
+  }
+
   return (
     <div style={{
       height: '100%',
@@ -64,7 +62,7 @@ export default function MiddlePanel({
         flexWrap: 'wrap',
       }}>
         <span style={{ fontSize: 11, color: C.txtL }}>
-          {activeChapter.number}. {activeChapter.title} →
+          {breadcrumb} →
         </span>
         <span style={{ fontSize: 15, fontWeight: 600, color: C.dk }}>
           {activeBlockData.label}
@@ -181,7 +179,6 @@ function ProtectedTextEditor({ text, variables, vals, removedVars, frozen, isDel
   const renderText = () => {
     if (!text) return '';
     let result = text;
-    // Replace {{varId}} with badge HTML
     const varMap = {};
     for (const v of variables) {
       varMap[v.id] = v;
@@ -203,7 +200,6 @@ function ProtectedTextEditor({ text, variables, vals, removedVars, frozen, isDel
 
   const handleInput = useCallback((e) => {
     if (frozen) return;
-    // Extract text content, preserving variable placeholders
     const el = e.target;
     let newText = '';
     for (const node of el.childNodes) {
