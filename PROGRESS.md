@@ -42,10 +42,12 @@
 - [x] CP-F6: Multi-product RFQ (completed earlier)
 - [x] CP-F7: Default spec presets (completed earlier)
 - [x] CP-F8: In-app help system — "?" button, slide-in panel (Snelstart/Functies/Sneltoetsen/FAQ), first-time welcome overlay
+- [x] CP-F9: Final build verification — all features integrated, 24/24 categories valid, Vite build passes
 
 ## Build Status
-- **Vite build**: PASS (845 kB, 218 modules)
+- **Vite build**: PASS (865 kB, 220 modules)
 - **Category JSONs**: 24/24 valid
 - **All text**: Dutch (NL)
 - **Entities**: 4 (STP, D&B BV, D&B GmbH, STM Group)
-- **Chapters**: 13 (drag-reorderable)
+- **Chapters**: 11 (revised structure, drag-reorderable)
+- **Features**: Multi-product, presets, contract types, master chapters, auto-save, help system, JSZip Word export
