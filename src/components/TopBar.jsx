@@ -3,6 +3,7 @@ import { C } from '../utils/colors.js';
 import entities from '../data/entities.json';
 import { useUser } from '../auth/AuthWrapper.jsx';
 import { loadPresets, savePresets, loadAllPresets, importAllPresets } from '../utils/storage.js';
+import MasterChapterModal from './MasterChapterModal.jsx';
 
 export default function TopBar({
   entityId, products, onBack,
@@ -13,6 +14,9 @@ export default function TopBar({
 }) {
   const { user, logout } = useUser();
   const entity = entities[entityId];
+
+  // Master chapters modal
+  const [masterModalOpen, setMasterModalOpen] = useState(false);
 
   // Preset state
   const [presetDropdownOpen, setPresetDropdownOpen] = useState(false);
@@ -291,6 +295,15 @@ export default function TopBar({
         disabled: !activeCategoryId,
       })}
 
+      <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />
+
+      {/* Master chapters */}
+      {btn('Hoofdstukken beheren', () => setMasterModalOpen(true), {
+        color: C.wh,
+        borderColor: C.dk2,
+        title: 'Bewerk master-teksten voor gedeelde hoofdstukken',
+      })}
+
       {/* Preset save dialog */}
       {presetDialogOpen && (
         <div style={{
@@ -424,6 +437,9 @@ export default function TopBar({
           Afmelden
         </button>
       </div>
+
+      {/* Master chapter modal */}
+      {masterModalOpen && <MasterChapterModal onClose={() => setMasterModalOpen(false)} />}
     </div>
   );
 }

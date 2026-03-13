@@ -68,3 +68,34 @@ export function importAllPresets(data) {
     }
   } catch (e) { console.error('Preset import failed:', e); }
 }
+
+/* ── Master chapter overrides ── */
+
+const MASTER_KEY = `${PREFIX}master_chapters`;
+const MASTER_FLAGS_KEY = `${PREFIX}master_flags`;
+
+export function loadMasterOverrides() {
+  try {
+    const raw = localStorage.getItem(MASTER_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+export function saveMasterOverrides(overrides) {
+  try {
+    localStorage.setItem(MASTER_KEY, JSON.stringify(overrides));
+  } catch (e) { console.error('Master override save failed:', e); }
+}
+
+export function loadMasterFlags() {
+  try {
+    const raw = localStorage.getItem(MASTER_FLAGS_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch { return {}; }
+}
+
+export function saveMasterFlags(flags) {
+  try {
+    localStorage.setItem(MASTER_FLAGS_KEY, JSON.stringify(flags));
+  } catch (e) { console.error('Master flags save failed:', e); }
+}

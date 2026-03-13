@@ -35,6 +35,7 @@
 - [x] CP-F7: Default spec presets (save/load/delete, export/import, per-category localStorage)
 - [x] CP-W1–W4: JSZip-based .docx export with entity templates + appendix image embedding
 - [x] CP-F1: Fix Word export — remove excessive spacing, duplicate closing, duplicate bijlagen, blank appendix pages, auto-renumber chapters, fix toggleBlock vars (bankgarantie/verzekeringen/retentie)
+- [x] CP-F2: Master chapter override — "Hoofdstukken beheren" modal, edit master texts, localStorage persistence, integrated into mergeChapters
 
 ## Build Status
 - **Vite build**: PASS (845 kB, 218 modules)
