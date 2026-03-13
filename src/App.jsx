@@ -41,6 +41,7 @@ export default function App() {
       entityId,
       products: data.products,
       catMetas: data.catMetas,
+      contractType: data.contractType,
       getValsForProduct: data.getValsForProduct,
       getRemovedVarsForProduct: data.getRemovedVarsForProduct,
       getAltVarsForProduct: data.getAltVarsForProduct,
@@ -115,6 +116,8 @@ export default function App() {
         productStates={null} // presets use loadPresetIntoProduct directly
         onLoadPreset={data.loadPresetIntoProduct}
         getValsForProduct={data.getValsForProduct}
+        contractType={data.contractType}
+        onUpdateContractType={data.updateContractType}
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>

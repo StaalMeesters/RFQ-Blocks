@@ -11,6 +11,7 @@ export default function TopBar({
   onReset, onExportJSON, onImportJSON, onExportWord,
   frozen, onToggleFreeze, reviewStatus, onSetReview,
   activeProductIndex, onLoadPreset, getValsForProduct,
+  contractType, onUpdateContractType,
 }) {
   const { user, logout } = useUser();
   const entity = entities[entityId];
@@ -194,6 +195,30 @@ export default function TopBar({
           ? products[0].label
           : `${products?.length || 0} producten`}
       </span>
+
+      {/* Contract type */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginLeft: 4 }}>
+        <span style={{ fontSize: 10, color: '#999', marginRight: 2 }}>Type:</span>
+        {[
+          { key: 'design', label: 'Design' },
+          { key: 'supply', label: 'Supply' },
+          { key: 'build', label: 'Build' },
+        ].map(ct => (
+          <label key={ct.key} style={{
+            display: 'flex', alignItems: 'center', gap: 3, fontSize: 11, color: C.wh,
+            cursor: frozen ? 'default' : 'pointer', opacity: frozen ? 0.5 : 1,
+          }}>
+            <input
+              type="checkbox"
+              checked={contractType?.[ct.key] || false}
+              onChange={e => onUpdateContractType?.(ct.key, e.target.checked)}
+              disabled={frozen}
+              style={{ margin: 0, accentColor: C.o }}
+            />
+            {ct.label}
+          </label>
+        ))}
+      </div>
 
       {/* Separator */}
       <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />

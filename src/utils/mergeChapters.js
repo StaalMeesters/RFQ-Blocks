@@ -211,6 +211,7 @@ export function mergeMultiProductChapters(products, entityId, options = {}) {
   // ch_financieel
   chapterMap.ch_financieel = cloneChapter(getMasterData('ch_financieel'));
   fillEntityVars(chapterMap.ch_financieel, entity);
+  addContractTypeBlocks(chapterMap.ch_financieel, options.contractType);
 
   // ch_wettelijk
   const wettelijkKey = country === 'DE' ? 'ch_wettelijk_de' : 'ch_wettelijk_nl';
@@ -271,6 +272,45 @@ export function orderChapters(chapterMap, customOrder) {
     }
   }
   return result;
+}
+
+/**
+ * Add contract-type-specific payment term blocks to ch_financieel.
+ */
+function addContractTypeBlocks(chapter, contractType) {
+  if (!chapter?.blocks || !contractType) return;
+  const ct = contractType;
+  const blocks = [];
+
+  if (ct.design) {
+    blocks.push({
+      id: 'b_betaling_design',
+      label: 'Betalingsvoorwaarden engineering',
+      defaultOn: true,
+      text: 'Betalingsvoorwaarden engineering:\n- 30% bij opdrachtbevestiging\n- 40% bij indiening voorlopig ontwerp / BIM-model\n- 30% bij goedkeuring definitief ontwerp',
+      variables: [],
+    });
+  }
+
+  if (ct.build) {
+    blocks.push({
+      id: 'b_betaling_build',
+      label: 'Betalingsvoorwaarden uitvoering',
+      defaultOn: true,
+      text: 'Betalingsvoorwaarden uitvoering:\n- Maandelijkse termijnbetalingen op basis van goedgekeurde voortgangsrapportage\n- {{retentiePercentage}}% inhouding tot oplevering\n- Retentie wordt vrijgegeven na oplevering en afhandeling van restpunten',
+      variables: [
+        {
+          id: 'retentiePercentage',
+          label: 'Retentie (%)',
+          type: 'number',
+          source: 'manual',
+          default: '5',
+        },
+      ],
+    });
+  }
+
+  chapter.blocks.push(...blocks);
 }
 
 function cloneChapter(ch) {

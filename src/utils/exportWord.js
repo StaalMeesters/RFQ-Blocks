@@ -36,7 +36,7 @@ const ENTITY_APPENDICES = {
  */
 export async function exportWord({
   chapters, selectedBlocks, sharedVals, editedTexts, delBlocks,
-  entityId, products, catMetas,
+  entityId, products, catMetas, contractType,
   getValsForProduct, getRemovedVarsForProduct, getAltVarsForProduct, getAltProductForProduct,
 }) {
   const entity = entities[entityId] || entities.stp;
@@ -79,6 +79,16 @@ export async function exportWord({
   // ── Meta header ──
   bodyXml.push(styledPara('EGmetaheading', esc(supplierName)));
   bodyXml.push(styledPara('EGmetaheading', `Onderwerp: RFQ — ${esc(scopeTitle)}`));
+  // Contract type line
+  if (contractType) {
+    const ctParts = [];
+    if (contractType.design) ctParts.push('Design');
+    if (contractType.supply) ctParts.push('Supply');
+    if (contractType.build) ctParts.push('Build');
+    if (ctParts.length > 0) {
+      bodyXml.push(styledPara('EGmetaheading', `Contracttype: ${ctParts.join(' + ')}`));
+    }
+  }
   bodyXml.push(emptyPara());
   bodyXml.push(normalPara(`Geachte heer/mevrouw,`));
 

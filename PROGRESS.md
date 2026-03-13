@@ -36,6 +36,7 @@
 - [x] CP-W1–W4: JSZip-based .docx export with entity templates + appendix image embedding
 - [x] CP-F1: Fix Word export — remove excessive spacing, duplicate closing, duplicate bijlagen, blank appendix pages, auto-renumber chapters, fix toggleBlock vars (bankgarantie/verzekeringen/retentie)
 - [x] CP-F2: Master chapter override — "Hoofdstukken beheren" modal, edit master texts, localStorage persistence, integrated into mergeChapters
+- [x] CP-F3: Contract type system — Design/Supply/Build checkboxes, payment terms adapt per type, montage auto-enables on Build, shown in export header
 
 ## Build Status
 - **Vite build**: PASS (845 kB, 218 modules)

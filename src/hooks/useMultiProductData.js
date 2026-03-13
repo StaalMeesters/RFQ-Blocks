@@ -39,6 +39,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
   const [bimEnabled, setBimEnabled] = useState(false);
   const [frozen, setFrozen] = useState(false);
   const [reviewStatus, setReviewStatus] = useState('draft');
+  const [contractType, setContractType] = useState({ design: false, supply: true, build: false });
 
   // UI
   const [activeBlock, setActiveBlock] = useState(null);
@@ -61,8 +62,8 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
   // Build chapters
   const chapterMap = useMemo(() => {
     if (productMergeData.length === 0) return {};
-    return mergeMultiProductChapters(productMergeData, entityId, { montageEnabled, bimEnabled });
-  }, [productMergeData, entityId, montageEnabled, bimEnabled]);
+    return mergeMultiProductChapters(productMergeData, entityId, { montageEnabled, bimEnabled, contractType });
+  }, [productMergeData, entityId, montageEnabled, bimEnabled, contractType]);
 
   const chapters = useMemo(
     () => orderChapters(chapterMap, chapterOrder),
@@ -98,6 +99,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
       setChapterOrder(saved.chapterOrder || DEFAULT_CHAPTER_ORDER);
       setMontageEnabled(saved.montageEnabled ?? false);
       setBimEnabled(saved.bimEnabled ?? false);
+      setContractType(saved.contractType || { design: false, supply: true, build: false });
       setFrozen(saved.frozen || false);
       setReviewStatus(saved.reviewStatus || 'draft');
     } else {
@@ -211,6 +213,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
       chapterOrder: [...chapterOrder],
       montageEnabled,
       bimEnabled,
+      contractType: { ...contractType },
       products: JSON.parse(JSON.stringify(products)),
     };
   }
@@ -224,6 +227,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     setChapterOrder(snap.chapterOrder);
     setMontageEnabled(snap.montageEnabled);
     setBimEnabled(snap.bimEnabled);
+    if (snap.contractType) setContractType(snap.contractType);
     if (snap.products) setProducts(snap.products);
   }
 
@@ -392,6 +396,19 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
   const toggleFreeze = useCallback(() => setFrozen(prev => !prev), []);
   const setReview = useCallback((status) => setReviewStatus(status), []);
 
+  const updateContractType = useCallback((key, value) => {
+    if (frozen) return;
+    pushUndo();
+    setContractType(prev => {
+      const next = { ...prev, [key]: value };
+      // Auto-enable montage when Build is selected
+      if (key === 'build' && value) {
+        setMontageEnabled(true);
+      }
+      return next;
+    });
+  }, [frozen, pushUndo]);
+
   // ── Product management ──
 
   const addProduct = useCallback((categoryId) => {
@@ -460,17 +477,18 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
       chapterOrder,
       montageEnabled,
       bimEnabled,
+      contractType,
       frozen,
       reviewStatus,
     });
-  }, [entityId, products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, frozen, reviewStatus]);
+  }, [entityId, products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, contractType, frozen, reviewStatus]);
 
   // Auto-save
   useEffect(() => {
     if (!entityId || products.length === 0) return;
     const t = setTimeout(save, 1000);
     return () => clearTimeout(t);
-  }, [products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, frozen, reviewStatus]);
+  }, [products, productStates, selectedBlocks, editedTexts, delBlocks, sharedVals, chapterOrder, montageEnabled, bimEnabled, contractType, frozen, reviewStatus]);
 
   // ── Original text lookup ──
 
@@ -534,6 +552,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
       chapterOrder,
       montageEnabled,
       bimEnabled,
+      contractType,
       frozen,
       reviewStatus,
       exportDate: new Date().toISOString(),
@@ -558,6 +577,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     if (data.chapterOrder) setChapterOrder(data.chapterOrder);
     if (data.montageEnabled !== undefined) setMontageEnabled(data.montageEnabled);
     if (data.bimEnabled !== undefined) setBimEnabled(data.bimEnabled);
+    if (data.contractType) setContractType(data.contractType);
     if (data.frozen !== undefined) setFrozen(data.frozen);
     if (data.reviewStatus) setReviewStatus(data.reviewStatus);
   }, []);
@@ -632,6 +652,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     chapterOrder,
     montageEnabled,
     bimEnabled,
+    contractType,
     frozen,
     reviewStatus,
 
@@ -656,6 +677,7 @@ export default function useMultiProductData(entityId, initialCategoryIds) {
     addCustomSpec,
     toggleFreeze,
     setReview,
+    updateContractType,
 
     // Operations
     save,
