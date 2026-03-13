@@ -31,8 +31,13 @@
 - [x] CP-27: Main App (3-column resizable layout, keyboard shortcuts)
 - [x] CP-28: Build verification — all 24 categories valid, Vite build passes
 
+- [x] CP-F6: Multi-product RFQ (entity selector multi-select, product sections, left panel products, preview, export)
+- [x] CP-F7: Default spec presets (save/load/delete, export/import, per-category localStorage)
+- [x] CP-W1–W4: JSZip-based .docx export with entity templates + appendix image embedding
+- [x] CP-F1: Fix Word export — remove excessive spacing, duplicate closing, duplicate bijlagen, blank appendix pages, auto-renumber chapters, fix toggleBlock vars (bankgarantie/verzekeringen/retentie)
+
 ## Build Status
-- **Vite build**: PASS (722 kB, 216 modules)
+- **Vite build**: PASS (845 kB, 218 modules)
 - **Category JSONs**: 24/24 valid
 - **All text**: Dutch (NL)
 - **Entities**: 4 (STP, D&B BV, D&B GmbH, STM Group)

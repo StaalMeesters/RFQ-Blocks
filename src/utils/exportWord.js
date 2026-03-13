@@ -81,16 +81,28 @@ export async function exportWord({
   bodyXml.push(styledPara('EGmetaheading', `Onderwerp: RFQ — ${esc(scopeTitle)}`));
   bodyXml.push(emptyPara());
   bodyXml.push(normalPara(`Geachte heer/mevrouw,`));
-  bodyXml.push(emptyPara());
 
-  // ── Chapters ──
+  // ── Determine appendix keys (needed for bijlagen chapter) ──
+  const conditionsVal = sharedVals.algVoorwaarden || '';
+  let appendixKeys = [...(ENTITY_APPENDICES[entityId] || ['metaalunie_nl'])];
+  if (conditionsVal.toLowerCase().includes('ava')) {
+    appendixKeys = appendixKeys.map(k => k.startsWith('metaalunie') ? 'ava_2013' : k);
+  }
+  appendixKeys = [...new Set(appendixKeys)];
+
+  // ── Chapters (auto-renumber, skip ch_bijlagen — handled separately) ──
+  let chapterNum = 0;
   for (const ch of chapters) {
+    // Skip bijlagen — rendered below with appendix images
+    if (ch.chapterId === 'ch_bijlagen') continue;
+
     // Shared chapter
     if (ch.blocks) {
       const activeBlocks = ch.blocks.filter(b => selectedBlocks.has(b.id));
       if (activeBlocks.length === 0) continue;
 
-      bodyXml.push(heading3(`${ch.number}. ${esc(ch.title)}`));
+      chapterNum++;
+      bodyXml.push(heading3(`${chapterNum}. ${esc(ch.title)}`));
 
       for (const block of activeBlocks) {
         const isDelegated = delBlocks.has(block.id);
@@ -106,7 +118,8 @@ export async function exportWord({
       );
       if (!hasActive) continue;
 
-      bodyXml.push(heading3(`${ch.number}. ${esc(ch.title)}`));
+      chapterNum++;
+      bodyXml.push(heading3(`${chapterNum}. ${esc(ch.title)}`));
 
       for (let sIdx = 0; sIdx < ch.productSections.length; sIdx++) {
         const section = ch.productSections[sIdx];
@@ -119,7 +132,7 @@ export async function exportWord({
         const productAltProd = getAltProductForProduct(section.productIndex);
 
         if (isMulti) {
-          const subLabel = `${ch.number}${SUB_LABELS[sIdx]}`;
+          const subLabel = `${chapterNum}${SUB_LABELS[sIdx]}`;
           bodyXml.push(heading4(`${subLabel}. ${esc(section.label)}`));
         }
 
@@ -144,52 +157,38 @@ export async function exportWord({
     }
   }
 
-  // ── Closing ──
-  bodyXml.push(emptyPara());
-  bodyXml.push(normalPara('Met vriendelijke groet,'));
-  bodyXml.push(emptyPara());
-  bodyXml.push(styledPara('NoSpacing', esc(sharedVals.stmContact || '[STM Contactpersoon]')));
-  bodyXml.push(styledPara('NoSpacing', esc(entity.name)));
-
-  // ── German §13b / §48b notice ──
+  // ── German §13b / §48b notice (before closing) ──
   if (entity.country === 'DE') {
     bodyXml.push(emptyPara());
     bodyXml.push(normalPara(boldRun('Wichtig:'), run(' Rechnungsstellung gemäß § 13b bezüglich der Mehrwertsteuer. Siehe Bijlage Freistellungsbescheinigung.')));
     bodyXml.push(normalPara(run('Arbeid volgens § 48b: Graag uw geldige §48b document aan ons sturen zodat we dit kunnen toevoegen aan de Staalmeesters boekhouding.')));
   }
 
-  // 5. Determine appendix keys
-  const conditionsVal = sharedVals.algVoorwaarden || '';
-  let appendixKeys = [...(ENTITY_APPENDICES[entityId] || ['metaalunie_nl'])];
-  // If user selected AVA 2013, replace metaalunie with ava_2013
-  if (conditionsVal.toLowerCase().includes('ava')) {
-    appendixKeys = appendixKeys.map(k => k.startsWith('metaalunie') ? 'ava_2013' : k);
+  // ── Bijlagen chapter (merged with appendix listing) ──
+  chapterNum++;
+  bodyXml.push(emptyPara());
+  bodyXml.push(heading3(`${chapterNum}. Bijlagen`));
+  bodyXml.push(normalPara('Bij dit document zijn de volgende bijlagen gevoegd:'));
+  for (let i = 0; i < appendixKeys.length; i++) {
+    const aData = APPENDIX_DATA[appendixKeys[i]];
+    if (aData) {
+      bodyXml.push(bulletPara(`Bijlage ${i + 1} — ${esc(aData.title)}`));
+    }
   }
-  // Deduplicate
-  appendixKeys = [...new Set(appendixKeys)];
+  bodyXml.push(normalPara('De leverancier wordt geacht kennis te hebben genomen van bovenstaande bijlagen.'));
 
-  // 6. Fetch appendix images and add to ZIP
+  // ── Closing ──
+  bodyXml.push(emptyPara());
+  bodyXml.push(normalPara('Met vriendelijke groet,'));
+  bodyXml.push(emptyPara());
+  bodyXml.push(styledPara('NoSpacing', esc(sharedVals.stmContact || '[STM Contactpersoon]')));
+  bodyXml.push(styledPara('NoSpacing', esc(sharedVals.stmFunctie || 'Inkoper')));
+  bodyXml.push(styledPara('NoSpacing', esc(entity.name)));
+
+  // ── Fetch appendix images and add to ZIP ──
   const imageRels = []; // {rId, target}
   const imageElements = []; // OOXML strings
-
-  // Add bijlagen listing before images
-  if (appendixKeys.length > 0) {
-    bodyXml.push(pageBreak());
-    bodyXml.push(heading3('Bijlagen'));
-    bodyXml.push(normalPara('De volgende documenten zijn als bijlage bij dit document opgenomen:'));
-    bodyXml.push(emptyPara());
-    for (let i = 0; i < appendixKeys.length; i++) {
-      const aData = APPENDIX_DATA[appendixKeys[i]];
-      if (aData) {
-        bodyXml.push(bulletPara(`Bijlage ${i + 1} — ${esc(aData.title)}`));
-      }
-    }
-    bodyXml.push(emptyPara());
-    bodyXml.push(normalPara('De leverancier wordt geacht kennis te hebben genomen van bovenstaande bijlagen.'));
-  }
-
-  // Fetch and embed each appendix as full-page images
-  let imgDocPropId = 100; // unique docPr ids for images
+  let imgDocPropId = 100;
   const basePath = `${BASE}appendices`;
 
   for (let aIdx = 0; aIdx < appendixKeys.length; aIdx++) {
@@ -202,7 +201,6 @@ export async function exportWord({
       const imgPath = `word/media/${imgFileName}`;
       const imgRId = `rId${++maxRId}`;
 
-      // Fetch the image
       try {
         const imgUrl = `${basePath}/${aData.folder}/page-${pageNum}.png`;
         const imgResp = await fetch(imgUrl);
@@ -219,15 +217,9 @@ export async function exportWord({
 
       imageRels.push({ rId: imgRId, target: `media/${imgFileName}` });
 
-      // Add page break + title for first page of each appendix
-      if (pageNum === 1) {
-        imageElements.push(pageBreak());
-        imageElements.push(heading3(`Bijlage ${aIdx + 1} — ${esc(aData.title)}`));
-      } else {
-        imageElements.push(pageBreak());
-      }
+      // Page break before each image page — no extra headings or empty paragraphs
+      imageElements.push(pageBreak());
 
-      // Full-page image: content area ≈ 9354 × 14286 twips → 5939790 × 9071610 EMU
       const cx = 5940000;
       const cy = 9072000;
       imgDocPropId++;
@@ -342,15 +334,47 @@ function renderBlockOOXML(text, variables, vals, removedVars, isDelegated) {
   // Split text into lines
   const lines = text.split('\n');
   const paragraphs = [];
-  let inBulletGroup = false;
+  let lastWasEmpty = false;
 
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed) {
-      paragraphs.push(emptyPara());
-      inBulletGroup = false;
+      // Max 1 empty paragraph between sections, never consecutive
+      if (!lastWasEmpty && paragraphs.length > 0) {
+        paragraphs.push(emptyPara());
+        lastWasEmpty = true;
+      }
       continue;
     }
+
+    // Check if this line is ONLY toggleBlock variables (e.g. {{bankgarantie}}{{verzekeringen}})
+    const toggleOnly = trimmed.replace(/\{\{(\w+)\}\}/g, (m, varId) => {
+      const v = varMap[varId];
+      return (v && v.toggleBlock) ? '' : m;
+    }).trim();
+    if (toggleOnly === '') {
+      // Line consists entirely of toggleBlock vars — render each non-empty one as a separate paragraph
+      const tbRegex = /\{\{(\w+)\}\}/g;
+      let tbMatch;
+      while ((tbMatch = tbRegex.exec(trimmed)) !== null) {
+        const varId = tbMatch[1];
+        const v = varMap[varId];
+        if (!v || !v.toggleBlock) continue;
+        const value = vals[varId] || v.default || '';
+        if (!value) continue; // skip empty toggleBlock vars entirely
+        // Render the toggleBlock value as its own paragraph(s)
+        const tbLines = value.split('\n');
+        for (const tbLine of tbLines) {
+          const tbTrimmed = tbLine.trim();
+          if (!tbTrimmed) continue;
+          paragraphs.push(normalPara(run(esc(tbTrimmed))));
+        }
+      }
+      lastWasEmpty = false;
+      continue;
+    }
+
+    lastWasEmpty = false;
 
     // Check if this is a bullet line
     const bulletMatch = trimmed.match(/^[-–•]\s+(.+)$/);
@@ -358,11 +382,9 @@ function renderBlockOOXML(text, variables, vals, removedVars, isDelegated) {
       const content = bulletMatch[1];
       const runs = renderLineRuns(content, varMap, vals, removedVars, isDelegated);
       paragraphs.push(`<w:p><w:pPr><w:pStyle w:val="ListParagraph"/><w:numPr><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>${isDelegated ? '<w:rPr><w:i/><w:color w:val="4A90D9"/></w:rPr>' : ''}</w:pPr>${runs}</w:p>`);
-      inBulletGroup = true;
       continue;
     }
 
-    inBulletGroup = false;
     // Normal paragraph
     const runs = renderLineRuns(trimmed, varMap, vals, removedVars, isDelegated);
     if (isDelegated) {
@@ -389,6 +411,11 @@ function renderLineRuns(line, varMap, vals, removedVars, isDelegated) {
     const varId = match[1];
     const v = varMap[varId];
     if (v && !removedVars.has(varId)) {
+      // Skip toggleBlock vars with no value (they're handled separately or hidden)
+      if (v.toggleBlock) {
+        const value = vals[varId] || v.default || '';
+        if (!value) { lastIdx = match.index + match[0].length; continue; }
+      }
       const value = vals[varId] || v.default || '';
       parts.push({ type: 'var', value: value || v.label, isFilled: !!value, isDelegated });
     }
