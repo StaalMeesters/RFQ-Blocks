@@ -31,8 +31,8 @@ export default function App() {
     setScreen('select');
   };
 
-  const handleExportWord = () => {
-    exportWord({
+  const handleExportWord = async () => {
+    await exportWord({
       chapters: data.chapters,
       selectedBlocks: data.selectedBlocks,
       sharedVals: data.sharedVals,
