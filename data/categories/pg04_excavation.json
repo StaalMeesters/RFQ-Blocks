@@ -1,0 +1,242 @@
+{
+  "_meta": {
+    "id": "excavation",
+    "pg": "PG04",
+    "scope": "Grondwerk & Ontgraving",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Oosterveld",
+      "Huiskamp",
+      "Wilmink",
+      "Eijsink"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_excavation",
+          "label": "Ontgraving — Funderingssleuven",
+          "defaultOn": true,
+          "text": "De Leverancier dient de ontgraving van funderingssleuven uit te voeren conform het funderingsplan:\n\nOntgravingsdiepte: {{excDepth}} m onder {{excReference}}\nAfgewerkt peil: {{finishedLevel}}\nGeschatte ontgravingshoeveelheid: {{excVolume}} m3 (indicatief — definitieve hoeveelheden op basis van werkelijke terreincondities)\n\nGrondsoort (verwacht): {{soilType}}\nGrondclassificatie: {{soilClass}}\nGrondwaterstand (verwacht): {{groundwaterLevel}}\n\nDe Leverancier dient:\n- Tot de opgegeven diepte en toleranties conform het funderingsplan te ontgraven\n- De stabiliteit van de sleuf te waarborgen (beschoeiing, damwanden of getalude ontgraving indien vereist)\n- Ontgravingen droog te houden (bemaling inbegrepen tenzij expliciet uitgesloten)\n- Een vlakke en verdichte sleufbodem geschikt voor funderingsplaatsing aan te bieden\n- Geschikte uitgegraven grond op locatie op te slaan voor hergebruik als aanvulgrond (indien door STM aangegeven)\n\nDe Leverancier dient in de offerte te bevestigen:\n- Ontgravingsmethode\n- In te zetten materieel\n- Bemalingsmethode (indien van toepassing)\n- Aangenomen grondcondities en classificatie\n- Eventuele aannames met betrekking tot verontreiniging of obstakels\n\nAfwijkingen van bovenstaande specificaties dienen expliciet te worden vermeld met technische onderbouwing. STM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "excDepth",
+              "label": "Ontgravingsdiepte (m)",
+              "type": "number",
+              "default": "0.45"
+            },
+            {
+              "id": "excReference",
+              "label": "Referentiepeil",
+              "type": "select",
+              "options": [
+                "maaiveld",
+                "NAP (Normaal Amsterdams Peil)",
+                "afgewerkt vloerpeil (AVP)",
+                "bovenkant fundering"
+              ],
+              "default": "maaiveld"
+            },
+            {
+              "id": "finishedLevel",
+              "label": "Afgewerkt peil",
+              "type": "text",
+              "default": "conform funderingsplan",
+              "delegateText": "De Leverancier dient een voorstel te doen voor afgewerkt peil, inclusief de gehanteerde referentiepeilen en eventuele aannames betreffende het bestaande maaiveld."
+            },
+            {
+              "id": "excVolume",
+              "label": "Geschat volume (m3)",
+              "type": "number",
+              "default": "290"
+            },
+            {
+              "id": "soilType",
+              "label": "Grondsoort",
+              "type": "select",
+              "options": [
+                "Zand",
+                "Klei",
+                "Leem",
+                "Veen",
+                "Gemengd / onbekend"
+              ],
+              "default": "Zand",
+              "delegateText": "De Leverancier dient de aangenomen grondsoort te vermelden. Indien de werkelijke condities wezenlijk afwijken, dient de Leverancier STM onmiddellijk te informeren alvorens verder te gaan."
+            },
+            {
+              "id": "soilClass",
+              "label": "Grondclassificatie",
+              "type": "select",
+              "options": [
+                "Schoon — herbruikbaar op locatie",
+                "Licht verontreinigd — klasse Wonen",
+                "Verontreinigd — klasse Industrie",
+                "Ernstig verontreinigd — sanering vereist",
+                "Nog niet geclassificeerd"
+              ],
+              "default": "Schoon — herbruikbaar op locatie"
+            },
+            {
+              "id": "groundwaterLevel",
+              "label": "Grondwaterstand",
+              "type": "text",
+              "default": "onder ontgravingsdiepte (aangenomen)",
+              "delegateText": "De Leverancier dient een voorstel te doen voor grondwaterstand, inclusief aangenomen grondwatercondities en de toe te passen bemalingsmethode indien grondwater wordt aangetroffen."
+            }
+          ]
+        },
+        {
+          "id": "b_scope_disposal",
+          "label": "Grondafvoer & Transport",
+          "defaultOn": true,
+          "text": "De Leverancier dient overtollige vrijkomende grond af te voeren:\n\nGeschatte afvoerhoeveelheid: {{disposalVolume}} m3\nBestemming grond: {{soilDestination}}\nMaximale transportafstand inbegrepen: {{maxDistance}} km\n\nPFAS-classificatie: {{pfasClass}}\nAP04 / grondrapport: {{soilReport}}\n\nDe Leverancier dient:\n- Overtollige grond te laden, te transporteren en af te voeren naar een erkende verwerkingslocatie\n- Weegbonnen per vracht te verstrekken\n- Te voldoen aan alle toepasselijke milieuregelgeving (Besluit bodemkwaliteit)\n\nIndien grondcondities afwijken van de aangenomen classificatie (bijv. verontreiniging ontdekt tijdens ontgraving), dient de Leverancier de werkzaamheden te staken en STM onmiddellijk te informeren. Meerkosten voor afvoer van verontreinigde grond worden voorafgaand aan de uitvoering overeengekomen.\n\nPrijsopgave:\n- Per m3 los gemeten of per m3 in-situ — duidelijk vermelden welke basis\n- Per vracht transport (vermeld voertuigtype en capaciteit)\n- Stortkosten: inbegrepen of separaat vermelden",
+          "variables": [
+            {
+              "id": "disposalVolume",
+              "label": "Afvoervolume (m3)",
+              "type": "number",
+              "default": "290"
+            },
+            {
+              "id": "soilDestination",
+              "label": "Bestemming",
+              "type": "select",
+              "options": [
+                "Erkend gronddepot (grondbank)",
+                "Hergebruik op locatie",
+                "Door STM aangewezen locatie",
+                "Door Leverancier aangewezen locatie"
+              ],
+              "default": "Erkend gronddepot (grondbank)"
+            },
+            {
+              "id": "maxDistance",
+              "label": "Max. afstand (km)",
+              "type": "number",
+              "default": "30"
+            },
+            {
+              "id": "pfasClass",
+              "label": "PFAS-classificatie",
+              "type": "select",
+              "options": [
+                "Onder detectiegrens",
+                "Onder achtergrondwaarde",
+                "Boven achtergrondwaarde — beperkt toepasbaar",
+                "Nog niet onderzocht"
+              ],
+              "default": "Onder achtergrondwaarde"
+            },
+            {
+              "id": "soilReport",
+              "label": "AP04 / grondrapport",
+              "type": "select",
+              "options": [
+                "Beschikbaar — bijgevoegd",
+                "Beschikbaar — op verzoek te verstrekken",
+                "Nog niet beschikbaar — Leverancier dient schone grond aan te nemen",
+                "Leverancier dient onderzoek uit te voeren"
+              ],
+              "default": "Beschikbaar — op verzoek te verstrekken"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_backfill",
+          "label": "Aanvulling & Verdichting",
+          "defaultOn": true,
+          "text": "De Leverancier dient na funderingswerkzaamheden aan te vullen en te verdichten:\n\nAanvulmateriaal: {{backfillMaterial}}\nVerdichtingseis: {{compactionReq}}\nGeschatte aanvulhoeveelheid: {{backfillVolume}} m3\n\nDe Leverancier dient:\n- In lagen van maximaal {{layerThickness}} mm aan te vullen\n- Elke laag tot de gespecificeerde dichtheid te verdichten\n- Verdichtingsproeven te overleggen indien gevraagd door STM\n- Het afgewerkte oppervlak op de gespecificeerde peilen en toleranties af te werken\n\nIndien aanvoer van vulmateriaal vereist is, dient de Leverancier de herkomst te vermelden en conformiteit met het Besluit bodemkwaliteit te bevestigen.",
+          "variables": [
+            {
+              "id": "backfillMaterial",
+              "label": "Aanvulmateriaal",
+              "type": "select",
+              "options": [
+                "Hergebruik vrijgekomen grond",
+                "Aangevoerd schoon zand",
+                "Grind / menggranulaat",
+                "Conform opgave constructeur"
+              ],
+              "default": "Hergebruik vrijgekomen grond"
+            },
+            {
+              "id": "compactionReq",
+              "label": "Verdichting",
+              "type": "text",
+              "default": ">= 98% Proctor",
+              "delegateText": "De Leverancier dient een voorstel te doen voor verdichting, inclusief verdichtingsmethode en haalbare dichtheid."
+            },
+            {
+              "id": "backfillVolume",
+              "label": "Volume (m3)",
+              "type": "number"
+            },
+            {
+              "id": "layerThickness",
+              "label": "Max. laagdikte (mm)",
+              "type": "number",
+              "default": "300"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_siteprep",
+          "label": "Terreinvoorbereiding & Profilering",
+          "defaultOn": false,
+          "text": "De Leverancier dient terreinvoorbereiding en profilering uit te voeren:\n\nScope:\n- Teelaarde afgraven tot een diepte van {{stripDepth}} mm over {{stripArea}} m2\n- Teelaarde op locatie opslaan op aangewezen locatie\n- Ondergrond profileren naar gespecificeerde peilen (conform terreinplan)\n- Tijdelijke bouwwegen / verharding aanleggen (indien vereist)\n\nTolerantie afgewerkte ondergrond: +/- {{gradeTolerance}} mm\n\nDe Leverancier dient het benodigde materieel en de doorlooptijd te bevestigen.",
+          "variables": [
+            {
+              "id": "stripDepth",
+              "label": "Afgravingsdiepte (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "stripArea",
+              "label": "Afgravingsoppervlak (m2)",
+              "type": "number"
+            },
+            {
+              "id": "gradeTolerance",
+              "label": "Tolerantie (mm)",
+              "type": "number",
+              "default": "25"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": []
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_normering",
+          "label": "Toepasselijke normen",
+          "defaultOn": true,
+          "text": "Alle werkzaamheden dienen minimaal te voldoen aan:\n\n- NEN-EN 16907 (grondwerk)\n- CROW Publicatie 400 (Grondwerk en grondmechanica)\n- Besluit bodemkwaliteit\n- Regeling bodemkwaliteit\n- PFAS-handelingskader (huidige versie)\n- AP04-onderzoeksprotocol\n\nVeiligheid:\n- VCA**-certificering vereist\n- CROW 96b (werken langs wegen, indien van toepassing)\n\nDe Leverancier dient de VCA-certificeringsstatus te bevestigen en een kopie op verzoek te overleggen.\nDe Leverancier dient conformiteit met alle toepasselijke PFAS-limieten voor de projectlocatie te bevestigen.\n\nBij te voegen: VCA-certificaat, werkplan, afvalbeheersplan.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Ontgraving:\n- Per m3 ontgraving (vermeld: in-situ of los gemeten)\n- Per m3 aanvulling en verdichting\n\nGrondafvoer:\n- Per m3 afvoer schone grond (inclusief transport en stortkosten)\n- Per m3 afvoer verontreinigde grond (indien van toepassing — vermeld classificatie)\n- Per vracht transport (vermeld voertuigtype en capaciteit)\n\nOverige tarieven:\n- Per uur stilstandtijd / wachttijd\n- Per dag bemaling (indien van toepassing)\n- Mobilisatie / demobilisatie: vaste prijs",
+    "ch_prijs_toeslagen": "- Minimale opdrachtwaarde toeslag\n- Weekend- of verlengde werktijden\n- Aanvullende bemaling buiten aangenomen condities\n- Verwijdering van obstakels of rotsachtige ondergrond\n- Noodmaatregelen bij verontreiniging",
+    "ch_uitsluitingen_items": "- Funderingsbetonwerk (door derden)\n- Staalconstructie en bovenbouw\n- Omgevingsvergunningen en milieuvergunningen (door STM)\n- Grondonderzoek / geotechnisch onderzoek (door STM)\n- Archeologisch onderzoek (indien vereist)\n- Verkeersmanagementplan (bij werkzaamheden op de openbare weg — door STM)\n- Verleggen van kabels en leidingen (gas, water, elektriciteit, telecom)\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave — eenheidstarieven per activiteit\n2. Werkplan (ontgraving, afvoer, verdichting)\n3. Materieellijst\n4. Aangenomen grondcondities en classificatie\n5. VCA**-certificaat (geldig)\n6. Afvalbeheersplan / afvoerroute\n7. Geschatte doorlooptijd en voorgestelde startdatum\n8. Verzekeringscertificaat (CAR / AVB)\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "De scope omvat de volledige uitvoering van alle hierboven beschreven grondwerkzaamheden, inclusief:\n- Ontgraving van funderingssleuven conform funderingsplan\n- Bemaling en drooghouden van ontgravingen\n- Aanvulling en verdichting na funderingswerkzaamheden\n- Afvoer van overtollige grond naar erkende verwerkingslocatie\n\nDe Leverancier dient alle benodigde materieel, hulpmiddelen en personeel in de aanbieding op te nemen.",
+    "ch_montage_grenzen": "Inbegrepen in de uitvoering:\n- Alle ontgravings-, aanvul- en verdichtingswerkzaamheden\n- Bemaling en waterbeheer\n- Transport en afvoer van grond\n- Verdichtingsproeven\n- Opruimen en schoonhouden werkterrein\n\nUitgesloten van de uitvoering:\n- Funderingsbetonwerk\n- Plaatsen van wapening en bekisting\n- Verleggen van kabels en leidingen"
+  }
+}

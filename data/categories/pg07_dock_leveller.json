@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "id": "dock_leveller",
+    "pg": "PG07",
+    "scope": "Dockleveller",
+    "scopeType": "material",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Novoferm NL",
+      "Novoferm DE"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_leveller",
+          "label": "Hydraulische Docklevellers",
+          "defaultOn": true,
+          "text": "De Leverancier dient hydraulische docklevellers te leveren:\n\nModel: {{dockModel}}, Aantal: {{dockQty}}\n\nPer unit:\n- Platformbreedte: {{platformWidth}} mm\n- Platformlengte: {{platformLength}} mm\n- Statisch draagvermogen: min {{staticLoad}} kg\n- Dynamisch draagvermogen: min {{dynamicLoad}} kg\n- Bediening: {{operation}}\n- Liplengte: min {{lipLength}} mm\n- Werkbereik: +{{rangeUp}} / -{{rangeDown}} mm\n- Putafmetingen: {{pitLength}} x {{pitWidth}} x {{pitDepth}} mm\n- Voeding: {{power}}\n\nVeiligheid (verplicht): automatische lip, wielgeleiders, veiligheidssteunen, onderhoudsstut.\n\nDe Leverancier dient in de aanbieding te bevestigen: type, dynamisch draagvermogen, putafmetingen, cyclustelling, snelheid, CE/DoP, gewicht.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "dockModel",
+              "label": "Model",
+              "type": "text",
+              "default": "Novodock L320",
+              "delegateText": "Stel dockleveller voor passend bij het opgegeven draagvermogen en putafmetingen."
+            },
+            {
+              "id": "dockQty",
+              "label": "Aantal",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "platformWidth",
+              "label": "Platformbreedte (mm)",
+              "type": "number",
+              "default": "2000"
+            },
+            {
+              "id": "platformLength",
+              "label": "Platformlengte (mm)",
+              "type": "number",
+              "default": "3000"
+            },
+            {
+              "id": "staticLoad",
+              "label": "Statisch draagvermogen (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "dynamicLoad",
+              "label": "Dynamisch draagvermogen (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "operation",
+              "label": "Bediening",
+              "type": "select",
+              "options": ["Elektro-hydraulisch", "Pneumatisch-hydraulisch", "Handmatig"],
+              "default": "Elektro-hydraulisch"
+            },
+            {
+              "id": "lipLength",
+              "label": "Liplengte min (mm)",
+              "type": "number",
+              "default": "400"
+            },
+            {
+              "id": "rangeUp",
+              "label": "Werkbereik omhoog (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "rangeDown",
+              "label": "Werkbereik omlaag (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "pitLength",
+              "label": "Putlengte (mm)",
+              "type": "number"
+            },
+            {
+              "id": "pitWidth",
+              "label": "Putbreedte (mm)",
+              "type": "number"
+            },
+            {
+              "id": "pitDepth",
+              "label": "Putdiepte (mm)",
+              "type": "number",
+              "default": "600"
+            },
+            {
+              "id": "power",
+              "label": "Voeding",
+              "type": "select",
+              "options": ["400V/3f/50Hz", "230V/1f/50Hz"],
+              "default": "400V/3f/50Hz"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_accessories",
+          "label": "Dockleveller Accessoires",
+          "defaultOn": true,
+          "text": "De Leverancier dient per dockleveller de volgende accessoires te leveren:\n\n- Besturingseenheid: {{ctrlType}}\n- Stootbuffers: {{bumperType}}, aantal per leveller: {{bumperQty}}\n- Weerafdichtingen: standaard inbegrepen\n\nAlle accessoires dienen compatibel te zijn met het geleverde dockleveller-model. De Leverancier dient de compatibiliteit te bevestigen en eventuele accessoires te vermelden die niet in de basisprijs zijn opgenomen.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "ctrlType",
+              "label": "Besturingstype",
+              "type": "select",
+              "options": ["Drukknoppaneel", "Pendantbediening", "Geintegreerd wandpaneel"],
+              "default": "Drukknoppaneel"
+            },
+            {
+              "id": "bumperType",
+              "label": "Stootbuffertype",
+              "type": "select",
+              "options": ["Rubberen dockbuffer (bout-on)", "Rubberen dockbuffer (las-on)", "Niet vereist"],
+              "default": "Rubberen dockbuffer (bout-on)"
+            },
+            {
+              "id": "bumperQty",
+              "label": "Buffers per leveller",
+              "type": "number",
+              "default": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_belasting",
+          "label": "Belasting & Prestatie",
+          "defaultOn": true,
+          "text": "De dockleveller dient te voldoen aan de volgende prestatie-eisen:\n\n- Statisch draagvermogen: min {{staticLoad}} kg\n- Dynamisch draagvermogen: min {{dynamicLoad}} kg\n- Werkbereik omhoog: min +{{rangeUp}} mm\n- Werkbereik omlaag: min -{{rangeDown}} mm\n\nDe Leverancier dient belastingcertificering bij te voegen conform de opgegeven statische en dynamische belastingseisen.\n\nPutafmetingen dienen exact te worden bevestigd. Afwijkingen van de opgegeven putafmetingen dienen vóór bestelling schriftelijk door STM te worden goedgekeurd.",
+          "variables": [
+            {
+              "id": "staticLoad",
+              "label": "Statisch draagvermogen (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "dynamicLoad",
+              "label": "Dynamisch draagvermogen (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "rangeUp",
+              "label": "Werkbereik omhoog (mm)",
+              "type": "number",
+              "default": "300"
+            },
+            {
+              "id": "rangeDown",
+              "label": "Werkbereik omlaag (mm)",
+              "type": "number",
+              "default": "300"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 1398 (docklevellers — veiligheidseisen)\n- Machinerichtlijn 2006/42/EG\n- CE-markering verplicht — DoP per unit aan te leveren\n\nBelastingcertificering dient te worden verstrekt waaruit naleving van de opgegeven statische en dynamische belastingseisen blijkt.\n\nBij te voegen: DoP, CE-certificaat, productbladen, bedradingsschema's, putafmetingsvereisten, belastingcertificering.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per stuk dockleveller — complete unit inclusief:\n- Platform, lip, hydraulische unit, afdichtingen\n- Besturingseenheid\n- Inbedrijfstelling\n\nPer stuk stootbuffers (per type)\nTransport: per vracht\n\nNiet vermelde toeslagen worden geacht inbegrepen te zijn en kunnen niet separaat worden gefactureerd.",
+    "ch_prijs_toeslagen": "- Niet-standaard platformafmetingen (buiten standaard productierange)\n- Reserveonderdelenpakket\n- Verlengde garantie boven standaard",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage en inbedrijfstelling (tenzij separaat geoffreerd)\n- Staalconstructie voor putkozijn\n- Elektrische voeding tot besturingspaneel\n- Bouwkundige werkzaamheden en putconstructie\n- Dockshelter\n- Overheaddeur\n- Kraan en hijsmiddelen\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nInstallatiehandleidingen en documentatie worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie per unit\n2. Productbladen per product\n3. DoP + CE-certificaat\n4. Bedradingsschema's\n5. Putafmetingsvereisten\n6. Belastingcertificering (statisch en dynamisch)\n7. Levertijd na orderbevestiging\n8. Garantieverklaring\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "- Volledige montage van docklevellers inclusief hydraulische unit en besturing\n- Plaatsing stootbuffers\n- Aansluiting besturing op voorbekabeling tot aansluitpunt\n- Afstellen, testen en in bedrijf stellen\n- Instructie eindgebruiker",
+    "ch_montage_grenzen": "- Elektrische voeding tot aansluitpunt\n- Staalconstructie putkozijn\n- Bouwkundige werkzaamheden en putconstructie\n- Overheaddeur en dockshelter\n- Kraan en hijsmiddelen"
+  }
+}

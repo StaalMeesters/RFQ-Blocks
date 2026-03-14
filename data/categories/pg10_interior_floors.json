@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "id": "interior_floors",
+    "pg": "PG10",
+    "scope": "Vloerafwerking",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": ["Intramax", "Jadi"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_floor",
+          "label": "Vloerafwerking",
+          "defaultOn": true,
+          "text": "De Leverancier dient de volledige levering en aanbrenging van de vloerafwerking te verzorgen conform de projectdocumentatie.\n\nType: {{flType}}\nOppervlak: {{flArea}} m²\nOndergrond: {{substr}}\nKleur: {{flCol}}\nOndergrondvoorbereiding: {{surfPrep}}\n\nDe Leverancier dient in de aanbieding te bevestigen:\n- Eisen aan de ondergrond (vlakheid, vochtgehalte, treksterkte)\n- Uithardingstijd en beloopbaarheid\n- Maximale belastbaarheid na uitharding\n- Onderhoudsinstructies",
+          "variables": [
+            {
+              "id": "flType",
+              "label": "Type vloerafwerking",
+              "type": "select",
+              "options": [
+                "Epoxy gietvloer",
+                "Polyurethaan gietvloer",
+                "Egaline (egalisatiemortel)",
+                "Gepolijst beton",
+                "Vinyl",
+                "Verhoogde systeemvloer"
+              ],
+              "default": "Epoxy gietvloer",
+              "source": "specs"
+            },
+            {
+              "id": "flArea",
+              "label": "Oppervlak (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "substr",
+              "label": "Ondergrond",
+              "type": "select",
+              "options": [
+                "Machinaal afgewerkte vloer (powerfloat)",
+                "Dekvloer/cementdekvloer",
+                "Bestaande vloer"
+              ],
+              "default": "Machinaal afgewerkte vloer (powerfloat)",
+              "source": "specs"
+            },
+            {
+              "id": "flCol",
+              "label": "Kleur",
+              "type": "text",
+              "default": "RAL 7035",
+              "delegateText": "De Leverancier dient een kleurenkaart aan te leveren.",
+              "source": "specs"
+            },
+            {
+              "id": "surfPrep",
+              "label": "Ondergrondvoorbereiding",
+              "type": "select",
+              "options": [
+                "Diamantschuren (door Leverancier)",
+                "Stralen (door Leverancier)",
+                "Door STM",
+                "Niet vereist"
+              ],
+              "default": "Diamantschuren (door Leverancier)",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_floor",
+          "label": "Technische eisen vloerafwerking",
+          "defaultOn": true,
+          "text": "De Leverancier dient de vloerafwerking uit te voeren conform de volgende technische eisen:\n\n- Laagdikte: conform productspecificatie, minimaal {{laagDikte}} mm\n- Vlakheid: conform opgegeven klasse (NEN 2741 of DIN 18202)\n- Stroefheid: conform Bouwbesluit, klasse {{stroefheid}}\n- Chemische bestendigheid: {{chemBest}}\n\nDe Leverancier dient de ondergrond te inspecteren voorafgaand aan de uitvoering en eventuele gebreken schriftelijk te melden aan STM. Na aanvang van de werkzaamheden wordt de ondergrond geacht geaccepteerd te zijn.\n\nBij toepassing van een gietvloersysteem dient de Leverancier het volgende te specificeren:\n- Primer en grondlaag\n- Tussenlaag (indien van toepassing)\n- Toplaag en afwerklaag\n- Uithardingsschema en klimaatcondities tijdens aanbrenging\n\nDe Leverancier is verantwoordelijk voor het afdekken van alle aangrenzende oppervlakken en constructies ter voorkoming van morsvlekken en spatschade.",
+          "variables": [
+            {
+              "id": "laagDikte",
+              "label": "Minimale laagdikte (mm)",
+              "type": "number",
+              "default": "2",
+              "source": "specs"
+            },
+            {
+              "id": "stroefheid",
+              "label": "Stroefheidsklasse",
+              "type": "select",
+              "options": [
+                "R9",
+                "R10",
+                "R11",
+                "R12",
+                "R13"
+              ],
+              "default": "R10",
+              "source": "specs"
+            },
+            {
+              "id": "chemBest",
+              "label": "Chemische bestendigheid",
+              "type": "select",
+              "options": [
+                "Standaard (kantoor/hal)",
+                "Verhoogd (industrie)",
+                "Hoog (chemische belasting)"
+              ],
+              "default": "Standaard (kantoor/hal)",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_floor",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "De vloerafwerking dient te voldoen aan de volgende normen en regelgeving:\n\n- EN 13813 — Dekvloermortel en dekvloeren: eigenschappen en eisen\n- EN 1504 — Producten en systemen voor de bescherming en reparatie van betonconstructies\n- DIN 18560 — Estriche im Bauwesen (bij toepassing in Duitsland)\n- Bouwbesluit 2012 / Besluit bouwwerken leefomgeving (stroefheid, brandklasse)\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Productbladen en technische specificaties\n- Stroefheidsrapport\n- Onderhoudshandleiding\n- Referenties van vergelijkbare projecten",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m² vloersysteem compleet (incl. ondergrondvoorbereiding indien van toepassing)\n- Per m1 opstand/plint\n- Lump sum: mobilisatie",
+    "ch_prijs_toeslagen": "- Toeslag voor gefaseerde uitvoering\n- Toeslag voor antislip toplaag\n- Toeslag voor belijning en markering\n- Toeslag voor werken buiten reguliere werktijden",
+    "ch_uitsluitingen_items": "- Ondergrond/betonvloer\n- Vloerverwarming\n- Verwijdering van meubilair en inrichting\n- Schilderwerk wanden\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per onderdeel\n2. Productbladen en technische specificaties\n3. Kleurstalen\n4. Stroefheidsrapport\n5. Onderhoudshandleiding\n6. Uithardingsschema\n7. Geschatte uitvoeringsduur\n8. Algemene voorwaarden\n9. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige ondergrondvoorbereiding (indien in scope)\n- Aanbrengen van primer, grondlaag en toplaag\n- Aanbrengen van opstand/plint (indien van toepassing)\n- Uitharding en nabehandeling\n- Oplevering en kwaliteitscontrole",
+    "ch_montage_grenzen": "Inbegrepen:\n- Alle materialen: primer, hars, vulstof, toplaag\n- Ondergrondvoorbereiding (diamantschuren/stralen indien in scope)\n- Afdekken van aangrenzende oppervlakken\n- Gereedschap en applicatieapparatuur\n- Opruimen en afvoer van eigen afval\n\nUitgesloten:\n- Constructieve reparaties aan de ondergrond\n- Verwijdering van bestaande vloercoating\n- Bouwstroom en bouwwater\n- Klimaatbeheersing tijdens uitharding (tenzij anders overeengekomen)"
+  }
+}

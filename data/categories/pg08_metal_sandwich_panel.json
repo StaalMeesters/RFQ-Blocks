@@ -1,0 +1,269 @@
+{
+  "_meta": {
+    "id": "metal_sandwich_panel",
+    "pg": "PG08",
+    "scope": "Metalen Sandwichpanelen",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": true,
+    "suppliers": [
+      "Cladding Point BV",
+      "SAB"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_pan",
+          "label": "Geisoleerde Gevelpanelen",
+          "defaultOn": true,
+          "text": "De Leverancier dient geisoleerde gevelpanelen te leveren voor {{app}}:\n\nType: {{panelType}}\nDikte: min {{thk}} mm, breedte: {{width}} mm\nKern: {{core}}, brandklasse: min {{fire}}\n\nBuitenzijde: {{extSh}} mm, {{extCoat}}, {{extCol}}, {{extProf}}\nBinnenzijde: {{intSh}} mm, {{intCoat}}, {{intCol}}, {{intProf}}\n\nBevestiging: {{fixing}}\nOppervlakte: {{area}} m2\nHoogtes: {{heights}}\nMax lengte: {{maxLen}} m\n\nBevestigen: type, U-waarde, brandklasse, DoP/CE, max lengte, gewicht/m2.\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "app",
+              "label": "Toepassing",
+              "type": "select",
+              "options": ["gevel", "dak", "gevel en dak", "binnenwand"],
+              "default": "gevel",
+              "source": "specs"
+            },
+            {
+              "id": "panelType",
+              "label": "Paneeltype",
+              "type": "text",
+              "delegateText": "Stel paneel voor passend bij de toepassing.",
+              "source": "specs"
+            },
+            {
+              "id": "thk",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "100",
+              "altText": "Bied alternatieve dikte aan met U-waarde en prijs.",
+              "source": "specs"
+            },
+            {
+              "id": "width",
+              "label": "Breedte (mm)",
+              "type": "number",
+              "default": "1000",
+              "source": "specs"
+            },
+            {
+              "id": "core",
+              "label": "Kern",
+              "type": "select",
+              "options": ["PIR (B-s1-d0)", "MiWo (A2-s1-d0)", "PU", "EPS"],
+              "default": "PIR (B-s1-d0)",
+              "altText": "Bied alternatieve kern aan: vermeld brandklasse, U-waarde, prijs.",
+              "source": "specs"
+            },
+            {
+              "id": "fire",
+              "label": "Brandklasse",
+              "type": "text",
+              "default": "B-s1-d0",
+              "source": "specs"
+            },
+            {
+              "id": "extSh",
+              "label": "Staaldikte buiten (mm)",
+              "type": "number",
+              "default": "0.60",
+              "source": "specs"
+            },
+            {
+              "id": "extCoat",
+              "label": "Coating buiten",
+              "type": "text",
+              "default": "HDX Granite 55um",
+              "delegateText": "Stel coating voor met min 25 jaar garantie conform EN 10169.",
+              "source": "specs"
+            },
+            {
+              "id": "extCol",
+              "label": "Kleur buiten",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Kleurenkaart aan te leveren.",
+              "source": "specs"
+            },
+            {
+              "id": "extProf",
+              "label": "Profiel buiten",
+              "type": "select",
+              "options": ["Vlak", "Rib 14", "Rib 16", "Micro-rib", "Box"],
+              "default": "Rib 14",
+              "source": "specs"
+            },
+            {
+              "id": "intSh",
+              "label": "Staaldikte binnen (mm)",
+              "type": "number",
+              "default": "0.50",
+              "source": "specs"
+            },
+            {
+              "id": "intCoat",
+              "label": "Coating binnen",
+              "type": "text",
+              "default": "Polyester 25um",
+              "source": "specs"
+            },
+            {
+              "id": "intCol",
+              "label": "Kleur binnen",
+              "type": "text",
+              "default": "RAL 9002",
+              "source": "specs"
+            },
+            {
+              "id": "intProf",
+              "label": "Profiel binnen",
+              "type": "select",
+              "options": ["Box", "Vlak", "Micro-rib"],
+              "default": "Box",
+              "source": "specs"
+            },
+            {
+              "id": "fixing",
+              "label": "Bevestiging",
+              "type": "select",
+              "options": ["Verborgen", "Zichtbaar"],
+              "default": "Verborgen",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Oppervlakte (m2)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "heights",
+              "label": "Hoogtes",
+              "type": "text",
+              "default": "conform tekening",
+              "source": "specs"
+            },
+            {
+              "id": "maxLen",
+              "label": "Max lengte (m)",
+              "type": "number",
+              "default": "12",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_fire",
+          "label": "Brandwerende Panelen",
+          "defaultOn": false,
+          "text": "Brandwerende panelen: {{fireType}}\nWeerstand: {{fireRes}}\nKern: {{fireCore}}, dikte: min {{fireThk}} mm\nOppervlakte: {{fireArea}} m2\n\nBevestigen: EI vanaf beide zijden, orientatie, max overspanning, testverslagen.",
+          "variables": [
+            {
+              "id": "fireType",
+              "label": "Type",
+              "type": "text",
+              "delegateText": "Stel brandwerend paneel voor dat compatibel is met de standaardpanelen.",
+              "source": "specs"
+            },
+            {
+              "id": "fireRes",
+              "label": "EI-klasse",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120"],
+              "default": "EI 60",
+              "source": "specs"
+            },
+            {
+              "id": "fireCore",
+              "label": "Kern",
+              "type": "text",
+              "default": "MiWo (A2-s1-d0)",
+              "source": "specs"
+            },
+            {
+              "id": "fireThk",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "80",
+              "source": "specs"
+            },
+            {
+              "id": "fireArea",
+              "label": "Oppervlakte (m2)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_thermisch",
+          "label": "Thermische prestatie",
+          "defaultOn": true,
+          "text": "Thermische prestatie-eisen:\n- U-waarde: max {{uVal}} W/m2K\n\nDe U-waarde dient te worden berekend conform EN 14509 en te worden bevestigd in de DoP.\n\nBij afwijking van de opgegeven U-waarde dient de Leverancier het prijsverschil en de alternatieve waarde te vermelden.",
+          "variables": [
+            {
+              "id": "uVal",
+              "label": "U-waarde (W/m2K)",
+              "type": "number",
+              "default": "0.22"
+            }
+          ]
+        },
+        {
+          "id": "b_tech_coating",
+          "label": "Coatinggarantie",
+          "defaultOn": true,
+          "text": "De coating dient te voldoen aan EN 10169.\n\nCoatinggarantie: minimaal {{coatWar}} jaar op kleurechtheid, krijtvorming en delaminatie.\n\nDe Leverancier dient de garantievoorwaarden bij te voegen, inclusief eventuele beperkingen (afstand tot kust, industriele omgeving, etc.).",
+          "variables": [
+            {
+              "id": "coatWar",
+              "label": "Garantie coating (jaar)",
+              "type": "number",
+              "default": "25"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 14509 (zelfdragende geisoleerde sandwichpanelen)\n- EN 10169 (organische coatings op staalplaat)\n- EN 10346 (continu thermisch verzinkt staal)\n- Brandklasse conform EN 13501-1: min {{fire}}\n\nBij te voegen: DoP, brandtestverslagen, coatinggarantie, verwerkingsrichtlijnen.",
+          "variables": [
+            {
+              "id": "fire",
+              "label": "Brandklasse",
+              "type": "text",
+              "default": "B-s1-d0"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m2 per paneeltype\n- Per vracht transport\n\nInbegrepen: productie, verpakking, kwaliteitscontrole, CE-markering.",
+    "ch_prijs_toeslagen": "- Minimale bestelhoeveelheid toeslag\n- Kort paneel toeslag\n- Niet-standaard kleur toeslag\n- Verpakkingstoeslag\n- Materiaalindextoeslag",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage\n- Onderconstructie\n- Sluitstukken / randafwerkingen\n- Voegkitten\n- Kraan\n- Steiger\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nVerwerkingsrichtlijnen worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie\n2. Productbladen\n3. DoP + CE-certificaat\n4. Brandtestverslagen\n5. Coatinggarantie\n6. Levertijd\n7. Leveringsschema\n8. Algemene voorwaarden\n9. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "",
+    "ch_montage_grenzen": ""
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "appendices": {
+    "metaalunie_nl": {
+      "title": "Bijlage — Metaalunievoorwaarden 2019 (NL)",
+      "pages": 4,
+      "folder": "metaalunie_nl"
+    },
+    "metaalunie_de": {
+      "title": "Bijlage — Allgemeine Geschäftsbedingungen der Metaalunie 2019",
+      "pages": 4,
+      "folder": "metaalunie_de"
+    },
+    "metaalunie_en": {
+      "title": "Bijlage — General Conditions Staalmeesters BV (EN)",
+      "pages": 4,
+      "folder": "metaalunie_en"
+    },
+    "ava_2013": {
+      "title": "Bijlage — AVA 2013 (Bouwend Nederland)",
+      "pages": 2,
+      "folder": "ava_2013"
+    },
+    "freistellung": {
+      "title": "Bijlage — Freistellungsbescheinigung (§13b UStG)",
+      "pages": 1,
+      "folder": "freistellung"
+    }
+  },
+  "entityMapping": {
+    "stp": [
+      "metaalunie_nl"
+    ],
+    "db_bv": [
+      "metaalunie_nl"
+    ],
+    "db_gmbh": [
+      "metaalunie_de",
+      "freistellung"
+    ],
+    "group": [
+      "metaalunie_nl"
+    ]
+  }
+}

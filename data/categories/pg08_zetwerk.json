@@ -1,0 +1,117 @@
+{
+  "_meta": {
+    "id": "zetwerk",
+    "pg": "PG08",
+    "scope": "Zetwerk & Aansluitingen",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": false,
+    "suppliers": ["Brinkers", "Remmont"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_zw",
+          "label": "Zetwerk en profielen",
+          "defaultOn": true,
+          "text": "De Leverancier dient maatwerk zetwerk en aansluitprofielen te leveren conform de bijgevoegde DWG/DXF-detailtekeningen.\n\nMateriaal: {{flMat}}, {{flThk}} mm\nCoating: {{flCoat}}\nKleur: {{flCol}}\n\nTypen: nokprofielen, hoekprofielen, dorpels, boeibekleding, basisaansluitingen en overige profielen conform tekening.\n\nTotale lengte: {{totLen}} m\nAantal profieltypen: {{profCnt}}",
+          "variables": [
+            {
+              "id": "flMat",
+              "label": "Materiaal",
+              "type": "select",
+              "options": [
+                "Verzinkt staal",
+                "Aluminium",
+                "Zink",
+                "RVS"
+              ],
+              "default": "Verzinkt staal",
+              "source": "specs"
+            },
+            {
+              "id": "flThk",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "0.70",
+              "source": "specs"
+            },
+            {
+              "id": "flCoat",
+              "label": "Coating",
+              "type": "text",
+              "default": "Polyester 25 \u00b5m",
+              "delegateText": "De Leverancier dient de coating af te stemmen op de gevelbekleding.",
+              "source": "specs"
+            },
+            {
+              "id": "flCol",
+              "label": "Kleur",
+              "type": "text",
+              "default": "conform gevelbekleding",
+              "delegateText": "De kleur dient overeen te komen met de gevelbekleding. STM bevestigt de definitieve kleurkeuze.",
+              "source": "specs"
+            },
+            {
+              "id": "totLen",
+              "label": "Totale lengte (m)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "profCnt",
+              "label": "Aantal profieltypen",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_zw",
+          "label": "Technische eisen zetwerk",
+          "defaultOn": true,
+          "text": "De Leverancier dient het zetwerk te produceren conform de volgende technische eisen:\n\n- Alle profielen dienen te worden geproduceerd op basis van de door STM verstrekte detailtekeningen (DWG/DXF)\n- Maximale fabricagetolerantie: +/- 1 mm op zetmaten\n- Minimale buigradius conform materiaal- en coatingspecificatie\n- Snijvlakken dienen te worden behandeld ter voorkoming van corrosie\n- Maximale profiellengte: {{maxLen}} mm (tenzij anders gespecificeerd)\n\nDe Leverancier dient afwijkingen in productiematen vooraf schriftelijk te melden aan STM. Zonder voorafgaande goedkeuring geproduceerde afwijkende profielen worden niet geaccepteerd.\n\nVerpakking: profielen dienen deugdelijk verpakt te worden ter voorkoming van transportschade en krasvorming op gecoate oppervlakken.",
+          "variables": [
+            {
+              "id": "maxLen",
+              "label": "Max. profiellengte (mm)",
+              "type": "number",
+              "default": "3000",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_zw",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Het zetwerk dient te voldoen aan de volgende normen:\n\n- EN 14782 — Zelfdragende dunne metalen platen voor dak- en wandbekleding\n- EN 10346 — Continu thermisch verzinkte staalplaat\n- EN 10169 — Voorgelakte staalproducten (coil coated)\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Materiaalcertificaten (3.1 conform EN 10204)\n- Coatingspecificatie en kleurstalen\n- Productiegegevens en toleranties",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m1 per profieltype (vermeld de ontwikkelde breedte)\n- Per vracht transport",
+    "ch_prijs_toeslagen": "- Toeslag voor minimale ordergrootte\n- Toeslag voor kleine aantallen per profieltype\n- Toeslag voor niet-standaard kleuren\n- Toeslag voor spoedlevering",
+    "ch_uitsluitingen_items": "- Montage van het zetwerk\n- Gevelbekleding en dakpanelen\n- Kit, schuim en afdichtingsmaterialen\n- Kraan, steiger en hoogwerker\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per m1 per profieltype\n2. Materiaalcertificaten\n3. Coatingspecificatie en kleurstalen\n4. Productiedoorlooptijd\n5. Algemene voorwaarden\n6. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "",
+    "ch_montage_grenzen": ""
+  }
+}

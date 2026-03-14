@@ -1,0 +1,135 @@
+{
+  "_meta": {
+    "id": "solid_concrete_panel",
+    "pg": "PG05",
+    "scope": "Massieve Betonpanelen",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": true,
+    "suppliers": ["Schelfhout", "Olbecon", "Preco"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_sol",
+          "label": "Massieve Panelen (PABE)",
+          "defaultOn": true,
+          "text": "De Leverancier dient massieve betonpanelen te leveren:\n\nType: {{panelType}}\nDikte: {{thk}} mm\nBetonklasse: min. {{concCl}}\nWapening: min. {{rebar}} kg/m²\nBuitenafwerking: {{extFin}}\nBinnenafwerking: {{intFin}}\nAnkers: {{anchor}}\n\nDe Leverancier dient te bevestigen: brandwerendheid (EI), gewicht per m², maximale afmetingen, DoP/CE-markering.\n\nAfwijkende of lagere specificaties zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "panelType",
+              "label": "Paneeltype",
+              "type": "text",
+              "default": "PABE",
+              "delegateText": "De Leverancier dient een voorstel te doen voor paneeltype en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "thk",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "150",
+              "source": "specs"
+            },
+            {
+              "id": "concCl",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C30/37",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Wapening (kg/m²)",
+              "type": "number",
+              "default": "6.0",
+              "source": "specs"
+            },
+            {
+              "id": "extFin",
+              "label": "Buitenafwerking",
+              "type": "text",
+              "default": "Glad bekist",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Binnenafwerking",
+              "type": "text",
+              "default": "Glad bekist",
+              "source": "specs"
+            },
+            {
+              "id": "anchor",
+              "label": "Ankers",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_sol",
+          "label": "Technische eisen massieve panelen",
+          "defaultOn": true,
+          "text": "De Leverancier dient te voldoen aan de volgende technische eisen:\n\n- Betonklasse: min. {{concCl}} conform EN 206\n- Milieuklasse: min. {{expCl}} conform EN 206 / NEN-EN 1992-1-1\n- Brandwerendheid: EN 13501-2, min. {{fireRes}}\n- Maattoleranties: conform EN 14992\n\nDe Leverancier dient productietekeningen (werktekeningen) op te stellen op basis van de door STM verstrekte constructietekeningen en het IFC-model.\n\nAfwijkende of lagere waarden zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "concCl",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": ["C30/37", "C35/45", "C40/50"],
+              "default": "C30/37",
+              "source": "specs"
+            },
+            {
+              "id": "fireRes",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "EI 180"],
+              "default": "EI 120",
+              "source": "specs"
+            },
+            {
+              "id": "expCl",
+              "label": "Milieuklasse",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4"],
+              "default": "XC3",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_sol",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Alle geleverde elementen dienen te voldoen aan minimaal de volgende normen:\n\n- EN 14992 — Prefab betonelementen: wandelementen\n- EN 13369 — Gemeenschappelijke regels voor prefab betonelementen\n- EN 206 — Beton: specificatie, eigenschappen, vervaardiging en conformiteit\n- NEN-EN 1992-1-1 — Eurocode 2: Ontwerp en berekening van betonconstructies\n- EN 13501-2 — Brandclassificatie: brandwerendheid\n\nDe Leverancier dient te beschikken over CE-markering (DoP) voor de geleverde elementen.\nBetonproductie dient plaats te vinden in een BFBN-gecertificeerde fabriek of gelijkwaardig.\nWapeningscertificaten: EN 10080, 3.1 walscertificaten vereist.\n\nBij te voegen: DoP, brandrapporten, betonsamenstelling.\n\nBij tegenstrijdigheden geldt de strengste norm als leidend.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m² per paneeltype\nPer stuk: ankers\nPer vracht: transport\n\nInbegrepen: productie, uitharding, kwaliteitscontrole, CE-markering.",
+    "ch_prijs_toeslagen": "- Niet-standaard afmetingen\n- Speciaal toeslagmateriaal of afwerking\n- Engineeringkosten\n- Materiaalindex (specificeer welke index van toepassing is)",
+    "ch_uitsluitingen_items": "- Montage/plaatsing van panelen\n- Staalconstructie (onderconstructie)\n- Kraan en hijsmiddelen\n- Steigerbouw\n- Voegkit en afdichtingen\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave conform bovenstaande specificatie\n2. Technische productbladen\n3. DoP + CE-markering\n4. Brandrapporten (EN 13501-2)\n5. Levertijd na goedgekeurde werktekeningen\n6. Algemene voorwaarden\n7. Alle afwijkingen en aannames met onderbouwing"
+  }
+}

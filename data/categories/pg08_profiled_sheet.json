@@ -1,0 +1,105 @@
+{
+  "_meta": {
+    "id": "profiled_sheet",
+    "pg": "PG08",
+    "scope": "Geprofileerde Staalplaat",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": false,
+    "suppliers": [
+      "SAB"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_sh",
+          "label": "Geprofileerde Platen",
+          "defaultOn": true,
+          "text": "De Leverancier dient geprofileerde staalplaten te leveren:\n\nProfiel: {{profType}}\nStaaldikte: min {{steelThk}} mm\nCoating: {{coat}}\nKleur: {{col}}\nToepassing: {{shApp}}\nOppervlakte: {{area}} m2\n\nBevestigen: belasting-/overspanningstabellen, effectieve breedte, DoP/CE.",
+          "variables": [
+            {
+              "id": "profType",
+              "label": "Profiel",
+              "type": "text",
+              "delegateText": "Stel profiel voor passend bij de opgegeven overspanning en belasting.",
+              "source": "specs"
+            },
+            {
+              "id": "steelThk",
+              "label": "Staaldikte (mm)",
+              "type": "number",
+              "default": "0.75",
+              "source": "specs"
+            },
+            {
+              "id": "coat",
+              "label": "Coating",
+              "type": "text",
+              "default": "Zink 275 g/m2",
+              "source": "specs"
+            },
+            {
+              "id": "col",
+              "label": "Kleur",
+              "type": "text",
+              "default": "Gegalvaniseerd (ongelakt)",
+              "source": "specs"
+            },
+            {
+              "id": "shApp",
+              "label": "Toepassing",
+              "type": "select",
+              "options": ["Dakplaat", "Gevelliner", "Samengestelde vloer", "Gevelbekleding buiten"],
+              "default": "Dakplaat",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Oppervlakte (m2)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_belasting",
+          "label": "Belasting & Overspanning",
+          "defaultOn": true,
+          "text": "De Leverancier dient belasting-/overspanningstabellen bij te voegen conform EN 1993-1-3.\n\nDe tabellen dienen de toelaatbare belasting te tonen voor:\n- Enkele overspanning\n- Dubbele overspanning\n- Meervoudige overspanning\n\nDe effectieve breedte en het moment van traagheid dienen te worden bevestigd.\n\nBij toepassing als dakplaat dient de Leverancier de maximaal toelaatbare loopbelasting te vermelden.",
+          "variables": []
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 14782 (zelfdragende geprofileerde platen van staal)\n- EN 10346 (continu thermisch verzinkt staal)\n- EN 1993-1-3 (Eurocode 3 — dunwandige koudgevormde profielen)\n\nBij te voegen: DoP, belasting-/overspanningstabellen.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m2 geprofileerde plaat\n- Per vracht transport",
+    "ch_prijs_toeslagen": "- Op-maat-geknipte-lengte toeslag\n- Minimale bestelhoeveelheid toeslag\n- Niet-standaard kleur toeslag",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage\n- Onderconstructie\n- Isolatie\n- Kraan\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nVerwerkingsrichtlijnen worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie\n2. Belasting-/overspanningstabellen\n3. DoP + CE-certificaat\n4. Productbladen\n5. Levertijd\n6. Algemene voorwaarden\n7. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "",
+    "ch_montage_grenzen": ""
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "_meta": {
+    "id": "paving",
+    "pg": "PG04",
+    "scope": "Bestrating & Verharding",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Oosterveld"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_paving",
+          "label": "Buitenverharding",
+          "defaultOn": true,
+          "text": "De Leverancier dient de buitenverharding en bestrating uit te voeren:\n\nType verharding: {{pavingType}}\nGeschat oppervlak: {{pavingArea}} m2\nFundering: {{subbase}}\nOpsluiting: {{edgeRestraint}}\nLegverband: {{layingPattern}}\n\nDe Leverancier dient:\n- De ondergrond op het vereiste peil en verdichting voor te bereiden\n- De funderingslaag aan te brengen\n- Opsluitbanden te plaatsen\n- Bestrating in het gespecificeerde verband en binnen de toleranties te leggen\n- Verdichtings- / vlakheidscontrole te leveren\n\nAlle werkzaamheden conform CROW-richtlijnen.\n\nWerkzaamheden of materialen die niet expliciet zijn uitgesloten worden geacht inbegrepen te zijn.",
+          "variables": [
+            {
+              "id": "pavingType",
+              "label": "Type verharding",
+              "type": "select",
+              "options": [
+                "Betonklinkers",
+                "Asfalt",
+                "Betonplaten",
+                "Grind / open verharding"
+              ],
+              "default": "Betonklinkers"
+            },
+            {
+              "id": "pavingArea",
+              "label": "Verhardingsoppervlak (m2)",
+              "type": "number"
+            },
+            {
+              "id": "subbase",
+              "label": "Fundering",
+              "type": "text",
+              "default": "150 mm verdicht zand op geotextiel",
+              "delegateText": "De Leverancier dient een voorstel te doen voor fundering, passend bij de verwachte verkeersbelasting."
+            },
+            {
+              "id": "edgeRestraint",
+              "label": "Opsluiting",
+              "type": "text",
+              "default": "betonnen opsluitbanden",
+              "delegateText": "De Leverancier dient een voorstel te doen voor opsluiting, passend bij het bestratingsysteem en de terreinhoogten."
+            },
+            {
+              "id": "layingPattern",
+              "label": "Legverband",
+              "type": "select",
+              "options": [
+                "Keperverband",
+                "Halfsteensverband",
+                "Elleboogverband",
+                "Conform tekening"
+              ],
+              "default": "Keperverband"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": []
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_normering",
+          "label": "Toepasselijke normen",
+          "defaultOn": true,
+          "text": "Alle werkzaamheden dienen te voldoen aan:\n\n- CROW Publicatie 320 (bestratingsontwerp)\n- CROW Publicatie 321 (bestratingsmaterialen)\n- NEN-EN 1338 (betonklinkers)\n- NEN-EN 1339 (betontegels)\n- NEN-EN 1340 (betonnen opsluitbanden en banden)\n\nVeiligheid: VCA**-certificering vereist.\n\nBij te voegen: VCA-certificaat, materiaalcertificaten, verdichtingsproefresultaten.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m2 bestrating compleet (inclusief funderingslaag, zandbed, leggen)\nPer m1 opsluitbanden\nPer m1 trottoirbanden\nOndergrondvoorbereiding: per m2\nMobilisatie / demobilisatie: vaste prijs",
+    "ch_prijs_toeslagen": "- Minimale oppervlakte toeslag\n- Complexe legverbanden\n- Weekendwerk",
+    "ch_uitsluitingen_items": "- Ontgraving (door derden)\n- Funderingswerkzaamheden\n- Ondergrondse leidingen en kabels\n- Groenvoorziening\n- Definitieve wegmarkering\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave — per m2, per m1\n2. Werkplan\n3. VCA**-certificaat\n4. Materiaalcertificaten\n5. Geschatte doorlooptijd\n6. Algemene voorwaarden\n7. Alle afwijkingen met onderbouwing",
+    "ch_montage_scope": "De scope omvat de volledige uitvoering van alle hierboven beschreven bestratings- en verhardingswerkzaamheden, inclusief:\n- Voorbereiding ondergrond en aanbrengen funderingslaag\n- Plaatsen van opsluitbanden\n- Leggen van bestrating in gespecificeerd verband\n- Verdichtings- en vlakheidscontrole\n\nDe Leverancier dient alle benodigde materieel, hulpmiddelen en personeel in de aanbieding op te nemen.",
+    "ch_montage_grenzen": "Inbegrepen in de uitvoering:\n- Alle bestratings- en verhardingswerkzaamheden\n- Plaatsen van opsluitbanden en banden\n- Ondergrondvoorbereiding en funderingslaag\n- Verdichtings- en vlakheidscontrole\n- Opruimen en schoonhouden werkterrein\n\nUitgesloten van de uitvoering:\n- Ontgraving tot op funderingsniveau\n- Aanleg ondergrondse leidingen en kabels\n- Groenvoorziening en beplanting"
+  }
+}

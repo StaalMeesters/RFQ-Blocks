@@ -1,0 +1,175 @@
+{
+  "_meta": {
+    "id": "roofing_system",
+    "pg": "PG08",
+    "scope": "Daksysteem",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "HD Dak",
+      "Wierig",
+      "Primadak",
+      "Ponkratov"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_roof",
+          "label": "Dakwaterdichting",
+          "defaultOn": true,
+          "text": "Compleet plat daksysteem:\n\nMembraan: {{membrane}}\nIsolatie: {{insul}}, {{insulThk}} mm\nDampremmer: {{vapour}}\nOppervlakte: {{area}} m2\nDoel U-waarde: max {{uVal}} W/m2K\n\nGeinstalleerd als gegarandeerd systeem.\nBevestigen: garantiejaren + voorwaarden, brandklasse van de opbouw.",
+          "variables": [
+            {
+              "id": "membrane",
+              "label": "Membraan",
+              "type": "select",
+              "options": [
+                "Bitumineus (APP/SBS)",
+                "TPO",
+                "EPDM",
+                "PVC",
+                "Vloeibaar aangebracht"
+              ],
+              "default": "Bitumineus (APP/SBS)",
+              "delegateText": "Stel waterdichting voor passend bij de dakconstructie.",
+              "source": "specs"
+            },
+            {
+              "id": "insul",
+              "label": "Isolatie",
+              "type": "select",
+              "options": ["PIR", "EPS", "MiWo", "XPS"],
+              "default": "PIR",
+              "source": "specs"
+            },
+            {
+              "id": "insulThk",
+              "label": "Isolatiedikte (mm)",
+              "type": "number",
+              "default": "120",
+              "source": "specs"
+            },
+            {
+              "id": "vapour",
+              "label": "Dampremmer",
+              "type": "select",
+              "options": ["PE folie", "Bitumineus", "Aluminium", "Niet vereist"],
+              "default": "PE folie",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Oppervlakte (m2)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "uVal",
+              "label": "U-waarde (W/m2K)",
+              "type": "number",
+              "default": "0.20",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_det",
+          "label": "Sluitstukken & Details",
+          "defaultOn": true,
+          "text": "Inbegrepen: alle sluitstukken, opstandranden, doorvoeren, goten, dilatatievoegen. Alles onder dezelfde garantie gedekt.",
+          "variables": []
+        },
+        {
+          "id": "b_scope_gut",
+          "label": "Goten & Hemelwaterafvoeren",
+          "defaultOn": false,
+          "text": "Goten: {{gutType}}, {{gutMat}}, {{gutLen}} m.\nHemelwaterafvoeren: {{downDia}} mm.\nInbegrepen: beugels, verbindingen, bladvangers.",
+          "variables": [
+            {
+              "id": "gutType",
+              "label": "Goot",
+              "type": "select",
+              "options": ["Bakgoot", "Halfrond", "Verborgen"],
+              "default": "Bakgoot",
+              "source": "specs"
+            },
+            {
+              "id": "gutMat",
+              "label": "Materiaal",
+              "type": "select",
+              "options": ["Gegalvaniseerd staal", "Aluminium", "Zink", "PVC"],
+              "default": "Gegalvaniseerd staal",
+              "source": "specs"
+            },
+            {
+              "id": "downDia",
+              "label": "HWA diameter (mm)",
+              "type": "number",
+              "default": "100",
+              "source": "specs"
+            },
+            {
+              "id": "gutLen",
+              "label": "Lengte (m)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_opbouw",
+          "label": "Dakopbouw",
+          "defaultOn": true,
+          "text": "De Leverancier dient de volledige dakopbouw te specificeren, van dampremmer tot toplaag:\n\n1. Dampremmer: type, dikte, sd-waarde\n2. Isolatie: type, dikte, lambda-waarde, druksterkte\n3. Membraan: type, dikte, hechtingsmethode (mechanisch/gelijmd/los)\n\nDoel U-waarde: max {{uVal}} W/m2K\n\nDe Leverancier dient de U-waardeberekening bij te voegen conform NEN 6050.\n\nBij afwijking van de opgegeven opbouw dient de Leverancier het prijsverschil en de alternatieve prestatie te vermelden.",
+          "variables": [
+            {
+              "id": "uVal",
+              "label": "U-waarde (W/m2K)",
+              "type": "number",
+              "default": "0.20"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Het daksysteem dient minimaal te voldoen aan:\n\n- BRL 4702/4708 (KOMO-beoordelingsrichtlijn voor dakbedekkingen)\n- KOMO-certificaat verplicht\n- NEN 6050 (thermische isolatie)\n- EN 13501-1 (brandklassificatie)\n- Bouwbesluit\n\nGarantie: minimaal {{warYr}} jaar (materiaal + vakmanschap).\n\nBij te voegen: KOMO-certificaat, systeemgegevens, garantievoorwaarden, brandklasse.",
+          "variables": [
+            {
+              "id": "warYr",
+              "label": "Garantie (jaar)",
+              "type": "number",
+              "default": "10"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m2 compleet systeem\n- Per m1 sluitstukken/opstandranden\n- Per stuk doorvoeren\n- Per m1 goten\n- Per stuk hemelwaterafvoeren",
+    "ch_prijs_toeslagen": "- Gefaseerde toegang toeslag\n- Weekendwerk toeslag\n- Complexe details toeslag",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Dakdek / draagconstructie\n- Valbeveiliging (indien separaat)\n- Bliksembeveiliging\n- Lichtstraten\n- Zonnepanelen\n- Kraan\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.",
+    "ch_offerte_documenten": "1. Prijsspecificatie\n2. Systeemspecificatie\n3. KOMO-certificaat\n4. Brandklasse\n5. Garantievoorwaarden\n6. Werkplan / methodeomschrijving\n7. Doorlooptijd\n8. VCA-certificaat\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "- Volledige aanleg daksysteem inclusief dampremmer, isolatie en membraan\n- Alle sluitstukken, opstandranden en doorvoeren\n- Goten en hemelwaterafvoeren (indien in scope)\n- Waterdichtheidstest na voltooiing\n- Oplevering inclusief garantiecertificaat",
+    "ch_montage_grenzen": "- Dakdek / draagconstructie\n- Valbeveiliging\n- Bliksembeveiliging\n- Lichtstraten en zonnepanelen\n- Kraan en hijsmiddelen"
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "_meta": {
+    "id": "aerated_concrete",
+    "pg": "PG05",
+    "scope": "Cellenbeton (AAC)",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": false,
+    "suppliers": ["Aumer", "Die Lente", "Bittorf", "Bauroc"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_aac",
+          "label": "Cellenbetonblokken",
+          "defaultOn": true,
+          "text": "De Leverancier dient cellenbetonblokken (AAC) te leveren:\n\nType: {{blockType}}\nDichtheid: {{density}} kg/m³\nAfmetingen: {{dims}}\nDruksterkte: min. {{strength}} N/mm²\nVolume: {{vol}} m³\nLambda: max. {{lambda}} W/mK\nBrandklasse: {{fire}}\n\nAlle blokken dienen te voldoen aan EN 771-4.\n\nAfwijkende of lagere specificaties zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "blockType",
+              "label": "Bloktype",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor cellenbetonblok passend bij de toepassing en thermische eisen en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "density",
+              "label": "Dichtheid (kg/m³)",
+              "type": "select",
+              "options": ["350", "400", "500", "600", "700"],
+              "default": "500",
+              "source": "specs"
+            },
+            {
+              "id": "dims",
+              "label": "Afmetingen",
+              "type": "text",
+              "default": "600×200×250 mm",
+              "source": "specs"
+            },
+            {
+              "id": "strength",
+              "label": "Druksterkte (N/mm²)",
+              "type": "number",
+              "default": "3.0",
+              "source": "specs"
+            },
+            {
+              "id": "vol",
+              "label": "Volume (m³)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "lambda",
+              "label": "Lambda (W/mK)",
+              "type": "number",
+              "default": "0.12",
+              "source": "specs"
+            },
+            {
+              "id": "fire",
+              "label": "Brandklasse",
+              "type": "text",
+              "default": "A1",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_acc",
+          "label": "Lateien & Toebehoren",
+          "defaultOn": true,
+          "text": "De Leverancier dient aanvullend te leveren: lateien {{lintelType}} × {{lintelQty}} stuks, lijm/mortel {{adhesive}}, U-schalen indien vereist. Alle materialen dienen compatibel te zijn met het bloksysteem.",
+          "variables": [
+            {
+              "id": "lintelType",
+              "label": "Lateitype",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor compatibele lateien en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "lintelQty",
+              "label": "Aantal",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "adhesive",
+              "label": "Lijm/mortel",
+              "type": "text",
+              "delegateText": "De Leverancier dient de aanbevolen lijm/mortel te specificeren en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_aac",
+          "label": "Technische eisen cellenbeton",
+          "defaultOn": true,
+          "text": "De Leverancier dient te voldoen aan de volgende technische eisen:\n\n- Dichtheid: {{density}} kg/m³ conform EN 771-4\n- Druksterkte: min. {{strength}} N/mm² conform EN 771-4\n- Warmtegeleidingscoëfficiënt: max. {{lambda}} W/mK conform DIN 4108-4\n- Brandklasse: {{fire}} conform EN 13501-1\n- Maattoleranties: conform EN 771-4, categorie TLMA (dunbed) of TLMB\n\nDe Leverancier dient technische productbladen en verwerkingsrichtlijnen bij te voegen.\n\nAfwijkende of lagere waarden zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "density",
+              "label": "Dichtheid (kg/m³)",
+              "type": "select",
+              "options": ["350", "400", "500", "600", "700"],
+              "default": "500",
+              "source": "specs"
+            },
+            {
+              "id": "strength",
+              "label": "Druksterkte (N/mm²)",
+              "type": "number",
+              "default": "3.0",
+              "source": "specs"
+            },
+            {
+              "id": "lambda",
+              "label": "Lambda (W/mK)",
+              "type": "number",
+              "default": "0.12",
+              "source": "specs"
+            },
+            {
+              "id": "fire",
+              "label": "Brandklasse",
+              "type": "text",
+              "default": "A1",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_aac",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Alle geleverde materialen dienen te voldoen aan minimaal de volgende normen:\n\n- EN 771-4 — Cellenbetonblokken voor metselwerk\n- EN 998-2 — Metselmortel: specificatie\n- EN 1996-1-1 — Eurocode 6: Ontwerp en berekening van constructies van metselwerk\n- DIN 4108-4 — Warmte- en vochtbescherming (thermische waarden)\n- EN 13501-1 — Brandclassificatie: reactie bij brand\n\nDe Leverancier dient te beschikken over CE-markering (DoP) voor de geleverde producten.\n\nBij te voegen: DoP, technische productbladen, thermische berekening, brandclassificatie.\n\nBij tegenstrijdigheden geldt de strengste norm als leidend.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m³ cellenbetonblokken\nPer stuk: lateien\nPer pallet: lijm/mortel\nPer vracht: transport\n\nInbegrepen: productie, kwaliteitscontrole, CE-markering, verpakking.",
+    "ch_prijs_toeslagen": "- Minimale bestelhoeveelheid\n- Op maat gezaagde blokken\n- Speciale afmetingen\n- Materiaalindex (specificeer welke index van toepassing is)",
+    "ch_uitsluitingen_items": "- Metselwerk\n- Constructief ontwerp\n- Kraan en hijsmiddelen\n- Steigerbouw\n- Pleister- en stucwerk\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave conform bovenstaande specificatie\n2. Technische productbladen\n3. DoP + CE-markering\n4. Thermische berekening\n5. Verwerkingsrichtlijnen\n6. Levertijd na bestelling\n7. Algemene voorwaarden\n8. Alle afwijkingen en aannames met onderbouwing"
+  }
+}
