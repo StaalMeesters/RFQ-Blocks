@@ -192,6 +192,7 @@ export async function exportWord({
   const imageRels = []; // {rId, target}
   const imageElements = []; // OOXML strings
   let imgDocPropId = 100;
+  let isFirstAppendixImage = true;
   const basePath = `${BASE}appendices`;
 
   for (let aIdx = 0; aIdx < appendixKeys.length; aIdx++) {
@@ -220,8 +221,12 @@ export async function exportWord({
 
       imageRels.push({ rId: imgRId, target: `media/${imgFileName}` });
 
-      // Page break before each image page — no extra headings or empty paragraphs
-      imageElements.push(pageBreak());
+      // Only add page break before the first appendix image (to separate from text)
+      // Subsequent full-page images naturally flow to the next page — no extra breaks needed
+      if (isFirstAppendixImage) {
+        imageElements.push(pageBreak());
+        isFirstAppendixImage = false;
+      }
 
       const cx = 5940000;
       const cy = 9072000;

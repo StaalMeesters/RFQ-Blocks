@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { C } from '../utils/colors.js';
 import { CATEGORY_LIST, PG_GROUPS } from '../data/categoryRegistry.js';
 import {
@@ -258,14 +258,19 @@ export default function LeftPanel({
     });
   };
 
+  // Keep a ref to the latest chapterOrder to avoid stale closures in DnD handlers
+  const chapterOrderRef = useRef(chapterOrder);
+  chapterOrderRef.current = chapterOrder;
+
   const handleDragEnd = (event) => {
     if (frozen) return;
     const { active, over } = event;
     if (!over || active.id === over.id) return;
-    const oldIndex = chapterOrder.indexOf(active.id);
-    const newIndex = chapterOrder.indexOf(over.id);
+    const currentOrder = [...chapterOrderRef.current];
+    const oldIndex = currentOrder.indexOf(active.id);
+    const newIndex = currentOrder.indexOf(over.id);
     if (oldIndex === -1 || newIndex === -1) return;
-    onReorderChapters(arrayMove(chapterOrder, oldIndex, newIndex));
+    onReorderChapters(arrayMove(currentOrder, oldIndex, newIndex));
   };
 
   const handleRemoveProduct = (index) => {
