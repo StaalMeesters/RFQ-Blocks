@@ -13,7 +13,7 @@ export default function TopBar({
   frozen, onToggleFreeze, reviewStatus, onSetReview,
   activeProductIndex, onLoadPreset, getValsForProduct,
   contractType, onUpdateContractType,
-  saveIndicator,
+  saveIndicator, onSwitchToGenerator,
 }) {
   const { user, logout } = useUser();
   const entity = entities[entityId];
@@ -189,6 +189,24 @@ export default function TopBar({
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginRight: 8 }}>
         <span style={{ color: C.o, fontWeight: 700, fontSize: 16 }}>STM</span>
         <span style={{ fontWeight: 300, fontSize: 13 }}>RFQ Editor</span>
+      </div>
+
+      {/* Mode toggle */}
+      <div style={{
+        display: 'flex', borderRadius: 4, overflow: 'hidden',
+        border: `1px solid ${C.dk2}`,
+      }}>
+        <span style={{
+          padding: '4px 10px', fontSize: 11, fontWeight: 700,
+          background: C.o, color: C.wh, cursor: 'default',
+        }}>Editor</span>
+        <span
+          onClick={onSwitchToGenerator}
+          style={{
+            padding: '4px 10px', fontSize: 11, fontWeight: 500,
+            background: 'transparent', color: '#ccc', cursor: 'pointer',
+          }}
+        >Generator</span>
       </div>
 
       {/* Entity badge */}

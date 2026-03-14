@@ -10,7 +10,7 @@ const entityList = [
   { id: 'stm_group', ...entities.stm_group },
 ];
 
-export default function EntitySelector({ onStart }) {
+export default function EntitySelector({ onStart, onGeneratorMode }) {
   const [entityId, setEntityId] = useState('');
   const [selectedCategories, setSelectedCategories] = useState(new Set());
 
@@ -188,23 +188,45 @@ export default function EntitySelector({ onStart }) {
           )}
         </div>
 
-        <button
-          disabled={!canStart}
-          onClick={handleStart}
-          style={{
-            width: '100%',
-            padding: '12px 0',
-            background: canStart ? C.dk : C.bor,
-            color: canStart ? C.wh : C.txtL,
-            border: 'none',
-            borderRadius: 6,
-            fontSize: 14,
-            fontWeight: 600,
-            cursor: canStart ? 'pointer' : 'default',
-          }}
-        >
-          Start Editor →
-        </button>
+        {/* Mode buttons */}
+        <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
+          <button
+            disabled={!canStart}
+            onClick={handleStart}
+            style={{
+              flex: 1,
+              padding: '12px 0',
+              background: canStart ? C.dk : C.bor,
+              color: canStart ? C.wh : C.txtL,
+              border: 'none',
+              borderRadius: 6,
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: canStart ? 'pointer' : 'default',
+            }}
+          >
+            Start Editor
+          </button>
+          <button
+            onClick={onGeneratorMode}
+            style={{
+              flex: 1,
+              padding: '12px 0',
+              background: C.o,
+              color: C.wh,
+              border: 'none',
+              borderRadius: 6,
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
+          >
+            RFQ Generator
+          </button>
+        </div>
+        <div style={{ textAlign: 'center', fontSize: 11, color: C.txtL }}>
+          Editor: bewerk en beheer tekstblokken | Generator: maak RFQ-documenten aan
+        </div>
       </div>
     </div>
   );

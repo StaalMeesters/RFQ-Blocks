@@ -1,0 +1,569 @@
+{
+  "suppliers": [
+    {
+      "name": "N.V. Schelfhout",
+      "aliases": ["Schelfhout", "Schelfhout NV"],
+      "country": "BE",
+      "pg": ["PG05"],
+      "businesstype": "Prefab Concrete",
+      "products": [
+        {
+          "id": "sansi25",
+          "name_nl": "SANSI 25 Sandwichpanelen",
+          "name_en": "SANSI 25 Concrete Sandwich Panels",
+          "category": "concrete_sandwich_panel",
+          "unit": "m\u00b2",
+          "price_range": { "min": 83.63, "max": 89.50 },
+          "frequency": "always"
+        },
+        {
+          "id": "anchors_frimeda",
+          "name_nl": "Ankers Frimeda 28/15 verzinkt",
+          "name_en": "Frimeda 28/15 galvanized anchors",
+          "category": "concrete_sandwich_panel",
+          "unit": "st",
+          "price_range": { "min": 5.20, "max": 5.80 },
+          "frequency": "always"
+        },
+        {
+          "id": "dagkanten",
+          "name_nl": "Uitgewassen dagkanten",
+          "name_en": "Washed edge trim",
+          "category": "concrete_sandwich_panel",
+          "unit": "m",
+          "price_range": { "min": 22.85, "max": 23.55 },
+          "frequency": "always"
+        },
+        {
+          "id": "transport",
+          "name_nl": "Transport per vracht",
+          "name_en": "Transport per load",
+          "unit": "vracht",
+          "price_range": { "min": 845, "max": 870 },
+          "frequency": "always"
+        },
+        {
+          "id": "uitsparingen",
+          "name_nl": "Uitsparingen",
+          "name_en": "Openings/cutouts",
+          "unit": "m",
+          "price_range": { "min": 11.50, "max": 28.00 },
+          "frequency": "often"
+        }
+      ],
+      "package_always": ["sansi25", "anchors_frimeda", "dagkanten", "transport"],
+      "package_sometimes": ["uitsparingen"],
+      "delivery_terms": "EXW Kinrooi, Belgi\u00eb",
+      "typical_lead_time": "8-10 weken",
+      "warning": "Ankers Frimeda altijd nodig (4 st/paneel). Transport apart per vracht."
+    },
+    {
+      "name": "Novoferm Nederland B.V.",
+      "aliases": ["Novoferm", "Novoferm NL"],
+      "country": "NL",
+      "pg": ["PG07"],
+      "businesstype": "Doors & Windows",
+      "products": [
+        {
+          "id": "thermo40",
+          "name_nl": "THERMO 40 Overheaddeur",
+          "name_en": "THERMO 40 Overhead Door",
+          "category": "overhead_door",
+          "unit": "st",
+          "price_range": { "min": 3300, "max": 4575 },
+          "frequency": "always"
+        },
+        {
+          "id": "schlupftuer",
+          "name_nl": "Schlupft\u00fcr (loopdeur in deur)",
+          "name_en": "Wicket door (pedestrian door in door)",
+          "category": "overhead_door",
+          "unit": "st",
+          "price_range": { "min": 400, "max": 650 },
+          "frequency": "often"
+        },
+        {
+          "id": "dock_leveller",
+          "name_nl": "Hydraulische laadbrug",
+          "name_en": "Hydraulic dock leveller",
+          "category": "dock_leveller",
+          "unit": "st",
+          "price_range": { "min": 4500, "max": 7200 },
+          "frequency": "often"
+        },
+        {
+          "id": "dock_shelter",
+          "name_nl": "Afdichtingskussen",
+          "name_en": "Dock shelter",
+          "category": "dock_shelter",
+          "unit": "st",
+          "price_range": { "min": 1800, "max": 3200 },
+          "frequency": "sometimes"
+        }
+      ],
+      "package_always": ["thermo40"],
+      "package_sometimes": ["schlupftuer", "dock_leveller", "dock_shelter"],
+      "delivery_terms": "Franco bouwplaats",
+      "typical_lead_time": "6-8 weken"
+    },
+    {
+      "name": "Ploeg Montage B.V.",
+      "aliases": ["Ploeg", "Ploeg Montage"],
+      "country": "NL",
+      "pg": ["PG06", "PG08"],
+      "businesstype": "Montage (cross-PG)",
+      "products": [
+        {
+          "id": "steel_erection",
+          "name_nl": "Montage staalconstructie",
+          "name_en": "Steel structure erection",
+          "category": "site_facilities",
+          "unit": "kg",
+          "price_range": { "min": 0.24, "max": 0.26 },
+          "frequency": "always"
+        },
+        {
+          "id": "panel_montage",
+          "name_nl": "Montage sandwichpanelen",
+          "name_en": "Sandwich panel installation",
+          "category": "panel_montage",
+          "unit": "st",
+          "price_range": { "min": 280, "max": 320 },
+          "frequency": "always"
+        },
+        {
+          "id": "gietmortel",
+          "name_nl": "Gietmortel ondersabelen",
+          "name_en": "Grout underfilling",
+          "unit": "post",
+          "price_range": { "min": 1000, "max": 1250 },
+          "frequency": "always"
+        },
+        {
+          "id": "pur_work",
+          "name_nl": "Pur + arbeid",
+          "name_en": "PUR foam + labor",
+          "unit": "post",
+          "price_range": { "min": 200, "max": 300 },
+          "frequency": "often"
+        },
+        {
+          "id": "equipment_hire",
+          "name_nl": "Materieel (hoogwerker, kraan)",
+          "name_en": "Equipment hire (lift, crane)",
+          "unit": "post",
+          "price_range": { "min": 2000, "max": 5000 },
+          "frequency": "always"
+        },
+        {
+          "id": "travel_accommodation",
+          "name_nl": "Reis- en verblijfkosten",
+          "name_en": "Travel and accommodation costs",
+          "unit": "post",
+          "price_range": { "min": 1500, "max": 3000 },
+          "frequency": "always"
+        }
+      ],
+      "package_always": ["steel_erection", "panel_montage", "gietmortel", "equipment_hire", "travel_accommodation"],
+      "package_sometimes": ["pur_work"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "In overleg",
+      "warning": "Ploeg levert cross-PG: staal (PG06) + panelen (PG08) + grouting. Altijd materieel en reiskosten apart."
+    },
+    {
+      "name": "Cladding Point BV",
+      "aliases": ["Cladding Point", "CP"],
+      "country": "NL",
+      "pg": ["PG08"],
+      "businesstype": "Cladding Supply",
+      "products": [
+        {
+          "id": "sandwich_wall",
+          "name_nl": "Sandwichpanelen wand",
+          "name_en": "Sandwich panels wall",
+          "category": "metal_sandwich_panel",
+          "unit": "m\u00b2",
+          "price_range": { "min": 28, "max": 42 },
+          "frequency": "always"
+        },
+        {
+          "id": "sandwich_roof",
+          "name_nl": "Sandwichpanelen dak",
+          "name_en": "Sandwich panels roof",
+          "category": "metal_sandwich_panel",
+          "unit": "m\u00b2",
+          "price_range": { "min": 30, "max": 48 },
+          "frequency": "often"
+        },
+        {
+          "id": "profiles_trim",
+          "name_nl": "Afwerkprofielen / zetwerk",
+          "name_en": "Finishing profiles / flashings",
+          "category": "zetwerk",
+          "unit": "m",
+          "price_range": { "min": 8, "max": 18 },
+          "frequency": "always"
+        },
+        {
+          "id": "transport_cp",
+          "name_nl": "Transport",
+          "name_en": "Transport",
+          "unit": "vracht",
+          "price_range": { "min": 400, "max": 600 },
+          "frequency": "always"
+        }
+      ],
+      "package_always": ["sandwich_wall", "profiles_trim", "transport_cp"],
+      "package_sometimes": ["sandwich_roof"],
+      "delivery_terms": "Franco bouwplaats (19m vrachtwagen)",
+      "typical_lead_time": "4-6 weken"
+    },
+    {
+      "name": "HD Daksystemen B.V.",
+      "aliases": ["HD Daksystemen", "HD Dak"],
+      "country": "NL",
+      "pg": ["PG08"],
+      "businesstype": "Roofing Systems",
+      "products": [
+        {
+          "id": "pir_insulation",
+          "name_nl": "PIR dakisolatie",
+          "name_en": "PIR roof insulation",
+          "category": "roofing_system",
+          "unit": "m\u00b2",
+          "price_range": { "min": 18, "max": 32 },
+          "frequency": "always"
+        },
+        {
+          "id": "pvc_membrane",
+          "name_nl": "PVC dakbedekking",
+          "name_en": "PVC roofing membrane",
+          "category": "roofing_system",
+          "unit": "m\u00b2",
+          "price_range": { "min": 12, "max": 20 },
+          "frequency": "always"
+        },
+        {
+          "id": "vapor_barrier",
+          "name_nl": "Dampremming PE-folie",
+          "name_en": "PE vapor barrier",
+          "category": "roofing_system",
+          "unit": "m\u00b2",
+          "price_range": { "min": 2, "max": 5 },
+          "frequency": "always"
+        },
+        {
+          "id": "fall_protection",
+          "name_nl": "Permanente valbeveiliging",
+          "name_en": "Permanent fall protection system",
+          "category": "fall_protection",
+          "unit": "m",
+          "price_range": { "min": 25, "max": 45 },
+          "frequency": "always"
+        },
+        {
+          "id": "drainage_roof",
+          "name_nl": "Hemelwaterafvoer",
+          "name_en": "Rainwater drainage",
+          "category": "roofing_system",
+          "unit": "st",
+          "price_range": { "min": 120, "max": 250 },
+          "frequency": "often"
+        }
+      ],
+      "package_always": ["pir_insulation", "pvc_membrane", "vapor_barrier", "fall_protection"],
+      "package_sometimes": ["drainage_roof"],
+      "delivery_terms": "Op het dak gelegd",
+      "typical_lead_time": "4-6 weken",
+      "warning": "Basispakket: dampremming + PIR + PVC = 10-jarige garantie. Valbeveiliging verplicht."
+    },
+    {
+      "name": "Grondverzetbedrijf Oosterveld BV",
+      "aliases": ["Oosterveld"],
+      "country": "NL",
+      "pg": ["PG04"],
+      "businesstype": "Groundworks",
+      "products": [
+        {
+          "id": "excavation",
+          "name_nl": "Ontgraven bouwput / fundatiesleuven",
+          "name_en": "Excavation building pit / foundation trenches",
+          "category": "excavation",
+          "unit": "m\u00b3",
+          "price_range": { "min": 4.50, "max": 8.00 },
+          "frequency": "always"
+        },
+        {
+          "id": "sewerage",
+          "name_nl": "Riolering (HWA + DWA)",
+          "name_en": "Sewerage (rainwater + domestic)",
+          "category": "sewerage",
+          "unit": "m",
+          "price_range": { "min": 45, "max": 120 },
+          "frequency": "often"
+        },
+        {
+          "id": "paving",
+          "name_nl": "Bestrating / verharding",
+          "name_en": "Paving / hardstanding",
+          "category": "paving",
+          "unit": "m\u00b2",
+          "price_range": { "min": 25, "max": 65 },
+          "frequency": "often"
+        },
+        {
+          "id": "soil_disposal",
+          "name_nl": "Grondafvoer naar depot",
+          "name_en": "Soil disposal to depot",
+          "category": "excavation",
+          "unit": "m\u00b3",
+          "price_range": { "min": 8, "max": 18 },
+          "frequency": "often"
+        },
+        {
+          "id": "drainage_ground",
+          "name_nl": "Drainage",
+          "name_en": "Drainage",
+          "category": "sewerage",
+          "unit": "m",
+          "price_range": { "min": 15, "max": 35 },
+          "frequency": "sometimes"
+        }
+      ],
+      "package_always": ["excavation"],
+      "package_sometimes": ["sewerage", "paving", "soil_disposal", "drainage_ground"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "2-4 weken"
+    },
+    {
+      "name": "HUISKAMP Enschede",
+      "aliases": ["Huiskamp"],
+      "country": "NL",
+      "pg": ["PG04"],
+      "businesstype": "Groundworks",
+      "products": [
+        {
+          "id": "excavation_h",
+          "name_nl": "Grondwerk / ontgraving",
+          "name_en": "Earthwork / excavation",
+          "category": "excavation",
+          "unit": "m\u00b3",
+          "price_range": { "min": 4.00, "max": 7.50 },
+          "frequency": "always"
+        },
+        {
+          "id": "foundation_h",
+          "name_nl": "Fundatiewerk",
+          "name_en": "Foundation work",
+          "category": "foundation_concrete",
+          "unit": "post",
+          "frequency": "often"
+        },
+        {
+          "id": "sewerage_h",
+          "name_nl": "Riolering",
+          "name_en": "Sewerage",
+          "category": "sewerage",
+          "unit": "m",
+          "frequency": "often"
+        }
+      ],
+      "package_always": ["excavation_h"],
+      "package_sometimes": ["foundation_h", "sewerage_h"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "2-4 weken"
+    },
+    {
+      "name": "Brinkers Montage B.V.",
+      "aliases": ["Brinkers", "Brinkers Montage"],
+      "country": "NL",
+      "pg": ["PG08"],
+      "businesstype": "Panel Montage",
+      "products": [
+        {
+          "id": "wall_assembly",
+          "name_nl": "Montage wandpanelen",
+          "name_en": "Wall panel installation",
+          "category": "panel_montage",
+          "unit": "st",
+          "price_range": { "min": 250, "max": 350 },
+          "frequency": "always"
+        },
+        {
+          "id": "roof_assembly",
+          "name_nl": "Montage dakpanelen",
+          "name_en": "Roof panel installation",
+          "category": "panel_montage",
+          "unit": "m\u00b2",
+          "price_range": { "min": 8, "max": 14 },
+          "frequency": "often"
+        },
+        {
+          "id": "flashings_install",
+          "name_nl": "Montage zetwerk / afwerking",
+          "name_en": "Flashing / trim installation",
+          "category": "zetwerk",
+          "unit": "m",
+          "price_range": { "min": 6, "max": 12 },
+          "frequency": "always"
+        }
+      ],
+      "package_always": ["wall_assembly", "flashings_install"],
+      "package_sometimes": ["roof_assembly"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "In overleg"
+    },
+    {
+      "name": "Loohuis Installatietechnieken B.V.",
+      "aliases": ["Loohuis"],
+      "country": "NL",
+      "pg": ["PG09"],
+      "businesstype": "Electrical Installations",
+      "products": [
+        {
+          "id": "electrical_main",
+          "name_nl": "Elektrische installatie compleet",
+          "name_en": "Complete electrical installation",
+          "category": "electrical",
+          "unit": "post",
+          "frequency": "always"
+        },
+        {
+          "id": "data_infra",
+          "name_nl": "Data-infrastructuur",
+          "name_en": "Data infrastructure",
+          "category": "electrical",
+          "unit": "post",
+          "frequency": "often"
+        },
+        {
+          "id": "ev_charging",
+          "name_nl": "Laadinfrastructuur",
+          "name_en": "EV charging infrastructure",
+          "category": "electrical",
+          "unit": "st",
+          "frequency": "sometimes"
+        }
+      ],
+      "package_always": ["electrical_main"],
+      "package_sometimes": ["data_infra", "ev_charging"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "6-10 weken"
+    },
+    {
+      "name": "BPi Bouwplaatsinrichters BV",
+      "aliases": ["BPi", "BPI"],
+      "country": "NL",
+      "pg": ["PG10"],
+      "businesstype": "Site Facilities",
+      "products": [
+        {
+          "id": "site_containers",
+          "name_nl": "Bouwketen / containers",
+          "name_en": "Site cabins / containers",
+          "category": "site_facilities",
+          "unit": "week",
+          "frequency": "always"
+        },
+        {
+          "id": "site_fencing",
+          "name_nl": "Bouwhekken",
+          "name_en": "Site fencing",
+          "category": "site_facilities",
+          "unit": "m",
+          "frequency": "always"
+        },
+        {
+          "id": "site_toilet",
+          "name_nl": "Sanitaire voorzieningen",
+          "name_en": "Sanitary facilities",
+          "category": "site_facilities",
+          "unit": "week",
+          "frequency": "always"
+        },
+        {
+          "id": "electrical_temp",
+          "name_nl": "Tijdelijke elektra",
+          "name_en": "Temporary electrical supply",
+          "category": "site_facilities",
+          "unit": "week",
+          "frequency": "often"
+        }
+      ],
+      "package_always": ["site_containers", "site_fencing", "site_toilet"],
+      "package_sometimes": ["electrical_temp"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "1-2 weken"
+    },
+    {
+      "name": "Remmont B.V.",
+      "aliases": ["Remmont"],
+      "country": "NL",
+      "pg": ["PG08"],
+      "businesstype": "Montage / Cladding",
+      "products": [
+        {
+          "id": "panel_install_r",
+          "name_nl": "Montage sandwichpanelen",
+          "name_en": "Sandwich panel installation",
+          "category": "panel_montage",
+          "unit": "st",
+          "price_range": { "min": 240, "max": 320 },
+          "frequency": "always"
+        },
+        {
+          "id": "flashings_r",
+          "name_nl": "Zetwerk / afwerkprofielen",
+          "name_en": "Flashings / trim profiles",
+          "category": "zetwerk",
+          "unit": "m",
+          "frequency": "always"
+        },
+        {
+          "id": "alucobond_r",
+          "name_nl": "Alucobond gevelbekleding",
+          "name_en": "Alucobond facade cladding",
+          "category": "metal_sandwich_panel",
+          "unit": "m\u00b2",
+          "frequency": "sometimes"
+        }
+      ],
+      "package_always": ["panel_install_r", "flashings_r"],
+      "package_sometimes": ["alucobond_r"],
+      "delivery_terms": "Op locatie",
+      "typical_lead_time": "In overleg"
+    },
+    {
+      "name": "SAB-profiel B.V.",
+      "aliases": ["SAB", "SAB-profiel"],
+      "country": "NL",
+      "pg": ["PG08"],
+      "businesstype": "Cladding Supply",
+      "products": [
+        {
+          "id": "profiled_sheets",
+          "name_nl": "Geprofileerde staalplaten",
+          "name_en": "Profiled steel sheets",
+          "category": "profiled_sheet",
+          "unit": "m\u00b2",
+          "price_range": { "min": 8, "max": 16 },
+          "frequency": "always"
+        },
+        {
+          "id": "sandwich_sab",
+          "name_nl": "Sandwichpanelen",
+          "name_en": "Sandwich panels",
+          "category": "metal_sandwich_panel",
+          "unit": "m\u00b2",
+          "price_range": { "min": 28, "max": 45 },
+          "frequency": "often"
+        }
+      ],
+      "package_always": ["profiled_sheets"],
+      "package_sometimes": ["sandwich_sab"],
+      "delivery_terms": "Franco bouwplaats (19m vrachtwagen)",
+      "typical_lead_time": "3-5 weken",
+      "warning": "Hoeveelheidstoeslag \u20ac100 bij orders <150 m\u00b2. Lengtetoeslagen tot \u20ac7,50/plaat."
+    }
+  ]
+}

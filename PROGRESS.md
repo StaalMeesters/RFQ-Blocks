@@ -1,6 +1,6 @@
-# RFQ Text Block Editor v2 — Build Progress
+# RFQ Text Block Editor v2/v3 — Build Progress
 
-## Checkpoints
+## v2 Checkpoints
 
 - [x] CP-1: Scaffold v2 Vite project + dependencies + folder structure
 - [x] CP-2: Entity configuration (entities.json) + data layer (categoryRegistry, colors, storage)
@@ -30,24 +30,27 @@
 - [x] CP-26: State management hook (useCategoryData — full feature set)
 - [x] CP-27: Main App (3-column resizable layout, keyboard shortcuts)
 - [x] CP-28: Build verification — all 24 categories valid, Vite build passes
+- [x] CP-F1–F9: Full feature set (multi-product, presets, contract types, master chapters, auto-save, help, JSZip Word export)
 
-- [x] CP-F6: Multi-product RFQ (entity selector multi-select, product sections, left panel products, preview, export)
-- [x] CP-F7: Default spec presets (save/load/delete, export/import, per-category localStorage)
-- [x] CP-W1–W4: JSZip-based .docx export with entity templates + appendix image embedding
-- [x] CP-F1: Fix Word export — remove excessive spacing, duplicate closing, duplicate bijlagen, blank appendix pages, auto-renumber chapters, fix toggleBlock vars (bankgarantie/verzekeringen/retentie)
-- [x] CP-F2: Master chapter override — "Hoofdstukken beheren" modal, edit master texts, localStorage persistence, integrated into mergeChapters
-- [x] CP-F3: Contract type system — Design/Supply/Build checkboxes, payment terms adapt per type, montage auto-enables on Build, shown in export header
-- [x] CP-F4: Auto-save — 2s debounced auto-save, "Opgeslagen" flash indicator, JSON export/import moved to settings dropdown
-- [x] CP-F5: Revised chapter structure — 11 chapters, split Inleiding into RFQ Info + Projectinleiding, merge Prijs+Wettelijk into Commerciële Voorwaarden, Uitsluitingen into scope, rename Levering→Planning
-- [x] CP-F6: Multi-product RFQ (completed earlier)
-- [x] CP-F7: Default spec presets (completed earlier)
-- [x] CP-F8: In-app help system — "?" button, slide-in panel (Snelstart/Functies/Sneltoetsen/FAQ), first-time welcome overlay
-- [x] CP-F9: Final build verification — all features integrated, 24/24 categories valid, Vite build passes
+## v3 Checkpoints
+
+- [x] CP-V3-BUG1: Fix chapter drag-reorder stale closure (useRef for chapterOrder)
+- [x] CP-V3-BUG2: Fix blank pages between appendix images (page break only before first image)
+- [x] CP-V3-1: Supplier catalog data (12 suppliers, cross-PG support, package_always/sometimes, price ranges)
+- [x] CP-V3-2: Audit trail system (audit.js — push/load entries, per-block localStorage, user identity)
+- [x] CP-V3-3: Generator Mode — 5-step wizard (Project, Leverancier, Producten, Specificaties, Controle & Export)
+- [x] CP-V3-4: Smart Supplier Mode — autocomplete, supplier badge, product frequency grouping, package warnings
+- [x] CP-V3-5: Editor/Generator mode toggle — EntitySelector dual buttons, TopBar mode switch
+- [x] CP-V3-6: Audit trail UI — AuditPanel slide-in, LastEditBadge inline, Geschiedenis button per block
+- [x] CP-V3-7: Draft save/load for Generator mode (localStorage concept persistence)
+- [x] CP-V3-8: Build verification — 224 modules, Vite build passes
 
 ## Build Status
-- **Vite build**: PASS (865 kB, 220 modules)
+- **Vite build**: PASS (905 kB, 224 modules)
 - **Category JSONs**: 24/24 valid
 - **All text**: Dutch (NL)
 - **Entities**: 4 (STP, D&B BV, D&B GmbH, STM Group)
+- **Suppliers**: 12 (cross-PG, package intelligence)
 - **Chapters**: 11 (revised structure, drag-reorderable)
-- **Features**: Multi-product, presets, contract types, master chapters, auto-save, help system, JSZip Word export
+- **Modes**: Editor + Generator (5-step wizard)
+- **Features**: Multi-product, presets, contract types, master chapters, auto-save, help system, JSZip Word export, audit trail, smart supplier, generator wizard

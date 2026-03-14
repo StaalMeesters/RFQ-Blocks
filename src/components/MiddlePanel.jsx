@@ -2,6 +2,8 @@ import { useState, useRef, useCallback } from 'react';
 import { C } from '../utils/colors.js';
 import SpecGrid from './SpecGrid.jsx';
 import AddCustomSpec from './AddCustomSpec.jsx';
+import AuditPanel, { LastEditBadge } from './AuditPanel.jsx';
+import { pushAuditEntry, getAuditUser } from '../utils/audit.js';
 
 const SUB_LABELS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -12,6 +14,9 @@ export default function MiddlePanel({
   onRemoveVar, onRestoreVar, onUpdateText, onAddCustomSpec,
   getOriginalText, isMultiProduct,
 }) {
+  const [auditBlockId, setAuditBlockId] = useState(null);
+  const [auditBlockLabel, setAuditBlockLabel] = useState('');
+
   // Use the pre-computed block context from the hook
   const ctx = activeBlockContext;
   const activeBlockData = ctx?.block || null;
@@ -110,7 +115,25 @@ export default function MiddlePanel({
             </button>
           </>
         )}
+        <button
+          onClick={() => { setAuditBlockId(activeBlock); setAuditBlockLabel(activeBlockData.label); }}
+          style={{
+            padding: '4px 10px',
+            background: 'transparent',
+            color: C.txtL,
+            border: `1px solid ${C.bor}`,
+            borderRadius: 4,
+            fontSize: 11,
+            fontWeight: 500,
+            cursor: 'pointer',
+          }}
+        >
+          Geschiedenis
+        </button>
       </div>
+
+      {/* Last edit indicator */}
+      <LastEditBadge blockId={activeBlock} />
 
       {/* Text editor with protected variables */}
       <ProtectedTextEditor
@@ -120,7 +143,12 @@ export default function MiddlePanel({
         removedVars={removedVars}
         frozen={frozen}
         isDelegated={isDelegated}
-        onChange={(newText) => onUpdateText(activeBlock, newText)}
+        onChange={(newText) => {
+          onUpdateText(activeBlock, newText);
+          if (getAuditUser()) {
+            pushAuditEntry(activeBlock, 'text_edit', 'Tekst gewijzigd');
+          }
+        }}
       />
 
       {/* Spec grid */}
@@ -167,6 +195,15 @@ export default function MiddlePanel({
             </div>
           ))}
         </div>
+      )}
+
+      {/* Audit panel */}
+      {auditBlockId && (
+        <AuditPanel
+          blockId={auditBlockId}
+          blockLabel={auditBlockLabel}
+          onClose={() => setAuditBlockId(null)}
+        />
       )}
     </div>
   );

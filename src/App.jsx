@@ -7,10 +7,12 @@ import TopBar from './components/TopBar.jsx';
 import LeftPanel from './components/LeftPanel.jsx';
 import MiddlePanel from './components/MiddlePanel.jsx';
 import RFQPreview from './components/RFQPreview.jsx';
+import GeneratorWizard from './components/GeneratorWizard.jsx';
 import { useWelcome, WelcomeOverlay } from './components/HelpPanel.jsx';
+import { ensureAuditUser } from './utils/audit.js';
 
 export default function App() {
-  const [screen, setScreen] = useState('select'); // 'select' or 'editor'
+  const [screen, setScreen] = useState('select'); // 'select', 'editor', 'generator'
   const [entityId, setEntityId] = useState('');
   const [categoryIds, setCategoryIds] = useState([]); // multi-select
 
@@ -35,6 +37,8 @@ export default function App() {
   const handleStart = (eid, catIds) => {
     setEntityId(eid);
     setCategoryIds(catIds);
+    // Prompt for audit user name on first editor entry
+    ensureAuditUser();
     setScreen('editor');
   };
 
@@ -102,15 +106,25 @@ export default function App() {
     window.addEventListener('mouseup', handleMouseUp);
   }, [leftWidth, rightWidth]);
 
+  // Select screen with mode toggle
   if (screen === 'select') {
     return (
       <>
-        <EntitySelector onStart={handleStart} />
+        <EntitySelector
+          onStart={handleStart}
+          onGeneratorMode={() => setScreen('generator')}
+        />
         {showWelcome && <WelcomeOverlay onDismiss={dismissWelcome} />}
       </>
     );
   }
 
+  // Generator mode
+  if (screen === 'generator') {
+    return <GeneratorWizard onBack={() => setScreen('select')} />;
+  }
+
+  // Editor mode
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <TopBar
@@ -130,12 +144,16 @@ export default function App() {
         reviewStatus={data.reviewStatus}
         onSetReview={data.setReview}
         activeProductIndex={data.activeProductIndex}
-        productStates={null} // presets use loadPresetIntoProduct directly
+        productStates={null}
         onLoadPreset={data.loadPresetIntoProduct}
         getValsForProduct={data.getValsForProduct}
         contractType={data.contractType}
         onUpdateContractType={data.updateContractType}
         saveIndicator={saveFlash}
+        onSwitchToGenerator={() => {
+          data.save();
+          setScreen('generator');
+        }}
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
