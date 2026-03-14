@@ -4,6 +4,7 @@ import bundledMasterData from '../data/master-chapters.json';
 import { getRuntimeMasterChapters, updateRuntimeMasterChapters } from '../utils/dataLoader.js';
 import { loadMasterOverrides, saveMasterOverrides } from '../utils/storage.js';
 import { hasGitHubToken, saveMasterChaptersToGitHub } from '../utils/github.js';
+// Token is baked in via VITE_GITHUB_TOKEN env var — no user setup needed
 import { showToast } from './Toast.jsx';
 import { getAuditUser } from '../utils/audit.js';
 

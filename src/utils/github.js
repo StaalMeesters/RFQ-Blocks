@@ -1,20 +1,10 @@
-const REPO = 'StaalMeesters/RFQ-Blocks';
+// Baked in at build time by Vite from .env
+const TOKEN = import.meta.env.VITE_GITHUB_TOKEN || '';
+const REPO = import.meta.env.VITE_GITHUB_REPO || 'staalmeesters/RFQ-Blocks';
 const BRANCH = 'master';
 
-export function getGitHubToken() {
-  return localStorage.getItem('github_pat') || '';
-}
-
-export function setGitHubToken(token) {
-  if (token) {
-    localStorage.setItem('github_pat', token.trim());
-  } else {
-    localStorage.removeItem('github_pat');
-  }
-}
-
 export function hasGitHubToken() {
-  return !!getGitHubToken();
+  return !!TOKEN;
 }
 
 /**
@@ -25,8 +15,7 @@ export function hasGitHubToken() {
  * @returns {{ ok: boolean, error?: string }}
  */
 export async function saveToGitHub(path, content, message) {
-  const token = getGitHubToken();
-  if (!token) {
+  if (!TOKEN) {
     return { ok: false, error: 'Geen GitHub token geconfigureerd' };
   }
 
@@ -34,7 +23,7 @@ export async function saveToGitHub(path, content, message) {
     // Get current file SHA (required for updates)
     const getResp = await fetch(
       `https://api.github.com/repos/${REPO}/contents/${path}?ref=${BRANCH}`,
-      { headers: { Authorization: `token ${token}` } }
+      { headers: { Authorization: `token ${TOKEN}` } }
     );
 
     let sha = undefined;
@@ -63,7 +52,7 @@ export async function saveToGitHub(path, content, message) {
       {
         method: 'PUT',
         headers: {
-          Authorization: `token ${token}`,
+          Authorization: `token ${TOKEN}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
@@ -83,11 +72,6 @@ export async function saveToGitHub(path, content, message) {
 
 /**
  * Save a category JSON to GitHub.
- * @param {string} categoryId - e.g. "site_facilities"
- * @param {string} filename - e.g. "pg03_site_facilities.json"
- * @param {object} data - The full category JSON object
- * @param {string} userName - Who made the edit
- * @param {string} detail - What was changed
  */
 export async function saveCategoryToGitHub(categoryId, filename, data, userName, detail) {
   const path = `public/data/categories/${filename}`;

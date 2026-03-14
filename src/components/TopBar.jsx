@@ -5,9 +5,9 @@ import { useUser } from '../auth/AuthWrapper.jsx';
 import { loadPresets, savePresets, loadAllPresets, importAllPresets } from '../utils/storage.js';
 import MasterChapterModal from './MasterChapterModal.jsx';
 import HelpPanel from './HelpPanel.jsx';
-import { hasGitHubToken, getGitHubToken, setGitHubToken, saveCategoryToGitHub, saveMasterChaptersToGitHub } from '../utils/github.js';
+import { hasGitHubToken, saveCategoryToGitHub } from '../utils/github.js';
 import { CATEGORY_DATA, setCategoryData } from '../data/categoryRegistry.js';
-import { getCategoryFilename, updateRuntimeCategory, getRuntimeMasterChapters, updateRuntimeMasterChapters } from '../utils/dataLoader.js';
+import { getCategoryFilename, updateRuntimeCategory } from '../utils/dataLoader.js';
 import { showToast } from './Toast.jsx';
 import { getAuditUser } from '../utils/audit.js';
 
@@ -30,8 +30,6 @@ export default function TopBar({
   // Help panel
   const [helpOpen, setHelpOpen] = useState(false);
 
-  // GitHub token settings
-  const [ghTokenInput, setGhTokenInput] = useState('');
   const [ghSaving, setGhSaving] = useState(false);
 
   // Settings dropdown
@@ -576,69 +574,11 @@ export default function TopBar({
               </div>
               <div
                 onClick={() => { handleImport(); setSettingsOpen(false); }}
-                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk, borderBottom: `1px solid ${C.bor}` }}
+                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk }}
                 onMouseEnter={e => e.currentTarget.style.background = C.lt}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 Importeer JSON
-              </div>
-
-              {/* GitHub token config */}
-              <div style={{ padding: '10px 12px', borderTop: `1px solid ${C.bor}` }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: C.txtL, textTransform: 'uppercase', marginBottom: 6 }}>
-                  GitHub Token
-                </div>
-                <div style={{ display: 'flex', gap: 4 }}>
-                  <input
-                    type="password"
-                    value={ghTokenInput || ''}
-                    placeholder={hasGitHubToken() ? '\u2022\u2022\u2022\u2022\u2022 (geconfigureerd)' : 'ghp_...'}
-                    onChange={e => setGhTokenInput(e.target.value)}
-                    style={{
-                      flex: 1, padding: '5px 8px', border: `1px solid ${C.bor}`,
-                      borderRadius: 4, fontSize: 11, boxSizing: 'border-box',
-                    }}
-                  />
-                  <button
-                    onClick={() => {
-                      if (ghTokenInput.trim()) {
-                        setGitHubToken(ghTokenInput.trim());
-                        setGhTokenInput('');
-                        showToast('GitHub token opgeslagen', 'success', 2000);
-                      }
-                    }}
-                    disabled={!ghTokenInput.trim()}
-                    style={{
-                      padding: '4px 8px', fontSize: 10, fontWeight: 600,
-                      background: ghTokenInput.trim() ? '#4CAF50' : C.bor,
-                      color: C.wh, border: 'none', borderRadius: 4,
-                      cursor: ghTokenInput.trim() ? 'pointer' : 'default',
-                    }}
-                  >
-                    Opslaan
-                  </button>
-                </div>
-                {hasGitHubToken() && (
-                  <button
-                    onClick={() => {
-                      setGitHubToken(null);
-                      setGhTokenInput('');
-                      showToast('GitHub token verwijderd', 'warning', 2000);
-                    }}
-                    style={{
-                      marginTop: 4, padding: '3px 8px', fontSize: 10,
-                      background: 'transparent', color: C.red, border: `1px solid ${C.bor}`,
-                      borderRadius: 3, cursor: 'pointer', width: '100%',
-                    }}
-                  >
-                    Token verwijderen
-                  </button>
-                )}
-                <div style={{ fontSize: 10, color: C.txtL, marginTop: 4 }}>
-                  {hasGitHubToken()
-                    ? '\u2713 Token geconfigureerd — opslaan naar GitHub actief'
-                    : 'Stel een GitHub Personal Access Token in voor gedeeld opslaan'}
-                </div>
               </div>
             </div>
           )}
