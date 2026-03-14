@@ -10,6 +10,7 @@ import RFQPreview from './components/RFQPreview.jsx';
 import GeneratorWizard from './components/GeneratorWizard.jsx';
 import { useWelcome, WelcomeOverlay } from './components/HelpPanel.jsx';
 import { ensureAuditUser } from './utils/audit.js';
+import VersionBadge from './components/VersionBadge.jsx';
 
 export default function App() {
   const [screen, setScreen] = useState('select'); // 'select', 'editor', 'generator'
@@ -115,13 +116,19 @@ export default function App() {
           onGeneratorMode={() => setScreen('generator')}
         />
         {showWelcome && <WelcomeOverlay onDismiss={dismissWelcome} />}
+        <VersionBadge />
       </>
     );
   }
 
   // Generator mode
   if (screen === 'generator') {
-    return <GeneratorWizard onBack={() => setScreen('select')} />;
+    return (
+      <>
+        <GeneratorWizard onBack={() => setScreen('select')} />
+        <VersionBadge />
+      </>
+    );
   }
 
   // Editor mode
@@ -264,6 +271,7 @@ export default function App() {
           />
         </div>
       </div>
+      <VersionBadge />
     </div>
   );
 }

@@ -60,24 +60,24 @@ export default function GeneratorWizard({ onBack }) {
   const [specVals, setSpecVals] = useState({}); // { [categoryId]: { [varId]: value } }
   const [delegatedVars, setDelegatedVars] = useState(new Set());
 
-  // Supplier match
+  // Supplier match — search name and aliases (aliases may be absent)
   const matchedSupplier = useMemo(() => {
     if (!supplierName.trim()) return null;
     const lower = supplierName.toLowerCase().trim();
     return supplierCatalog.suppliers.find(s =>
       s.name.toLowerCase().includes(lower) ||
-      s.aliases.some(a => a.toLowerCase().includes(lower))
+      (s.aliases || []).some(a => a.toLowerCase().includes(lower))
     );
   }, [supplierName]);
 
-  // Supplier suggestions for autocomplete
+  // Supplier suggestions for autocomplete — search name + aliases
   const supplierSuggestions = useMemo(() => {
     if (!supplierSearch.trim() || supplierSearch.length < 2) return [];
     const lower = supplierSearch.toLowerCase();
     return supplierCatalog.suppliers.filter(s =>
       s.name.toLowerCase().includes(lower) ||
-      s.aliases.some(a => a.toLowerCase().includes(lower))
-    ).slice(0, 5);
+      (s.aliases || []).some(a => a.toLowerCase().includes(lower))
+    ).slice(0, 8);
   }, [supplierSearch]);
 
   // Supplier products grouped by frequency
@@ -595,7 +595,10 @@ function Step2Supplier({
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 <div style={{ fontWeight: 600, color: C.dk }}>{s.name}</div>
-                <div style={{ fontSize: 11, color: C.txtL }}>{s.country} - {s.businesstype}</div>
+                <div style={{ fontSize: 11, color: C.txtL }}>
+                  {s.country} {s.primary_pg ? `- ${s.primary_pg}` : ''} - {s.products?.length || 0} producten
+                  {s.quotations ? ` - ${s.quotations} offertes` : ''}
+                </div>
               </div>
             ))}
           </div>
@@ -606,22 +609,36 @@ function Step2Supplier({
       {matchedSupplier && (
         <div style={{
           padding: '12px 16px', background: '#F0FFF4', border: `1px solid ${C.gr}`,
-          borderRadius: 8, marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10,
+          borderRadius: 8, marginBottom: 20,
         }}>
-          <span style={{ fontSize: 18 }}>{'\u2713'}</span>
-          <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
+            <span style={{ fontSize: 18 }}>{'\u2713'}</span>
             <div style={{ fontSize: 13, fontWeight: 600, color: C.dk }}>
               Leveranciersinformatie beschikbaar
             </div>
-            <div style={{ fontSize: 12, color: C.txtL }}>
-              {matchedSupplier.businesstype} - {matchedSupplier.country} - Levertijd: {matchedSupplier.typical_lead_time}
-            </div>
-            {matchedSupplier.warning && (
-              <div style={{ fontSize: 11, color: C.amber, marginTop: 4 }}>
-                Let op: {matchedSupplier.warning}
-              </div>
-            )}
           </div>
+          <div style={{ fontSize: 12, color: C.txtL, marginBottom: 4 }}>
+            {matchedSupplier.country}
+            {matchedSupplier.primary_pg ? ` \u2014 ${matchedSupplier.primary_pg}` : ''}
+            {matchedSupplier.quotations ? ` \u2014 ${matchedSupplier.quotations} offertes, ${matchedSupplier.total_items || 0} items` : ''}
+          </div>
+          {matchedSupplier.standards && matchedSupplier.standards.length > 0 && (
+            <div style={{ fontSize: 11, color: C.bl, marginBottom: 4 }}>
+              Normen: {matchedSupplier.standards.slice(0, 3).join(', ')}
+              {matchedSupplier.standards.length > 3 ? ` (+${matchedSupplier.standards.length - 3})` : ''}
+            </div>
+          )}
+          {matchedSupplier.typical_exclusions && matchedSupplier.typical_exclusions.length > 0 && (
+            <div style={{ fontSize: 11, color: C.amber }}>
+              Typische uitsluitingen: {matchedSupplier.typical_exclusions.slice(0, 3).join(', ')}
+              {matchedSupplier.typical_exclusions.length > 3 ? ` (+${matchedSupplier.typical_exclusions.length - 3})` : ''}
+            </div>
+          )}
+          {matchedSupplier.warning && (
+            <div style={{ fontSize: 11, color: C.red, marginTop: 4 }}>
+              Let op: {matchedSupplier.warning}
+            </div>
+          )}
         </div>
       )}
 
@@ -636,13 +653,27 @@ function Step2Supplier({
         />
       </div>
 
-      {matchedSupplier && (
+      {matchedSupplier && (matchedSupplier.delivery_terms || matchedSupplier.typical_conditions?.length > 0) && (
         <div style={{
           padding: '12px 16px', background: C.lt, borderRadius: 8,
           fontSize: 12, color: C.txt,
         }}>
-          <div style={{ fontWeight: 600, marginBottom: 4 }}>Leveringsvoorwaarden</div>
-          <div>{matchedSupplier.delivery_terms}</div>
+          {matchedSupplier.delivery_terms && (
+            <>
+              <div style={{ fontWeight: 600, marginBottom: 4 }}>Leveringsvoorwaarden</div>
+              <div style={{ marginBottom: 8 }}>{matchedSupplier.delivery_terms}</div>
+            </>
+          )}
+          {matchedSupplier.typical_conditions && matchedSupplier.typical_conditions.length > 0 && (
+            <>
+              <div style={{ fontWeight: 600, marginBottom: 4 }}>Typische voorwaarden</div>
+              <ul style={{ margin: 0, paddingLeft: 16 }}>
+                {matchedSupplier.typical_conditions.slice(0, 5).map((c, i) => (
+                  <li key={i} style={{ marginBottom: 2, fontSize: 11 }}>{c}</li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       )}
     </div>
@@ -834,7 +865,14 @@ function ProductRow({ product, selected, onToggle }) {
         <div style={{ fontSize: 11, color: C.txtL }}>
           {product.unit}
           {product.price_range && ` \u2014 \u20ac${product.price_range.min} - \u20ac${product.price_range.max}`}
+          {product.items_count ? ` (${product.items_count} items)` : ''}
+          {product.pg ? ` \u2014 ${product.pg}` : ''}
         </div>
+        {product.sample_products && product.sample_products.length > 0 && (
+          <div style={{ fontSize: 10, color: C.txtL, marginTop: 2 }}>
+            o.a. {product.sample_products.slice(0, 3).join(', ')}
+          </div>
+        )}
       </div>
     </label>
   );
