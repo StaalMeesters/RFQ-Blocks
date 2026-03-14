@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vite:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm install:*)",
+      "Bash(mkdir -p /tmp/template_inspect)",
+      "Read(//tmp/**)",
+      "Bash(unzip -o \"/c/Users/ak/Desktop/RFQ_editor/rfq-editor-v2/public/templates/STM_Steel_Background.docx\" -d stp)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"\nconst fs = require\\('fs'\\);\nconst path = require\\('path'\\);\nconst catDir = path.join\\('src', 'data', 'categories'\\);\nconst files = fs.readdirSync\\(catDir\\).filter\\(f => f.endsWith\\('.json'\\)\\);\nconsole.log\\('Category JSONs found:', files.length\\);\nlet ok = 0;\nfor \\(const f of files\\) {\n  try {\n    const data = JSON.parse\\(fs.readFileSync\\(path.join\\(catDir, f\\), 'utf8'\\)\\);\n    if \\(data._meta && data._meta.scope\\) { ok++; }\n    else { console.log\\('WARN: missing _meta.scope in', f\\); }\n  } catch \\(e\\) { console.log\\('ERROR:', f, e.message\\); }\n}\nconsole.log\\('Valid:', ok + '/' + files.length\\);\n\")"
+    ]
+  }
+}
