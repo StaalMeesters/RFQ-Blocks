@@ -1,0 +1,360 @@
+{
+  "_meta": {
+    "version": "3.0.0",
+    "description": "Gedeelde hoofdstuksjablonen v3 — 11-hoofdstukstructuur. Nederlands.",
+    "last_updated": null,
+    "updated_by": null
+  },
+  "ch_rfq_info": {
+    "id": "ch_rfq_info",
+    "title": "RFQ Informatie",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b_rfq_info",
+        "label": "RFQ gegevens",
+        "defaultOn": true,
+        "text": "{{bedrijfsnaam}} (hierna: STM) verzoekt {{leverancierNaam}} (hierna: Leverancier) hierbij een bindende aanbieding uit te brengen voor de levering {{montageClause}} van {{scopeBeschrijving}} ten behoeve van het project:\n\n{{projectNaam}}\nProjectnummer: {{projectNummer}}\nLocatie: {{locatieAdres}}, {{locatiePostcode}} {{locatiePlaats}}\n\nSTM contactpersoon: {{stmContact}}\nLeverancier contactpersoon: {{leverancierContact}}",
+        "variables": [
+          {
+            "id": "bedrijfsnaam",
+            "label": "STM entiteit",
+            "type": "select",
+            "options": ["Staalmeesters Projects BV", "STM Design & Build BV", "STM Design & Build GmbH", "Staalmeesters Group BV"],
+            "source": "entity",
+            "default": "Staalmeesters Projects BV"
+          },
+          {
+            "id": "leverancierNaam",
+            "label": "Leverancier naam",
+            "type": "text",
+            "source": "supplier"
+          },
+          {
+            "id": "montageClause",
+            "label": "Montage clausule",
+            "type": "hidden",
+            "source": "auto",
+            "default": "en eventuele montage"
+          },
+          {
+            "id": "scopeBeschrijving",
+            "label": "Scope beschrijving",
+            "type": "text",
+            "source": "auto",
+            "default": "(automatisch ingevuld vanuit categorie)"
+          },
+          {
+            "id": "projectNaam",
+            "label": "Projectnaam",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "projectNummer",
+            "label": "Projectnummer",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "locatieAdres",
+            "label": "Locatie adres",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "locatiePostcode",
+            "label": "Postcode",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "locatiePlaats",
+            "label": "Plaats",
+            "type": "text",
+            "source": "project"
+          },
+          {
+            "id": "stmContact",
+            "label": "STM contactpersoon",
+            "type": "text",
+            "source": "company"
+          },
+          {
+            "id": "leverancierContact",
+            "label": "Leverancier contactpersoon",
+            "type": "text",
+            "source": "supplier"
+          }
+        ]
+      }
+    ]
+  },
+  "ch_inleiding": {
+    "id": "ch_inleiding",
+    "title": "Projectinleiding",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b_inleiding",
+        "label": "Projectomschrijving en documentatie",
+        "defaultOn": true,
+        "text": "De aanbieding dient expliciet en uitsluitend te zijn gebaseerd op de door STM verstrekte projectdocumentatie, bestaande uit:\n- het IFC-model (indien van toepassing);\n- de bijbehorende 2D-tekeningen (PDF en/of DWG);\n- dit aanvraagdocument (RFQ).\n\nDe Leverancier dient niet af te wijken van de in dit document gestelde specificaties zonder voorafgaande schriftelijke goedkeuring van STM. Afwijkingen, aannames of uitsluitingen die niet expliciet in de aanbieding van de Leverancier zijn vermeld, worden geacht te zijn geaccepteerd zoals hierin gespecificeerd.\n\nDe scope omvat alle materialen, voorzieningen en logistiek die noodzakelijk zijn voor een volledige en functionele levering. Werkzaamheden of materialen die niet expliciet zijn uitgesloten worden geacht inbegrepen te zijn.\n\nSTM behoudt zich het recht voor om delen van de scope aan andere leveranciers te gunnen.",
+        "variables": []
+      }
+    ]
+  },
+  "ch_montage": {
+    "id": "ch_montage",
+    "title": "Montage / Uitvoering",
+    "shared": true,
+    "toggleable": true,
+    "blocks": [
+      {
+        "id": "b_montage_scope",
+        "label": "Montage scope",
+        "defaultOn": true,
+        "text": "De scope omvat de volledige montage/installatie van de hierboven gespecificeerde materialen, inclusief:\n\n{{montageScopeItems}}\n\nDe Leverancier dient alle benodigde gereedschappen, hulpmiddelen, hefmiddelen en personeel in de aanbieding op te nemen.",
+        "variables": [
+          {
+            "id": "montageScopeItems",
+            "label": "Montage scope items",
+            "type": "textarea",
+            "source": "category",
+            "default": "(ingevuld per categorie)"
+          }
+        ]
+      },
+      {
+        "id": "b_montage_grenzen",
+        "label": "Montagegrenzen",
+        "defaultOn": true,
+        "text": "Montagegrenzen — de volgende werkzaamheden zijn inbegrepen in de montage:\n{{montageInbegrepen}}\n\nDe volgende werkzaamheden zijn uitgesloten van de montage:\n{{montageUitgesloten}}\n\nWerkzaamheden of materialen die niet expliciet zijn uitgesloten worden geacht inbegrepen te zijn in de montage.",
+        "variables": [
+          {
+            "id": "montageInbegrepen",
+            "label": "Montage inbegrepen",
+            "type": "textarea",
+            "source": "category",
+            "default": "(ingevuld per categorie)"
+          },
+          {
+            "id": "montageUitgesloten",
+            "label": "Montage uitgesloten",
+            "type": "textarea",
+            "source": "category",
+            "default": "(ingevuld per categorie)"
+          }
+        ]
+      },
+      {
+        "id": "b_montage_veiligheid",
+        "label": "Veiligheid & VCA",
+        "defaultOn": true,
+        "text": "De Leverancier dient te beschikken over een geldig VCA*-certificaat (of gelijkwaardig).\n\nAlle medewerkers dienen in het bezit te zijn van de benodigde veiligheidscertificaten voor werkzaamheden op de bouwplaats.\n\nDe Leverancier is verantwoordelijk voor het naleven van alle geldende Arbo-wetgeving en bouwplaatsvoorschriften.",
+        "variables": []
+      }
+    ]
+  },
+  "ch_bim": {
+    "id": "ch_bim",
+    "title": "Engineering / BIM Vereisten",
+    "shared": true,
+    "toggleable": true,
+    "blocks": [
+      {
+        "id": "b_bim",
+        "label": "BIM-vereisten",
+        "defaultOn": true,
+        "text": "STM werkt met Trimble Connect als centrale BIM- en samenwerkingsomgeving.\n\nDe Leverancier dient een volledig BIM-model aan te leveren op minimaal BIM-niveau {{bimLOD}}.\n\nHet BIM-model dient:\n- te zijn gebaseerd op het door STM verstrekte IFC-model;\n- correct gepositioneerd te zijn ten opzichte van het door STM vastgestelde project-nulpunt (0,0,0);\n- geschikt te zijn voor coördinatie met bouwkundige, constructieve en installatietechnische modellen.\n\nAanlevering:\n- primair formaat: IFC;\n- upload uitsluitend via Trimble Connect.\n\nHet aanleveren van het BIM-model maakt integraal onderdeel uit van de scope en is inbegrepen in de aanbieding.\n\nEventuele correcties of herstelwerkzaamheden als gevolg van onjuiste of onvolledige BIM-gegevens zijn voor rekening van de Leverancier.",
+        "variables": [
+          {
+            "id": "bimLOD",
+            "label": "BIM LOD-niveau",
+            "type": "select",
+            "options": ["LOD 200", "LOD 300", "LOD 350", "LOD 400"],
+            "source": "manual",
+            "default": "LOD 300"
+          }
+        ]
+      }
+    ]
+  },
+  "ch_planning_material": {
+    "id": "ch_planning",
+    "title": "Planning & Levering",
+    "shared": true,
+    "appliesTo": "material",
+    "blocks": [
+      {
+        "id": "b_levering",
+        "label": "Leveringsvoorwaarden",
+        "defaultOn": true,
+        "text": "Levering: {{leveringsvoorwaarde}} op {{locatieAdres}}, {{locatiePostcode}} {{locatiePlaats}}.\n\nDe Leverancier dient in de aanbieding op te nemen:\n- Prijs per vracht / per levering\n- Maximale laadcapaciteit (kg en stuks per vracht)\n- Maximale transportafmetingen\n- Losvereisten (kraancapaciteit, heftruck, handmatig)\n- Maximale wachttijd inbegrepen in leveringsprijs\n\nPlanning:\n- Leverperiode: {{leverperiode}}\n- Bevestig productiedoorlooptijd na ontvangst goedgekeurde werktekeningen\n- Leveringen minimaal {{planningVoorloopDagen}} werkdagen van tevoren afstemmen\n- Leveringsvolgorde conform montage-/installatieplan (indien van toepassing)\n\nVerpakking: inbegrepen in prijs, of toeslag expliciet vermelden.\n\nDe Leverancier draagt de volledige verantwoordelijkheid voor transportschade tot en met voltooiing van het lossen. Beschadigde of defecte items worden binnen {{vervangingsDagen}} werkdagen op kosten van de Leverancier vervangen, inclusief transport.\n\nGenoemde hoeveelheden zijn indicatief. STM behoudt zich het recht voor hoeveelheden met +/- {{hoeveelheidTolerantie}}% aan te passen zonder prijswijziging per eenheidstarief.",
+        "variables": [
+          {
+            "id": "leveringsvoorwaarde",
+            "label": "Leveringsvoorwaarde",
+            "type": "select",
+            "options": ["DAP (Delivered at Place)", "EXW (Ex Works)", "FCA (Free Carrier)", "DDP (Delivered Duty Paid)"],
+            "source": "manual",
+            "default": "DAP (Delivered at Place)"
+          },
+          { "id": "locatieAdres", "label": "Locatie adres", "type": "text", "source": "project" },
+          { "id": "locatiePostcode", "label": "Postcode", "type": "text", "source": "project" },
+          { "id": "locatiePlaats", "label": "Plaats", "type": "text", "source": "project" },
+          {
+            "id": "leverperiode",
+            "label": "Leverperiode",
+            "type": "text",
+            "source": "manual",
+            "delegateText": "De Leverancier dient de vroegst mogelijke leverperiode te vermelden en de productiedoorlooptijd na orderbevestiging te bevestigen."
+          },
+          { "id": "planningVoorloopDagen", "label": "Voorloop planning (dagen)", "type": "number", "source": "manual", "default": "5" },
+          { "id": "vervangingsDagen", "label": "Vervanging (dagen)", "type": "number", "source": "manual", "default": "10" },
+          { "id": "hoeveelheidTolerantie", "label": "Hoeveelheid tolerantie (%)", "type": "number", "source": "manual", "default": "10" }
+        ]
+      }
+    ]
+  },
+  "ch_planning_service": {
+    "id": "ch_planning",
+    "title": "Planning & Uitvoering",
+    "shared": true,
+    "appliesTo": "service",
+    "blocks": [
+      {
+        "id": "b_uitvoering",
+        "label": "Uitvoeringsvoorwaarden",
+        "defaultOn": true,
+        "text": "Locatie: {{locatieAdres}}, {{locatiePostcode}} {{locatiePlaats}}.\n\nWerktijden: {{werktijden}}\nGeschatte duur: {{duur}}\nStartdatum: {{startdatum}} (onder voorbehoud van afstemming met hoofdaannemer)\n\nDe Leverancier dient:\n- Materieel en personeel te mobiliseren binnen {{mobilisatieDagen}} werkdagen na schriftelijke opdracht\n- Af te stemmen met de uitvoerder van STM betreffende toegang, volgorde en raakvlakken met andere disciplines\n- Dagelijkse voortgangsrapportage te verstrekken indien gevraagd door STM\n- De bouwplaats schoon te houden en eigen afval te beheren\n- Eventuele schade aan bestaande oppervlakken, constructies of installaties veroorzaakt door de werkzaamheden van de Leverancier te herstellen\n\nDe Leverancier draagt de volledige verantwoordelijkheid voor alle materieel, tijdelijke voorzieningen, verbruiksmaterialen en personeel benodigd voor de uitvoering van de werkzaamheden.\n\nGenoemde hoeveelheden zijn indicatief en gebaseerd op tekeningen. Definitieve hoeveelheden worden op locatie opgemeten. STM behoudt zich het recht voor de scope met +/- {{hoeveelheidTolerantie}}% aan te passen zonder wijziging van eenheidstarieven.",
+        "variables": [
+          { "id": "locatieAdres", "label": "Locatie adres", "type": "text", "source": "project" },
+          { "id": "locatiePostcode", "label": "Postcode", "type": "text", "source": "project" },
+          { "id": "locatiePlaats", "label": "Plaats", "type": "text", "source": "project" },
+          { "id": "werktijden", "label": "Werktijden", "type": "text", "source": "manual", "default": "07:00 – 17:00, maandag – vrijdag" },
+          {
+            "id": "duur", "label": "Geschatte duur", "type": "text", "source": "manual",
+            "delegateText": "De Leverancier dient de geschatte duur te vermelden op basis van de beschreven scope en beschikbaarheid van personeel te bevestigen."
+          },
+          {
+            "id": "startdatum", "label": "Startdatum", "type": "text", "source": "manual",
+            "delegateText": "De Leverancier dient de vroegst mogelijke startdatum te vermelden."
+          },
+          { "id": "mobilisatieDagen", "label": "Mobilisatie (dagen)", "type": "number", "source": "manual", "default": "5" },
+          { "id": "hoeveelheidTolerantie", "label": "Hoeveelheid tolerantie (%)", "type": "number", "source": "manual", "default": "15" }
+        ]
+      }
+    ]
+  },
+  "ch_financieel": {
+    "id": "ch_financieel",
+    "title": "Commerciële Voorwaarden",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b_prijs",
+        "label": "Prijsstructuur",
+        "defaultOn": true,
+        "text": "De Leverancier dient een volledige prijsspecificatie te verstrekken als volgt:\n\n{{prijsOpbouwItems}}\n\nDe basisprijs dient te omvatten: alle materialen, productie, kwaliteitscontrole, testen, documentatie en CE-markering (indien van toepassing).\n\nToeslagen — de Leverancier dient expliciet te vermelden:\n{{toeslagItems}}\n\nGeldigheid prijzen: minimaal {{geldigheidDagen}} dagen vanaf datum aanbieding.\nVermeld duidelijk of prijzen onderhevig zijn aan een materiaalindex en specificeer welke index van toepassing is.\n\nNiet vermelde toeslagen, uitsluitingen of beperkingen worden geacht inbegrepen te zijn in de basisprijs en kunnen niet separaat worden gefactureerd.",
+        "variables": [
+          { "id": "prijsOpbouwItems", "label": "Prijsopbouw items", "type": "textarea", "source": "category", "default": "(ingevuld per productcategorie)" },
+          { "id": "toeslagItems", "label": "Toeslag items", "type": "textarea", "source": "category", "default": "(ingevuld per productcategorie)" },
+          { "id": "geldigheidDagen", "label": "Geldigheid (dagen)", "type": "number", "source": "manual", "default": "30" }
+        ]
+      },
+      {
+        "id": "b_financieel",
+        "label": "Betalings- en contractvoorwaarden",
+        "defaultOn": true,
+        "text": "Betalingsvoorwaarden: {{betalingstermijn}} na factuurdatum.\nFacturen uitsluitend digitaal in te dienen bij: {{factuurEmail}}\n\nOp de factuur dient te worden vermeld:\n- Bestelnummer: {{bestelNummer}}\n- Projectnummer: {{projectNummer}}\n- Naam en adres onderaannemer/leverancier\n\nFacturen die niet aan bovenstaande eisen voldoen kunnen niet in behandeling worden genomen.\n\nOp deze aanvraag en de daaruit voortvloeiende overeenkomst zijn de {{algVoorwaarden}} van toepassing{{algVoorwaardenRef}}.\n\n{{bankgarantie}}{{verzekeringen}}{{retentie}}",
+        "variables": [
+          { "id": "betalingstermijn", "label": "Betalingstermijn", "type": "select", "options": ["30 dagen", "60 dagen", "90 dagen"], "source": "entity", "default": "30 dagen" },
+          { "id": "factuurEmail", "label": "Factuur e-mail", "type": "text", "source": "entity", "default": "invoices@staalmeesters.com" },
+          { "id": "bestelNummer", "label": "Bestelnummer", "type": "text", "source": "manual" },
+          { "id": "projectNummer", "label": "Projectnummer", "type": "text", "source": "project" },
+          { "id": "algVoorwaarden", "label": "Algemene voorwaarden", "type": "text", "source": "entity", "default": "Metaalunievoorwaarden 2019" },
+          { "id": "algVoorwaardenRef", "label": "Voorwaarden referentie", "type": "text", "source": "entity", "default": ", gedeponeerd bij de Rechtbank Rotterdam op 1 januari 2019" },
+          { "id": "bankgarantie", "label": "Bankgarantie clausule", "type": "textarea", "source": "manual", "default": "", "toggleBlock": true },
+          { "id": "verzekeringen", "label": "Verzekeringen (CAR/AVB/WA)", "type": "textarea", "source": "manual", "default": "", "toggleBlock": true },
+          { "id": "retentie", "label": "Retentie (5%)", "type": "textarea", "source": "manual", "default": "", "toggleBlock": true }
+        ]
+      },
+      {
+        "id": "b_wettelijk_de",
+        "label": "Duitse wettelijke vereisten",
+        "defaultOn": true,
+        "conditional": "DE",
+        "text": "Wichtig:\n- Rechnungsstellung gemäß § 13b bezüglich der Mehrwertsteuer. Am Ende dieses Dokuments beigefügt.\n- Arbeid volgens § 48b Verklaring/vergunning dat u werkzaamheden mag uitvoeren op een Duitse bouwplaats. Bijgevoegd onderaan dit document.\n\nGraag uw geldige 48b document aan ons sturen zodat we dit kunnen toevoegen aan de Staalmeesters boekhouding.\nBij vragen contact opnemen met Boekhouding Staalmeesters of uw eigen boekhouder.\n\nFreistellungsbescheinigung:\nSicherheitsnummer: {{freistellungNummer}}\nGeldig: {{freistellungGeldigVan}} t/m {{freistellungGeldigTot}}",
+        "variables": [
+          { "id": "freistellungNummer", "label": "Freistellung nummer", "type": "text", "source": "entity", "default": "00470013" },
+          { "id": "freistellungGeldigVan", "label": "Geldig van", "type": "text", "source": "entity", "default": "08.02.2024" },
+          { "id": "freistellungGeldigTot", "label": "Geldig tot", "type": "text", "source": "entity", "default": "07.02.2027" }
+        ]
+      },
+      {
+        "id": "b_wettelijk_nl",
+        "label": "Nederlandse wettelijke vereisten",
+        "defaultOn": false,
+        "conditional": "NL",
+        "text": "Op de werkzaamheden is de Wet ketenaansprakelijkheid van toepassing.\n\nDe Leverancier dient desgewenst een G-rekening beschikbaar te hebben voor storting van het loonbelasting- en premiebedrag.\n\nDe Leverancier garandeert dat alle ingezette medewerkers beschikken over een geldige verblijfs- en werkvergunning.",
+        "variables": []
+      }
+    ]
+  },
+  "ch_uitsluitingen": {
+    "id": "ch_uitsluitingen",
+    "title": "Uitsluitingen",
+    "shared": true,
+    "_deprecated": "Merged into ch_scope per product. Kept for backward compatibility.",
+    "blocks": [
+      {
+        "id": "b_uitsluitingen",
+        "label": "Scope uitsluitingen",
+        "defaultOn": true,
+        "text": "De volgende werkzaamheden/materialen zijn uitgesloten van deze scope en worden separaat door STM ingekocht:\n\n{{uitsluitingItems}}\n\nDe Leverancier dient eventuele aanvullende uitsluitingen in de aanbieding te vermelden. Items die hierboven niet zijn vermeld en niet expliciet door de Leverancier in de aanbieding zijn uitgesloten, worden geacht inbegrepen te zijn in de scope en prijs van de Leverancier.\n\nInstallatiehandleidingen, technische documentatie en verwerkingsrichtlijnen dienen kosteloos te worden verstrekt.",
+        "variables": [
+          { "id": "uitsluitingItems", "label": "Uitsluitingenlijst", "type": "textarea", "source": "category", "default": "(ingevuld per productcategorie)" }
+        ]
+      }
+    ]
+  },
+  "ch_offerte": {
+    "id": "ch_offerte",
+    "title": "Offerte Vereisten",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b_offerte",
+        "label": "Indieningsvereisten",
+        "defaultOn": true,
+        "text": "De Leverancier dient de aanbieding in te dienen bij {{stmContact}} via {{stmEmail}} vóór {{deadline}}.\n\nDe aanbieding dient te omvatten:\n{{vereistDocumenten}}\n\nOnvolledige aanbiedingen kunnen zonder verdere overweging worden afgewezen.\n\nSTM is niet verplicht de opdracht aan de laagste inschrijver of aan enige inschrijver te gunnen.\n\nDeze aanvraag vormt geen verplichting tot het plaatsen van een opdracht. STM behoudt zich het recht voor deze aanvraag op elk moment zonder verplichting in te trekken.",
+        "variables": [
+          { "id": "stmContact", "label": "STM contactpersoon", "type": "text", "source": "company" },
+          { "id": "stmEmail", "label": "STM e-mail", "type": "text", "source": "company" },
+          { "id": "deadline", "label": "Indieningsdatum", "type": "date", "source": "manual" },
+          { "id": "vereistDocumenten", "label": "Vereiste documenten", "type": "textarea", "source": "category", "default": "(ingevuld per productcategorie)" }
+        ]
+      }
+    ]
+  },
+  "ch_bijlagen": {
+    "id": "ch_bijlagen",
+    "title": "Bijlagen",
+    "shared": true,
+    "blocks": [
+      {
+        "id": "b_bijlagen",
+        "label": "Bijlagenlijst",
+        "defaultOn": true,
+        "text": "Bij dit document zijn de volgende bijlagen gevoegd:\n\n{{bijlagenLijst}}\n\nMet vriendelijke groet,\n\n{{stmContact}}\n{{stmFunctie}}\n{{bedrijfsnaam}}",
+        "variables": [
+          { "id": "bijlagenLijst", "label": "Bijlagen", "type": "textarea", "source": "auto", "default": "- Algemene Voorwaarden" },
+          { "id": "stmContact", "label": "STM contactpersoon", "type": "text", "source": "company" },
+          { "id": "stmFunctie", "label": "STM functie", "type": "text", "source": "company", "default": "Inkoper" },
+          { "id": "bedrijfsnaam", "label": "STM entiteit", "type": "text", "source": "entity" }
+        ]
+      }
+    ]
+  }
+}

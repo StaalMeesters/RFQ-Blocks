@@ -1,13 +1,22 @@
-import masterData from '../data/master-chapters.json';
+import bundledMasterData from '../data/master-chapters.json';
 import entities from '../data/entities.json';
 import { DEFAULT_CHAPTER_ORDER } from '../data/categoryRegistry.js';
 import { loadMasterOverrides } from './storage.js';
+import { getRuntimeMasterChapters } from './dataLoader.js';
+
+/**
+ * Get the active master data source: runtime-fetched or bundled fallback.
+ */
+function getBaseMasterData() {
+  return getRuntimeMasterChapters() || bundledMasterData;
+}
 
 /**
  * Get master chapter data with localStorage overrides applied.
  */
 function getMasterData(key) {
-  const original = masterData[key];
+  const source = getBaseMasterData();
+  const original = source[key];
   if (!original) return undefined;
   const overrides = loadMasterOverrides();
   if (!overrides[key]?.blocks) return original;

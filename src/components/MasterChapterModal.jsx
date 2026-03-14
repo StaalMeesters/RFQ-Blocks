@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import { C } from '../utils/colors.js';
-import masterData from '../data/master-chapters.json';
+import bundledMasterData from '../data/master-chapters.json';
+import { getRuntimeMasterChapters, updateRuntimeMasterChapters } from '../utils/dataLoader.js';
 import { loadMasterOverrides, saveMasterOverrides } from '../utils/storage.js';
+import { hasGitHubToken, saveMasterChaptersToGitHub } from '../utils/github.js';
+import { showToast } from './Toast.jsx';
+import { getAuditUser } from '../utils/audit.js';
 
 // Shared chapters that can be edited via master override
 const SHARED_CHAPTERS = [
@@ -28,6 +32,7 @@ export default function MasterChapterModal({ onClose }) {
   }, []);
 
   const getChapterData = (key) => {
+    const masterData = getRuntimeMasterChapters() || bundledMasterData;
     const original = masterData[key];
     if (!original) return null;
     const override = overrides[key];
@@ -52,7 +57,7 @@ export default function MasterChapterModal({ onClose }) {
     setEditText(ch.blocks[blockIdx].text);
   };
 
-  const handleSaveBlock = () => {
+  const handleSaveBlock = async () => {
     if (!selectedChapter || editingBlockIdx === null) return;
     const ch = getChapterData(selectedChapter);
     const block = ch.blocks[editingBlockIdx];
@@ -64,6 +69,30 @@ export default function MasterChapterModal({ onClose }) {
     setEditingBlockIdx(null);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+
+    // Also save to GitHub if token configured
+    if (hasGitHubToken()) {
+      const masterData = getRuntimeMasterChapters() || bundledMasterData;
+      // Apply overrides to produce final master data
+      const updatedMaster = JSON.parse(JSON.stringify(masterData));
+      for (const [chKey, chOverrides] of Object.entries(newOverrides)) {
+        if (chOverrides.blocks && updatedMaster[chKey]) {
+          for (const [blockId, text] of Object.entries(chOverrides.blocks)) {
+            const b = updatedMaster[chKey].blocks?.find(bl => bl.id === blockId);
+            if (b) b.text = text;
+          }
+        }
+      }
+      const userName = getAuditUser() || 'onbekend';
+      const chTitle = SHARED_CHAPTERS.find(c => c.key === selectedChapter)?.title || selectedChapter;
+      const result = await saveMasterChaptersToGitHub(updatedMaster, userName, `${chTitle} — ${block.label}`);
+      if (result.ok) {
+        updateRuntimeMasterChapters(updatedMaster);
+        showToast('Master-hoofdstuk opgeslagen in GitHub \u2713', 'success');
+      } else {
+        showToast(`GitHub opslaan mislukt: ${result.error}`, 'error', 6000);
+      }
+    }
   };
 
   const handleResetChapter = (key) => {

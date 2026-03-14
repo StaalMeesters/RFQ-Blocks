@@ -5,6 +5,11 @@ import { useUser } from '../auth/AuthWrapper.jsx';
 import { loadPresets, savePresets, loadAllPresets, importAllPresets } from '../utils/storage.js';
 import MasterChapterModal from './MasterChapterModal.jsx';
 import HelpPanel from './HelpPanel.jsx';
+import { hasGitHubToken, getGitHubToken, setGitHubToken, saveCategoryToGitHub, saveMasterChaptersToGitHub } from '../utils/github.js';
+import { CATEGORY_DATA, setCategoryData } from '../data/categoryRegistry.js';
+import { getCategoryFilename, updateRuntimeCategory, getRuntimeMasterChapters, updateRuntimeMasterChapters } from '../utils/dataLoader.js';
+import { showToast } from './Toast.jsx';
+import { getAuditUser } from '../utils/audit.js';
 
 export default function TopBar({
   entityId, products, onBack,
@@ -14,6 +19,7 @@ export default function TopBar({
   activeProductIndex, onLoadPreset, getValsForProduct,
   contractType, onUpdateContractType,
   saveIndicator, onSwitchToGenerator,
+  editedTexts, chapters,
 }) {
   const { user, logout } = useUser();
   const entity = entities[entityId];
@@ -23,6 +29,10 @@ export default function TopBar({
 
   // Help panel
   const [helpOpen, setHelpOpen] = useState(false);
+
+  // GitHub token settings
+  const [ghTokenInput, setGhTokenInput] = useState('');
+  const [ghSaving, setGhSaving] = useState(false);
 
   // Settings dropdown
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -150,6 +160,88 @@ export default function TopBar({
       reader.readAsText(file);
     };
     input.click();
+  };
+
+  // ── GitHub Save ──
+  const handleSaveToGitHub = async () => {
+    if (ghSaving) return;
+
+    if (!hasGitHubToken()) {
+      showToast('Wijzigingen alleen lokaal opgeslagen. Configureer GitHub token in instellingen voor gedeeld opslaan.', 'warning', 6000);
+      return;
+    }
+
+    setGhSaving(true);
+    const userName = getAuditUser() || user?.name || 'onbekend';
+    let anyFailed = false;
+    let savedCount = 0;
+
+    try {
+      // Find which categories have been edited (blocks in those categories have editedTexts)
+      const editedCategoryIds = new Set();
+      if (chapters && editedTexts) {
+        for (const ch of chapters) {
+          if (ch.productSections) {
+            for (const sec of ch.productSections) {
+              for (const block of sec.blocks) {
+                if (editedTexts[block.id] !== undefined) {
+                  editedCategoryIds.add(sec.categoryId);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      // Save each edited category
+      for (const catId of editedCategoryIds) {
+        const catData = CATEGORY_DATA[catId];
+        if (!catData) continue;
+        const filename = getCategoryFilename(catId);
+        const result = await saveCategoryToGitHub(
+          catId, filename, catData, userName,
+          `categorie ${catId} bijgewerkt`
+        );
+        if (result.ok) {
+          savedCount++;
+          updateRuntimeCategory(catId, catData);
+          setCategoryData(catId, catData);
+        } else {
+          anyFailed = true;
+          showToast(`Fout bij opslaan ${catId}: ${result.error}`, 'error', 6000);
+        }
+      }
+
+      // Also save if no specific category edits but we want to persist current state
+      if (editedCategoryIds.size === 0) {
+        // Save all active product categories
+        for (const prod of (products || [])) {
+          const catData = CATEGORY_DATA[prod.categoryId];
+          if (!catData) continue;
+          const filename = getCategoryFilename(prod.categoryId);
+          const result = await saveCategoryToGitHub(
+            prod.categoryId, filename, catData, userName,
+            `categorie ${prod.categoryId} bijgewerkt`
+          );
+          if (result.ok) {
+            savedCount++;
+          } else {
+            anyFailed = true;
+            showToast(`Fout bij opslaan ${prod.categoryId}: ${result.error}`, 'error', 6000);
+          }
+        }
+      }
+
+      if (!anyFailed && savedCount > 0) {
+        showToast('Opgeslagen in GitHub \u2713', 'success');
+      } else if (savedCount === 0 && !anyFailed) {
+        showToast('Geen wijzigingen om op te slaan', 'warning', 3000);
+      }
+    } catch (err) {
+      showToast(`Opslaan mislukt: ${err.message}`, 'error', 6000);
+    } finally {
+      setGhSaving(false);
+    }
   };
 
   const btn = (label, onClick, opts = {}) => (
@@ -438,7 +530,14 @@ export default function TopBar({
         {btn('↷ Opnieuw', onRedo, { disabled: !canRedo, color: C.wh, borderColor: C.dk2, title: 'Opnieuw (Ctrl+Y)' })}
         <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />
         {btn('Herstellen', onReset, { color: C.wh, borderColor: C.dk2, title: 'Alle wijzigingen herstellen naar standaard' })}
-        {btn('Word ⬇', onExportWord, { bg: C.o, color: C.wh, borderColor: C.o, title: 'Exporteer als Word (Ctrl+E)' })}
+        {btn(ghSaving ? 'Opslaan...' : 'Opslaan', handleSaveToGitHub, {
+          bg: hasGitHubToken() ? '#4CAF50' : C.dk2,
+          color: C.wh,
+          borderColor: hasGitHubToken() ? '#4CAF50' : C.dk2,
+          title: hasGitHubToken() ? 'Opslaan naar GitHub' : 'GitHub token niet geconfigureerd — alleen lokaal opslaan',
+          disabled: ghSaving,
+        })}
+        {btn('Word \u2B07', onExportWord, { bg: C.o, color: C.wh, borderColor: C.o, title: 'Exporteer als Word (Ctrl+E)' })}
         <div style={{ width: 1, height: 20, background: C.dk2, margin: '0 4px' }} />
         {btn(frozen ? '🔒 Bevroren' : '🔓 Concept', onToggleFreeze, {
           bg: frozen ? C.red : 'transparent',
@@ -477,11 +576,69 @@ export default function TopBar({
               </div>
               <div
                 onClick={() => { handleImport(); setSettingsOpen(false); }}
-                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk }}
+                style={{ padding: '8px 12px', cursor: 'pointer', fontSize: 12, color: C.dk, borderBottom: `1px solid ${C.bor}` }}
                 onMouseEnter={e => e.currentTarget.style.background = C.lt}
                 onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 Importeer JSON
+              </div>
+
+              {/* GitHub token config */}
+              <div style={{ padding: '10px 12px', borderTop: `1px solid ${C.bor}` }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: C.txtL, textTransform: 'uppercase', marginBottom: 6 }}>
+                  GitHub Token
+                </div>
+                <div style={{ display: 'flex', gap: 4 }}>
+                  <input
+                    type="password"
+                    value={ghTokenInput || ''}
+                    placeholder={hasGitHubToken() ? '\u2022\u2022\u2022\u2022\u2022 (geconfigureerd)' : 'ghp_...'}
+                    onChange={e => setGhTokenInput(e.target.value)}
+                    style={{
+                      flex: 1, padding: '5px 8px', border: `1px solid ${C.bor}`,
+                      borderRadius: 4, fontSize: 11, boxSizing: 'border-box',
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      if (ghTokenInput.trim()) {
+                        setGitHubToken(ghTokenInput.trim());
+                        setGhTokenInput('');
+                        showToast('GitHub token opgeslagen', 'success', 2000);
+                      }
+                    }}
+                    disabled={!ghTokenInput.trim()}
+                    style={{
+                      padding: '4px 8px', fontSize: 10, fontWeight: 600,
+                      background: ghTokenInput.trim() ? '#4CAF50' : C.bor,
+                      color: C.wh, border: 'none', borderRadius: 4,
+                      cursor: ghTokenInput.trim() ? 'pointer' : 'default',
+                    }}
+                  >
+                    Opslaan
+                  </button>
+                </div>
+                {hasGitHubToken() && (
+                  <button
+                    onClick={() => {
+                      setGitHubToken(null);
+                      setGhTokenInput('');
+                      showToast('GitHub token verwijderd', 'warning', 2000);
+                    }}
+                    style={{
+                      marginTop: 4, padding: '3px 8px', fontSize: 10,
+                      background: 'transparent', color: C.red, border: `1px solid ${C.bor}`,
+                      borderRadius: 3, cursor: 'pointer', width: '100%',
+                    }}
+                  >
+                    Token verwijderen
+                  </button>
+                )}
+                <div style={{ fontSize: 10, color: C.txtL, marginTop: 4 }}>
+                  {hasGitHubToken()
+                    ? '\u2713 Token geconfigureerd — opslaan naar GitHub actief'
+                    : 'Stel een GitHub Personal Access Token in voor gedeeld opslaan'}
+                </div>
               </div>
             </div>
           )}

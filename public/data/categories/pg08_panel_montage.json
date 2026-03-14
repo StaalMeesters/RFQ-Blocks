@@ -1,0 +1,104 @@
+{
+  "_meta": {
+    "id": "panel_montage",
+    "pg": "PG08",
+    "scope": "Paneelmontage",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": ["Brinkers", "Remmont"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_mont",
+          "label": "Paneelinstallatie gevel en dak",
+          "defaultOn": true,
+          "text": "De Leverancier dient de volledige montage van gevel- en dakbekleding uit te voeren conform de projectdocumentatie.\n\nPanelen: {{panDesc}}\nGeveloppervlak: {{wallA}} m²\nDakoppervlak: {{roofA}} m²\n\nDe scope omvat: ontvangst en controle van panelen, montage conform fabrikantvoorschriften, zaag- en snijwerk, passend maken, afdichten van naden en aansluitingen, en bijwerken van beschadigde coating.\n\nKraan: {{crane}}\nSteiger/hoogwerker: {{scaffold}}",
+          "variables": [
+            {
+              "id": "panDesc",
+              "label": "Paneeltype",
+              "type": "text",
+              "default": "geïsoleerde sandwichpanelen (levering door derden)",
+              "source": "specs"
+            },
+            {
+              "id": "wallA",
+              "label": "Gevel (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "roofA",
+              "label": "Dak (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "crane",
+              "label": "Kraan",
+              "type": "select",
+              "options": [
+                "Inbegrepen in aanbieding",
+                "Door STM geleverd",
+                "Nader af te stemmen"
+              ],
+              "default": "Inbegrepen in aanbieding",
+              "source": "specs"
+            },
+            {
+              "id": "scaffold",
+              "label": "Steiger/hoogwerker",
+              "type": "select",
+              "options": [
+                "Inbegrepen in aanbieding",
+                "Door STM geleverd",
+                "Mobiel platform inbegrepen"
+              ],
+              "default": "Inbegrepen in aanbieding",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_mont",
+          "label": "Technische eisen montage",
+          "defaultOn": true,
+          "text": "De Leverancier dient de montage uit te voeren conform de volgende technische eisen:\n\n- Montage strikt conform de verwerkingsrichtlijnen van de paneelfabrikant\n- Bevestiging met de voorgeschreven bevestigingsmiddelen en bijbehorende momenten\n- Alle snijvlakken dienen te worden behandeld met door de fabrikant goedgekeurde coating\n- Afdichting van alle naden en aansluitingen met het voorgeschreven kittype\n- Minimale overlaplengte conform fabrikantspecificatie\n\nDe Leverancier dient een montageplan aan te leveren met daarin opgenomen:\n- Montagevolgorde per gevelvlak en dakvlak\n- Kraanopstelling en hijsplan\n- Methode van tijdelijke opslag op de bouwplaats\n- Veiligheidsmaatregelen conform het V&G-plan",
+          "variables": []
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_mont",
+          "label": "Normen en eisen",
+          "defaultOn": true,
+          "text": "De montagewerkzaamheden dienen te voldoen aan:\n\n- Verwerkingsrichtlijnen van de paneelfabrikant\n- EN 1090-2 (indien constructief bevestigd)\n- Arbobesluit — veilig werken op hoogte\n- VCA** certificering van het montagebedrijf\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Geldig VCA**-certificaat\n- Werkwijze/methodebeschrijving (method statement)\n- Risico-inventarisatie en -evaluatie (RI&E) specifiek voor deze werkzaamheden\n- Referentielijst van vergelijkbare projecten",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m² gevelmontage\n- Per m² dakmontage\n- Per m1 zetwerk/aansluitingen monteren\n- Per stuk doorvoeren en sparingen\n- Lump sum: mobilisatie en kraankosten",
+    "ch_prijs_toeslagen": "- Toeslag voor gefaseerde montage\n- Toeslag voor werken buiten reguliere werktijden\n- Toeslag voor wachttijden (per uur)",
+    "ch_uitsluitingen_items": "- Levering van panelen (door STM of derden)\n- Levering van zetwerk en aansluitprofielen (indien separaat ingekocht)\n- Valbeveiliging (permanente dakbeveiliging)\n- Doorvoeren voor installaties\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per eenheid\n2. Werkwijze/methodebeschrijving\n3. VCA**-certificaat\n4. Risico-inventarisatie en -evaluatie\n5. Materieellijst (kraan, hoogwerker e.d.)\n6. Teamsamenstelling en bezetting\n7. Geschatte uitvoeringsduur\n8. Verzekeringscertificaten (CAR/AVB)\n9. Algemene voorwaarden\n10. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige montage van gevel- en/of dakpanelen conform fabrikantvoorschriften\n- Ontvangst, controle en tijdelijke opslag van panelen op de bouwplaats\n- Alle zaag-, snij- en passingswerk\n- Afdichten van naden, aansluitingen en doorvoeren\n- Bijwerken van beschadigde coating op snijvlakken\n- Alle benodigde hefmiddelen, steigers en hoogwerkers",
+    "ch_montage_grenzen": "Inbegrepen:\n- Kraan en bedieningspersoneel (tenzij anders vermeld)\n- Steigers, hoogwerkers en valbeveiligingsmiddelen voor montage\n- Klein materiaal: bevestigingsmiddelen, kit, schuim, tape\n- Opruimen en afvoer van montagegerelateerd afval\n\nUitgesloten:\n- Staalbouw en draagconstructie\n- Permanente valbeveiliging (separaat ingekocht)\n- Bouwstroom en bouwwater\n- Bouwplaatsvoorzieningen (keet, sanitair)"
+  }
+}

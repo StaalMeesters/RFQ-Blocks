@@ -1,3 +1,4 @@
+// Bundled fallbacks (used when runtime fetch fails)
 import pg03_site_facilities from './categories/pg03_site_facilities.json';
 import pg04_excavation from './categories/pg04_excavation.json';
 import pg04_sewerage from './categories/pg04_sewerage.json';
@@ -23,7 +24,7 @@ import pg09_plumbing_hvac from './categories/pg09_plumbing_hvac.json';
 import pg10_interior_walls from './categories/pg10_interior_walls.json';
 import pg10_interior_floors from './categories/pg10_interior_floors.json';
 
-export const CATEGORY_DATA = {
+const BUNDLED_DATA = {
   site_facilities: pg03_site_facilities,
   excavation: pg04_excavation,
   sewerage: pg04_sewerage,
@@ -49,6 +50,45 @@ export const CATEGORY_DATA = {
   interior_walls: pg10_interior_walls,
   interior_floors: pg10_interior_floors,
 };
+
+// Mutable category data — runtime fetched data overlays bundled defaults
+// Uses a Proxy so consumers always get the latest data via CATEGORY_DATA[id]
+const runtimeOverrides = {};
+
+export const CATEGORY_DATA = new Proxy(BUNDLED_DATA, {
+  get(target, prop) {
+    if (prop in runtimeOverrides) return runtimeOverrides[prop];
+    return target[prop];
+  },
+  has(target, prop) {
+    return prop in runtimeOverrides || prop in target;
+  },
+  ownKeys(target) {
+    return [...new Set([...Object.keys(target), ...Object.keys(runtimeOverrides)])];
+  },
+  getOwnPropertyDescriptor(target, prop) {
+    if (prop in runtimeOverrides || prop in target) {
+      return { configurable: true, enumerable: true, value: runtimeOverrides[prop] || target[prop] };
+    }
+    return undefined;
+  },
+});
+
+/**
+ * Update a category with runtime-fetched data (replaces bundled version).
+ */
+export function setCategoryData(categoryId, data) {
+  runtimeOverrides[categoryId] = data;
+}
+
+/**
+ * Apply all runtime categories at once (called after initRuntimeData).
+ */
+export function applyRuntimeCategories(categoriesMap) {
+  for (const [id, data] of Object.entries(categoriesMap)) {
+    runtimeOverrides[id] = data;
+  }
+}
 
 export const CATEGORY_LIST = [
   { id: 'site_facilities', pg: 'PG03', scope: 'Bouwplaatsvoorzieningen', scopeType: 'material', defaultMontage: false, defaultBIM: false },

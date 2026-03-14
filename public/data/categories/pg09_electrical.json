@@ -1,0 +1,125 @@
+{
+  "_meta": {
+    "id": "electrical",
+    "pg": "PG09",
+    "scope": "Elektrotechnische Installatie",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": true,
+    "suppliers": ["Loohuis", "Engberink", "Brusche"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_elec",
+          "label": "Elektrotechnische installatie",
+          "defaultOn": true,
+          "text": "De Leverancier dient een volledige elektrotechnische installatie te leveren en te installeren conform de projectdocumentatie.\n\nHoofdverdeler: {{mainDB}}\nAantal groepenverdelers: {{subQty}}\nVerlichting: {{lighting}}\nWandcontactdozen: conform ruimtestaat\nKabelvoering: {{cabling}}\nBrandmeldinstallatie: {{fireAl}}\nNoodverlichting: {{emerLt}}\n\nDe installatie dient te worden gebaseerd op de elektrotechnische ontwerptekeningen en de ruimtestaat.\nDe definitieve netaansluiting door de netbeheerder is uitgesloten van deze scope.",
+          "variables": [
+            {
+              "id": "mainDB",
+              "label": "Hoofdverdeler",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor de hoofdverdeler op basis van het totale aansluitvermogen.",
+              "source": "specs"
+            },
+            {
+              "id": "subQty",
+              "label": "Aantal groepenverdelers",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "lighting",
+              "label": "Verlichting",
+              "type": "select",
+              "options": [
+                "LED paneel (kantoor)",
+                "LED highbay (hal/magazijn)",
+                "LED TL-vervanger",
+                "Combinatie conform verlichtingsplan"
+              ],
+              "default": "Combinatie conform verlichtingsplan",
+              "source": "specs"
+            },
+            {
+              "id": "cabling",
+              "label": "Kabelvoering",
+              "type": "select",
+              "options": [
+                "Kabelgoot",
+                "Kabelladder",
+                "Buis (centraaldoos)",
+                "Combinatie"
+              ],
+              "default": "Combinatie",
+              "source": "specs"
+            },
+            {
+              "id": "fireAl",
+              "label": "Brandmeldinstallatie",
+              "type": "select",
+              "options": [
+                "Conventioneel",
+                "Adresseerbaar",
+                "Niet in scope",
+                "Conform brandveiligheidsrapport"
+              ],
+              "default": "Conform brandveiligheidsrapport",
+              "source": "specs"
+            },
+            {
+              "id": "emerLt",
+              "label": "Noodverlichting",
+              "type": "select",
+              "options": [
+                "Decentraal LED (eigen accu)",
+                "Centrale accuvoorziening",
+                "Niet in scope"
+              ],
+              "default": "Decentraal LED (eigen accu)",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_elec",
+          "label": "Technische eisen elektra",
+          "defaultOn": true,
+          "text": "De Leverancier dient de installatie te ontwerpen en uit te voeren conform de volgende technische eisen:\n\n- Aansluitvermogen en verdelerindeling conform het elektrotechnisch ontwerp\n- Selectiviteitsberekening voor alle verdelingen\n- Verlichtingsberekening (Dialux of gelijkwaardig) conform NEN-EN 12464-1\n- Kabelberekening op spanningsval en stroombelasting\n- Aardingsconcept conform NEN 1010\n\nDe Leverancier dient een volledig installatieontwerp ter goedkeuring voor te leggen aan STM, bestaande uit:\n- Eendraadschema\n- Verdelerschema's\n- Leidingschema's en kabellijst\n- Verlichtingsberekening (Dialux)\n- Brandmeldinstallatie-ontwerp (indien van toepassing)\n\nSTM behoudt zich het recht voor het ontwerp te laten toetsen door een externe adviseur. Eventuele aanpassingen als gevolg van deze toetsing zijn voor rekening van de Leverancier, tenzij deze voortvloeien uit wijzigingen in de uitgangspunten.",
+          "variables": []
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_elec",
+          "label": "Normen en certificering",
+          "defaultOn": true,
+          "text": "De elektrotechnische installatie dient te voldoen aan de volgende normen en regelgeving:\n\n- NEN 1010 — Veiligheidsbepalingen voor laagspanningsinstallaties\n- NEN 3140 — Bedrijfsvoering van elektrische installaties\n- NEN-EN 50110-1 — Bedrijfsvoering van elektrische installaties (Europees)\n- NEN-EN 12464-1 — Verlichting van werkplekken\n- NEN 2535 — Brandmeldinstallaties (indien van toepassing)\n- Bouwbesluit 2012 / Besluit bouwwerken leefomgeving\n\nDe Leverancier dient een Erkend Installateur te zijn conform de Regeling Erkenning Installateur.\n\nNa oplevering dient een SCIOS-keuring (scope 6) te worden uitgevoerd. De kosten hiervan zijn inbegrepen in de aanbieding.\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Erkenningscertificaat installateur\n- NEN 1010 installatieplan\n- Dialux verlichtingsberekening\n- Referenties van vergelijkbare projecten",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Lump sum compleet, of gespecificeerd:\n- Per stuk: verdeler, armatuur, wandcontactdoos, schakelaar\n- Per m1: kabel, kabelgoot/buis\n- Lump sum: brandmeldinstallatie, keuring en inbedrijfstelling\n- Per uur: meerwerk/wijzigingen",
+    "ch_prijs_toeslagen": "- Toeslag voor werken buiten reguliere werktijden\n- Toeslag voor gefaseerde oplevering\n- Toeslag voor wijzigingen na goedkeuring ontwerp",
+    "ch_uitsluitingen_items": "- Netaansluiting door netbeheerder\n- Constructieve werkzaamheden (sparingen, doorbraken)\n- Afwerklagen (schilderwerk, stucwerk)\n- Zonnepanelen / PV-installatie\n- IT- en datacabling\n- Toegangscontrole en camerabewaking (CCTV)\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per onderdeel\n2. Ontwerpverificatie en eendraadschema\n3. Dialux verlichtingsberekening\n4. Verdelerschema's\n5. Materiaalkeuze en specificaties\n6. NEN 1010 installatieplan\n7. Erkenningscertificaat installateur\n8. Geschatte uitvoeringsduur\n9. Algemene voorwaarden\n10. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige aanleg van de elektrotechnische installatie vanaf de hoofdverdeler\n- Plaatsing en aansluiting van alle verdelers, armaturen, schakelaars en wandcontactdozen\n- Aanleg van kabelvoering (goten, ladders, buizen)\n- Trekken en aansluiten van alle kabels\n- Installatie van brandmeldinstallatie en noodverlichting (indien in scope)\n- Inbedrijfstelling, meten en beproeven\n- SCIOS-keuring en opleverdocumentatie",
+    "ch_montage_grenzen": "Inbegrepen:\n- Alle materialen, kabels, verdelers en armaturen\n- Klein materiaal: bevestigingsmiddelen, wartels, kroonsteentjes\n- Gereedschap en meetapparatuur\n- Coördinatie met overige disciplines op de bouwplaats\n\nUitgesloten:\n- Constructieve sparingen en doorbraken (door STM/aannemer)\n- Bouwstroom tijdens de bouwfase\n- Aansluiting op het openbare net (door netbeheerder)\n- Afwerking van wand- en plafonddoorvoeren (door afwerkploeg)"
+  }
+}

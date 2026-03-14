@@ -11,11 +11,15 @@ import GeneratorWizard from './components/GeneratorWizard.jsx';
 import { useWelcome, WelcomeOverlay } from './components/HelpPanel.jsx';
 import { ensureAuditUser } from './utils/audit.js';
 import VersionBadge from './components/VersionBadge.jsx';
+import ToastContainer from './components/Toast.jsx';
+import { initRuntimeData } from './utils/dataLoader.js';
+import { applyRuntimeCategories } from './data/categoryRegistry.js';
 
 export default function App() {
   const [screen, setScreen] = useState('select'); // 'select', 'editor', 'generator'
   const [entityId, setEntityId] = useState('');
   const [categoryIds, setCategoryIds] = useState([]); // multi-select
+  const [dataReady, setDataReady] = useState(false);
 
   // Resizable panels
   const [leftWidth, setLeftWidth] = useState(260);
@@ -24,6 +28,16 @@ export default function App() {
 
   const data = useMultiProductData(entityId, categoryIds);
   const { showWelcome, dismissWelcome } = useWelcome();
+
+  // Load runtime data from public/data/ on startup
+  useEffect(() => {
+    initRuntimeData().then((result) => {
+      if (result.loaded && Object.keys(result.categories).length > 0) {
+        applyRuntimeCategories(result.categories);
+      }
+      setDataReady(true);
+    });
+  }, []);
 
   // Save indicator (flashes after auto-save)
   const [saveFlash, setSaveFlash] = useState(false);
@@ -107,6 +121,18 @@ export default function App() {
     window.addEventListener('mouseup', handleMouseUp);
   }, [leftWidth, rightWidth]);
 
+  // Loading screen while fetching runtime data
+  if (!dataReady) {
+    return (
+      <div style={{
+        height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontFamily: "'Segoe UI', system-ui, sans-serif", color: C.txtL, fontSize: 14,
+      }}>
+        Gegevens laden...
+      </div>
+    );
+  }
+
   // Select screen with mode toggle
   if (screen === 'select') {
     return (
@@ -117,6 +143,7 @@ export default function App() {
         />
         {showWelcome && <WelcomeOverlay onDismiss={dismissWelcome} />}
         <VersionBadge />
+        <ToastContainer />
       </>
     );
   }
@@ -127,6 +154,7 @@ export default function App() {
       <>
         <GeneratorWizard onBack={() => setScreen('select')} />
         <VersionBadge />
+        <ToastContainer />
       </>
     );
   }
@@ -161,6 +189,8 @@ export default function App() {
           data.save();
           setScreen('generator');
         }}
+        editedTexts={data.editedTexts}
+        chapters={data.chapters}
       />
 
       <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
@@ -272,6 +302,7 @@ export default function App() {
         </div>
       </div>
       <VersionBadge />
+      <ToastContainer />
     </div>
   );
 }

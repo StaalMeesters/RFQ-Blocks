@@ -1,0 +1,248 @@
+{
+  "_meta": {
+    "id": "concrete_sandwich_panel",
+    "pg": "PG05",
+    "scope": "Betonnen Sandwichpanelen",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": true,
+    "suppliers": ["NV Schelfhout", "Preco"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_sand",
+          "label": "Sandwichpanelen",
+          "defaultOn": true,
+          "text": "De Leverancier dient prefab betonnen sandwichpanelen te leveren:\n\nType: {{panelType}}\nOpbouw: {{construction}}\nDikte: min. {{totalThk}} mm\nIsolatie: {{insCore}}, min. {{insThk}} mm\nBuitenblad: min. {{extLeaf}} mm\nBinnenblad: min. {{intLeaf}} mm\nWapening: min. {{rebar}} kg/m²\n\nBuitenafwerking: {{extFinish}}, kleur/toeslagmateriaal: {{extCol}}\nBinnenafwerking: {{intFin}}\nMinimale calculatieoppervlakte: {{minCalc}} m²\nAnkers: {{anchorType}}, {{anchorQty}} stuks per paneel\n\nDe Leverancier dient te bevestigen: paneeltype, U-waarde, brandklasse, DoP/CE-markering, gewicht per m², maximale afmetingen en betonklasse.\n\nAfwijkende of lagere specificaties zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "panelType",
+              "label": "Paneeltype",
+              "type": "text",
+              "default": "SAFESI 25",
+              "delegateText": "De Leverancier dient een voorstel te doen voor paneeltype en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "construction",
+              "label": "Opbouw",
+              "type": "text",
+              "default": "75/100/75",
+              "altText": "De Leverancier dient aanvullend een alternatief aan te bieden voor opbouw en het verschil in prijs en technische prestatie aan te geven.",
+              "source": "specs"
+            },
+            {
+              "id": "totalThk",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "250",
+              "source": "specs"
+            },
+            {
+              "id": "insCore",
+              "label": "Isolatie",
+              "type": "select",
+              "options": ["EPS", "XPS", "PIR", "PU", "MiWo"],
+              "default": "EPS",
+              "altText": "De Leverancier dient aanvullend een alternatief aan te bieden voor isolatie en het verschil in prijs en technische prestatie aan te geven, met vermelding van brandklasse en U-waarde.",
+              "source": "specs"
+            },
+            {
+              "id": "insThk",
+              "label": "Isolatiedikte (mm)",
+              "type": "number",
+              "default": "100",
+              "source": "specs"
+            },
+            {
+              "id": "extLeaf",
+              "label": "Buitenblad (mm)",
+              "type": "number",
+              "default": "75",
+              "source": "specs"
+            },
+            {
+              "id": "intLeaf",
+              "label": "Binnenblad (mm)",
+              "type": "number",
+              "default": "75",
+              "source": "specs"
+            },
+            {
+              "id": "rebar",
+              "label": "Wapening (kg/m²)",
+              "type": "number",
+              "default": "5.5",
+              "source": "specs"
+            },
+            {
+              "id": "extFinish",
+              "label": "Buitenafwerking",
+              "type": "select",
+              "options": ["Uitgewassen", "Zuurgeëtst", "Gepolijst", "Glad bekist", "Gezandstraald"],
+              "default": "Uitgewassen",
+              "delegateText": "De Leverancier dient een voorstel te doen voor buitenafwerking en monsters ter goedkeuring aan STM voor te leggen.",
+              "source": "specs"
+            },
+            {
+              "id": "extCol",
+              "label": "Toeslagmateriaal/kleur",
+              "type": "text",
+              "default": "graniet wit/zwart 8/12",
+              "delegateText": "De Leverancier dient een voorstel te doen voor toeslagmateriaal/kleur. STM bevestigt op basis van monsters.",
+              "source": "specs"
+            },
+            {
+              "id": "intFin",
+              "label": "Binnenafwerking",
+              "type": "select",
+              "options": ["Glad bekist", "Ruw", "Geschilderd"],
+              "default": "Glad bekist",
+              "source": "specs"
+            },
+            {
+              "id": "minCalc",
+              "label": "Min. calculatie (m²)",
+              "type": "number",
+              "default": "2.5",
+              "source": "specs"
+            },
+            {
+              "id": "anchorType",
+              "label": "Ankertype",
+              "type": "text",
+              "default": "Frimeda 28/15",
+              "delegateText": "De Leverancier dient een voorstel te doen voor ankertype geschikt voor staalconstructie-aansluiting en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "anchorQty",
+              "label": "Ankers per paneel",
+              "type": "number",
+              "default": "4",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_cut",
+          "label": "Sparingen & Uitsparingen",
+          "defaultOn": true,
+          "text": "Uitsparingen: {{cutQty}} stuks, standaard max. {{cutMax}} m².\nPer uitsparing: wapening langs randen + dagkanten.\nDagkantafwerking: {{dagType}}.\nPrijs: per uitsparing (standaard) en per m1 dagkant.",
+          "variables": [
+            {
+              "id": "cutQty",
+              "label": "Aantal uitsparingen",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "cutMax",
+              "label": "Standaard max. (m²)",
+              "type": "number",
+              "default": "4",
+              "source": "specs"
+            },
+            {
+              "id": "dagType",
+              "label": "Dagkantafwerking",
+              "type": "text",
+              "default": "prefab, passend bij buitenafwerking",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_sur",
+          "label": "Toeslagen",
+          "defaultOn": true,
+          "text": "De Leverancier dient alle toeslagen expliciet te vermelden:\n- Niet-standaard hoogte: per paneel met drempelwaarden\n- Klein paneel: onder {{smallThresh}} m²\n- Speciaal toeslagmateriaal/kleur\n- Engineeringkosten\n\nNiet vermelde toeslagen worden geacht inbegrepen te zijn in de basisprijs.",
+          "variables": [
+            {
+              "id": "smallThresh",
+              "label": "Klein paneel onder (m²)",
+              "type": "number",
+              "default": "2.5",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_sand",
+          "label": "Technische eisen sandwichpanelen",
+          "defaultOn": true,
+          "text": "De Leverancier dient te voldoen aan de volgende technische eisen:\n\n- Betonklasse: min. {{concCl}} conform EN 206\n- Milieuklasse: min. {{expCl}} conform EN 206 / NEN-EN 1992-1-1\n- Brandreactie: EN 13501-1, min. klasse {{fireReact}}\n- Brandwerendheid: EN 13501-2, min. {{fireRes}}\n- Thermische isolatie: max. U-waarde {{uVal}} W/m²K\n- Maattoleranties: conform EN 14992\n\nDe Leverancier dient productietekeningen (werktekeningen) op te stellen op basis van de door STM verstrekte constructietekeningen en het IFC-model.\n\nAfwijkende of lagere waarden zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "concCl",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": ["C20/25", "C25/30", "C30/37", "C35/45"],
+              "default": "C30/37",
+              "source": "specs"
+            },
+            {
+              "id": "expCl",
+              "label": "Milieuklasse",
+              "type": "select",
+              "options": ["XC1", "XC2", "XC3", "XC4"],
+              "default": "XC4",
+              "source": "specs"
+            },
+            {
+              "id": "fireReact",
+              "label": "Brandreactie",
+              "type": "text",
+              "default": "A1",
+              "source": "specs"
+            },
+            {
+              "id": "fireRes",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": ["EI 30", "EI 60", "EI 90", "EI 120", "N.v.t."],
+              "default": "EI 60",
+              "source": "specs"
+            },
+            {
+              "id": "uVal",
+              "label": "U-waarde (W/m²K)",
+              "type": "number",
+              "default": "0.28",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_sand",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Alle geleverde elementen dienen te voldoen aan minimaal de volgende normen:\n\n- EN 14992 — Prefab betonelementen: wandelementen\n- EN 13369 — Gemeenschappelijke regels voor prefab betonelementen\n- EN 206 — Beton: specificatie, eigenschappen, vervaardiging en conformiteit\n- NEN-EN 1992-1-1 — Eurocode 2: Ontwerp en berekening van betonconstructies\n- EN 13501-1 — Brandclassificatie: reactie bij brand\n- EN 13501-2 — Brandclassificatie: brandwerendheid\n\nDe Leverancier dient te beschikken over CE-markering (DoP) voor de geleverde elementen.\nBetonproductie dient plaats te vinden in een BFBN-gecertificeerde fabriek of gelijkwaardig.\nWapeningscertificaten: EN 10080, 3.1 walscertificaten vereist.\n\nBij te voegen: DoP, brandrapporten, betonsamenstelling, thermische berekening.\n\nBij tegenstrijdigheden geldt de strengste norm als leidend.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m² per paneeltype\nPer stuk: ankers, dagkanten, uitsparingen\nPer m1: dagkanten, plinten\nPer vracht: transport\n\nInbegrepen: productie, uitharding, kwaliteitscontrole, CE-markering.\nToeslagen: hoogte, klein paneel, speciaal toeslagmateriaal, engineering, index.",
+    "ch_prijs_toeslagen": "- Niet-standaard hoogte (per paneel, met drempelwaarden)\n- Klein paneel (onder {{smallThresh}} m²)\n- Speciaal toeslagmateriaal of kleur\n- Engineeringkosten\n- Materiaalindex (specificeer welke index van toepassing is)",
+    "ch_uitsluitingen_items": "- Montage/plaatsing van panelen\n- Staalconstructie (onderconstructie)\n- Kraan en hijsmiddelen\n- Steigerbouw\n- Voegkit en afdichtingen\n- Brandwerende afdichting bij voegen\n- Oppervlaktebehandeling na montage\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave conform bovenstaande specificatie\n2. Technische productbladen\n3. DoP + CE-markering\n4. Brandrapporten (EN 13501-1 en EN 13501-2)\n5. Betonsamenstelling + milieuklasse bevestiging\n6. Thermische berekening (U-waarde)\n7. Levertijd na goedgekeurde werktekeningen\n8. Monsterreferentie voor afwerking\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing"
+  }
+}

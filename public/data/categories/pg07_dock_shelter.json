@@ -1,0 +1,146 @@
+{
+  "_meta": {
+    "id": "dock_shelter",
+    "pg": "PG07",
+    "scope": "Dockshelter",
+    "scopeType": "material",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Novoferm NL"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_shelter",
+          "label": "Dockshelters",
+          "defaultOn": true,
+          "text": "De Leverancier dient dockshelters te leveren:\n\nType: {{shelterType}}, Aantal: {{shelterQty}}\n\nPer unit:\n- Vrije doorgang: {{clearWidth}} x {{clearHeight}} mm\n- Uitsteklengte: {{projection}} mm\n- Doek: {{fabricMaterial}}\n- Frame: {{frameType}}\n- Kleur: {{colour}}\n\nCompatibiliteit met de overheaddeur en dockleveller dient voorafgaand aan bestelling door de Leverancier te worden bevestigd.\n\nDe Leverancier dient in de aanbieding te bevestigen: type, vrije doorgang, uitsteklengte, doekspecificatie, weersbestendigheidsklasse, brandklasse, verwachte levensduur.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "shelterType",
+              "label": "Sheltertype",
+              "type": "select",
+              "options": ["Intrekbaar kussen", "Opblaasbaar", "Vast frame", "Combinatie"],
+              "default": "Intrekbaar kussen",
+              "altText": "Bied alternatief sheltertype aan met weersbestendigheid en prijs."
+            },
+            {
+              "id": "shelterQty",
+              "label": "Aantal",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "clearWidth",
+              "label": "Vrije breedte (mm)",
+              "type": "number",
+              "default": "3400"
+            },
+            {
+              "id": "clearHeight",
+              "label": "Vrije hoogte (mm)",
+              "type": "number",
+              "default": "3600"
+            },
+            {
+              "id": "projection",
+              "label": "Uitsteklengte (mm)",
+              "type": "number",
+              "default": "600"
+            },
+            {
+              "id": "fabricMaterial",
+              "label": "Doekmateriaal",
+              "type": "select",
+              "options": ["PVC-gecoat polyester", "PU-gecoat nylon", "EPDM rubber"],
+              "default": "PVC-gecoat polyester"
+            },
+            {
+              "id": "frameType",
+              "label": "Frametype",
+              "type": "select",
+              "options": ["Gegalvaniseerd staal", "Aluminium", "RVS"],
+              "default": "Gegalvaniseerd staal"
+            },
+            {
+              "id": "colour",
+              "label": "Kleur",
+              "type": "text",
+              "default": "RAL 9005",
+              "delegateText": "Kleuropties aanleveren. STM bevestigt."
+            }
+          ]
+        },
+        {
+          "id": "b_scope_shelter_acc",
+          "label": "Dockshelter Accessoires",
+          "defaultOn": true,
+          "text": "De Leverancier dient per dockshelter de volgende accessoires te leveren:\n\n- Geleiderails: {{guideRails}}\n- Dockverlichting: {{dockLight}}\n- Bewegwijzering: docknummerplaat, standaard\n\nAlle accessoires dienen compatibel te zijn met het geleverde sheltertype. De Leverancier dient de compatibiliteit te bevestigen en eventuele accessoires te vermelden die niet in de basisprijs zijn opgenomen.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "guideRails",
+              "label": "Geleiderails",
+              "type": "select",
+              "options": ["Ja", "Nee"],
+              "default": "Ja"
+            },
+            {
+              "id": "dockLight",
+              "label": "Dockverlichting",
+              "type": "select",
+              "options": ["LED armlamp", "LED strip", "Niet vereist"],
+              "default": "LED armlamp"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_doek",
+          "label": "Doekspecificatie",
+          "defaultOn": true,
+          "text": "Het doekmateriaal dient te voldoen aan de volgende eisen:\n\n- Materiaal: {{fabricMaterial}}\n- Brandklasse conform EN 13501-1: de Leverancier DIENT de brandklasse van alle doekcomponenten te vermelden\n- Weersbestendigheid: de Leverancier dient testgegevens bij te voegen waaruit de weersbestendigheidsprestatie blijkt\n- UV-bestendigheid: geschikt voor langdurige buitentoepassing\n\nDe Leverancier dient de verwachte levensduur van het doek te vermelden bij normaal gebruik en de beschikbaarheid van vervangende doeksets te bevestigen.",
+          "variables": [
+            {
+              "id": "fabricMaterial",
+              "label": "Doekmateriaal",
+              "type": "select",
+              "options": ["PVC-gecoat polyester", "PU-gecoat nylon", "EPDM rubber"],
+              "default": "PVC-gecoat polyester"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 12642 (ladingzekering — compatibiliteit dockuitrusting)\n- Machinerichtlijn 2006/42/EG (indien aangedreven of mechanisch bediende componenten zijn opgenomen)\n- Brandklasse van doek conform EN 13501-1 — de Leverancier DIENT de brandklasse van alle doekcomponenten te vermelden\n\nDe Leverancier dient testgegevens te verstrekken waaruit de weersbestendigheidsprestatie blijkt.\n\nBij te voegen: productbladen, doekspecificatie en brandklasse conform EN 13501-1, weersbestendigheidstestgegevens, compatibiliteitsbevestiging met overheaddeur en dockleveller.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per stuk dockshelter — complete unit inclusief:\n- Frame, doekkussens/-gordijnen, bevestigingsmiddelen\n- Geleiderails (indien inbegrepen)\n- Dockverlichting (indien inbegrepen)\n- Bewegwijzering\n\nPer stuk accessoires (separaat gespecificeerd waar van toepassing)\nTransport: per vracht\n\nNiet vermelde toeslagen worden geacht inbegrepen te zijn en kunnen niet separaat worden gefactureerd.",
+    "ch_prijs_toeslagen": "- Niet-standaard vrije doorgangafmetingen (buiten standaard productierange)\n- Vervangende doeksets (alleen doek, zonder frame)",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage en inbedrijfstelling\n- Staalconstructie en wandonderframe\n- Elektrische voeding (voor aangedreven dockverlichting)\n- Bouwkundige werkzaamheden\n- Dockleveller\n- Overheaddeur\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nInstallatiehandleidingen en documentatie worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie per unit\n2. Productbladen per product\n3. Doekspecificatie en brandklasse conform EN 13501-1\n4. Weersbestendigheidstestgegevens\n5. Compatibiliteitsbevestiging met overheaddeur en dockleveller\n6. Levertijd na orderbevestiging\n7. Garantieverklaring\n8. Algemene voorwaarden\n9. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "- Volledige montage van dockshelters inclusief frame en doek\n- Montage geleiderails (indien in scope)\n- Montage dockverlichting (indien in scope)\n- Aansluiting verlichting op voorbekabeling\n- Afstellen en testen\n- Bevestiging compatibiliteit met overheaddeur en dockleveller",
+    "ch_montage_grenzen": "- Elektrische voeding tot aansluitpunt\n- Staalconstructie en wandonderframe\n- Bouwkundige voorzieningen\n- Overheaddeur en dockleveller\n- Kraan en hijsmiddelen"
+  }
+}

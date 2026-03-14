@@ -1,0 +1,282 @@
+{
+  "_meta": {
+    "id": "overhead_door",
+    "pg": "PG07",
+    "scope": "Overheaddeuren & Laadvoorzieningen",
+    "scopeType": "material",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Novoferm NL",
+      "EBP"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_door",
+          "label": "Industriele Overheaddeuren",
+          "defaultOn": true,
+          "text": "De Leverancier dient industriele overhead-sectionaaldeuren te leveren:\n\nModel: {{doorModel}}\nAantal: {{doorQty}}\n\nPer deur:\n- Dagmaat: {{openW}} x {{openH}} mm\n- Paneel: {{panelType}}, min {{panelThk}} mm, {{panelProf}}\n- Kleur buiten: {{extCol}}\n- Kleur binnen: {{intCol}}\n- Railsysteem: {{rail}}\n- Bediening: {{op}}\n- Voeding: {{power}}\n- Loopdeur: {{wicket}}\n- Beglazing: {{glazing}}\n\nVeiligheid (verplicht): lichtscherm, vingerklembeveiliging, noodontgrendeling, veiligheidsrand.\n\nDe Leverancier dient in de aanbieding te bevestigen: type, U-waarde (paneel en complete deur), wind-/water-/luchtklasse, cyclustelling, snelheid, DoP/CE, gewicht, vereiste vrije ruimte boven en naast de opening.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "doorModel",
+              "label": "Model",
+              "type": "text",
+              "default": "THERMO 40",
+              "delegateText": "Stel een deur voor passend bij de dagmaat en thermische eisen.",
+              "altText": "Bied alternatief deurtype aan met U-waarde, windklasse en prijsverschil."
+            },
+            {
+              "id": "doorQty",
+              "label": "Aantal",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "openW",
+              "label": "Breedte (mm)",
+              "type": "number",
+              "default": "4000"
+            },
+            {
+              "id": "openH",
+              "label": "Hoogte (mm)",
+              "type": "number",
+              "default": "4250"
+            },
+            {
+              "id": "panelType",
+              "label": "Paneel",
+              "type": "text",
+              "default": "Dubbelwandig geisoleerd staal"
+            },
+            {
+              "id": "panelThk",
+              "label": "Paneeldikte (mm)",
+              "type": "number",
+              "default": "40"
+            },
+            {
+              "id": "panelProf",
+              "label": "Profiel",
+              "type": "select",
+              "options": ["Micro-rib", "Cassette", "Glad", "Stucco", "Houtnerf"],
+              "default": "Micro-rib"
+            },
+            {
+              "id": "extCol",
+              "label": "Kleur buiten",
+              "type": "text",
+              "default": "RAL 9007",
+              "delegateText": "Kleurenkaart aanleveren. STM bevestigt."
+            },
+            {
+              "id": "intCol",
+              "label": "Kleur binnen",
+              "type": "text",
+              "default": "RAL 9002"
+            },
+            {
+              "id": "rail",
+              "label": "Railsysteem",
+              "type": "select",
+              "options": ["Standaard (N)", "Hoog (H)", "Verticaal (V)", "Laag (T)", "Dakhoek (S)"],
+              "default": "Standaard (N)",
+              "altText": "Offerte voor standaard en hoog railsysteem met vrije ruimte en prijsverschil."
+            },
+            {
+              "id": "op",
+              "label": "Bediening",
+              "type": "select",
+              "options": ["Elektrisch 400V/3f", "Elektrisch 230V/1f", "Kettingtakel", "Veerbalans"],
+              "default": "Elektrisch 400V/3f"
+            },
+            {
+              "id": "power",
+              "label": "Voeding",
+              "type": "select",
+              "options": ["400V/3f/50Hz", "230V/1f/50Hz"],
+              "default": "400V/3f/50Hz"
+            },
+            {
+              "id": "wicket",
+              "label": "Loopdeur",
+              "type": "select",
+              "options": ["Ja — geintegreerd", "Nee", "Optioneel — separaat offreren"],
+              "default": "Ja — geintegreerd"
+            },
+            {
+              "id": "glazing",
+              "label": "Beglazing",
+              "type": "select",
+              "options": ["Geen", "1 rij", "2 rijen", "Volledig glas"],
+              "default": "Geen"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_dock",
+          "label": "Docklevellers",
+          "defaultOn": false,
+          "text": "De Leverancier dient hydraulische docklevellers te leveren:\n\nModel: {{dockMod}}, Aantal: {{dockQty}}\nPlatform: {{dockW}} x {{dockL}} mm\nDraagvermogen: min {{dockCap}} kg\nBediening: {{dockOp}}\n\nVerplicht: automatische lip, wielgeleiders, veiligheidssteunen, onderhoudsstut, CE-markering.\n\nDe Leverancier dient te bevestigen: type, dynamisch draagvermogen, putafmetingen, cyclustelling, snelheid, CE/DoP, gewicht.\n\nSTM behoudt zich het recht voor niet-conforme alternatieven af te wijzen.",
+          "variables": [
+            {
+              "id": "dockMod",
+              "label": "Model",
+              "type": "text",
+              "default": "Novodock L320",
+              "delegateText": "Stel dockleveller voor passend bij het opgegeven draagvermogen."
+            },
+            {
+              "id": "dockQty",
+              "label": "Aantal",
+              "type": "number",
+              "default": "1"
+            },
+            {
+              "id": "dockW",
+              "label": "Breedte (mm)",
+              "type": "number",
+              "default": "2000"
+            },
+            {
+              "id": "dockL",
+              "label": "Lengte (mm)",
+              "type": "number",
+              "default": "3000"
+            },
+            {
+              "id": "dockCap",
+              "label": "Draagvermogen (kg)",
+              "type": "number",
+              "default": "6000"
+            },
+            {
+              "id": "dockOp",
+              "label": "Bediening",
+              "type": "select",
+              "options": ["Elektro-hydraulisch", "Pneumatisch-hydraulisch", "Handmatig"],
+              "default": "Elektro-hydraulisch"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_ctrl",
+          "label": "Besturing & Accessoires",
+          "defaultOn": true,
+          "text": "De Leverancier dient per deur te leveren:\n- Besturing: {{ctrlType}}\n- Afstandsbediening: {{remote}}\n- Verkeerslichten: {{traffic}}\n- Bekabeling tot {{cable}} punt\n- Noodstop\n\nDe Leverancier dient eventuele benodigde accessoires te vermelden die niet in bovenstaande scope zijn opgenomen.",
+          "variables": [
+            {
+              "id": "ctrlType",
+              "label": "Besturing",
+              "type": "select",
+              "options": ["Drukknop (binnen+buiten)", "Drukknop (binnen)", "Sleutelschakelaar"],
+              "default": "Drukknop (binnen+buiten)"
+            },
+            {
+              "id": "remote",
+              "label": "Afstandsbediening",
+              "type": "select",
+              "options": ["Inbegrepen", "Nee", "Optioneel"],
+              "default": "Optioneel"
+            },
+            {
+              "id": "traffic",
+              "label": "Verkeerslichten",
+              "type": "select",
+              "options": ["Ja", "Nee", "Optioneel"],
+              "default": "Nee"
+            },
+            {
+              "id": "cable",
+              "label": "Bekabeling tot",
+              "type": "select",
+              "options": ["Aansluitdoos", "Verdeelkast"],
+              "default": "Aansluitdoos"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_thermisch",
+          "label": "Thermische prestatie",
+          "defaultOn": true,
+          "text": "Thermische prestatie-eisen:\n- U-waarde paneel: max {{uPan}} W/m2K\n- U-waarde complete deur: max {{uDoor}} W/m2K\n\nDe Leverancier dient de thermische berekening conform EN 13241 bij te voegen.\n\nBij afwijking van de opgegeven U-waarde dient de Leverancier het prijsverschil en de alternatieve waarde te vermelden.",
+          "variables": [
+            {
+              "id": "uPan",
+              "label": "U-waarde paneel (W/m2K)",
+              "type": "number",
+              "default": "0.50"
+            },
+            {
+              "id": "uDoor",
+              "label": "U-waarde deur (W/m2K)",
+              "type": "number",
+              "default": "1.40"
+            }
+          ]
+        },
+        {
+          "id": "b_tech_prestatie",
+          "label": "Prestatieklassen",
+          "defaultOn": true,
+          "text": "Prestatieklassen conform EN 12424/12425/12426:\n- Windweerstand: min Klasse {{windCl}}\n- Waterdichtheid: min Klasse {{waterCl}}\n- Luchtdoorlatendheid: min Klasse {{airCl}}\n\nDe Leverancier dient de prestatieklassen per deurtype te bevestigen en testverslagen bij te voegen.",
+          "variables": [
+            {
+              "id": "windCl",
+              "label": "Windklasse",
+              "type": "select",
+              "options": ["1", "2", "3", "4", "5"],
+              "default": "2"
+            },
+            {
+              "id": "waterCl",
+              "label": "Waterklasse",
+              "type": "select",
+              "options": ["0", "1", "2", "3"],
+              "default": "1"
+            },
+            {
+              "id": "airCl",
+              "label": "Luchtklasse",
+              "type": "select",
+              "options": ["0", "1", "2", "3", "4", "5", "6"],
+              "default": "3"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_std",
+          "label": "Normen & Certificering",
+          "defaultOn": true,
+          "text": "Alle producten dienen minimaal te voldoen aan:\n\n- EN 13241 (industriele, bedrijfs- en garagedeuren — prestatie)\n- EN 12604 (mechanische aspecten)\n- EN 12453 (veiligheid bij gebruik van aangedreven deuren)\n- EN 12978 (veiligheidsvoorzieningen)\n\nDocklevellers (indien in scope): EN 1398. Machinerichtlijn 2006/42/EG.\n\nBij te voegen: DoP, prestatietestverslagen, bedradingsschema's, installatievereisten.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per deur — separaat specificeren:\n- Deurblad (panelen, kozijn, afdichtingen)\n- Railsysteem\n- Motor en aandrijving\n- Besturingspaneel en bekabeling\n- Loopdeur (indien van toepassing)\n- Beglazing (indien van toepassing)\n\nPer dockleveller: complete unit\nTransport: per vracht\n\nNiet vermelde toeslagen worden geacht inbegrepen te zijn en kunnen niet separaat worden gefactureerd.",
+    "ch_prijs_toeslagen": "- Niet-standaard kleur (buiten standaard RAL-assortiment)\n- Niet-standaard afmetingen (buiten standaard productierange)\n- Reserveonderdelenpakket\n- Verlengde garantie boven standaard",
+    "ch_uitsluitingen_items": "Uitgesloten (separaat door STM in te kopen):\n\n- Montage en inbedrijfstelling\n- Staalconstructie en lateien\n- Elektrische voeding tot aansluitdoos / verdeelkast\n- Bouwkundige werkzaamheden (vloerdrempel, kozijndagkant)\n- Kraan en hijsmiddelen\n- Steiger\n- Brandafdichting bij deurdagkanten\n- BTW\n\nDe Leverancier dient aanvullende uitsluitingen te vermelden. Items die niet zijn vermeld en niet door de Leverancier zijn uitgesloten, worden geacht inbegrepen te zijn.\n\nInstallatiehandleidingen en documentatie worden kosteloos verstrekt.",
+    "ch_offerte_documenten": "1. Prijsspecificatie per deur (blad, rail, motor, besturing, loopdeur, beglazing)\n2. Productbladen per product\n3. DoP + CE-certificaat\n4. Prestatietestverslagen (wind-, water-, luchtklasse; U-waarden)\n5. Bedradingsschema's\n6. Installatievereisten (vrije ruimte boven, naast, lateiafmetingen)\n7. Levertijd na orderbevestiging\n8. Garantieverklaring\n9. Algemene voorwaarden\n10. Alle afwijkingen en aannames met onderbouwing",
+    "ch_montage_scope": "- Volledige montage van overhead-sectionaaldeuren inclusief rail, motor en besturing\n- Montage van docklevellers (indien in scope)\n- Aansluiting besturing op voorbekabeling tot aansluitpunt\n- Afstellen, testen en in bedrijf stellen\n- Instructie eindgebruiker",
+    "ch_montage_grenzen": "- Elektrische voeding tot aansluitpunt\n- Staalconstructie en lateien\n- Bouwkundige voorzieningen (vloerdrempel, dagkant)\n- Steiger en kraan\n- Brandafdichting bij dagkanten"
+  }
+}

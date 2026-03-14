@@ -1,0 +1,178 @@
+{
+  "_meta": {
+    "id": "foundation_concrete",
+    "pg": "PG04",
+    "scope": "Funderingsbeton",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": [
+      "Exterkate",
+      "Wilmink",
+      "Niehof",
+      "Kuipers",
+      "Vroom"
+    ],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_foundations",
+          "label": "Strook- & Poerfunderingen",
+          "defaultOn": true,
+          "text": "De Leverancier dient in-situ betonnen funderingswerkzaamheden uit te voeren:\n\nFunderingstype: {{foundationType}}\nBetonklasse: {{concreteClass}}\nMilieuklasse: {{exposureClass}}\nWapening: {{reinforcementType}}\n\nDe Leverancier dient:\n- Bekisting te leveren en te plaatsen\n- Wapening te leveren, te knippen, te buigen en te vlechten\n- Beton te leveren, te storten, te verdichten en te nabehandelen\n- Bekisting na uitharding te ontkisten\n- Ankerbouten en ingestorte voorzieningen conform tekening te plaatsen\n\nGeschatte betonhoeveelheid: {{concreteVolume}} m3\nGeschatte wapening: {{rebarWeight}} kg\n\nAfgewerkte peilen conform constructietekeningen. Tolerantie: +/- {{levelTolerance}} mm.\nAnkerboutnauwkeurigheid: +/- {{boltTolerance}} mm.\n\nWerkzaamheden of materialen die niet expliciet zijn uitgesloten worden geacht inbegrepen te zijn.",
+          "variables": [
+            {
+              "id": "foundationType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Strookfundering",
+                "Poerfundering",
+                "Gecombineerd (strook + poer)",
+                "Plaatfundering"
+              ],
+              "default": "Gecombineerd (strook + poer)"
+            },
+            {
+              "id": "concreteClass",
+              "label": "Betonklasse",
+              "type": "select",
+              "options": [
+                "C20/25",
+                "C25/30",
+                "C30/37",
+                "C35/45"
+              ],
+              "default": "C30/37"
+            },
+            {
+              "id": "exposureClass",
+              "label": "Milieuklasse",
+              "type": "select",
+              "options": [
+                "XC1",
+                "XC2",
+                "XC3",
+                "XC4",
+                "XD1"
+              ],
+              "default": "XC2"
+            },
+            {
+              "id": "reinforcementType",
+              "label": "Wapening",
+              "type": "select",
+              "options": [
+                "B500B (losse staven)",
+                "B500A (wapeningsnetten)",
+                "Combinatie"
+              ],
+              "default": "B500B (losse staven)"
+            },
+            {
+              "id": "concreteVolume",
+              "label": "Volume (m3)",
+              "type": "number"
+            },
+            {
+              "id": "rebarWeight",
+              "label": "Wapening (kg)",
+              "type": "number"
+            },
+            {
+              "id": "levelTolerance",
+              "label": "Peiltolerantie (mm)",
+              "type": "number",
+              "default": "5"
+            },
+            {
+              "id": "boltTolerance",
+              "label": "Bouttolerantie (mm)",
+              "type": "number",
+              "default": "3"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_floorslab",
+          "label": "Vloerplaat op staal",
+          "defaultOn": false,
+          "text": "De Leverancier dient de begane grondvloerplaat uit te voeren:\n\nPlaatdikte: {{slabThickness}} mm\nBetonklasse: {{slabConcreteClass}}\nWapening: {{slabReinforcement}}\nAfwerking: {{slabFinish}}\nGeschat oppervlak: {{slabArea}} m2\n\nInbegrepen: vochtscherm, isolatie (indien gespecificeerd), voegindeling, machinaal vlindervlinderen / afwerking.",
+          "variables": [
+            {
+              "id": "slabThickness",
+              "label": "Dikte (mm)",
+              "type": "number",
+              "default": "200"
+            },
+            {
+              "id": "slabConcreteClass",
+              "label": "Beton",
+              "type": "select",
+              "options": [
+                "C20/25",
+                "C25/30",
+                "C30/37"
+              ],
+              "default": "C25/30"
+            },
+            {
+              "id": "slabReinforcement",
+              "label": "Wapening",
+              "type": "text",
+              "default": "Q335 wapeningsnet",
+              "altText": "De Leverancier dient aanvullend een alternatief aan te bieden voor wapening, bijvoorbeeld staalvezelbeton als alternatief voor traditionele wapening."
+            },
+            {
+              "id": "slabFinish",
+              "label": "Afwerking",
+              "type": "select",
+              "options": [
+                "Machinaal vlinderen",
+                "Gebezemd / geschuurd",
+                "Gepolijst",
+                "Glad gelijmd"
+              ],
+              "default": "Machinaal vlinderen"
+            },
+            {
+              "id": "slabArea",
+              "label": "Oppervlak (m2)",
+              "type": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": []
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_normering",
+          "label": "Toepasselijke normen",
+          "defaultOn": true,
+          "text": "Alle werkzaamheden dienen te voldoen aan:\n\n- NEN-EN 206 (betonspecificatie)\n- NEN-EN 13670 (uitvoering van betonconstructies)\n- NEN-EN 1992-1-1 (Eurocode 2 — ontwerp van betonconstructies)\n- NEN-EN 10080 (betonstaal)\n- NEN 8005 (Nederlandse nationale bijlage)\n\nBetonleverancier dient BFBN-gecertificeerd te zijn.\nWapeningsleverancier dient 3.1-certificaten conform EN 10204 te verstrekken.\n\nBij te voegen: betonsamenstelling, wapeningscertificaten, bekistingsontwerp (indien vereist).",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Beton:\n- Per m3 beton (levering, storten, verdichten, nabehandelen)\n- Per m2 bekisting (leveren, plaatsen, ontkisten)\n\nWapening:\n- Per kg wapening (leveren, knippen, buigen, vlechten)\n- Per stuk ankerbouten-set (leveren, mal, plaatsen)\n\nAfwerking:\n- Per m2 vloerafwerking (indien van toepassing)\n\nMobilisatie / demobilisatie: vaste prijs\nBetonpomp: per stortsessie of per m3",
+    "ch_prijs_toeslagen": "- Verwijdering van obstakels of rotsachtige ondergrond\n- Aanvullende stortbeurten buiten planning\n- Weekend- / nachtstorten\n- Versnelde uitharding",
+    "ch_uitsluitingen_items": "- Ontgraving (door derden)\n- Constructief ontwerp (door constructeur STM)\n- Staalconstructie\n- Aanvulling na fundering\n- Waterdichting / kelderafdichting\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave — per m3, per kg, per m2\n2. Werkplan\n3. Voorstel betonsamenstelling\n4. Materieellijst\n5. BFBN-certificaat (betonleverancier)\n6. Wapening 3.1-certificaten\n7. Geschatte doorlooptijd\n8. Algemene voorwaarden\n9. Alle afwijkingen met onderbouwing",
+    "ch_montage_scope": "De scope omvat de volledige uitvoering van alle hierboven beschreven betonwerkzaamheden, inclusief:\n- Leveren en plaatsen van bekisting\n- Leveren, knippen, buigen en vlechten van wapening\n- Leveren, storten, verdichten en nabehandelen van beton\n- Plaatsen van ankerbouten en ingestorte voorzieningen\n- Ontkisten na uitharding\n\nDe Leverancier dient alle benodigde materieel, hulpmiddelen en personeel in de aanbieding op te nemen.",
+    "ch_montage_grenzen": "Inbegrepen in de uitvoering:\n- Alle bekistings-, wapenings- en betonwerkzaamheden\n- Plaatsen van ankerbouten en ingestorte voorzieningen\n- Betonpompen en stortlogistiek\n- Nabehandeling en uithardingsbescherming\n- Ontkisten\n- Opruimen en schoonhouden werkterrein\n\nUitgesloten van de uitvoering:\n- Ontgraving van funderingssleuven\n- Aanvulling en verdichting na fundering\n- Waterdichting / kelderafdichting\n- Staalconstructie en bovenbouw"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "_meta": {
+    "id": "hollow_core_slab",
+    "pg": "PG05",
+    "scope": "Kanaalplaatvloer",
+    "scopeType": "material",
+    "defaultMontage": false,
+    "defaultBIM": true,
+    "suppliers": ["VBI", "Olbecon", "Preco"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_hcs",
+          "label": "Kanaalplaten",
+          "defaultOn": true,
+          "text": "De Leverancier dient voorgespannen kanaalplaatvloeren te leveren:\n\nType: {{slabType}}\nDikte: {{depth}} mm\nBelasting: {{load}} kN/m² (veranderlijk)\nOverspanning: max. {{span}} m\nOppervlakte: {{area}} m²\nDruklaag: {{topping}}\n\nDe Leverancier dient te bevestigen: opbuiging, gewicht per m², beschikbare breedtes, DoP/CE-markering en brandwerendheid.\nWerktekeningen op basis van de door STM verstrekte constructietekeningen.\n\nAfwijkende of lagere specificaties zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "slabType",
+              "label": "Type kanaalplaat",
+              "type": "text",
+              "delegateText": "De Leverancier dient een voorstel te doen voor kanaalplaattype passend bij de opgegeven belasting en overspanning en conformiteit met de gestelde eisen te bevestigen.",
+              "source": "specs"
+            },
+            {
+              "id": "depth",
+              "label": "Dikte (mm)",
+              "type": "select",
+              "options": ["150", "200", "260", "320", "400", "500"],
+              "default": "200",
+              "source": "specs"
+            },
+            {
+              "id": "load",
+              "label": "Belasting (kN/m²)",
+              "type": "number",
+              "default": "5.0",
+              "source": "specs"
+            },
+            {
+              "id": "span",
+              "label": "Overspanning (m)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "area",
+              "label": "Oppervlakte (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "topping",
+              "label": "Druklaag",
+              "type": "select",
+              "options": ["Geen", "50 mm + wapeningsnet", "70 mm + wapeningsnet", "Conform constructeur"],
+              "default": "Conform constructeur",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_hcs",
+          "label": "Technische eisen kanaalplaten",
+          "defaultOn": true,
+          "text": "De Leverancier dient te voldoen aan de volgende technische eisen:\n\n- Brandwerendheid: EN 13501-2, min. {{fireRes}}\n- Maattoleranties: conform EN 1168\n- Voorspanning: conform EN 1168 en NEN-EN 1992-1-1\n\nDe Leverancier dient productietekeningen (werktekeningen) op te stellen op basis van de door STM verstrekte constructietekeningen en het IFC-model. Constructieve berekeningen dienen te worden bijgevoegd.\n\nAfwijkende of lagere waarden zijn uitsluitend toegestaan na schriftelijke goedkeuring door STM.",
+          "variables": [
+            {
+              "id": "fireRes",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": ["REI 30", "REI 60", "REI 90", "REI 120"],
+              "default": "REI 60",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_hcs",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "Alle geleverde elementen dienen te voldoen aan minimaal de volgende normen:\n\n- EN 1168 — Prefab betonelementen: kanaalplaten\n- EN 13369 — Gemeenschappelijke regels voor prefab betonelementen\n- EN 206 — Beton: specificatie, eigenschappen, vervaardiging en conformiteit\n- NEN-EN 1992-1-1 — Eurocode 2: Ontwerp en berekening van betonconstructies\n- EN 13501-2 — Brandclassificatie: brandwerendheid\n\nDe Leverancier dient te beschikken over CE-markering (DoP) voor de geleverde elementen.\nBetonproductie dient plaats te vinden in een BFBN-gecertificeerde fabriek of gelijkwaardig.\n\nBij te voegen: DoP, constructieve berekening, brandrapport.\n\nBij tegenstrijdigheden geldt de strengste norm als leidend.",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "Per m² kanaalplaat (per dikte)\nPer m² constructieve druklaag\nPer vracht: transport\n\nInbegrepen: productie, kwaliteitscontrole, CE-markering, werktekeningen.",
+    "ch_prijs_toeslagen": "- Niet-standaard breedte of lengte\n- Uitsparingen en doorvoeren\n- Engineeringkosten\n- Materiaalindex (specificeer welke index van toepassing is)",
+    "ch_uitsluitingen_items": "- Montage/plaatsing van kanaalplaten\n- Kraan en hijsmiddelen\n- Constructieve druklaag (indien door derden)\n- Staalconstructie\n- Voegvulling\n- BTW",
+    "ch_offerte_documenten": "1. Prijsopgave conform bovenstaande specificatie\n2. Constructieve berekening\n3. Werktekeningen\n4. DoP + CE-markering\n5. Brandrapport (EN 13501-2)\n6. Levertijd na goedgekeurde werktekeningen\n7. Algemene voorwaarden\n8. Alle afwijkingen en aannames met onderbouwing"
+  }
+}

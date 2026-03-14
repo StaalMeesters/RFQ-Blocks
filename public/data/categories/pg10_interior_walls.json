@@ -1,0 +1,248 @@
+{
+  "_meta": {
+    "id": "interior_walls",
+    "pg": "PG10",
+    "scope": "Binnenwanden & Plafonds",
+    "scopeType": "service",
+    "defaultMontage": true,
+    "defaultBIM": false,
+    "suppliers": ["Van der Kruijs", "Intramax", "Prozap"],
+    "version": "2.0.0",
+    "status": "draft",
+    "frozen": false
+  },
+  "chapters": {
+    "ch_scope": {
+      "title": "Scope van Levering",
+      "blocks": [
+        {
+          "id": "b_scope_wall",
+          "label": "Metal stud wanden",
+          "defaultOn": true,
+          "text": "De Leverancier dient de volledige levering en montage van binnenwanden te verzorgen conform de projectdocumentatie.\n\nWandtype: {{wallType}}\nGipsplaat: {{pbType}}\nWandhoogte: {{wallH}} m\nOppervlak: {{wallA}} m²\nAkoestisch: minimaal {{acoustic}} dB\nBrandwerendheid: {{wallFire}}\nAfwerkniveau: {{wallFin}}\n\nInbegrepen: metal stud regelwerk, isolatie, gipsplaat aan beide zijden, voegafwerking en eindafwerking conform opgegeven niveau.",
+          "variables": [
+            {
+              "id": "wallType",
+              "label": "Wandtype",
+              "type": "select",
+              "options": [
+                "Enkel 75 mm",
+                "Enkel 100 mm",
+                "Dubbel regelwerk",
+                "Schachtwand"
+              ],
+              "default": "Enkel 100 mm",
+              "source": "specs"
+            },
+            {
+              "id": "pbType",
+              "label": "Gipsplaat",
+              "type": "select",
+              "options": [
+                "Standaard (A)",
+                "Vochtwerend (H)",
+                "Brandwerend (F)",
+                "Slagvast (I)"
+              ],
+              "default": "Standaard (A)",
+              "source": "specs"
+            },
+            {
+              "id": "wallH",
+              "label": "Hoogte (m)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "wallA",
+              "label": "Oppervlak (m²)",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "acoustic",
+              "label": "Akoestisch (dB)",
+              "type": "number",
+              "default": "42",
+              "source": "specs"
+            },
+            {
+              "id": "wallFire",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": [
+                "Geen",
+                "EI 30",
+                "EI 60",
+                "EI 90"
+              ],
+              "default": "EI 30",
+              "source": "specs"
+            },
+            {
+              "id": "wallFin",
+              "label": "Afwerkniveau",
+              "type": "select",
+              "options": [
+                "Niveau 2 (schilderklaar)",
+                "Niveau 3 (standaard schilderwerk)",
+                "Niveau 4 (hoogwaardige afwerking)"
+              ],
+              "default": "Niveau 3 (standaard schilderwerk)",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_ceil",
+          "label": "Systeemplafonds",
+          "defaultOn": false,
+          "text": "De Leverancier dient de volledige levering en montage van systeemplafonds te verzorgen.\n\nType: {{ceilType}}\nPlafondtegel: {{ceilPan}}\nRaster: {{ceilGrid}}\nVrije hoogte: {{ceilH}} m\nOppervlak: {{ceilA}} m²\n\nInbegrepen: rasterwerk, plafondtegels, randafwerking en integratie met installaties.",
+          "variables": [
+            {
+              "id": "ceilType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Inlegtegel",
+                "Clip-in metaal",
+                "Gipsplaat",
+                "Akoestische baffels"
+              ],
+              "default": "Inlegtegel",
+              "source": "specs"
+            },
+            {
+              "id": "ceilPan",
+              "label": "Plafondtegel",
+              "type": "text",
+              "default": "600x600 mineraalvezel",
+              "source": "specs"
+            },
+            {
+              "id": "ceilGrid",
+              "label": "Raster",
+              "type": "select",
+              "options": [
+                "Zichtbaar T-profiel",
+                "Verborgen",
+                "Op maat"
+              ],
+              "default": "Zichtbaar T-profiel",
+              "source": "specs"
+            },
+            {
+              "id": "ceilH",
+              "label": "Vrije hoogte (m)",
+              "type": "number",
+              "default": "2.80",
+              "source": "specs"
+            },
+            {
+              "id": "ceilA",
+              "label": "Oppervlak (m²)",
+              "type": "number",
+              "source": "specs"
+            }
+          ]
+        },
+        {
+          "id": "b_scope_intd",
+          "label": "Binnendeuren",
+          "defaultOn": false,
+          "text": "De Leverancier dient de levering en montage van binnendeuren te verzorgen.\n\nType: {{dType}}, {{dW}} x {{dH}} mm, aantal: {{dQty}}\nBrandwerendheid: {{dFire}}\nBeslag: {{dHW}}\n\nInbegrepen: deurblad, kozijn, beslag en montage.",
+          "variables": [
+            {
+              "id": "dType",
+              "label": "Type",
+              "type": "select",
+              "options": [
+                "Vlakke paneeldeur",
+                "Glasdeur",
+                "Stalen deur"
+              ],
+              "default": "Vlakke paneeldeur",
+              "source": "specs"
+            },
+            {
+              "id": "dW",
+              "label": "Breedte (mm)",
+              "type": "number",
+              "default": "930",
+              "source": "specs"
+            },
+            {
+              "id": "dH",
+              "label": "Hoogte (mm)",
+              "type": "number",
+              "default": "2115",
+              "source": "specs"
+            },
+            {
+              "id": "dQty",
+              "label": "Aantal",
+              "type": "number",
+              "source": "specs"
+            },
+            {
+              "id": "dFire",
+              "label": "Brandwerendheid",
+              "type": "select",
+              "options": [
+                "Geen",
+                "EI 30",
+                "EI 60"
+              ],
+              "default": "Geen",
+              "source": "specs"
+            },
+            {
+              "id": "dHW",
+              "label": "Beslag",
+              "type": "select",
+              "options": [
+                "Standaard",
+                "Kantoorset",
+                "Brandwerend set"
+              ],
+              "default": "Standaard",
+              "source": "specs"
+            }
+          ]
+        }
+      ]
+    },
+    "ch_technisch": {
+      "title": "Technische Specificatie",
+      "blocks": [
+        {
+          "id": "b_tech_wall",
+          "label": "Technische eisen interieur",
+          "defaultOn": true,
+          "text": "De Leverancier dient de binnenwanden en plafonds uit te voeren conform de volgende technische eisen:\n\n- Metal stud regelwerk conform het voorgeschreven wandtype en de opgegeven hoogte\n- Isolatie: minerale wol, dikte conform akoestische en/of brandwerende eis\n- Gipsplaat conform EN 520, type afgestemd op de ruimtefunctie\n- Voegafwerking conform het opgegeven afwerkniveau\n- Brandwerende wanden: volledige doorvoeren afgedicht met brandwerende manchetten of kit\n\nDe Leverancier dient de volgende informatie in de aanbieding op te nemen:\n- Wandopbouw per type (schematisch)\n- Bevestigingsdetails aan vloer, plafond en aansluitende constructies\n- Akoestische prestatieverklaring per wandtype\n- Brandwerendheidscertificaat per wandtype (indien van toepassing)\n\nBij systeemplafonds dient de Leverancier de maximale belasting van het rastersysteem te specificeren en de ophangconstructie te dimensioneren.",
+          "variables": []
+        }
+      ]
+    },
+    "ch_normering": {
+      "title": "Normering",
+      "blocks": [
+        {
+          "id": "b_norm_wall",
+          "label": "Normen",
+          "defaultOn": true,
+          "text": "De binnenwanden en plafonds dienen te voldoen aan de volgende normen en regelgeving:\n\n- EN 520 — Gipsplaten: definities, eisen en beproevingsmethoden\n- EN 13964 — Systeemplafonds: eisen en beproevingsmethoden\n- EN 14195 — Metal stud profielen voor gipsplaatsystemen\n- NEN 5077 — Geluidwering in gebouwen\n- EN 13501-2 — Brandclassificatie: weerstand tegen brandblootstelling\n- Bouwbesluit 2012 / Besluit bouwwerken leefomgeving\n\nDe Leverancier dient de volgende documentatie bij de aanbieding te voegen:\n- Systeemcertificaten van de fabrikant\n- Akoestische rapporten per wandtype\n- Brandwerendheidsrapporten (indien van toepassing)\n- Productbladen van alle toegepaste materialen",
+          "variables": []
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "ch_prijs_items": "- Per m² metal stud wand (per wandtype)\n- Per m² systeemplafond\n- Per stuk binnendeur (incl. kozijn en beslag)\n- Per m1 plint\n\nToeslagen: bovennormale hoogte, gebogen wanden, complexe details.",
+    "ch_prijs_toeslagen": "- Toeslag voor bovennormale wandhoogte (> 3,50 m)\n- Toeslag voor gebogen wanden of complexe geometrie\n- Toeslag voor gefaseerde uitvoering\n- Toeslag voor werken buiten reguliere werktijden",
+    "ch_uitsluitingen_items": "- Constructieve werkzaamheden\n- Eerste aanleg installaties (elektra, sanitair)\n- Vloerafwerking\n- Schilderwerk (indien separaat ingekocht)\n- Meubilair en inrichting\n- BTW",
+    "ch_offerte_documenten": "1. Prijsspecificatie per eenheid\n2. Systeemspecificaties per wandtype\n3. Akoestische rapporten\n4. Brandwerendheidsrapporten\n5. Materiaalspecificaties en productbladen\n6. Geschatte uitvoeringsduur\n7. Algemene voorwaarden\n8. Afwijkingen ten opzichte van deze aanvraag",
+    "ch_montage_scope": "- Volledige levering en montage van metal stud wanden, systeemplafonds en binnendeuren\n- Plaatsen van regelwerk, isolatie en gipsplaat\n- Voegafwerking en eindafwerking conform opgegeven niveau\n- Montage van systeemplafonds inclusief randafwerking\n- Plaatsing van binnendeuren inclusief kozijn en beslag\n- Afdichting van doorvoeren in brandwerende wanden",
+    "ch_montage_grenzen": "Inbegrepen:\n- Alle materialen: profielen, isolatie, gipsplaat, voegmassa, plafondtegels\n- Klein materiaal: bevestigingsmiddelen, kit, tape\n- Steigers en hoogwerkers benodigd voor de werkzaamheden\n- Opruimen en afvoer van eigen afval\n\nUitgesloten:\n- Constructieve aanpassingen aan vloer, dak of gevelelementen\n- Eerste aanleg van installaties in wanden en plafonds\n- Bouwstroom en bouwwater\n- Bouwplaatsvoorzieningen (keet, sanitair)"
+  }
+}
