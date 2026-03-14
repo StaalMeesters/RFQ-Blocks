@@ -66,8 +66,8 @@
           "unit": "STUKS",
           "frequency": "often",
           "price_range": {
-            "min": 6.0,
-            "max": 45.0
+            "min": 6,
+            "max": 45
           },
           "sample_products": [
             "High security fence clamp",
@@ -104,8 +104,8 @@
           "unit": "STUKS",
           "frequency": "often",
           "price_range": {
-            "min": 75.0,
-            "max": 3990.0
+            "min": 75,
+            "max": 3990
           },
           "sample_products": [
             "Power cable 32A 5P 5 X 6 mm2 7M",
@@ -123,8 +123,8 @@
           "unit": "POST",
           "frequency": "often",
           "price_range": {
-            "min": 345.0,
-            "max": 2500.0
+            "min": 345,
+            "max": 2500
           },
           "sample_products": [
             "Driving the earth spike",
@@ -141,8 +141,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 75670.0,
-            "max": 7567000.0
+            "min": 75670,
+            "max": 7567000
           },
           "sample_products": [
             "Scaffold tube 1.00 mtr",
@@ -161,7 +161,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -213,7 +213,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -250,8 +250,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 350.0,
-            "max": 995.0
+            "min": 350,
+            "max": 995
           },
           "sample_products": [
             "Advertising frame",
@@ -269,7 +269,7 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 21.0,
+            "min": 21,
             "max": 81.37
           },
           "sample_products": [
@@ -324,8 +324,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 4000.0,
-            "max": 9500.0
+            "min": 4000,
+            "max": 9500
           },
           "sample_products": [
             "Work floors for working in stairwells",
@@ -343,8 +343,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 150.0,
-            "max": 2780.0
+            "min": 150,
+            "max": 2780
           },
           "sample_products": [
             "Link unit 6 meter type 5",
@@ -363,7 +363,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.3,
-            "max": 385.0
+            "max": 385
           },
           "sample_products": [
             "Lean collaboration based on VBI protocol",
@@ -446,7 +446,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 729.4,
-            "max": 809646.0
+            "max": 809646
           },
           "sample_products": [
             "Chemical toilet",
@@ -463,8 +463,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2250.0,
-            "max": 2475.0
+            "min": 2250,
+            "max": 2475
           },
           "sample_products": [
             "Scaffolding tower",
@@ -482,8 +482,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 995.0,
-            "max": 995.0
+            "min": 995,
+            "max": 995
           },
           "sample_products": [
             "Advertising frame approx 6000x5000mm",
@@ -517,8 +517,8 @@
           "unit": "POST",
           "frequency": "sometimes",
           "price_range": {
-            "min": 925.0,
-            "max": 925.0
+            "min": 925,
+            "max": 925
           },
           "sample_products": [
             "Dismantling of units and site"
@@ -534,8 +534,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -554,7 +554,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -733,7 +733,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.9,
-            "max": 88200.0
+            "max": 88200
           },
           "sample_products": [
             "Concrete block paving white",
@@ -752,7 +752,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.5,
-            "max": 28100.0
+            "max": 28100
           },
           "sample_products": [
             "Profiling sand base between piles",
@@ -790,7 +790,7 @@
           "frequency": "often",
           "price_range": {
             "min": 24.75,
-            "max": 459135.0
+            "max": 459135
           },
           "sample_products": [
             "DWA internal sewer",
@@ -809,7 +809,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -827,7 +827,7 @@
           "frequency": "often",
           "price_range": {
             "min": 2.9,
-            "max": 1850.0
+            "max": 1850
           },
           "sample_products": [
             "Sow grass",
@@ -846,7 +846,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 8.1,
-            "max": 8410.0
+            "max": 8410
           },
           "sample_products": [
             "Soil stabilization foundation trenches Office",
@@ -865,7 +865,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -884,7 +884,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 13.5,
-            "max": 5120.0
+            "max": 5120
           },
           "sample_products": [
             "Blinding layer of 5 cm clean sand",
@@ -902,8 +902,8 @@
           "unit": "st",
           "frequency": "sometimes",
           "price_range": {
-            "min": 350.0,
-            "max": 2830.0
+            "min": 350,
+            "max": 2830
           },
           "sample_products": [
             "AP-04 soil analysis for disposal",
@@ -921,8 +921,8 @@
           "unit": "EUR",
           "frequency": "sometimes",
           "price_range": {
-            "min": 940.0,
-            "max": 2850.0
+            "min": 940,
+            "max": 2850
           },
           "sample_products": [
             "Backfill loading dock to foundation layer level",
@@ -940,7 +940,7 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 215.0,
+            "min": 215,
             "max": 68529.12
           },
           "sample_products": [
@@ -959,8 +959,8 @@
           "unit": "EUR",
           "frequency": "sometimes",
           "price_range": {
-            "min": 300.0,
-            "max": 300.0
+            "min": 300,
+            "max": 300
           },
           "sample_products": [
             "Chemical analysis of soil",
@@ -979,7 +979,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 1.3,
-            "max": 875.0
+            "max": 875
           },
           "sample_products": [
             "Fine profiling trench for placing foundation piers",
@@ -1017,7 +1017,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 4.5,
-            "max": 2310.0
+            "max": 2310
           },
           "sample_products": [
             "Dispose excess soil",
@@ -1069,8 +1069,8 @@
           "unit": "EUR",
           "frequency": "sometimes",
           "price_range": {
-            "min": 375.0,
-            "max": 1450.0
+            "min": 375,
+            "max": 1450
           },
           "sample_products": [
             "Clean up site",
@@ -1088,7 +1088,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 19.95,
-            "max": 2000.0
+            "max": 2000
           },
           "sample_products": [
             "Soil improvement if needed",
@@ -1140,8 +1140,8 @@
           "unit": "EUR",
           "frequency": "sometimes",
           "price_range": {
-            "min": 825.0,
-            "max": 825.0
+            "min": 825,
+            "max": 825
           },
           "sample_products": [
             "Cleaning and removal of unpaved gravel/debris paths"
@@ -1175,7 +1175,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -1210,8 +1210,8 @@
           "unit": "EUR",
           "frequency": "sometimes",
           "price_range": {
-            "min": 25.0,
-            "max": 25.0
+            "min": 25,
+            "max": 25
           },
           "sample_products": [
             "KLIC notification"
@@ -1226,8 +1226,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1750.0,
-            "max": 170000.0
+            "min": 1750,
+            "max": 170000
           },
           "sample_products": [
             "Waste containers",
@@ -1308,7 +1308,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.5,
-            "max": 28100.0
+            "max": 28100
           },
           "sample_products": [
             "Profiling sand base between piles",
@@ -1327,7 +1327,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.9,
-            "max": 88200.0
+            "max": 88200
           },
           "sample_products": [
             "Concrete block paving white",
@@ -1345,7 +1345,7 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 215.0,
+            "min": 215,
             "max": 68529.12
           },
           "sample_products": [
@@ -1365,7 +1365,7 @@
           "frequency": "often",
           "price_range": {
             "min": 24.75,
-            "max": 459135.0
+            "max": 459135
           },
           "sample_products": [
             "DWA internal sewer",
@@ -1403,7 +1403,7 @@
           "frequency": "often",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -1422,7 +1422,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 4.5,
-            "max": 2310.0
+            "max": 2310
           },
           "sample_products": [
             "Dispose excess soil",
@@ -1441,7 +1441,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 2.9,
-            "max": 1850.0
+            "max": 1850
           },
           "sample_products": [
             "Sow grass",
@@ -1479,7 +1479,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -1497,8 +1497,8 @@
           "unit": "ST",
           "frequency": "sometimes",
           "price_range": {
-            "min": 865.0,
-            "max": 1200.0
+            "min": 865,
+            "max": 1200
           },
           "sample_products": [
             "Location visit before commencement",
@@ -1580,7 +1580,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -1617,7 +1617,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 103.5,
-            "max": 6350.0
+            "max": 6350
           },
           "sample_products": [
             "Novoferm inflatable aluminum dock shelter",
@@ -1655,7 +1655,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 4.1,
-            "max": 75.0
+            "max": 75
           },
           "sample_products": [
             "A - Short length > 1.000 mm < 2.000 mm",
@@ -1674,7 +1674,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.15,
-            "max": 2700.0
+            "max": 2700
           },
           "sample_products": [
             "Insulation conversion tooth",
@@ -1692,7 +1692,7 @@
           "frequency": "often",
           "price_range": {
             "min": 9.9,
-            "max": 25.0
+            "max": 25
           },
           "sample_products": [
             "Cutout edge 9 x 19 cm",
@@ -1711,7 +1711,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -1748,7 +1748,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.7,
-            "max": 130.0
+            "max": 130
           },
           "sample_products": [
             "covers for channel sealing floor type 200",
@@ -1766,7 +1766,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -1802,7 +1802,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -1990,7 +1990,7 @@
           "unit": "POS.",
           "frequency": "often",
           "price_range": {
-            "min": 672.0,
+            "min": 672,
             "max": 59302.96
           },
           "sample_products": [
@@ -2029,7 +2029,7 @@
           "frequency": "often",
           "price_range": {
             "min": 174.88,
-            "max": 15770.0
+            "max": 15770
           },
           "sample_products": [
             "Exhaust air ducts toilet rooms",
@@ -2104,8 +2104,8 @@
           "unit": "%",
           "frequency": "sometimes",
           "price_range": {
-            "min": 185000.0,
-            "max": 185000.0
+            "min": 185000,
+            "max": 185000
           },
           "sample_products": [
             "4th installment - at start of rough installation",
@@ -2179,7 +2179,7 @@
           "unit": "Pos",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1843.0,
+            "min": 1843,
             "max": 5405.15
           },
           "sample_products": [
@@ -2198,7 +2198,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 24.75,
-            "max": 459135.0
+            "max": 459135
           },
           "sample_products": [
             "DWA internal sewer",
@@ -2217,7 +2217,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 623.68,
-            "max": 212841.0
+            "max": 212841
           },
           "sample_products": [
             "Drinking water connection in HAR 0.08",
@@ -2302,8 +2302,8 @@
           "unit": "ST",
           "frequency": "sometimes",
           "price_range": {
-            "min": 229.0,
-            "max": 229.0
+            "min": 229,
+            "max": 229
           },
           "sample_products": [
             "Frost-proof exterior wall valve DN15"
@@ -2457,7 +2457,7 @@
           "frequency": "always",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -2559,7 +2559,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -2627,7 +2627,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -2677,8 +2677,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 425.0,
-            "max": 425.0
+            "min": 425,
+            "max": 425
           },
           "sample_products": [
             "Container 10m³ (BSA)",
@@ -2796,7 +2796,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -2815,7 +2815,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.7,
-            "max": 130.0
+            "max": 130
           },
           "sample_products": [
             "covers for channel sealing floor type 200",
@@ -2833,7 +2833,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.34,
-            "max": 8000.0
+            "max": 8000
           },
           "sample_products": [
             "Crane/reach stacker and suction cup unit",
@@ -2885,7 +2885,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 500.0
+            "max": 500
           },
           "sample_products": [
             "Bolts, nuts and washers",
@@ -2919,7 +2919,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -3068,8 +3068,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2250.0,
-            "max": 2475.0
+            "min": 2250,
+            "max": 2475
           },
           "sample_products": [
             "Scaffolding tower",
@@ -3181,7 +3181,7 @@
           "frequency": "always",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -3200,7 +3200,7 @@
           "frequency": "always",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -3218,7 +3218,7 @@
           "frequency": "often",
           "price_range": {
             "min": 17.5,
-            "max": 160.0
+            "max": 160
           },
           "sample_products": [
             "Floor skirting boards 115mm factory finished MDF primer-coat",
@@ -3237,7 +3237,7 @@
           "frequency": "often",
           "price_range": {
             "min": 7.5,
-            "max": 15750.0
+            "max": 15750
           },
           "sample_products": [
             "Painting walls toilet 1200+floor MS clear lacquer",
@@ -3256,7 +3256,7 @@
           "frequency": "often",
           "price_range": {
             "min": 72.5,
-            "max": 525.0
+            "max": 525
           },
           "sample_products": [
             "Void apron",
@@ -3294,7 +3294,7 @@
           "frequency": "often",
           "price_range": {
             "min": 92.6,
-            "max": 1580.0
+            "max": 1580
           },
           "sample_products": [
             "Glass balustrade incl profile",
@@ -3325,7 +3325,7 @@
           "unit": "st",
           "frequency": "sometimes",
           "price_range": {
-            "min": 525.0,
+            "min": 525,
             "max": 9017.72
           },
           "sample_products": [
@@ -3345,7 +3345,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -3441,7 +3441,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -3478,8 +3478,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 150.0,
-            "max": 2780.0
+            "min": 150,
+            "max": 2780
           },
           "sample_products": [
             "Link unit 6 meter type 5",
@@ -3594,8 +3594,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 28000.0,
-            "max": 28000.0
+            "min": 28000,
+            "max": 28000
           },
           "sample_products": [
             "Assembly of exterior walls"
@@ -3612,7 +3612,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -3629,8 +3629,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 5600.0,
-            "max": 5600.0
+            "min": 5600,
+            "max": 5600
           },
           "sample_products": [
             "Assembly of interior walls"
@@ -3646,8 +3646,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 9400.0,
-            "max": 9400.0
+            "min": 9400,
+            "max": 9400
           },
           "sample_products": [
             "Assembly of steel roof"
@@ -3743,7 +3743,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -3761,7 +3761,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.15,
-            "max": 2700.0
+            "max": 2700
           },
           "sample_products": [
             "Insulation conversion tooth",
@@ -3779,7 +3779,7 @@
           "frequency": "often",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -3798,7 +3798,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.3,
-            "max": 385.0
+            "max": 385
           },
           "sample_products": [
             "Lean collaboration based on VBI protocol",
@@ -3924,10 +3924,9 @@
       "country": "NL",
       "pg": [
         "PG05",
-        "PG08",
-        "PG10"
+        "PG06"
       ],
-      "primary_pg": "PG08",
+      "primary_pg": "PG06",
       "total_items": 66,
       "total_docs": 8,
       "quotations": 6,
@@ -3938,7 +3937,7 @@
       "products": [
         {
           "id": "installation",
-          "name_nl": "Installation",
+          "name_nl": "Montage staalconstructie",
           "name_en": "Installation",
           "category": "installation",
           "items_count": 28,
@@ -3946,14 +3945,14 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
             "Installation of Schelfhout elements",
             "Installation of channel plates"
           ],
-          "pg": "PG08"
+          "pg": "PG06"
         },
         {
           "id": "equipment_rental",
@@ -3965,7 +3964,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.34,
-            "max": 8000.0
+            "max": 8000
           },
           "sample_products": [
             "Crane/reach stacker and suction cup unit",
@@ -3983,7 +3982,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -4000,8 +3999,8 @@
           "unit": "st",
           "frequency": "often",
           "price_range": {
-            "min": 250.0,
-            "max": 1250.0
+            "min": 250,
+            "max": 1250
           },
           "sample_products": [
             "Grout mortar for column base plates",
@@ -4011,7 +4010,7 @@
         },
         {
           "id": "concrete_work",
-          "name_nl": "Concrete Work",
+          "name_nl": "Montage betonnen sandwichpanelen",
           "name_en": "Concrete Work",
           "category": "concrete_work",
           "items_count": 3,
@@ -4019,7 +4018,7 @@
           "frequency": "often",
           "price_range": {
             "min": 422.6,
-            "max": 2954.0
+            "max": 2954
           },
           "sample_products": [
             "Underpinning elevator shaft and fire wall",
@@ -4037,7 +4036,7 @@
           "unit": "stuks",
           "frequency": "often",
           "price_range": {
-            "min": 10.0,
+            "min": 10,
             "max": 1237.5
           },
           "sample_products": [
@@ -4045,7 +4044,7 @@
             "Rental tension straps",
             "Rental clamp clusters"
           ],
-          "pg": "PG08"
+          "pg": "PG06"
         },
         {
           "id": "fasteners",
@@ -4057,14 +4056,14 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.28,
-            "max": 500.0
+            "max": 500
           },
           "sample_products": [
             "Bolts, nuts and washers",
             "Fastening materials",
             "Pressure plates or screw connections"
           ],
-          "pg": "PG08"
+          "pg": "PG06"
         },
         {
           "id": "finishing",
@@ -4076,7 +4075,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -4093,8 +4092,8 @@
           "unit": "m¹",
           "frequency": "sometimes",
           "price_range": {
-            "min": 27.0,
-            "max": 975.0
+            "min": 27,
+            "max": 975
           },
           "sample_products": [
             "Adjustable edge formwork h=40 cm",
@@ -4112,8 +4111,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 150.0,
-            "max": 2780.0
+            "min": 150,
+            "max": 2780
           },
           "sample_products": [
             "Link unit 6 meter type 5",
@@ -4151,14 +4150,14 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
             "PUR/PIR insulation panels",
             "Thermal insulation from polyurethane rigid foam panels"
           ],
-          "pg": "PG08"
+          "pg": "PG06"
         }
       ],
       "package_always": [
@@ -4289,8 +4288,8 @@
           "unit": "m²",
           "frequency": "often",
           "price_range": {
-            "min": 28.0,
-            "max": 43.0
+            "min": 28,
+            "max": 43
           },
           "sample_products": [
             "Business Line Beta-AR 100 mm",
@@ -4309,7 +4308,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -4326,8 +4325,8 @@
           "unit": "m²",
           "frequency": "sometimes",
           "price_range": {
-            "min": 32.0,
-            "max": 35.0
+            "min": 32,
+            "max": 35
           },
           "sample_products": [
             "Business Line Beta MW-AR FX 100 mm (EI 90) fire-resistant cladding panel",
@@ -4345,7 +4344,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 18.5,
-            "max": 20.0
+            "max": 20
           },
           "sample_products": [
             "A - Flat plate 1200mm"
@@ -4362,7 +4361,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 18.5,
-            "max": 20.0
+            "max": 20
           },
           "sample_products": [
             "A - Flat sheet 1200mm"
@@ -4379,7 +4378,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 31.95,
-            "max": 32.0
+            "max": 32
           },
           "sample_products": [
             "Business Line Alpha-AR 100 mm insulated wall panels",
@@ -4398,7 +4397,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 4.1,
-            "max": 75.0
+            "max": 75
           },
           "sample_products": [
             "A - Short length > 1.000 mm < 2.000 mm",
@@ -4416,7 +4415,7 @@
           "unit": "m²",
           "frequency": "sometimes",
           "price_range": {
-            "min": 30.0,
+            "min": 30,
             "max": 30.5
           },
           "sample_products": [
@@ -4451,8 +4450,8 @@
           "unit": "m²",
           "frequency": "sometimes",
           "price_range": {
-            "min": 32.0,
-            "max": 32.0
+            "min": 32,
+            "max": 32
           },
           "sample_products": [
             "Business Line Beta MW-AR FX 80 mm (EI 60)"
@@ -4468,8 +4467,8 @@
           "unit": "m²",
           "frequency": "sometimes",
           "price_range": {
-            "min": 35.0,
-            "max": 35.0
+            "min": 35,
+            "max": 35
           },
           "sample_products": [
             "Business Line Beta MW-AR FX 100 mm (EI 90)"
@@ -4485,8 +4484,8 @@
           "unit": "m²",
           "frequency": "sometimes",
           "price_range": {
-            "min": 31.0,
-            "max": 31.0
+            "min": 31,
+            "max": 31
           },
           "sample_products": [
             "Business Line Beta MW-AR FX 80 mm (EI 60) insulation panel"
@@ -4572,8 +4571,8 @@
           "unit": "m¹",
           "frequency": "always",
           "price_range": {
-            "min": 27.0,
-            "max": 975.0
+            "min": 27,
+            "max": 975
           },
           "sample_products": [
             "Adjustable edge formwork h=40 cm",
@@ -4611,7 +4610,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -4630,7 +4629,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -4657,7 +4656,7 @@
           "unit": "m2",
           "frequency": "sometimes",
           "price_range": {
-            "min": 49.0,
+            "min": 49,
             "max": 62.5
           },
           "sample_products": [
@@ -4696,7 +4695,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -4823,8 +4822,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -4842,8 +4841,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 135.0,
-            "max": 1352.0
+            "min": 135,
+            "max": 1352
           },
           "sample_products": [
             "Concrete pump",
@@ -4980,8 +4979,8 @@
           "unit": "m2",
           "frequency": "always",
           "price_range": {
-            "min": 2.0,
-            "max": 22.0
+            "min": 2,
+            "max": 22
           },
           "sample_products": [
             "Formwork material for elevator shaft",
@@ -4999,8 +4998,8 @@
           "unit": "m3",
           "frequency": "often",
           "price_range": {
-            "min": 135.0,
-            "max": 135.0
+            "min": 135,
+            "max": 135
           },
           "sample_products": [
             "Concrete mortar C20/25 environmental class XC2",
@@ -5019,7 +5018,7 @@
           "frequency": "often",
           "price_range": {
             "min": 27.23,
-            "max": 99.0
+            "max": 99
           },
           "sample_products": [
             "Pouring concrete strip foundation",
@@ -5056,8 +5055,8 @@
           "unit": "m¹",
           "frequency": "often",
           "price_range": {
-            "min": 27.0,
-            "max": 975.0
+            "min": 27,
+            "max": 975
           },
           "sample_products": [
             "Adjustable edge formwork h=40 cm",
@@ -5092,8 +5091,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 135.0,
-            "max": 1352.0
+            "min": 135,
+            "max": 1352
           },
           "sample_products": [
             "Concrete pump",
@@ -5111,7 +5110,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.28,
-            "max": 500.0
+            "max": 500
           },
           "sample_products": [
             "Bolts, nuts and washers",
@@ -5130,7 +5129,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -5199,8 +5198,8 @@
           "unit": "ltr",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2.0,
-            "max": 2.0
+            "min": 2,
+            "max": 2
           },
           "sample_products": [
             "Formwork oil"
@@ -5217,7 +5216,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -5235,8 +5234,8 @@
           "unit": "off",
           "frequency": "sometimes",
           "price_range": {
-            "min": 61500.0,
-            "max": 61500.0
+            "min": 61500,
+            "max": 61500
           },
           "sample_products": [
             "Concrete work loading dock + dock"
@@ -5369,7 +5368,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -5386,7 +5385,7 @@
           "unit": "m²",
           "frequency": "always",
           "price_range": {
-            "min": 19.0,
+            "min": 19,
             "max": 55.5
           },
           "sample_products": [
@@ -5406,7 +5405,7 @@
           "frequency": "often",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -5424,8 +5423,8 @@
           "unit": "m¹",
           "frequency": "often",
           "price_range": {
-            "min": 27.0,
-            "max": 975.0
+            "min": 27,
+            "max": 975
           },
           "sample_products": [
             "Adjustable edge formwork h=40 cm",
@@ -5462,8 +5461,8 @@
           "unit": "stuk",
           "frequency": "sometimes",
           "price_range": {
-            "min": 225.0,
-            "max": 225.0
+            "min": 225,
+            "max": 225
           },
           "sample_products": [
             "Seal doors with cloths"
@@ -5480,7 +5479,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 2.2,
-            "max": 120.0
+            "max": 120
           },
           "sample_products": [
             "Concrete floor",
@@ -5566,7 +5565,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.15,
-            "max": 2700.0
+            "max": 2700
           },
           "sample_products": [
             "Insulation conversion tooth",
@@ -5584,7 +5583,7 @@
           "frequency": "always",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -5603,7 +5602,7 @@
           "frequency": "always",
           "price_range": {
             "min": 9.9,
-            "max": 25.0
+            "max": 25
           },
           "sample_products": [
             "Cutout edge 9 x 19 cm",
@@ -5622,7 +5621,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -5731,8 +5730,8 @@
           "unit": "Post",
           "frequency": "always",
           "price_range": {
-            "min": 18125.0,
-            "max": 18125.0
+            "min": 18125,
+            "max": 18125
           },
           "sample_products": [
             "Site measurement and supervision"
@@ -5748,7 +5747,7 @@
           "frequency": "often",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -5805,7 +5804,7 @@
           "frequency": "often",
           "price_range": {
             "min": 2.2,
-            "max": 120.0
+            "max": 120
           },
           "sample_products": [
             "Concrete floor",
@@ -5841,7 +5840,7 @@
           "unit": "st",
           "frequency": "often",
           "price_range": {
-            "min": 525.0,
+            "min": 525,
             "max": 9017.72
           },
           "sample_products": [
@@ -5896,8 +5895,8 @@
           "unit": "Post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 31790.0,
-            "max": 31790.0
+            "min": 31790,
+            "max": 31790
           },
           "sample_products": [
             "Atrium balustrade/stair balustrade"
@@ -6003,7 +6002,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -6022,7 +6021,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 7.5,
-            "max": 15750.0
+            "max": 15750
           },
           "sample_products": [
             "Painting walls toilet 1200+floor MS clear lacquer",
@@ -6373,8 +6372,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1750.0,
-            "max": 170000.0
+            "min": 1750,
+            "max": 170000
           },
           "sample_products": [
             "Waste containers",
@@ -6511,7 +6510,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -6587,7 +6586,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 1.67,
-            "max": 85.0
+            "max": 85
           },
           "sample_products": [
             "Glass fiber fleece",
@@ -6622,7 +6621,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -6659,8 +6658,8 @@
           "unit": "STUKS",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2250.0,
-            "max": 2475.0
+            "min": 2250,
+            "max": 2475
           },
           "sample_products": [
             "Scaffolding tower",
@@ -6769,7 +6768,7 @@
           "frequency": "always",
           "price_range": {
             "min": 2.2,
-            "max": 120.0
+            "max": 120
           },
           "sample_products": [
             "Concrete floor",
@@ -6825,7 +6824,7 @@
           "unit": "m²",
           "frequency": "often",
           "price_range": {
-            "min": 43.0,
+            "min": 43,
             "max": 98.5
           },
           "sample_products": [
@@ -6844,8 +6843,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -6863,8 +6862,8 @@
           "unit": "pst",
           "frequency": "sometimes",
           "price_range": {
-            "min": 4000.0,
-            "max": 4000.0
+            "min": 4000,
+            "max": 4000
           },
           "sample_products": [
             "Construction site costs waste costs"
@@ -6938,7 +6937,7 @@
           "frequency": "always",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -6957,7 +6956,7 @@
           "frequency": "often",
           "price_range": {
             "min": 2.2,
-            "max": 120.0
+            "max": 120
           },
           "sample_products": [
             "Concrete floor",
@@ -7032,7 +7031,7 @@
           "frequency": "often",
           "price_range": {
             "min": 7.5,
-            "max": 15750.0
+            "max": 15750
           },
           "sample_products": [
             "Painting walls toilet 1200+floor MS clear lacquer",
@@ -7087,7 +7086,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -7142,8 +7141,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 425.0,
-            "max": 425.0
+            "min": 425,
+            "max": 425
           },
           "sample_products": [
             "Container 10m³ (BSA)",
@@ -7225,8 +7224,8 @@
           "unit": "st",
           "frequency": "often",
           "price_range": {
-            "min": 6590.0,
-            "max": 31420.0
+            "min": 6590,
+            "max": 31420
           },
           "sample_products": [
             "Office section - Floor heating / floor cooling",
@@ -7244,8 +7243,8 @@
           "unit": "STUKS",
           "frequency": "often",
           "price_range": {
-            "min": 75670.0,
-            "max": 7567000.0
+            "min": 75670,
+            "max": 7567000
           },
           "sample_products": [
             "Scaffold tube 1.00 mtr",
@@ -7263,8 +7262,8 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 1397547.0,
-            "max": 1397547.0
+            "min": 1397547,
+            "max": 1397547
           },
           "sample_products": [
             "Industrial Hall - Ventilation & Air Handling",
@@ -7282,7 +7281,7 @@
           "frequency": "often",
           "price_range": {
             "min": 729.4,
-            "max": 809646.0
+            "max": 809646
           },
           "sample_products": [
             "Chemical toilet",
@@ -7300,7 +7299,7 @@
           "frequency": "often",
           "price_range": {
             "min": 24.75,
-            "max": 459135.0
+            "max": 459135
           },
           "sample_products": [
             "DWA internal sewer",
@@ -7318,8 +7317,8 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 1750.0,
-            "max": 170000.0
+            "min": 1750,
+            "max": 170000
           },
           "sample_products": [
             "Waste containers",
@@ -7338,7 +7337,7 @@
           "frequency": "often",
           "price_range": {
             "min": 174.88,
-            "max": 15770.0
+            "max": 15770
           },
           "sample_products": [
             "Exhaust air ducts toilet rooms",
@@ -7375,8 +7374,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1105164.0,
-            "max": 1105164.0
+            "min": 1105164,
+            "max": 1105164
           },
           "sample_products": [
             "Rainwater Drainage - Geberit Pluvia System"
@@ -7392,8 +7391,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 36952.0,
-            "max": 36952.0
+            "min": 36952,
+            "max": 36952
           },
           "sample_products": [
             "Construction Works - Meter Cabinet Provisions"
@@ -7410,7 +7409,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 1.67,
-            "max": 85.0
+            "max": 85
           },
           "sample_products": [
             "Glass fiber fleece",
@@ -7441,8 +7440,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1636000.0,
-            "max": 1636000.0
+            "min": 1636000,
+            "max": 1636000
           },
           "sample_products": [
             "Office Area - Multi Split Installation"
@@ -7458,8 +7457,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 586950.0,
-            "max": 586950.0
+            "min": 586950,
+            "max": 586950
           },
           "sample_products": [
             "Industrial Hall - Floor Heating (pipes only)"
@@ -7475,8 +7474,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2819234.0,
-            "max": 2819234.0
+            "min": 2819234,
+            "max": 2819234
           },
           "sample_products": [
             "Office Area - Floor Heating / Cooling"
@@ -7503,7 +7502,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 623.68,
-            "max": 212841.0
+            "max": 212841
           },
           "sample_products": [
             "Drinking water connection in HAR 0.08",
@@ -7582,7 +7581,7 @@
           "frequency": "always",
           "price_range": {
             "min": 103.5,
-            "max": 6350.0
+            "max": 6350
           },
           "sample_products": [
             "Novoferm inflatable aluminum dock shelter",
@@ -7600,8 +7599,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 1805.0,
-            "max": 4575.0
+            "min": 1805,
+            "max": 4575
           },
           "sample_products": [
             "Novoferm overhead door type Thermo 40 - extra lift",
@@ -7620,7 +7619,7 @@
           "frequency": "always",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -7638,8 +7637,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 28.0,
-            "max": 297.0
+            "min": 28,
+            "max": 297
           },
           "sample_products": [
             "Exterior Thermo panels in RAL color of choice",
@@ -7719,7 +7718,7 @@
           "frequency": "always",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -7738,7 +7737,7 @@
           "frequency": "often",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -7755,8 +7754,8 @@
           "unit": "m²",
           "frequency": "often",
           "price_range": {
-            "min": 5.0,
-            "max": 30.0
+            "min": 5,
+            "max": 30
           },
           "sample_products": [
             "Surcharge Pallas E-24 sag",
@@ -7773,7 +7772,7 @@
           "unit": "m²",
           "frequency": "often",
           "price_range": {
-            "min": 43.0,
+            "min": 43,
             "max": 98.5
           },
           "sample_products": [
@@ -7793,7 +7792,7 @@
           "frequency": "often",
           "price_range": {
             "min": 7.5,
-            "max": 15750.0
+            "max": 15750
           },
           "sample_products": [
             "Painting walls toilet 1200+floor MS clear lacquer",
@@ -7812,7 +7811,7 @@
           "frequency": "often",
           "price_range": {
             "min": 15.53,
-            "max": 31.0
+            "max": 31
           },
           "sample_products": [
             "AK plasterboard in stairwell",
@@ -7829,8 +7828,8 @@
           "unit": "STUKS",
           "frequency": "often",
           "price_range": {
-            "min": 4000.0,
-            "max": 9500.0
+            "min": 4000,
+            "max": 9500
           },
           "sample_products": [
             "Work floors for working in stairwells",
@@ -7849,7 +7848,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 1.67,
-            "max": 85.0
+            "max": 85
           },
           "sample_products": [
             "Glass fiber fleece",
@@ -7867,7 +7866,7 @@
           "frequency": "sometimes",
           "price_range": {
             "min": 2.2,
-            "max": 120.0
+            "max": 120
           },
           "sample_products": [
             "Concrete floor",
@@ -7902,8 +7901,8 @@
           "unit": "stuks",
           "frequency": "sometimes",
           "price_range": {
-            "min": 145.0,
-            "max": 145.0
+            "min": 145,
+            "max": 145
           },
           "sample_products": [
             "Toilet enclosure"
@@ -7919,8 +7918,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 1750.0,
-            "max": 170000.0
+            "min": 1750,
+            "max": 170000
           },
           "sample_products": [
             "Waste containers",
@@ -7957,8 +7956,8 @@
           "unit": "post",
           "frequency": "sometimes",
           "price_range": {
-            "min": 2800.0,
-            "max": 2800.0
+            "min": 2800,
+            "max": 2800
           },
           "sample_products": [
             "Backing wood and openings in walls"
@@ -8034,7 +8033,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.5,
-            "max": 28100.0
+            "max": 28100
           },
           "sample_products": [
             "Profiling sand base between piles",
@@ -8137,7 +8136,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -8185,8 +8184,8 @@
           "unit": "ST",
           "frequency": "often",
           "price_range": {
-            "min": 865.0,
-            "max": 1200.0
+            "min": 865,
+            "max": 1200
           },
           "sample_products": [
             "Location visit before commencement",
@@ -8341,7 +8340,7 @@
           "frequency": "always",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -8377,8 +8376,8 @@
           "unit": "pst",
           "frequency": "often",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -8397,7 +8396,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.28,
-            "max": 500.0
+            "max": 500
           },
           "sample_products": [
             "Bolts, nuts and washers",
@@ -8416,7 +8415,7 @@
           "frequency": "often",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -8633,7 +8632,7 @@
           "frequency": "always",
           "price_range": {
             "min": 31.95,
-            "max": 32.0
+            "max": 32
           },
           "sample_products": [
             "Business Line Alpha-AR 100 mm insulated wall panels",
@@ -8762,7 +8761,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -8781,7 +8780,7 @@
           "frequency": "often",
           "price_range": {
             "min": 4.8,
-            "max": 12.0
+            "max": 12
           },
           "sample_products": [
             "Fastening rail as edge fixing",
@@ -8836,7 +8835,7 @@
           "frequency": "often",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -8948,7 +8947,7 @@
           "unit": "lfm",
           "frequency": "always",
           "price_range": {
-            "min": 21.0,
+            "min": 21,
             "max": 117.3
           },
           "sample_products": [
@@ -8968,7 +8967,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -8986,7 +8985,7 @@
           "frequency": "often",
           "price_range": {
             "min": 3.89,
-            "max": 37000.0
+            "max": 37000
           },
           "sample_products": [
             "Building expansion or connection joint",
@@ -9041,8 +9040,8 @@
           "unit": "pst",
           "frequency": "often",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -9060,8 +9059,8 @@
           "unit": "pst",
           "frequency": "often",
           "price_range": {
-            "min": 135.0,
-            "max": 1352.0
+            "min": 135,
+            "max": 1352
           },
           "sample_products": [
             "Concrete pump",
@@ -9079,7 +9078,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -9193,7 +9192,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -9230,7 +9229,7 @@
           "frequency": "often",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -9248,8 +9247,8 @@
           "unit": "Stück",
           "frequency": "often",
           "price_range": {
-            "min": 10285.0,
-            "max": 10285.0
+            "min": 10285,
+            "max": 10285
           },
           "sample_products": [
             "Teckentrup steel sheet door EI290-S5 62-2"
@@ -9266,7 +9265,7 @@
           "frequency": "often",
           "price_range": {
             "min": 92.6,
-            "max": 1580.0
+            "max": 1580
           },
           "sample_products": [
             "Glass balustrade incl profile",
@@ -9355,7 +9354,7 @@
           "frequency": "always",
           "price_range": {
             "min": 73.5,
-            "max": 6415.0
+            "max": 6415
           },
           "sample_products": [
             "THERMO 40 sectional door",
@@ -9374,7 +9373,7 @@
           "frequency": "always",
           "price_range": {
             "min": 103.5,
-            "max": 6350.0
+            "max": 6350
           },
           "sample_products": [
             "Novoferm inflatable aluminum dock shelter",
@@ -9392,8 +9391,8 @@
           "unit": "stk",
           "frequency": "often",
           "price_range": {
-            "min": 1965.0,
-            "max": 1965.0
+            "min": 1965,
+            "max": 1965
           },
           "sample_products": [
             "Retractable door seal"
@@ -9459,7 +9458,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.7,
-            "max": 130.0
+            "max": 130
           },
           "sample_products": [
             "covers for channel sealing floor type 200",
@@ -9476,8 +9475,8 @@
           "unit": "stuk",
           "frequency": "always",
           "price_range": {
-            "min": 2250.0,
-            "max": 3550.0
+            "min": 2250,
+            "max": 3550
           },
           "sample_products": [
             "Stair: straight stair",
@@ -9495,7 +9494,7 @@
           "unit": "Stk",
           "frequency": "often",
           "price_range": {
-            "min": 2250.0,
+            "min": 2250,
             "max": 2489.58
           },
           "sample_products": [
@@ -9515,7 +9514,7 @@
           "frequency": "often",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -9533,7 +9532,7 @@
           "unit": "m2",
           "frequency": "often",
           "price_range": {
-            "min": 49.0,
+            "min": 49,
             "max": 62.5
           },
           "sample_products": [
@@ -9628,7 +9627,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.7,
-            "max": 130.0
+            "max": 130
           },
           "sample_products": [
             "covers for channel sealing floor type 200",
@@ -9646,7 +9645,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.34,
-            "max": 8000.0
+            "max": 8000
           },
           "sample_products": [
             "Crane/reach stacker and suction cup unit",
@@ -9809,7 +9808,7 @@
           "frequency": "often",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -9840,8 +9839,8 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 425.0,
-            "max": 425.0
+            "min": 425,
+            "max": 425
           },
           "sample_products": [
             "Container 10m³ (BSA)",
@@ -9929,7 +9928,7 @@
           "frequency": "always",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -9947,7 +9946,7 @@
           "unit": "m2",
           "frequency": "often",
           "price_range": {
-            "min": 49.0,
+            "min": 49,
             "max": 62.5
           },
           "sample_products": [
@@ -9980,7 +9979,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.5,
-            "max": 28100.0
+            "max": 28100
           },
           "sample_products": [
             "Profiling sand base between piles",
@@ -10011,8 +10010,8 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 1750.0,
-            "max": 170000.0
+            "min": 1750,
+            "max": 170000
           },
           "sample_products": [
             "Waste containers",
@@ -10327,7 +10326,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -10346,7 +10345,7 @@
           "frequency": "always",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -10383,8 +10382,8 @@
           "unit": "m3",
           "frequency": "often",
           "price_range": {
-            "min": 135.0,
-            "max": 135.0
+            "min": 135,
+            "max": 135
           },
           "sample_products": [
             "Concrete mortar C20/25 environmental class XC2",
@@ -10481,7 +10480,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.77,
-            "max": 17747.0
+            "max": 17747
           },
           "sample_products": [
             "Edge notch 22x23, 20x30 cm",
@@ -10498,8 +10497,8 @@
           "unit": "pst",
           "frequency": "always",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -10518,7 +10517,7 @@
           "frequency": "often",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -10537,7 +10536,7 @@
           "frequency": "often",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -10657,8 +10656,8 @@
           "unit": "STUKS",
           "frequency": "often",
           "price_range": {
-            "min": 150.0,
-            "max": 2780.0
+            "min": 150,
+            "max": 2780
           },
           "sample_products": [
             "Link unit 6 meter type 5",
@@ -10702,7 +10701,7 @@
           "frequency": "often",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -10763,8 +10762,8 @@
           "unit": "post",
           "frequency": "often",
           "price_range": {
-            "min": 425.0,
-            "max": 425.0
+            "min": 425,
+            "max": 425
           },
           "sample_products": [
             "Container 10m³ (BSA)",
@@ -10845,7 +10844,7 @@
           "frequency": "always",
           "price_range": {
             "min": 10.29,
-            "max": 35.0
+            "max": 35
           },
           "sample_products": [
             "Deck-VQ vacuum insulation",
@@ -10984,7 +10983,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.15,
-            "max": 2700.0
+            "max": 2700
           },
           "sample_products": [
             "Insulation conversion tooth",
@@ -11016,8 +11015,8 @@
           "unit": "pst",
           "frequency": "often",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -11125,7 +11124,7 @@
           "frequency": "always",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -11144,7 +11143,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -11162,8 +11161,8 @@
           "unit": "pst",
           "frequency": "always",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -11182,7 +11181,7 @@
           "frequency": "always",
           "price_range": {
             "min": 4.1,
-            "max": 75.0
+            "max": 75
           },
           "sample_products": [
             "A - Short length > 1.000 mm < 2.000 mm",
@@ -11250,8 +11249,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 1950.0,
-            "max": 1950.0
+            "min": 1950,
+            "max": 1950
           },
           "sample_products": [
             "geotechnical investigation",
@@ -11284,8 +11283,8 @@
           "unit": "pst",
           "frequency": "often",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -11378,8 +11377,8 @@
           "unit": "Stück",
           "frequency": "always",
           "price_range": {
-            "min": 265.0,
-            "max": 1550.0
+            "min": 265,
+            "max": 1550
           },
           "sample_products": [
             "Dock Bumper DB20",
@@ -11397,8 +11396,8 @@
           "unit": "Stück",
           "frequency": "always",
           "price_range": {
-            "min": 3995.0,
-            "max": 7150.0
+            "min": 3995,
+            "max": 7150
           },
           "sample_products": [
             "Hörmann Sectional Door SPU F42 - Series 60"
@@ -11415,7 +11414,7 @@
           "frequency": "often",
           "price_range": {
             "min": 103.5,
-            "max": 6350.0
+            "max": 6350
           },
           "sample_products": [
             "Novoferm inflatable aluminum dock shelter",
@@ -11505,8 +11504,8 @@
           "unit": "pst",
           "frequency": "always",
           "price_range": {
-            "min": 250.0,
-            "max": 2500.0
+            "min": 250,
+            "max": 2500
           },
           "sample_products": [
             "Engineering category 2",
@@ -11524,7 +11523,7 @@
           "unit": "Stk",
           "frequency": "always",
           "price_range": {
-            "min": 2250.0,
+            "min": 2250,
             "max": 2489.58
           },
           "sample_products": [
@@ -11543,8 +11542,8 @@
           "unit": "m²",
           "frequency": "always",
           "price_range": {
-            "min": 108.0,
-            "max": 108.0
+            "min": 108,
+            "max": 108
           },
           "sample_products": [
             "Insulation walls exposed aggregate"
@@ -11560,7 +11559,7 @@
           "unit": "m2",
           "frequency": "always",
           "price_range": {
-            "min": 49.0,
+            "min": 49,
             "max": 62.5
           },
           "sample_products": [
@@ -11579,8 +11578,8 @@
           "unit": "m²",
           "frequency": "always",
           "price_range": {
-            "min": 46.0,
-            "max": 46.0
+            "min": 46,
+            "max": 46
           },
           "sample_products": [
             "Hollow core slabs 200mm"
@@ -11748,7 +11747,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.28,
-            "max": 25000.0
+            "max": 25000
           },
           "sample_products": [
             "Removal of equipment",
@@ -11805,8 +11804,8 @@
           "unit": "post",
           "frequency": "always",
           "price_range": {
-            "min": 670.0,
-            "max": 670.0
+            "min": 670,
+            "max": 670
           },
           "sample_products": [
             "Asbestos investigation in soil (optional)"
@@ -11822,8 +11821,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 950.0,
-            "max": 950.0
+            "min": 950,
+            "max": 950
           },
           "sample_products": [
             "foundation advice"
@@ -11839,8 +11838,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 1950.0,
-            "max": 1950.0
+            "min": 1950,
+            "max": 1950
           },
           "sample_products": [
             "geotechnical investigation",
@@ -11858,8 +11857,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 265.0,
-            "max": 265.0
+            "min": 265,
+            "max": 265
           },
           "sample_products": [
             "PFAS analysis (optional)"
@@ -11875,8 +11874,8 @@
           "unit": "st",
           "frequency": "always",
           "price_range": {
-            "min": 350.0,
-            "max": 2830.0
+            "min": 350,
+            "max": 2830
           },
           "sample_products": [
             "AP-04 soil analysis for disposal",
@@ -11977,8 +11976,8 @@
           "unit": "Post",
           "frequency": "always",
           "price_range": {
-            "min": 230.0,
-            "max": 230.0
+            "min": 230,
+            "max": 230
           },
           "sample_products": [
             "Transition profiles"
@@ -12061,7 +12060,7 @@
           "frequency": "always",
           "price_range": {
             "min": 5.1,
-            "max": 48000.0
+            "max": 48000
           },
           "sample_products": [
             "Supplying and applying 35 cm mixed granulate",
@@ -12098,7 +12097,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.24,
-            "max": 67500.0
+            "max": 67500
           },
           "sample_products": [
             "Installation of wall panels",
@@ -12182,7 +12181,7 @@
           "unit": "Stk",
           "frequency": "always",
           "price_range": {
-            "min": 2250.0,
+            "min": 2250,
             "max": 2489.58
           },
           "sample_products": [
@@ -12274,8 +12273,8 @@
           "unit": "Tonne",
           "frequency": "always",
           "price_range": {
-            "min": 1650.0,
-            "max": 1655.0
+            "min": 1650,
+            "max": 1655
           },
           "sample_products": [
             "Reinforcement steel 10 mm BST 500 B",
@@ -12319,7 +12318,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.5,
-            "max": 28100.0
+            "max": 28100
           },
           "sample_products": [
             "Profiling sand base between piles",
@@ -12338,7 +12337,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.9,
-            "max": 88200.0
+            "max": 88200
           },
           "sample_products": [
             "Concrete block paving white",
@@ -12357,7 +12356,7 @@
           "frequency": "always",
           "price_range": {
             "min": 24.75,
-            "max": 459135.0
+            "max": 459135
           },
           "sample_products": [
             "DWA internal sewer",
@@ -12376,7 +12375,7 @@
           "frequency": "always",
           "price_range": {
             "min": 4.5,
-            "max": 2310.0
+            "max": 2310
           },
           "sample_products": [
             "Dispose excess soil",
@@ -12433,7 +12432,7 @@
           "frequency": "always",
           "price_range": {
             "min": 0.28,
-            "max": 500.0
+            "max": 500
           },
           "sample_products": [
             "Bolts, nuts and washers",
@@ -12768,7 +12767,7 @@
           "frequency": "always",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -12822,7 +12821,7 @@
           "frequency": "always",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -12988,7 +12987,7 @@
           "frequency": "always",
           "price_range": {
             "min": 13.5,
-            "max": 161.0
+            "max": 161
           },
           "sample_products": [
             "Resiwall 24 concrete panels",
@@ -13106,8 +13105,8 @@
           "unit": "post",
           "frequency": "always",
           "price_range": {
-            "min": 61700.0,
-            "max": 61700.0
+            "min": 61700,
+            "max": 61700
           },
           "sample_products": [
             "Adhesive masonry work V-blocks fire safes"
